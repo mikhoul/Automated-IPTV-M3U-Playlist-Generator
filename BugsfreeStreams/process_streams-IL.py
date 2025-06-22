@@ -17,12 +17,12 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger()
 
 # Configuration
-REPO_OWNER = "bugsfreeweb"
-REPO_NAME = "LiveTVCollector"
+REPO_OWNER = "mikhoul"
+REPO_NAME = "LiveTVCollectorMikhoul"
 BRANCH = "main"
-BASE_PATH = os.path.abspath("BugsfreeStreams/StreamsTV-IL")
-FINAL_M3U_FILE = os.path.abspath("BugsfreeStreams/Output/StreamLinks-IL.m3u")
-PROCESSED_LINKS_FILE = os.path.abspath("BugsfreeStreams/processed_links-IL.json")
+BASE_PATH = os.path.abspath("BugsfreeStreams/StreamsTV-Mikhoul")
+FINAL_M3U_FILE = os.path.abspath("BugsfreeStreams/Output/StreamLinks-Mikhoul.m3u")
+PROCESSED_LINKS_FILE = os.path.abspath("BugsfreeStreams/processed_links-Mikhoul.json")
 MAX_STREAMS = 600  # Target 500+ channels
 MAX_STREAMS_PER_SOURCE = 1000
 VALIDATION_TIMEOUT = 60  # Max 60 seconds for validation
@@ -31,10 +31,10 @@ DEFAULT_LOGO = f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/{BRA
 
 # Source M3U playlist
 SOURCES = [
-    "https://raw.githubusercontent.com/bugsfreeweb/LiveTVCollector/main/LiveTV/Israel/LiveTV.m3u",
+    "https://raw.githubusercontent.com/mikhoul/LiveTVCollector/main/LiveTV/Mikhoul/LiveTV.m3u",
 ]
 FALLBACK_SOURCES = [
-    "https://raw.githubusercontent.com/bugsfreeweb/LiveTVCollector/main/LiveTV/Israel/LiveTV.m3u",
+    "https://raw.githubusercontent.com/mikhoul/LiveTVCollector/main/LiveTV/Mikhoul/LiveTV.m3u",
 ]
 
 # Static fallback M3U
