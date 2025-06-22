@@ -68,7 +68,7 @@ class M3UCollector:
         logging.info(f"Extracted {len(stream_urls)} streaming URLs from {base_url}")
         return list(stream_urls)
 
-    def check_link_active(self, url, timeout=2):
+    def check_link_active(self, url, timeout=9):
         """Check if a link is active, optimized for speed."""
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
         
