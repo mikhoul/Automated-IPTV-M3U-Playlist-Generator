@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class M3UCollector:
-    def __init__(self, country="Mikhoul", base_dir="LiveTV", check_links=True):
+    def __init__(self, country="Mikhoul", base_dir="LiveTV", check_links=True, excluded_groups=None):
         self.channels = defaultdict(list)
         self.default_logo = "https://buddytv.netlify.app/img/no-logo.png"
         self.seen_urls = set()
@@ -23,6 +23,7 @@ class M3UCollector:
         self.output_dir = os.path.join(base_dir, country)
         self.lock = threading.Lock()
         self.check_links = check_links  # Toggle link checking
+        self.excluded_groups = excluded_groups or []  # Liste des groupes à exclure
         os.makedirs(self.output_dir, exist_ok=True)
 
     def fetch_content(self, url):
@@ -111,9 +112,11 @@ class M3UCollector:
                 return False, url
 
     def parse_and_store(self, lines, source_url):
-        """Parse M3U lines and store channels."""
+        """Parse M3U lines and store channels, excluding specified groups."""
         current_channel = {}
         channel_count = 0
+        excluded_count = 0
+        
         for line in lines:
             line = line.strip()
             if line.startswith('#EXTINF:'):
@@ -122,6 +125,12 @@ class M3UCollector:
                 
                 match = re.search(r'group-title="([^"]*)"', line)
                 group = match.group(1) if match else "Uncategorized"
+                
+                # Vérification d'exclusion de groupe (case-insensitive)
+                if any(excluded.lower() in group.lower() for excluded in self.excluded_groups):
+                    current_channel = {}  # Ignorer ce canal
+                    excluded_count += 1
+                    continue
                 
                 match = re.search(r',(.+)$', line)
                 name = match.group(1).strip() if match else "Unnamed Channel"
@@ -140,7 +149,10 @@ class M3UCollector:
                         self.channels[current_channel['group']].append(current_channel)
                         channel_count += 1
                 current_channel = {}
+                
         logging.info(f"Parsed {channel_count} channels from {source_url}")
+        if excluded_count > 0:
+            logging.info(f"Excluded {excluded_count} channels from filtered groups")
 
     def filter_active_channels(self):
         """Filter out inactive channels, skippable for speed."""
@@ -153,16 +165,16 @@ class M3UCollector:
         url_set = set()
         
         logging.info(f"Total channels to check: {len(all_channels)}")
-        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:  # Even fewer workers
+        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
             future_to_channel = {
                 executor.submit(self.check_link_active, ch['url']): (group, ch)
                 for group, ch in all_channels if ch['url'] not in url_set and not url_set.add(ch['url'])
             }
             for future in concurrent.futures.as_completed(future_to_channel):
-                group, channel = future_to_channel[future]  # ← Ajout d'indentation
-                try:                                        # ← Ajout d'indentation
-                    result = future.result()                # ← Ajout d'indentation
-                    if result is not None:                  # ← Ajout d'indentation
+                group, channel = future_to_channel[future]
+                try:
+                    result = future.result()
+                    if result is not None:
                         is_active, updated_url = result
                         if is_active:
                             channel['url'] = updated_url
@@ -232,7 +244,8 @@ class M3UCollector:
         
         json_data = {
             "date": current_time,
-            "channels": dict(self.channels)
+            "channels": dict(self.channels),
+            "excluded_groups": self.excluded_groups  # Ajout info sur les groupes exclus
         }
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(json_data, f, ensure_ascii=False, indent=2)
@@ -258,8 +271,24 @@ class M3UCollector:
         logging.info(f"Exported custom format to {filepath}")
         return filepath
 
+    def get_excluded_groups_info(self):
+        """Retourne des informations sur les groupes exclus."""
+        return {
+            "excluded_groups": self.excluded_groups,
+            "excluded_count": len(self.excluded_groups)
+        }
+
 def main():
-    # Specific M3U sources (12 sources)
+    # Liste des groupes à exclure (exemples courants)
+    excluded_groups = [
+        "Adult", "XXX", "18+", "Porn", "Erotic",  # Contenu adulte
+        "Radio", "Music Only", "Audio Only",      # Radio/Audio
+        "VIP", "Premium", "Pay-Per-View",         # Contenu payant
+        "Offline", "Test", "Demo",                # Chaînes de test
+        "Shopping", "Teleshopping"                # Télé-achat
+    ]
+    
+    # Specific M3U sources
     source_urls = [        
         "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
         "https://raw.githubusercontent.com/HelmerLuzo/PlutoTV_HL/refs/heads/main/tv/m3u/PlutoTV_tv_CA.m3u",
@@ -269,8 +298,18 @@ def main():
         "https://github.com/BuddyChewChew/app-m3u-generator/raw/refs/heads/main/playlists/samsungtvplus_all.m3u",
     ]
 
-    # Set check_links=False for super speed, True for accuracy
-    collector = M3UCollector(country="Mikhoul", check_links=True)
+    # Instanciation avec liste d'exclusion
+    collector = M3UCollector(
+        country="Mikhoul", 
+        check_links=True, 
+        excluded_groups=excluded_groups
+    )
+    
+    # Affichage des groupes exclus
+    excluded_info = collector.get_excluded_groups_info()
+    logging.info(f"Groupes exclus configurés: {excluded_info['excluded_count']}")
+    logging.info(f"Liste d'exclusion: {', '.join(excluded_groups)}")
+    
     collector.process_sources(source_urls)
     
     # Export files
@@ -283,6 +322,10 @@ def main():
     mumbai_time = datetime.now(pytz.timezone('Asia/Kolkata'))
     logging.info(f"[{mumbai_time}] Collected {total_channels} unique channels for Mikhoul")
     logging.info(f"Groups found: {len(collector.channels)}")
+    
+    # Affichage des groupes finaux
+    final_groups = list(collector.channels.keys())
+    logging.info(f"Final groups after exclusion: {', '.join(sorted(final_groups))}")
 
 if __name__ == "__main__":
     main()
