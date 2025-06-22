@@ -159,14 +159,19 @@ class M3UCollector:
                 for group, ch in all_channels if ch['url'] not in url_set and not url_set.add(ch['url'])
             }
             for future in concurrent.futures.as_completed(future_to_channel):
-                group, channel = future_to_channel[future]
-                try:
-                    is_active, updated_url = future.result()
-                    if is_active:
-                        channel['url'] = updated_url
-                        active_channels[group].append(channel)
-                except Exception as e:
-                    logging.error(f"Error checking {channel['url']}: {e}")
+    group, channel = future_to_channel[future]
+    try:
+        result = future.result()  # ← NOUVELLE LIGNE
+        if result is not None:    # ← VALIDATION AJOUTÉE
+            is_active, updated_url = result
+            if is_active:
+                channel['url'] = updated_url
+                active_channels[group].append(channel)
+        else:  # ← GESTION DU CAS None
+            logging.warning(f"Vérification échouée pour {channel['url']}")
+    except Exception as e:
+        logging.error(f"Error checking {channel['url']}: {e}")
+
 
         self.channels = active_channels
         logging.info(f"Active channels after filtering: {sum(len(ch) for ch in active_channels.values())}")
