@@ -69,15 +69,70 @@ class M3UCollector:
         return list(stream_urls)
 
     def check_link_active(self, url, timeout=9):
-        """Check if a link is active, optimized for speed."""
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+        """Check if a link is active, with specialized HLS validation."""
+        
+        # Headers optimisés pour les flux vidéo et Akamai
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'application/vnd.apple.mpegurl, application/x-mpegURL, application/octet-stream, */*',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
+            'Sec-Fetch-Dest': 'empty',
+            'Sec-Fetch-Mode': 'cors',
+            'Sec-Fetch-Site': 'cross-site'
+        }
+        
+        # Ajout de Referer pour les domaines canadiens
+        if any(domain in url.lower() for domain in ['cbc.ca', 'radio-canada', 'rcavlive']):
+            headers['Referer'] = 'https://www.cbc.ca/'
         
         with self.lock:
             if url in self.url_status_cache:
                 return self.url_status_cache[url]
         
-        # Try original URL
+        # Validation spécialisée pour les flux M3U8/HLS
+        if url.endswith('.m3u8') or '/hls/' in url.lower():
+            return self._validate_hls_stream(url, headers, timeout)
+        else:
+            return self._validate_regular_url(url, headers, timeout)
+
+    def _validate_hls_stream(self, url, headers, timeout):
+        """Validate HLS/M3U8 streams specifically."""
         try:
+            # Pour les flux HLS, nous devons analyser le contenu de la playlist
+            response = requests.get(url, headers=headers, timeout=timeout, stream=True)
+            
+            if response.status_code == 200:
+                # Lire les premières lignes pour vérifier que c'est une playlist M3U8 valide
+                content = response.text[:2048]  # Premiers 2KB seulement
+                
+                if '#EXTM3U' in content or '#EXT-X-VERSION' in content:
+                    logging.info(f"Checked {url}: Active HLS stream")
+                    with self.lock:
+                        self.url_status_cache[url] = (True, url)
+                    return True, url
+                else:
+                    logging.warning(f"URL {url} returned 200 but invalid M3U8 content")
+                    
+            elif response.status_code == 403:
+                # Pour les flux géo-restreints, les considérer comme actifs
+                if any(indicator in str(response.headers).lower() for indicator in ['geo', 'location', 'country']):
+                    logging.info(f"Checked {url}: Geo-restricted but valid stream")
+                    with self.lock:
+                        self.url_status_cache[url] = (True, url)
+                    return True, url
+                    
+        except requests.RequestException as e:
+            logging.debug(f"HLS validation failed for {url}: {e}")
+        
+        # Si la validation HLS échoue, essayer en tant qu'URL normale
+        return self._validate_regular_url(url, headers, timeout)
+
+    def _validate_regular_url(self, url, headers, timeout):
+        """Validate regular URLs with standard HTTP methods."""
+        try:
+            # Essayer HEAD d'abord
             response = requests.head(url, timeout=timeout, headers=headers, allow_redirects=True)
             if response.status_code < 400:
                 logging.info(f"Checked {url}: Active (HEAD)")
@@ -85,31 +140,36 @@ class M3UCollector:
                     self.url_status_cache[url] = (True, url)
                 return True, url
         except requests.RequestException:
-            # Only try GET if HEAD fails, skip alternate protocol for speed
-            try:
-                with requests.get(url, stream=True, timeout=timeout, headers=headers) as r:
-                    if r.status_code < 400:
-                        logging.info(f"Checked {url}: Active (GET)")
-                        with self.lock:
-                            self.url_status_cache[url] = (True, url)
-                        return True, url
-            except requests.RequestException as e:
-                logging.warning(f"Link check failed for {url}: {e}")
-                # Try alternate protocol only if not a timeout
-                if not isinstance(e, requests.Timeout):
-                    alt_url = url.replace('http://', 'https://') if url.startswith('http://') else url.replace('https://', 'http://')
-                    try:
-                        response = requests.head(alt_url, timeout=timeout, headers=headers, allow_redirects=True)
-                        if response.status_code < 400:
-                            logging.info(f"Checked {alt_url}: Active (HEAD, switched protocol)")
-                            with self.lock:
-                                self.url_status_cache[url] = (True, alt_url)
-                            return True, alt_url
-                    except requests.RequestException:
-                        pass
+            pass
+        
+        try:
+            # Essayer GET en streaming
+            with requests.get(url, stream=True, timeout=timeout, headers=headers) as r:
+                if r.status_code < 400:
+                    logging.info(f"Checked {url}: Active (GET)")
+                    with self.lock:
+                        self.url_status_cache[url] = (True, url)
+                    return True, url
+        except requests.RequestException as e:
+            logging.debug(f"Regular validation failed for {url}: {e}")
+        
+        # Dernière tentative avec protocole alternatif
+        try:
+            alt_url = url.replace('http://', 'https://') if url.startswith('http://') else url.replace('https://', 'http://')
+            response = requests.head(alt_url, timeout=timeout, headers=headers, allow_redirects=True)
+            if response.status_code < 400:
+                logging.info(f"Checked {alt_url}: Active (HEAD, switched protocol)")
                 with self.lock:
-                    self.url_status_cache[url] = (False, url)
-                return False, url
+                    self.url_status_cache[url] = (True, alt_url)
+                return True, alt_url
+        except requests.RequestException:
+            pass
+        
+        # Si tout échoue, retourner False au lieu de None
+        logging.warning(f"All validation methods failed for {url}")
+        with self.lock:
+            self.url_status_cache[url] = (False, url)
+        return False, url
 
     def parse_and_store(self, lines, source_url):
         """Parse M3U lines and store channels, excluding specified groups."""
