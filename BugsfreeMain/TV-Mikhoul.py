@@ -110,18 +110,17 @@ class M3UCollector:
                 if '#EXTM3U' in content or '#EXT-X-VERSION' in content:
                     logging.info(f"Checked {url}: Active HLS stream")
                     with self.lock:
-                        self.url_status_cache[url] = (True, url)
-                    return True, url
+                        self.url_status_cache[url] = (True, url, "active")
+                    return True, url, "active"
                 else:
                     logging.warning(f"URL {url} returned 200 but invalid M3U8 content")
                     
             elif response.status_code == 403:
-                # Pour les flux géo-restreints, les considérer comme actifs
-                if any(indicator in str(response.headers).lower() for indicator in ['geo', 'location', 'country']):
-                    logging.info(f"Checked {url}: Geo-restricted but valid stream")
-                    with self.lock:
-                        self.url_status_cache[url] = (True, url)
-                    return True, url
+                # Détecter spécifiquement les erreurs 403 comme géo-blocage
+                logging.info(f"Checked {url}: 403 Forbidden - Geo-blocked HLS stream")
+                with self.lock:
+                    self.url_status_cache[url] = (True, url, "geo_blocked")
+                return True, url, "geo_blocked"
                     
         except requests.RequestException as e:
             logging.debug(f"HLS validation failed for {url}: {e}")
@@ -137,8 +136,13 @@ class M3UCollector:
             if response.status_code < 400:
                 logging.info(f"Checked {url}: Active (HEAD)")
                 with self.lock:
-                    self.url_status_cache[url] = (True, url)
-                return True, url
+                    self.url_status_cache[url] = (True, url, "active")
+                return True, url, "active"
+            elif response.status_code == 403:
+                logging.info(f"Checked {url}: 403 Forbidden - Geo-blocked (HEAD)")
+                with self.lock:
+                    self.url_status_cache[url] = (True, url, "geo_blocked")
+                return True, url, "geo_blocked"
         except requests.RequestException:
             pass
         
@@ -148,8 +152,13 @@ class M3UCollector:
                 if r.status_code < 400:
                     logging.info(f"Checked {url}: Active (GET)")
                     with self.lock:
-                        self.url_status_cache[url] = (True, url)
-                    return True, url
+                        self.url_status_cache[url] = (True, url, "active")
+                    return True, url, "active"
+                elif r.status_code == 403:
+                    logging.info(f"Checked {url}: 403 Forbidden - Geo-blocked (GET)")
+                    with self.lock:
+                        self.url_status_cache[url] = (True, url, "geo_blocked")
+                    return True, url, "geo_blocked"
         except requests.RequestException as e:
             logging.debug(f"Regular validation failed for {url}: {e}")
         
@@ -160,16 +169,21 @@ class M3UCollector:
             if response.status_code < 400:
                 logging.info(f"Checked {alt_url}: Active (HEAD, switched protocol)")
                 with self.lock:
-                    self.url_status_cache[url] = (True, alt_url)
-                return True, alt_url
+                    self.url_status_cache[url] = (True, alt_url, "active")
+                return True, alt_url, "active"
+            elif response.status_code == 403:
+                logging.info(f"Checked {alt_url}: 403 Forbidden - Geo-blocked (HEAD, switched protocol)")
+                with self.lock:
+                    self.url_status_cache[url] = (True, alt_url, "geo_blocked")
+                return True, alt_url, "geo_blocked"
         except requests.RequestException:
             pass
         
-        # Si tout échoue, retourner False au lieu de None
+        # Si tout échoue, retourner False
         logging.warning(f"All validation methods failed for {url}")
         with self.lock:
-            self.url_status_cache[url] = (False, url)
-        return False, url
+            self.url_status_cache[url] = (False, url, "inactive")
+        return False, url, "inactive"
 
     def parse_and_store(self, lines, source_url):
         """Parse M3U lines and store channels, excluding specified groups."""
@@ -234,10 +248,23 @@ class M3UCollector:
                 group, channel = future_to_channel[future]
                 try:
                     result = future.result()
-                    if result is not None:
-                        is_active, updated_url = result
+                    if result is not None and len(result) >= 2:
+                        # Gérer le nouveau format avec statut optionnel
+                        if len(result) == 3:
+                            is_active, updated_url, status_type = result
+                        else:
+                            is_active, updated_url = result
+                            status_type = "active" if is_active else "inactive"
+                        
                         if is_active:
                             channel['url'] = updated_url
+                            
+                            # Ajouter le tag [Geo-blocked] à la FIN si nécessaire
+                            if status_type == "geo_blocked":
+                                if not channel['name'].endswith('[Geo-blocked]'):
+                                    channel['name'] = f"{channel['name']} [Geo-blocked]"
+                                    logging.info(f"Tagged as geo-blocked: {channel['name']}")
+                            
                             active_channels[group].append(channel)
                     else:
                         logging.warning(f"Vérification échouée pour {channel['url']}")
@@ -245,7 +272,15 @@ class M3UCollector:
                     logging.error(f"Error checking {channel['url']}: {e}")
 
         self.channels = active_channels
-        logging.info(f"Active channels after filtering: {sum(len(ch) for ch in active_channels.values())}")
+        
+        # Statistiques améliorées
+        total_active = sum(len(ch) for ch in active_channels.values())
+        geo_blocked_count = sum(1 for channels in active_channels.values() 
+                               for channel in channels 
+                               if '[Geo-blocked]' in channel['name'])
+        
+        logging.info(f"Active channels after filtering: {total_active}")
+        logging.info(f"Geo-blocked channels detected: {geo_blocked_count}")
 
     def process_sources(self, source_urls):
         """Process sources sequentially for better control."""
