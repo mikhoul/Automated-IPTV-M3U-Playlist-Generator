@@ -281,11 +281,9 @@ class M3UCollector:
 def main():
     # Liste des groupes à exclure (exemples courants)
     excluded_groups = [
-        "Adult", "XXX", "18+", "Porn", "Erotic",  # Contenu adulte
-        "Radio", "Music Only", "Audio Only",      # Radio/Audio
-        "VIP", "Premium", "Pay-Per-View",         # Contenu payant
-        "Offline", "Test", "Demo",                # Chaînes de test
-        "Shopping", "Teleshopping"                # Télé-achat
+        "Argentina", "Austria", "Brazil", "Chile", "Denmark", "Germany", "India", "Italy", "Mexico", "Norway", "South Korea", "Spain", "Sweden", "Switzerland", "United Kingdom", "United States",   # Pays Exclus
+        "Offlinez", "Testz", "Demoz",                # Chaînes de test
+        "Shoppingz", "Teleshoppingz"                # Télé-achat
     ]
     
     # Specific M3U sources
