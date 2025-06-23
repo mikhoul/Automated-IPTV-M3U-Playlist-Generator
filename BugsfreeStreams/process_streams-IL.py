@@ -77,6 +77,88 @@ class M3UCollector:
                     stream_urls.add(href)
         return list(stream_urls)
 
+    def check_link_active(self, url, channel_name="Unknown Channel", timeout=9):
+        """Check if a link is active, with specialized HLS validation."""
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'application/vnd.apple.mpegurl, application/x-mpegURL, application/octet-stream, */*',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
+            'Sec-Fetch-Dest': 'empty',
+            'Sec-Fetch-Mode': 'cors',
+            'Sec-Fetch-Site': 'cross-site'
+        }
+        
+        if any(domain in url.lower() for domain in ['cbc.ca', 'radio-canada', 'rcavlive']):
+            headers['Referer'] = 'https://www.cbc.ca/'
+        
+        with self.lock:
+            if url in self.url_status_cache:
+                return self.url_status_cache[url]
+        
+        if url.endswith('.m3u8') or '/hls/' in url.lower():
+            return self._validate_hls_stream(url, headers, timeout, channel_name)
+        else:
+            return self._validate_regular_url(url, headers, timeout, channel_name)
+
+    def _validate_hls_stream(self, url, headers, timeout, channel_name="Unknown Channel"):
+        """Validate HLS/M3U8 streams specifically."""
+        try:
+            response = requests.get(url, headers=headers, timeout=timeout, stream=True)
+            if response.status_code == 200:
+                content = response.text[:2048]
+                if '#EXTM3U' in content or '#EXT-X-VERSION' in content:
+                    logging.info(f"Channel '{channel_name}': Active HLS stream - URL: {url}")
+                    with self.lock:
+                        self.url_status_cache[url] = (True, url, "active")
+                    return True, url, "active"
+            elif response.status_code == 403:
+                logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked HLS stream - URL: {url}")
+                with self.lock:
+                    self.url_status_cache[url] = (True, url, "geo_blocked")
+                return True, url, "geo_blocked"
+        except requests.RequestException as e:
+            logging.debug(f"Channel '{channel_name}': HLS validation failed - URL: {url} - Error: {e}")
+        return self._validate_regular_url(url, headers, timeout, channel_name)
+
+    def _validate_regular_url(self, url, headers, timeout, channel_name="Unknown Channel"):
+        """Validate regular URLs with standard HTTP methods."""
+        try:
+            response = requests.head(url, timeout=timeout, headers=headers, allow_redirects=True)
+            if response.status_code < 400:
+                logging.info(f"Channel '{channel_name}': Active (HEAD) - URL: {url}")
+                with self.lock:
+                    self.url_status_cache[url] = (True, url, "active")
+                return True, url, "active"
+            elif response.status_code == 403:
+                logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD) - URL: {url}")
+                with self.lock:
+                    self.url_status_cache[url] = (True, url, "geo_blocked")
+                return True, url, "geo_blocked"
+        except requests.RequestException:
+            pass
+        
+        try:
+            with requests.get(url, stream=True, timeout=timeout, headers=headers) as r:
+                if r.status_code < 400:
+                    logging.info(f"Channel '{channel_name}': Active (GET) - URL: {url}")
+                    with self.lock:
+                        self.url_status_cache[url] = (True, url, "active")
+                    return True, url, "active"
+                elif r.status_code == 403:
+                    logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (GET) - URL: {url}")
+                    with self.lock:
+                        self.url_status_cache[url] = (True, url, "geo_blocked")
+                    return True, url, "geo_blocked"
+        except requests.RequestException as e:
+            logging.debug(f"Channel '{channel_name}': Regular validation failed - URL: {url} - Error: {e}")
+        
+        logging.warning(f"Channel '{channel_name}': All validation methods failed - URL: {url}")
+        with self.lock:
+            self.url_status_cache[url] = (False, url, "inactive")
+        return False, url, "inactive"
+
     def test_cuisine_detection(self, lines):
         cuisine_lines = []
         zeste_lines = []
@@ -139,7 +221,7 @@ class M3UCollector:
                     logging.error(f"Line {line_num}: GROUP EXTRACTION ERROR: {e}")
                     group = "Uncategorized"
                 
-                # Log spécial pour Cuisine
+                # ← CORRECTION : Log spécial pour Cuisine
                 if "cuisine" in group.lower():
                     logging.info(f"★★★ CUISINE GROUP CONFIRMED: '{group}' at line {line_num}")
                 
@@ -173,7 +255,7 @@ class M3UCollector:
                         self.channels[current_channel['group']].append(current_channel)
                         channel_count += 1
                         
-                        # ← NOUVEAU : Log spécial pour les chaînes Cuisine ajoutées
+                        # ← CORRECTION : Log spécial pour les chaînes Cuisine ajoutées
                         if current_channel['group'].lower() == 'cuisine':
                             logging.info(f"★★★ CUISINE CHANNEL ADDED: '{current_channel['name']}' to group '{current_channel['group']}'")
                     current_channel = {}
@@ -234,7 +316,7 @@ class M3UCollector:
         cuisine_channels = [ch for ch_list in self.channels.values() for ch in ch_list if ch['group'].lower() == 'cuisine']
         logging.info(f"CUISINE channels after parsing: {len(cuisine_channels)}")
         
-        # ← NOUVEAU : Affichage détaillé des chaînes Cuisine
+        # ← CORRECTION : Affichage détaillé des chaînes Cuisine
         if cuisine_channels:
             logging.info(f"★★★ CUISINE CHANNELS FOUND:")
             for ch in cuisine_channels:
