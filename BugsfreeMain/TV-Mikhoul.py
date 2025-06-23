@@ -223,7 +223,7 @@ class M3UCollector:
         return False, url, "inactive"
 
     def parse_and_store(self, lines, source_url):
-        """Parse M3U lines and store channels, excluding specified groups with improved non-HTTP URL handling."""
+        """Parse M3U lines and store channels, excluding specified groups with improved logic."""
         current_channel = {}
         channel_count = 0
         excluded_count = 0
@@ -238,14 +238,30 @@ class M3UCollector:
                 match = re.search(r'group-title="([^"]*)"', line)
                 group = match.group(1) if match else "Uncategorized"
                 
-                # Vérification d'exclusion de groupe (case-insensitive)
-                if any(excluded.lower() in group.lower() for excluded in self.excluded_groups):
+                # ← CORRECTION MAJEURE : Logique d'exclusion améliorée pour éviter les faux positifs
+                excluded = False
+                for excluded_item in self.excluded_groups:
+                    # Correspondance exacte du groupe (insensible à la casse)
+                    if group.lower() == excluded_item.lower():
+                        excluded = True
+                        logging.debug(f"Excluding group '{group}' (exact match with '{excluded_item}')")
+                        break
+                    # OU vérification de mots complets seulement (pour éviter faux positifs comme "Spain" dans "Hispanic")
+                    elif re.search(r'\b' + re.escape(excluded_item.lower()) + r'\b', group.lower()):
+                        excluded = True
+                        logging.debug(f"Excluding group '{group}' (contains whole word '{excluded_item}')")
+                        break
+                
+                if excluded:
                     current_channel = {}  # Ignorer ce canal
                     excluded_count += 1
                     continue
                 
                 match = re.search(r',(.+)$', line)
                 name = match.group(1).strip() if match else "Unnamed Channel"
+                
+                # Log de debug pour voir toutes les chaînes trouvées
+                logging.debug(f"Found channel: '{name}' in group '{group}'")
                 
                 current_channel = {
                     'name': name,
@@ -254,7 +270,7 @@ class M3UCollector:
                     'source': source_url
                 }
             elif line and not line.startswith('#') and current_channel:
-                # ← NOUVELLE LOGIQUE : Gestion améliorée des URLs HTTP et non-HTTP
+                # Gestion améliorée des URLs HTTP et non-HTTP
                 if line.startswith(('http://', 'https://')):
                     # URL HTTP/HTTPS valide - traitement normal
                     with self.lock:
@@ -263,12 +279,13 @@ class M3UCollector:
                             current_channel['url'] = line
                             self.channels[current_channel['group']].append(current_channel)
                             channel_count += 1
+                            logging.debug(f"Added channel '{current_channel['name']}' with URL: {line}")
                 else:
                     # URL non-HTTP (plugin://, rtmp://, etc.) - ignorer mais logger
                     non_http_skipped += 1
                     logging.debug(f"Skipping non-HTTP URL for '{current_channel.get('name', 'Unknown')}': {line}")
                 
-                # ← CORRECTION CLÉE : Toujours réinitialiser current_channel après traitement d'une URL
+                # Toujours réinitialiser current_channel après traitement d'une URL
                 current_channel = {}
                 
         logging.info(f"Parsed {channel_count} channels from {source_url}")
@@ -276,6 +293,10 @@ class M3UCollector:
             logging.info(f"Excluded {excluded_count} channels from filtered groups")
         if non_http_skipped > 0:
             logging.info(f"Skipped {non_http_skipped} non-HTTP URLs (plugin://, rtmp://, etc.)")
+        
+        # ← NOUVEAU : Log des groupes trouvés pour diagnostic
+        found_groups = set(ch['group'] for ch_list in self.channels.values() for ch in ch_list)
+        logging.info(f"Groups found in this source: {', '.join(sorted(found_groups))}")
 
     def filter_active_channels(self):
         """Filter out inactive channels, skippable for speed."""
@@ -425,21 +446,25 @@ def main():
     # Détecter la géolocalisation du serveur GitHub Actions
     server_location = get_server_geolocation()
     
-    # Liste des groupes à exclure (exemples courants)
+    # ← CORRECTION : Liste d'exclusion nettoyée pour éviter faux positifs
     excluded_groups = [
-        "Argentina", "Austria", "Brazil", "Chile", "Denmark", "Germany", "India", "Italy", "Mexico", "Norway", "South Korea", "Spain", "Sweden", "Switzerland", "United Kingdom", "United States",   # Pays Exclus
-        "Offlinez", "Testz", "Demoz",                # Chaînes de test
-        "Shoppingz", "Teleshoppingz"                # Télé-achat
+        # Pays - noms complets pour éviter conflits
+        "Argentina", "Austria", "Brazil", "Chile", "Denmark", "Germany", 
+        "India", "Italy", "Mexico", "Norway", "South Korea", "Spain", 
+        "Sweden", "Switzerland", "United Kingdom", "United States",
+        # Autres - termes spécifiques
+        "Offline", "Test", "Demo", "Shopping", "Teleshopping"
     ]
     
     # Specific M3U sources
     source_urls = [        
         "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-       # "https://raw.githubusercontent.com/HelmerLuzo/PlutoTV_HL/refs/heads/main/tv/m3u/PlutoTV_tv_CA.m3u",
-       # "https://iptv-org.github.io/iptv/countries/ca.m3u",
-       # "https://list.iptvcat.com/my_list/33b417553a834a782ea5d4d15abbef92.m3u8",
-       # "https://github.com/BuddyChewChew/app-m3u-generator/raw/refs/heads/main/playlists/plutotv_all.m3u",
-       # "https://github.com/BuddyChewChew/app-m3u-generator/raw/refs/heads/main/playlists/samsungtvplus_all.m3u",
+        # Autres sources commentées pour test
+        # "https://raw.githubusercontent.com/HelmerLuzo/PlutoTV_HL/refs/heads/main/tv/m3u/PlutoTV_tv_CA.m3u",
+        # "https://iptv-org.github.io/iptv/countries/ca.m3u",
+        # "https://list.iptvcat.com/my_list/33b417553a834a782ea5d4d15abbef92.m3u8",
+        # "https://github.com/BuddyChewChew/app-m3u-generator/raw/refs/heads/main/playlists/plutotv_all.m3u",
+        # "https://github.com/BuddyChewChew/app-m3u-generator/raw/refs/heads/main/playlists/samsungtvplus_all.m3u",
     ]
 
     # Instanciation avec liste d'exclusion
