@@ -223,7 +223,7 @@ class M3UCollector:
         return False, url, "inactive"
 
     def parse_and_store(self, lines, source_url):
-        """Parse M3U lines and store channels, excluding specified groups with improved logic."""
+        """Parse M3U lines and store channels with CORRECTED logic to prevent premature current_channel reset."""
         current_channel = {}
         channel_count = 0
         excluded_count = 0
@@ -238,7 +238,7 @@ class M3UCollector:
                 match = re.search(r'group-title="([^"]*)"', line)
                 group = match.group(1) if match else "Uncategorized"
                 
-                # ← CORRECTION MAJEURE : Logique d'exclusion améliorée pour éviter les faux positifs
+                # ← CORRECTION : Logique d'exclusion améliorée pour éviter les faux positifs
                 excluded = False
                 for excluded_item in self.excluded_groups:
                     # Correspondance exacte du groupe (insensible à la casse)
@@ -246,7 +246,7 @@ class M3UCollector:
                         excluded = True
                         logging.debug(f"Excluding group '{group}' (exact match with '{excluded_item}')")
                         break
-                    # OU vérification de mots complets seulement (pour éviter faux positifs comme "Spain" dans "Hispanic")
+                    # OU vérification de mots complets seulement
                     elif re.search(r'\b' + re.escape(excluded_item.lower()) + r'\b', group.lower()):
                         excluded = True
                         logging.debug(f"Excluding group '{group}' (contains whole word '{excluded_item}')")
@@ -270,7 +270,7 @@ class M3UCollector:
                     'source': source_url
                 }
             elif line and not line.startswith('#') and current_channel:
-                # Gestion améliorée des URLs HTTP et non-HTTP
+                # ← CORRECTION MAJEURE : Réinitialisation conditionnelle de current_channel
                 if line.startswith(('http://', 'https://')):
                     # URL HTTP/HTTPS valide - traitement normal
                     with self.lock:
@@ -280,13 +280,15 @@ class M3UCollector:
                             self.channels[current_channel['group']].append(current_channel)
                             channel_count += 1
                             logging.debug(f"Added channel '{current_channel['name']}' with URL: {line}")
+                    
+                    # ← CLÉE : Réinitialiser SEULEMENT après traitement d'une URL HTTP
+                    current_channel = {}
                 else:
-                    # URL non-HTTP (plugin://, rtmp://, etc.) - ignorer mais logger
+                    # URL non-HTTP (plugin://, rtmp://, etc.) - ignorer mais NE PAS réinitialiser
                     non_http_skipped += 1
                     logging.debug(f"Skipping non-HTTP URL for '{current_channel.get('name', 'Unknown')}': {line}")
-                
-                # Toujours réinitialiser current_channel après traitement d'une URL
-                current_channel = {}
+                    # ← IMPORTANT : Ne PAS réinitialiser current_channel ici
+                    # Cela permet aux métadonnées de survivre aux URLs non-HTTP intermédiaires
                 
         logging.info(f"Parsed {channel_count} channels from {source_url}")
         if excluded_count > 0:
@@ -294,7 +296,7 @@ class M3UCollector:
         if non_http_skipped > 0:
             logging.info(f"Skipped {non_http_skipped} non-HTTP URLs (plugin://, rtmp://, etc.)")
         
-        # ← NOUVEAU : Log des groupes trouvés pour diagnostic
+        # Log des groupes trouvés pour diagnostic
         found_groups = set(ch['group'] for ch_list in self.channels.values() for ch in ch_list)
         logging.info(f"Groups found in this source: {', '.join(sorted(found_groups))}")
 
@@ -446,7 +448,7 @@ def main():
     # Détecter la géolocalisation du serveur GitHub Actions
     server_location = get_server_geolocation()
     
-    # ← CORRECTION : Liste d'exclusion nettoyée pour éviter faux positifs
+    # Liste d'exclusion nettoyée pour éviter faux positifs
     excluded_groups = [
         # Pays - noms complets pour éviter conflits
         "Argentina", "Austria", "Brazil", "Chile", "Denmark", "Germany", 
