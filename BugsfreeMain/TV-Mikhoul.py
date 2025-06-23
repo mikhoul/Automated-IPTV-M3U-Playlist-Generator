@@ -247,7 +247,7 @@ class M3UCollector:
         logging.info("=" * 60)
 
     def parse_and_store(self, lines, source_url):
-        """Parse M3U lines with ultimate debugging of the loop itself."""
+        """Parse M3U lines with immediate log flushing."""
         current_channel = {}
         channel_count = 0
         excluded_count = 0
@@ -258,107 +258,106 @@ class M3UCollector:
         cuisine_extinf_found = 0
         cuisine_urls_processed = 0
         
-        logging.info(f"STARTING PARSE of {len(lines)} lines from {source_url}")
+        import sys
         
-        # ← NOUVEAU : Diagnostic de la liste lines
+        logging.info(f"STARTING PARSE of {len(lines)} lines from {source_url}")
+        sys.stdout.flush()
+        sys.stderr.flush()
+        
+        # Diagnostic de la liste lines
         logging.info(f"LINES DIAGNOSTIC: Type={type(lines)}, Length={len(lines)}")
+        sys.stdout.flush()
+        sys.stderr.flush()
+        
         logging.info(f"LINES SAMPLE: First 5 lines = {lines[:5] if len(lines) >= 5 else lines}")
+        sys.stdout.flush()
+        sys.stderr.flush()
         
         try:
-            # ← NOUVEAU : Diagnostic de enumerate
+            # Diagnostic de enumerate  
             enum_lines = list(enumerate(lines, 1))
             logging.info(f"ENUMERATE DIAGNOSTIC: Created {len(enum_lines)} items")
-            logging.info(f"ENUMERATE SAMPLE: {enum_lines[:5] if len(enum_lines) >= 5 else enum_lines}")
+            sys.stdout.flush()
+            sys.stderr.flush()
             
-            # ← NOUVEAU : Boucle avec diagnostic ultra-détaillé
+            logging.info(f"ENUMERATE SAMPLE: {enum_lines[:5] if len(enum_lines) >= 5 else enum_lines}")
+            sys.stdout.flush()
+            sys.stderr.flush()
+            
+            # ← NOUVEAU : Force flush après chaque ligne
             for i, (line_num, line) in enumerate(enum_lines):
                 try:
-                    # ← NOUVEAU : Log AVANT chaque itération
+                    # Log AVANT chaque itération avec flush immédiat
                     logging.info(f"LOOP ITERATION {i}: About to process line_num={line_num}")
-                    import sys
                     sys.stdout.flush()
                     sys.stderr.flush()
                     
                     # Log de sécurité AVANT chaque opération critique
                     logging.info(f"SAFETY: Starting line {line_num}")
+                    sys.stdout.flush()
+                    sys.stderr.flush()
                     
-                    # ← NOUVEAU : Log APRÈS chaque opération de base
+                    # ← NOUVEAU : Force log pour TOUTES les lignes importantes
+                    if line_num in [1, 2, 3, 4, 5, 10, 20, 50, 100, 200, 537, 538, 539, 540, 541, 542]:
+                        logging.info(f"CRITICAL LINE {line_num}: '{line}'")
+                        sys.stdout.flush()
+                        sys.stderr.flush()
+                    
                     if line_num >= 50:
                         logging.info(f"ULTIMATE: About to process line {line_num}")
+                        sys.stdout.flush()
+                        sys.stderr.flush()
                     
                     # Log ultra-détaillé pour identifier l'interruption
                     if line_num % 10 == 0:
                         logging.info(f"PROCESSING Line {line_num}")
+                        sys.stdout.flush()
+                        sys.stderr.flush()
                     
                     # Log spécial pour les lignes 25-60 où ça peut planter
                     if 25 <= line_num <= 60:
                         logging.info(f"DANGER ZONE Line {line_num}: About to process '{line[:50]}...'")
+                        sys.stdout.flush()
+                        sys.stderr.flush()
                     
                     if 50 <= line_num <= 60:
                         logging.info(f"POST-50 Line {line_num}: Raw content = '{line}'")
-                    
-                    # Log avant strip()
-                    if 25 <= line_num <= 60:
-                        logging.info(f"Line {line_num}: About to strip line")
+                        sys.stdout.flush()
+                        sys.stderr.flush()
                     
                     line = line.strip()
-                    
-                    if 25 <= line_num <= 60:
-                        logging.info(f"Line {line_num}: Line stripped successfully: '{line[:50]}...'")
-                    
-                    # Vérification de contenu de ligne vide
-                    if not line and line_num >= 50:
-                        logging.info(f"Line {line_num}: EMPTY LINE DETECTED")
                     
                     # Log périodique pour suivre la progression  
                     if line_num % 100 == 0:
                         logging.info(f"PARSING PROGRESS: Line {line_num}/{len(lines)} ({line_num/len(lines)*100:.1f}%)")
+                        sys.stdout.flush()
+                        sys.stderr.flush()
                     
-                    # Log avant chaque vérification startswith
-                    if 25 <= line_num <= 60:
-                        logging.info(f"Line {line_num}: About to check startswith('#EXTINF:')")
-                    
-                    # Check si la ligne cause des problèmes
-                    if 50 <= line_num <= 60:
-                        logging.info(f"Line {line_num}: Line length = {len(line)}, starts with # = {line.startswith('#')}")
-                    
-                    # ← NOUVEAU : Test de continuation de boucle
+                    # ← NOUVEAU : Test de continuation de boucle avec flush
                     if line_num <= 10:
                         logging.info(f"LOOP TEST: Successfully processing line {line_num}")
+                        sys.stdout.flush()
+                        sys.stderr.flush()
                     
                     if line.startswith('#EXTINF:'):
-                        if 25 <= line_num <= 60:
-                            logging.info(f"Line {line_num}: Is EXTINF line")
-                        
                         total_extinf_lines += 1
                         
                         # Log pour lignes importantes autour des chaînes Zeste
                         if 530 <= line_num <= 550:
-                            logging.info(f"FOUND EXTINF Line {line_num}: {line}")
-                        
-                        # Log avant chaque regex avec protection
-                        if 25 <= line_num <= 60:
-                            logging.info(f"Line {line_num}: About to search for tvg-logo")
+                            logging.info(f"★★★ FOUND EXTINF Line {line_num}: {line}")
+                            sys.stdout.flush()
+                            sys.stderr.flush()
                         
                         try:
                             match = re.search(r'tvg-logo="([^"]*)"', line)
                             logo = match.group(1) if match and match.group(1) else self.default_logo
-                            
-                            if 25 <= line_num <= 60:
-                                logging.info(f"Line {line_num}: Logo extracted successfully")
                         except Exception as regex_error:
                             logging.error(f"Line {line_num}: REGEX ERROR on tvg-logo: {regex_error}")
                             logo = self.default_logo
                         
-                        if 25 <= line_num <= 60:
-                            logging.info(f"Line {line_num}: About to search for group-title")
-                        
                         try:
                             match = re.search(r'group-title="([^"]*)"', line)
                             group = match.group(1) if match else "Uncategorized"
-                            
-                            if 25 <= line_num <= 60:
-                                logging.info(f"Line {line_num}: Group extracted: '{group}'")
                         except Exception as regex_error:
                             logging.error(f"Line {line_num}: REGEX ERROR on group-title: {regex_error}")
                             group = "Uncategorized"
@@ -367,10 +366,8 @@ class M3UCollector:
                         if "cuisine" in group.lower():
                             cuisine_extinf_found += 1
                             logging.info(f"★★★ CUISINE FOUND - Line {line_num}: Group='{group}' ★★★")
-                        
-                        # Log avant logique d'exclusion
-                        if 25 <= line_num <= 60:
-                            logging.info(f"Line {line_num}: About to check exclusion")
+                            sys.stdout.flush()
+                            sys.stderr.flush()
                         
                         # Logique d'exclusion avec protection
                         excluded = False
@@ -389,31 +386,22 @@ class M3UCollector:
                             excluded = False
                         
                         if excluded:
-                            if 25 <= line_num <= 60:
-                                logging.info(f"Line {line_num}: Channel excluded, continuing")
                             current_channel = {}
                             excluded_count += 1
                             continue
                         
-                        if 25 <= line_num <= 60:
-                            logging.info(f"Line {line_num}: About to extract channel name")
-                        
                         try:
                             match = re.search(r',(.+)$', line)
                             name = match.group(1).strip() if match else "Unnamed Channel"
-                            
-                            if 25 <= line_num <= 60:
-                                logging.info(f"Line {line_num}: Name extracted: '{name}'")
                         except Exception as name_error:
                             logging.error(f"Line {line_num}: NAME EXTRACTION ERROR: {name_error}")
                             name = "Unnamed Channel"
                         
                         # Log pour les chaînes importantes
                         if 530 <= line_num <= 550:
-                            logging.info(f"CREATING CHANNEL Line {line_num}: '{name}' in group '{group}'")
-                        
-                        if 25 <= line_num <= 60:
-                            logging.info(f"Line {line_num}: About to create channel object")
+                            logging.info(f"★★★ CREATING CHANNEL Line {line_num}: '{name}' in group '{group}'")
+                            sys.stdout.flush()
+                            sys.stderr.flush()
                         
                         try:
                             current_channel = {
@@ -423,29 +411,24 @@ class M3UCollector:
                                 'source': source_url,
                                 'line_num': line_num
                             }
-                            
-                            if 25 <= line_num <= 60:
-                                logging.info(f"Line {line_num}: Channel object created successfully")
                         except Exception as obj_error:
                             logging.error(f"Line {line_num}: OBJECT CREATION ERROR: {obj_error}")
                             current_channel = {}
                             
                     elif line and not line.startswith('#') and current_channel:
-                        if 25 <= line_num <= 60:
-                            logging.info(f"Line {line_num}: Processing URL line")
-                        
                         # Log pour les URLs importantes
                         if 530 <= line_num <= 550:
-                            logging.info(f"PROCESSING URL Line {line_num} for '{current_channel.get('name', 'Unknown')}': {line}")
+                            logging.info(f"★★★ PROCESSING URL Line {line_num} for '{current_channel.get('name', 'Unknown')}': {line}")
+                            sys.stdout.flush()
+                            sys.stderr.flush()
                         
                         if line.startswith(('http://', 'https://')):
-                            if 25 <= line_num <= 60:
-                                logging.info(f"Line {line_num}: Processing HTTP URL")
-                            
                             # Log spécialisé pour les URLs du groupe Cuisine
                             if current_channel.get('group', '').lower() == 'cuisine':
                                 cuisine_urls_processed += 1
                                 logging.info(f"★★★ CUISINE URL PROCESSED: '{current_channel['name']}' -> {line} ★★★")
+                                sys.stdout.flush()
+                                sys.stderr.flush()
                             
                             try:
                                 with self.lock:
@@ -458,62 +441,60 @@ class M3UCollector:
                                         # Log de confirmation pour lignes importantes
                                         if 530 <= line_num <= 550:
                                             logging.info(f"★★★ ADDED Line {line_num}: '{current_channel['name']}' to group '{current_channel['group']}' ★★★")
-                                        
-                                        if 25 <= line_num <= 60:
-                                            logging.info(f"Line {line_num}: Channel added successfully")
+                                            sys.stdout.flush()
+                                            sys.stderr.flush()
                                     else:
                                         logging.debug(f"DUPLICATE URL SKIPPED: {line}")
                             except Exception as url_error:
                                 logging.error(f"Line {line_num}: URL PROCESSING ERROR: {url_error}")
                             
                             current_channel = {}
-                            
-                            if 25 <= line_num <= 60:
-                                logging.info(f"Line {line_num}: current_channel reset")
                         else:
                             non_http_skipped += 1
-                            if 25 <= line_num <= 60:
-                                logging.info(f"Line {line_num}: Skipping non-HTTP URL")
-                            
                             # Log pour URLs non-HTTP importantes
                             if 530 <= line_num <= 550:
-                                logging.info(f"SKIPPED non-HTTP Line {line_num}: '{current_channel.get('name', 'Unknown')}' -> {line}")
-                    
-                    # Log de fin de traitement de ligne critique
-                    if 25 <= line_num <= 60:
-                        logging.info(f"Line {line_num}: PROCESSING COMPLETED SUCCESSFULLY")
+                                logging.info(f"★★★ SKIPPED non-HTTP Line {line_num}: '{current_channel.get('name', 'Unknown')}' -> {line}")
+                                sys.stdout.flush()
+                                sys.stderr.flush()
                     
                     # Log de sécurité APRÈS chaque ligne critique
                     logging.info(f"SAFETY: Completed line {line_num}")
+                    sys.stdout.flush()
+                    sys.stderr.flush()
                     
-                    # Force flush après chaque ligne problématique
-                    if line_num >= 50:
-                        import sys
-                        sys.stdout.flush()
-                        sys.stderr.flush()
-                    
-                    # ← NOUVEAU : Log de fin d'itération
+                    # Log de fin d'itération
                     logging.info(f"LOOP ITERATION {i}: Completed line_num={line_num}")
+                    sys.stdout.flush()
+                    sys.stderr.flush()
                             
                 except Exception as line_error:
                     logging.error(f"CRITICAL ERROR processing line {line_num}: '{line}' - Error: {line_error}")
                     import traceback
                     logging.error(f"Full traceback: {traceback.format_exc()}")
+                    sys.stdout.flush()
+                    sys.stderr.flush()
                     continue
             
             # Log de fin de boucle
             logging.info(f"FINISHED processing all {len(lines)} lines")
+            sys.stdout.flush()
+            sys.stderr.flush()
             
         except Exception as parse_error:
             logging.error(f"FATAL PARSING ERROR: {parse_error}")
             import traceback
             logging.error(f"Fatal traceback: {traceback.format_exc()}")
+            sys.stdout.flush()
+            sys.stderr.flush()
         
         # Logs de fin obligatoires avec flush
-        import sys
         logging.info("★" * 60)
         logging.info(f"★★★ PARSING COMPLETE for {source_url}:")
         logging.info(f"★★★   - Total lines processed: {len(lines)}")
+        logging.info(f"★★★   - Total EXTINF lines: {total_extinf_lines}")
+        logging.info(f"★★★   - Cuisine EXTINF found: {cuisine_extinf_found}")
+        logging.info(f"★★★   - Cuisine URLs processed: {cuisine_urls_processed}")
+        logging.info(f"★★★   - Total channels added: {channel_count}")
         sys.stdout.flush()
         sys.stderr.flush()
         
@@ -524,7 +505,11 @@ class M3UCollector:
         # Vérification spéciale pour Cuisine
         cuisine_channels = [ch for ch_list in self.channels.values() for ch in ch_list if ch['group'].lower() == 'cuisine']
         logging.info(f"★★★ CUISINE CHANNELS FINAL COUNT: {len(cuisine_channels)}")
+        for ch in cuisine_channels:
+            logging.info(f"★★★   - {ch['name']} -> {ch['url']}")
         logging.info("★" * 60)
+        sys.stdout.flush()
+        sys.stderr.flush()
 
     def filter_active_channels(self):
         """Filter out inactive channels, skippable for speed."""
@@ -649,7 +634,7 @@ class M3UCollector:
                 f.write(f"Group: {group}\n")
                 for channel in channels:
                     f.write(f"Name: {channel['name']}\n")
-                    f.write(f"URL: {channel['url']}\n")
+                    f.write(f"URL: {channel['url']]\n")
                     f.write(f"Logo: {channel['logo']}\n")
                     f.write(f"Source: {channel['source']}\n")
                     f.write("-" * 50 + "\n")
