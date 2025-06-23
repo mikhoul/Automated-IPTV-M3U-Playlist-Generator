@@ -68,7 +68,7 @@ class M3UCollector:
         logging.info(f"Extracted {len(stream_urls)} streaming URLs from {base_url}")
         return list(stream_urls)
 
-    def check_link_active(self, url, timeout=9):
+    def check_link_active(self, url, channel_name="Unknown Channel", timeout=9):
         """Check if a link is active, with specialized HLS validation."""
         
         # Headers optimisés pour les flux vidéo et Akamai
@@ -93,11 +93,11 @@ class M3UCollector:
         
         # Validation spécialisée pour les flux M3U8/HLS
         if url.endswith('.m3u8') or '/hls/' in url.lower():
-            return self._validate_hls_stream(url, headers, timeout)
+            return self._validate_hls_stream(url, headers, timeout, channel_name)
         else:
-            return self._validate_regular_url(url, headers, timeout)
+            return self._validate_regular_url(url, headers, timeout, channel_name)
 
-    def _validate_hls_stream(self, url, headers, timeout):
+    def _validate_hls_stream(self, url, headers, timeout, channel_name="Unknown Channel"):
         """Validate HLS/M3U8 streams specifically."""
         try:
             # Pour les flux HLS, nous devons analyser le contenu de la playlist
@@ -108,38 +108,38 @@ class M3UCollector:
                 content = response.text[:2048]  # Premiers 2KB seulement
                 
                 if '#EXTM3U' in content or '#EXT-X-VERSION' in content:
-                    logging.info(f"Checked {url}: Active HLS stream")
+                    logging.info(f"Channel '{channel_name}': Active HLS stream")
                     with self.lock:
                         self.url_status_cache[url] = (True, url, "active")
                     return True, url, "active"
                 else:
-                    logging.warning(f"URL {url} returned 200 but invalid M3U8 content")
+                    logging.warning(f"Channel '{channel_name}': URL returned 200 but invalid M3U8 content - {url}")
                     
             elif response.status_code == 403:
                 # Détecter spécifiquement les erreurs 403 comme géo-blocage
-                logging.info(f"Checked {url}: 403 Forbidden - Geo-blocked HLS stream")
+                logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked HLS stream")
                 with self.lock:
                     self.url_status_cache[url] = (True, url, "geo_blocked")
                 return True, url, "geo_blocked"
                     
         except requests.RequestException as e:
-            logging.debug(f"HLS validation failed for {url}: {e}")
+            logging.debug(f"Channel '{channel_name}': HLS validation failed - {e}")
         
         # Si la validation HLS échoue, essayer en tant qu'URL normale
-        return self._validate_regular_url(url, headers, timeout)
+        return self._validate_regular_url(url, headers, timeout, channel_name)
 
-    def _validate_regular_url(self, url, headers, timeout):
+    def _validate_regular_url(self, url, headers, timeout, channel_name="Unknown Channel"):
         """Validate regular URLs with standard HTTP methods."""
         try:
             # Essayer HEAD d'abord
             response = requests.head(url, timeout=timeout, headers=headers, allow_redirects=True)
             if response.status_code < 400:
-                logging.info(f"Checked {url}: Active (HEAD)")
+                logging.info(f"Channel '{channel_name}': Active (HEAD)")
                 with self.lock:
                     self.url_status_cache[url] = (True, url, "active")
                 return True, url, "active"
             elif response.status_code == 403:
-                logging.info(f"Checked {url}: 403 Forbidden - Geo-blocked (HEAD)")
+                logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD)")
                 with self.lock:
                     self.url_status_cache[url] = (True, url, "geo_blocked")
                 return True, url, "geo_blocked"
@@ -150,29 +150,29 @@ class M3UCollector:
             # Essayer GET en streaming
             with requests.get(url, stream=True, timeout=timeout, headers=headers) as r:
                 if r.status_code < 400:
-                    logging.info(f"Checked {url}: Active (GET)")
+                    logging.info(f"Channel '{channel_name}': Active (GET)")
                     with self.lock:
                         self.url_status_cache[url] = (True, url, "active")
                     return True, url, "active"
                 elif r.status_code == 403:
-                    logging.info(f"Checked {url}: 403 Forbidden - Geo-blocked (GET)")
+                    logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (GET)")
                     with self.lock:
                         self.url_status_cache[url] = (True, url, "geo_blocked")
                     return True, url, "geo_blocked"
         except requests.RequestException as e:
-            logging.debug(f"Regular validation failed for {url}: {e}")
+            logging.debug(f"Channel '{channel_name}': Regular validation failed - {e}")
         
         # Dernière tentative avec protocole alternatif
         try:
             alt_url = url.replace('http://', 'https://') if url.startswith('http://') else url.replace('https://', 'http://')
             response = requests.head(alt_url, timeout=timeout, headers=headers, allow_redirects=True)
             if response.status_code < 400:
-                logging.info(f"Checked {alt_url}: Active (HEAD, switched protocol)")
+                logging.info(f"Channel '{channel_name}': Active (HEAD, switched protocol)")
                 with self.lock:
                     self.url_status_cache[url] = (True, alt_url, "active")
                 return True, alt_url, "active"
             elif response.status_code == 403:
-                logging.info(f"Checked {alt_url}: 403 Forbidden - Geo-blocked (HEAD, switched protocol)")
+                logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD, switched protocol)")
                 with self.lock:
                     self.url_status_cache[url] = (True, alt_url, "geo_blocked")
                 return True, alt_url, "geo_blocked"
@@ -180,7 +180,7 @@ class M3UCollector:
             pass
         
         # Si tout échoue, retourner False
-        logging.warning(f"All validation methods failed for {url}")
+        logging.warning(f"Channel '{channel_name}': All validation methods failed")
         with self.lock:
             self.url_status_cache[url] = (False, url, "inactive")
         return False, url, "inactive"
@@ -241,7 +241,7 @@ class M3UCollector:
         logging.info(f"Total channels to check: {len(all_channels)}")
         with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
             future_to_channel = {
-                executor.submit(self.check_link_active, ch['url']): (group, ch)
+                executor.submit(self.check_link_active, ch['url'], ch['name']): (group, ch)  # ← Passer le nom
                 for group, ch in all_channels if ch['url'] not in url_set and not url_set.add(ch['url'])
             }
             for future in concurrent.futures.as_completed(future_to_channel):
@@ -266,10 +266,15 @@ class M3UCollector:
                                     logging.info(f"Tagged as geo-blocked: {channel['name']}")
                             
                             active_channels[group].append(channel)
+                        else:
+                            # Log amélioré avec nom de chaîne pour les chaînes inactives
+                            logging.warning(f"Channel '{channel['name']}' is inactive - URL: {channel['url']}")
                     else:
-                        logging.warning(f"Vérification échouée pour {channel['url']}")
+                        # Log amélioré avec nom de chaîne pour les échecs de vérification
+                        logging.warning(f"Verification failed for channel '{channel['name']}' - URL: {channel['url']}")
                 except Exception as e:
-                    logging.error(f"Error checking {channel['url']}: {e}")
+                    # Log amélioré avec nom de chaîne pour les erreurs
+                    logging.error(f"Error checking channel '{channel['name']}' ({channel['url']}): {e}")
 
         self.channels = active_channels
         
