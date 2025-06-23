@@ -96,32 +96,33 @@ class M3UCollector:
                 except Exception:
                     logo = self.default_logo
                 
-                # **COMPLETELY REWRITTEN GROUP EXTRACTION**
+                # **COMPLETELY REBUILT GROUP EXTRACTION**
                 group = "Uncategorized"  # Default value
                 
                 try:
-                    # Primary regex pattern
-                    match = re.search(r'group-title="([^"]*)"', line, re.IGNORECASE)
+                    # Direct regex extraction without encoding manipulation
+                    match = re.search(r'group-title="([^"]*)"', line)
                     if match:
-                        raw_group = match.group(1).strip()
+                        extracted_group = match.group(1).strip()
                         
-                        # **CRITICAL FIX: Direct assignment without encoding manipulation**
-                        if raw_group and not raw_group.isspace():
-                            group = raw_group
+                        # **CRITICAL FIX: Direct assignment - no encoding manipulation**
+                        if extracted_group and not extracted_group.isspace():
+                            group = extracted_group
                             
-                            # Normalize only specific known cases
+                            # **ENHANCED DEBUG FOR CUISINE LINES**
+                            if line_num in (537, 539, 541):
+                                logging.info(f"★★★ LINE {line_num} EXTRACTION: RAW='{extracted_group}' -> FINAL='{group}'")
+                            
+                            # Normalize case for Cuisine
                             if group.lower() == 'cuisine':
                                 group = 'Cuisine'
-                        
-                        # **ENHANCED DEBUG FOR CUISINE**
-                        if line_num in (537, 539, 541):
-                            logging.info(f"★ LINE {line_num} - RAW: '{raw_group}' -> FINAL: '{group}'")
+                                logging.info(f"★★★ CUISINE GROUP NORMALIZED: '{group}' at line {line_num}")
                     
                 except Exception as e:
                     logging.error(f"Line {line_num}: GROUP EXTRACTION ERROR: {e}")
                     group = "Uncategorized"
                 
-                # **ENHANCED CUISINE DETECTION**
+                # **ENHANCED CUISINE DETECTION LOGGING**
                 if group.lower() == 'cuisine':
                     logging.info(f"★★★ CUISINE GROUP CONFIRMED: '{group}' at line {line_num}")
                 
@@ -162,7 +163,9 @@ class M3UCollector:
                     if line not in self.seen_urls:
                         self.seen_urls.add(line)
                         current_channel['url'] = line
-                        self.channels[current_channel['group']].append(current_channel)
+                        
+                        # **CRITICAL FIX: Store channel immediately**
+                        self.channels[current_channel['group']].append(current_channel.copy())
                         channel_count += 1
                         
                         # **ENHANCED CUISINE LOGGING**
