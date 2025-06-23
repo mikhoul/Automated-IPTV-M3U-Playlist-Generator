@@ -247,7 +247,7 @@ class M3UCollector:
         logging.info("=" * 60)
 
     def parse_and_store(self, lines, source_url):
-        """Parse M3U lines with complete debugging to identify where parsing stops."""
+        """Parse M3U lines with exception handling and safety logs."""
         current_channel = {}
         channel_count = 0
         excluded_count = 0
@@ -258,120 +258,132 @@ class M3UCollector:
         cuisine_extinf_found = 0
         cuisine_urls_processed = 0
         
-        # ← NOUVEAU : Log de début avec information totale
         logging.info(f"STARTING PARSE of {len(lines)} lines from {source_url}")
         
-        for line_num, line in enumerate(lines, 1):
-            line = line.strip()
-            
-            # ← NOUVEAU : Log périodique pour suivre la progression
-            if line_num % 100 == 0:
-                logging.info(f"PARSING PROGRESS: Line {line_num}/{len(lines)} ({line_num/len(lines)*100:.1f}%)")
-            
-            # ← NOUVEAU : Log des lignes importantes (autour des chaînes Zeste)
-            if 530 <= line_num <= 550:
-                logging.debug(f"IMPORTANT Line {line_num}: {line}")
-            
-            if line.startswith('#EXTINF:'):
-                total_extinf_lines += 1
-                
-                # ← NOUVEAU : Log pour toutes les lignes EXTINF importantes
-                if 530 <= line_num <= 550:
-                    logging.info(f"PROCESSING EXTINF Line {line_num}: {line}")
-                
-                match = re.search(r'tvg-logo="([^"]*)"', line)
-                logo = match.group(1) if match and match.group(1) else self.default_logo
-                
-                match = re.search(r'group-title="([^"]*)"', line)
-                group = match.group(1) if match else "Uncategorized"
-                
-                # Log spécialisé pour le groupe Cuisine
-                if "cuisine" in group.lower():
-                    cuisine_extinf_found += 1
-                    logging.info(f"CUISINE FOUND - Line {line_num}: Group='{group}' Line='{line}'")
-                
-                # Logique d'exclusion avec logs détaillés
-                excluded = False
-                for excluded_item in self.excluded_groups:
-                    if group.lower() == excluded_item.lower():
-                        excluded = True
-                        logging.info(f"EXCLUDED (exact): Line {line_num}, Group '{group}' matches '{excluded_item}'")
-                        break
-                    elif re.search(r'\b' + re.escape(excluded_item.lower()) + r'\b', group.lower()):
-                        excluded = True
-                        logging.info(f"EXCLUDED (word): Line {line_num}, Group '{group}' contains word '{excluded_item}'")
-                        break
-                
-                if excluded:
-                    current_channel = {}
-                    excluded_count += 1
-                    continue
-                
-                match = re.search(r',(.+)$', line)
-                name = match.group(1).strip() if match else "Unnamed Channel"
-                
-                # ← NOUVEAU : Log pour les lignes importantes
-                if 530 <= line_num <= 550:
-                    logging.info(f"CREATING CHANNEL Line {line_num}: '{name}' in group '{group}'")
-                
-                current_channel = {
-                    'name': name,
-                    'logo': logo,
-                    'group': group,
-                    'source': source_url,
-                    'line_num': line_num
-                }
+        try:
+            for line_num, line in enumerate(lines, 1):
+                try:
+                    line = line.strip()
                     
-            elif line and not line.startswith('#') and current_channel:
-                # ← NOUVEAU : Log pour les URLs importantes
-                if 530 <= line_num <= 550:
-                    logging.info(f"PROCESSING URL Line {line_num} for '{current_channel.get('name', 'Unknown')}': {line}")
-                
-                if line.startswith(('http://', 'https://')):
-                    # Log spécialisé pour les URLs du groupe Cuisine
-                    if current_channel.get('group', '').lower() == 'cuisine':
-                        cuisine_urls_processed += 1
-                        logging.info(f"CUISINE URL PROCESSED: '{current_channel['name']}' -> {line}")
+                    # Log périodique pour suivre la progression
+                    if line_num % 100 == 0:
+                        logging.info(f"PARSING PROGRESS: Line {line_num}/{len(lines)} ({line_num/len(lines)*100:.1f}%)")
                     
-                    with self.lock:
-                        if line not in self.seen_urls:
-                            self.seen_urls.add(line)
-                            current_channel['url'] = line
-                            self.channels[current_channel['group']].append(current_channel)
-                            channel_count += 1
-                            
-                            # ← NOUVEAU : Log de confirmation pour lignes importantes
-                            if 530 <= line_num <= 550:
-                                logging.info(f"ADDED Line {line_num}: '{current_channel['name']}' to group '{current_channel['group']}'")
-                        else:
-                            logging.debug(f"DUPLICATE URL SKIPPED: {line}")
-                    
-                    current_channel = {}
-                else:
-                    non_http_skipped += 1
-                    # ← NOUVEAU : Log pour URLs non-HTTP importantes
+                    # ← NOUVEAU : Log pour chaque ligne autour des chaînes Zeste
                     if 530 <= line_num <= 550:
-                        logging.info(f"SKIPPED non-HTTP Line {line_num}: '{current_channel.get('name', 'Unknown')}' -> {line}")
+                        logging.info(f"PROCESSING Line {line_num}: {line}")
+                    
+                    if line.startswith('#EXTINF:'):
+                        total_extinf_lines += 1
+                        
+                        # ← NOUVEAU : Log pour toutes les lignes EXTINF importantes
+                        if 530 <= line_num <= 550:
+                            logging.info(f"FOUND EXTINF Line {line_num}: {line}")
+                        
+                        match = re.search(r'tvg-logo="([^"]*)"', line)
+                        logo = match.group(1) if match and match.group(1) else self.default_logo
+                        
+                        match = re.search(r'group-title="([^"]*)"', line)
+                        group = match.group(1) if match else "Uncategorized"
+                        
+                        # Log spécialisé pour le groupe Cuisine
+                        if "cuisine" in group.lower():
+                            cuisine_extinf_found += 1
+                            logging.info(f"★★★ CUISINE FOUND - Line {line_num}: Group='{group}' ★★★")
+                        
+                        # Logique d'exclusion avec logs détaillés
+                        excluded = False
+                        for excluded_item in self.excluded_groups:
+                            if group.lower() == excluded_item.lower():
+                                excluded = True
+                                logging.info(f"EXCLUDED (exact): Line {line_num}, Group '{group}' matches '{excluded_item}'")
+                                break
+                            elif re.search(r'\b' + re.escape(excluded_item.lower()) + r'\b', group.lower()):
+                                excluded = True
+                                logging.info(f"EXCLUDED (word): Line {line_num}, Group '{group}' contains word '{excluded_item}'")
+                                break
+                        
+                        if excluded:
+                            current_channel = {}
+                            excluded_count += 1
+                            continue
+                        
+                        match = re.search(r',(.+)$', line)
+                        name = match.group(1).strip() if match else "Unnamed Channel"
+                        
+                        # ← NOUVEAU : Log pour les chaînes importantes
+                        if 530 <= line_num <= 550:
+                            logging.info(f"CREATING CHANNEL Line {line_num}: '{name}' in group '{group}'")
+                        
+                        current_channel = {
+                            'name': name,
+                            'logo': logo,
+                            'group': group,
+                            'source': source_url,
+                            'line_num': line_num
+                        }
+                            
+                    elif line and not line.startswith('#') and current_channel:
+                        # ← NOUVEAU : Log pour les URLs importantes
+                        if 530 <= line_num <= 550:
+                            logging.info(f"PROCESSING URL Line {line_num} for '{current_channel.get('name', 'Unknown')}': {line}")
+                        
+                        if line.startswith(('http://', 'https://')):
+                            # Log spécialisé pour les URLs du groupe Cuisine
+                            if current_channel.get('group', '').lower() == 'cuisine':
+                                cuisine_urls_processed += 1
+                                logging.info(f"★★★ CUISINE URL PROCESSED: '{current_channel['name']}' -> {line} ★★★")
+                            
+                            with self.lock:
+                                if line not in self.seen_urls:
+                                    self.seen_urls.add(line)
+                                    current_channel['url'] = line
+                                    self.channels[current_channel['group']].append(current_channel)
+                                    channel_count += 1
+                                    
+                                    # ← NOUVEAU : Log de confirmation pour lignes importantes
+                                    if 530 <= line_num <= 550:
+                                        logging.info(f"★★★ ADDED Line {line_num}: '{current_channel['name']}' to group '{current_channel['group']}' ★★★")
+                                else:
+                                    logging.debug(f"DUPLICATE URL SKIPPED: {line}")
+                            
+                            current_channel = {}
+                        else:
+                            non_http_skipped += 1
+                            # ← NOUVEAU : Log pour URLs non-HTTP importantes
+                            if 530 <= line_num <= 550:
+                                logging.info(f"SKIPPED non-HTTP Line {line_num}: '{current_channel.get('name', 'Unknown')}' -> {line}")
+                                
+                except Exception as line_error:
+                    logging.error(f"ERROR processing line {line_num}: {line} - Error: {line_error}")
+                    continue
+            
+        except Exception as parse_error:
+            logging.error(f"FATAL PARSING ERROR at line {line_num}: {parse_error}")
+            import traceback
+            logging.error(f"Traceback: {traceback.format_exc()}")
         
-        # ← NOUVEAU : Résumé complet avec informations de progression
-        logging.info(f"PARSING COMPLETE for {source_url}:")
-        logging.info(f"  - Total lines processed: {len(lines)}")
-        logging.info(f"  - Total EXTINF lines: {total_extinf_lines}")
-        logging.info(f"  - Cuisine EXTINF found: {cuisine_extinf_found}")
-        logging.info(f"  - Cuisine URLs processed: {cuisine_urls_processed}")
-        logging.info(f"  - Total channels added: {channel_count}")
-        logging.info(f"  - Excluded: {excluded_count}")
-        logging.info(f"  - Non-HTTP skipped: {non_http_skipped}")
+        # ← NOUVEAU : Résumé obligatoire avec étoiles pour visibilité
+        logging.info("★" * 60)
+        logging.info(f"★★★ PARSING COMPLETE for {source_url}:")
+        logging.info(f"★★★   - Total lines processed: {len(lines)}")
+        logging.info(f"★★★   - Total EXTINF lines: {total_extinf_lines}")
+        logging.info(f"★★★   - Cuisine EXTINF found: {cuisine_extinf_found}")
+        logging.info(f"★★★   - Cuisine URLs processed: {cuisine_urls_processed}")
+        logging.info(f"★★★   - Total channels added: {channel_count}")
+        logging.info(f"★★★   - Excluded: {excluded_count}")
+        logging.info(f"★★★   - Non-HTTP skipped: {non_http_skipped}")
         
         # Diagnostic des groupes finaux
         found_groups = set(ch['group'] for ch_list in self.channels.values() for ch in ch_list)
-        logging.info(f"Groups found in this source: {', '.join(sorted(found_groups))}")
+        logging.info(f"★★★ Groups found in this source: {', '.join(sorted(found_groups))}")
         
         # Vérification spéciale pour Cuisine
         cuisine_channels = [ch for ch_list in self.channels.values() for ch in ch_list if ch['group'].lower() == 'cuisine']
-        logging.info(f"CUISINE CHANNELS FINAL COUNT: {len(cuisine_channels)}")
+        logging.info(f"★★★ CUISINE CHANNELS FINAL COUNT: {len(cuisine_channels)}")
         for ch in cuisine_channels:
-            logging.info(f"  - {ch['name']} -> {ch['url']}")
+            logging.info(f"★★★   - {ch['name']} -> {ch['url']}")
+        logging.info("★" * 60)
 
     def filter_active_channels(self):
         """Filter out inactive channels, skippable for speed."""
