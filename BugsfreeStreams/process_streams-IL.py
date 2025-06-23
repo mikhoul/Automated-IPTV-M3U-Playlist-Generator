@@ -96,26 +96,43 @@ class M3UCollector:
                 except Exception:
                     logo = self.default_logo
                 
-                # Extract group with robust encoding handling
+                # **FIXED: Improved group extraction with better error handling**
+                group = "Uncategorized"  # Default value
+                
                 try:
-                    match = re.search(r'group-title="([^"]*)"', line)
-                    if match:
-                        group = match.group(1).strip()
-                        
-                        # Handle encoding issues
-                        try:
-                            group = group.encode('latin1').decode('utf-8')
-                        except:
-                            pass
+                    # Try multiple regex patterns for robustness
+                    patterns = [
+                        r'group-title="([^"]*)"',  # Standard pattern
+                        r'group-title=\'([^\']*)\'',  # Single quotes
+                        r'group-title=([^,\s]*)',  # Unquoted
+                    ]
+                    
+                    for pattern in patterns:
+                        match = re.search(pattern, line, re.IGNORECASE)
+                        if match:
+                            group = match.group(1).strip()
+                            break
+                    
+                    if group and group != "Uncategorized":
+                        # **FIXED: Safer encoding handling**
+                        # Only attempt encoding conversion if there are obvious encoding issues
+                        if any(char in group for char in ['Ã', 'â', 'ï', 'Â']):
+                            try:
+                                group = group.encode('latin1').decode('utf-8')
+                            except (UnicodeEncodeError, UnicodeDecodeError):
+                                pass  # Keep original if conversion fails
                         
                         # Normalize specific groups
                         if group.lower() == 'cuisine':
                             group = 'Cuisine'
                         
-                        if not group or group.isspace():
-                            group = "Uncategorized"
-                    else:
+                        # Extra validation for debugging
+                        if line_num in (537, 539, 541):
+                            logging.info(f"★★★ LINE {line_num} GROUP EXTRACTION: '{group}' from '{line}'")
+                    
+                    if not group or group.isspace():
                         group = "Uncategorized"
+                        
                 except Exception as e:
                     logging.error(f"Line {line_num}: GROUP EXTRACTION ERROR: {e}")
                     group = "Uncategorized"
@@ -132,6 +149,7 @@ class M3UCollector:
                     for excl in self.excluded_groups
                 )
                 if excluded:
+                    logging.info(f"EXCLUDED GROUP: '{group}' at line {line_num}")
                     current_channel = {}
                     continue
                 
@@ -150,6 +168,10 @@ class M3UCollector:
                     'line_num': line_num
                 }
                 
+                # Debug logging for Cuisine channels
+                if group.lower() == 'cuisine':
+                    logging.info(f"★★★ CUISINE CHANNEL PREPARED: '{name}' in group '{group}' at line {line_num}")
+                
             elif line and not line.startswith('#') and current_channel:
                 # **FIXED: Maintain HTTP/HTTPS-only filtering as requested**
                 if line.startswith(('http://', 'https://')):
@@ -166,7 +188,7 @@ class M3UCollector:
                     # Log rejected URLs for debugging
                     if line.strip():
                         self.skipped_non_http_count += 1
-                        if 'cuisine' in str(current_channel.get('group', '')).lower():
+                        if current_channel.get('group', '').lower() == 'cuisine':
                             logging.info(f"★★★ CUISINE CHANNEL REJECTED (non-HTTP): '{current_channel.get('name', 'Unknown')}' | URL: {line}")
                 
                 # **CRITICAL FIX: Reset current_channel after processing URL**
@@ -202,6 +224,13 @@ class M3UCollector:
             logging.info(f"★★★ CUISINE CHANNELS FOUND:")
             for ch in cuisine_channels:
                 logging.info(f"★★★   - {ch['name']} -> {ch['url']}")
+
+    def get_excluded_groups_info(self):
+        """Get information about excluded groups"""
+        return {
+            'excluded_groups': self.excluded_groups,
+            'excluded_count': len(self.excluded_groups)
+        }
 
     def export_m3u(self, filename="LiveTV.m3u"):
         filepath = os.path.join(self.output_dir, filename)
