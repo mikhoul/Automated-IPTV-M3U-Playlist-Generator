@@ -247,21 +247,37 @@ class M3UCollector:
         logging.info("=" * 60)
 
     def parse_and_store(self, lines, source_url):
-        """Parse M3U lines and store channels with enhanced debugging."""
+        """Parse M3U lines with complete debugging to identify where parsing stops."""
         current_channel = {}
         channel_count = 0
         excluded_count = 0
         non_http_skipped = 0
         
-        # ← NOUVEAU : Compteurs pour diagnostic spécialisé
+        # Compteurs pour diagnostic
         total_extinf_lines = 0
         cuisine_extinf_found = 0
         cuisine_urls_processed = 0
         
+        # ← NOUVEAU : Log de début avec information totale
+        logging.info(f"STARTING PARSE of {len(lines)} lines from {source_url}")
+        
         for line_num, line in enumerate(lines, 1):
             line = line.strip()
+            
+            # ← NOUVEAU : Log périodique pour suivre la progression
+            if line_num % 100 == 0:
+                logging.info(f"PARSING PROGRESS: Line {line_num}/{len(lines)} ({line_num/len(lines)*100:.1f}%)")
+            
+            # ← NOUVEAU : Log des lignes importantes (autour des chaînes Zeste)
+            if 530 <= line_num <= 550:
+                logging.debug(f"IMPORTANT Line {line_num}: {line}")
+            
             if line.startswith('#EXTINF:'):
                 total_extinf_lines += 1
+                
+                # ← NOUVEAU : Log pour toutes les lignes EXTINF importantes
+                if 530 <= line_num <= 550:
+                    logging.info(f"PROCESSING EXTINF Line {line_num}: {line}")
                 
                 match = re.search(r'tvg-logo="([^"]*)"', line)
                 logo = match.group(1) if match and match.group(1) else self.default_logo
@@ -269,21 +285,21 @@ class M3UCollector:
                 match = re.search(r'group-title="([^"]*)"', line)
                 group = match.group(1) if match else "Uncategorized"
                 
-                # ← NOUVEAU : Log spécialisé pour le groupe Cuisine
+                # Log spécialisé pour le groupe Cuisine
                 if "cuisine" in group.lower():
                     cuisine_extinf_found += 1
-                    logging.debug(f"CUISINE FOUND - Line {line_num}: Group='{group}' Line='{line}'")
+                    logging.info(f"CUISINE FOUND - Line {line_num}: Group='{group}' Line='{line}'")
                 
-                # Logique d'exclusion améliorée
+                # Logique d'exclusion avec logs détaillés
                 excluded = False
                 for excluded_item in self.excluded_groups:
                     if group.lower() == excluded_item.lower():
                         excluded = True
-                        logging.debug(f"EXCLUDED (exact): Line {line_num}, Group '{group}' matches '{excluded_item}'")
+                        logging.info(f"EXCLUDED (exact): Line {line_num}, Group '{group}' matches '{excluded_item}'")
                         break
                     elif re.search(r'\b' + re.escape(excluded_item.lower()) + r'\b', group.lower()):
                         excluded = True
-                        logging.debug(f"EXCLUDED (word): Line {line_num}, Group '{group}' contains word '{excluded_item}'")
+                        logging.info(f"EXCLUDED (word): Line {line_num}, Group '{group}' contains word '{excluded_item}'")
                         break
                 
                 if excluded:
@@ -294,26 +310,28 @@ class M3UCollector:
                 match = re.search(r',(.+)$', line)
                 name = match.group(1).strip() if match else "Unnamed Channel"
                 
-                # ← NOUVEAU : Log pour toutes les chaînes détectées
-                logging.debug(f"Line {line_num}: Channel '{name}' in group '{group}'")
+                # ← NOUVEAU : Log pour les lignes importantes
+                if 530 <= line_num <= 550:
+                    logging.info(f"CREATING CHANNEL Line {line_num}: '{name}' in group '{group}'")
                 
                 current_channel = {
                     'name': name,
                     'logo': logo,
                     'group': group,
                     'source': source_url,
-                    'line_num': line_num  # Pour debug
+                    'line_num': line_num
                 }
-                
+                    
             elif line and not line.startswith('#') and current_channel:
-                # ← NOUVEAU : Log détaillé des URLs
-                logging.debug(f"Line {line_num}: Processing URL for '{current_channel.get('name', 'Unknown')}': {line}")
+                # ← NOUVEAU : Log pour les URLs importantes
+                if 530 <= line_num <= 550:
+                    logging.info(f"PROCESSING URL Line {line_num} for '{current_channel.get('name', 'Unknown')}': {line}")
                 
                 if line.startswith(('http://', 'https://')):
-                    # ← NOUVEAU : Log spécialisé pour les URLs du groupe Cuisine
+                    # Log spécialisé pour les URLs du groupe Cuisine
                     if current_channel.get('group', '').lower() == 'cuisine':
                         cuisine_urls_processed += 1
-                        logging.debug(f"CUISINE URL PROCESSED: '{current_channel['name']}' -> {line}")
+                        logging.info(f"CUISINE URL PROCESSED: '{current_channel['name']}' -> {line}")
                     
                     with self.lock:
                         if line not in self.seen_urls:
@@ -322,18 +340,22 @@ class M3UCollector:
                             self.channels[current_channel['group']].append(current_channel)
                             channel_count += 1
                             
-                            # ← NOUVEAU : Log de confirmation d'ajout
-                            logging.debug(f"ADDED: '{current_channel['name']}' to group '{current_channel['group']}'")
+                            # ← NOUVEAU : Log de confirmation pour lignes importantes
+                            if 530 <= line_num <= 550:
+                                logging.info(f"ADDED Line {line_num}: '{current_channel['name']}' to group '{current_channel['group']}'")
                         else:
                             logging.debug(f"DUPLICATE URL SKIPPED: {line}")
                     
                     current_channel = {}
                 else:
                     non_http_skipped += 1
-                    logging.debug(f"SKIPPED non-HTTP: '{current_channel.get('name', 'Unknown')}' -> {line}")
+                    # ← NOUVEAU : Log pour URLs non-HTTP importantes
+                    if 530 <= line_num <= 550:
+                        logging.info(f"SKIPPED non-HTTP Line {line_num}: '{current_channel.get('name', 'Unknown')}' -> {line}")
         
-        # ← NOUVEAU : Résumé de diagnostic complet
-        logging.info(f"PARSING SUMMARY for {source_url}:")
+        # ← NOUVEAU : Résumé complet avec informations de progression
+        logging.info(f"PARSING COMPLETE for {source_url}:")
+        logging.info(f"  - Total lines processed: {len(lines)}")
         logging.info(f"  - Total EXTINF lines: {total_extinf_lines}")
         logging.info(f"  - Cuisine EXTINF found: {cuisine_extinf_found}")
         logging.info(f"  - Cuisine URLs processed: {cuisine_urls_processed}")
@@ -345,7 +367,7 @@ class M3UCollector:
         found_groups = set(ch['group'] for ch_list in self.channels.values() for ch in ch_list)
         logging.info(f"Groups found in this source: {', '.join(sorted(found_groups))}")
         
-        # ← NOUVEAU : Vérification spéciale pour Cuisine
+        # Vérification spéciale pour Cuisine
         cuisine_channels = [ch for ch_list in self.channels.values() for ch in ch_list if ch['group'].lower() == 'cuisine']
         logging.info(f"CUISINE CHANNELS FINAL COUNT: {len(cuisine_channels)}")
         for ch in cuisine_channels:
@@ -417,7 +439,7 @@ class M3UCollector:
                 m3u_urls = self.extract_stream_urls_from_html(html_content, url)
                 all_m3u_urls.update(m3u_urls)
             else:
-                # ← NOUVEAU : Test de détection avant parsing
+                # Test de détection avant parsing
                 self.test_cuisine_detection(lines)
                 self.parse_and_store(lines, url)
         
