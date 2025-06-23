@@ -11,8 +11,8 @@ import threading
 import logging
 from bs4 import BeautifulSoup
 
-# Set up logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# ← CHANGEMENT : Activation des logs DEBUG pour diagnostic
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def get_server_geolocation():
     """Obtenir la géolocalisation du serveur GitHub Actions."""
@@ -222,83 +222,134 @@ class M3UCollector:
             self.url_status_cache[url] = (False, url, "inactive")
         return False, url, "inactive"
 
+    def test_cuisine_detection(self, lines):
+        """Test spécialisé pour détecter les lignes Cuisine et Zeste."""
+        logging.info("=" * 60)
+        logging.info("=== CUISINE & ZESTE DETECTION TEST ===")
+        cuisine_lines = []
+        zeste_lines = []
+        
+        for line_num, line in enumerate(lines, 1):
+            if 'cuisine' in line.lower():
+                cuisine_lines.append(f"Line {line_num}: {line}")
+            if 'zeste' in line.lower():
+                zeste_lines.append(f"Line {line_num}: {line}")
+        
+        logging.info(f"CUISINE lines found: {len(cuisine_lines)}")
+        for line in cuisine_lines:
+            logging.info(f"  {line}")
+            
+        logging.info(f"ZESTE lines found: {len(zeste_lines)}")
+        for line in zeste_lines:
+            logging.info(f"  {line}")
+            
+        logging.info("=== END CUISINE & ZESTE TEST ===")
+        logging.info("=" * 60)
+
     def parse_and_store(self, lines, source_url):
-        """Parse M3U lines and store channels with CORRECTED logic to prevent premature current_channel reset."""
+        """Parse M3U lines and store channels with enhanced debugging."""
         current_channel = {}
         channel_count = 0
         excluded_count = 0
         non_http_skipped = 0
         
-        for line in lines:
+        # ← NOUVEAU : Compteurs pour diagnostic spécialisé
+        total_extinf_lines = 0
+        cuisine_extinf_found = 0
+        cuisine_urls_processed = 0
+        
+        for line_num, line in enumerate(lines, 1):
             line = line.strip()
             if line.startswith('#EXTINF:'):
+                total_extinf_lines += 1
+                
                 match = re.search(r'tvg-logo="([^"]*)"', line)
                 logo = match.group(1) if match and match.group(1) else self.default_logo
                 
                 match = re.search(r'group-title="([^"]*)"', line)
                 group = match.group(1) if match else "Uncategorized"
                 
-                # ← CORRECTION : Logique d'exclusion améliorée pour éviter les faux positifs
+                # ← NOUVEAU : Log spécialisé pour le groupe Cuisine
+                if "cuisine" in group.lower():
+                    cuisine_extinf_found += 1
+                    logging.debug(f"CUISINE FOUND - Line {line_num}: Group='{group}' Line='{line}'")
+                
+                # Logique d'exclusion améliorée
                 excluded = False
                 for excluded_item in self.excluded_groups:
-                    # Correspondance exacte du groupe (insensible à la casse)
                     if group.lower() == excluded_item.lower():
                         excluded = True
-                        logging.debug(f"Excluding group '{group}' (exact match with '{excluded_item}')")
+                        logging.debug(f"EXCLUDED (exact): Line {line_num}, Group '{group}' matches '{excluded_item}'")
                         break
-                    # OU vérification de mots complets seulement
                     elif re.search(r'\b' + re.escape(excluded_item.lower()) + r'\b', group.lower()):
                         excluded = True
-                        logging.debug(f"Excluding group '{group}' (contains whole word '{excluded_item}')")
+                        logging.debug(f"EXCLUDED (word): Line {line_num}, Group '{group}' contains word '{excluded_item}'")
                         break
                 
                 if excluded:
-                    current_channel = {}  # Ignorer ce canal
+                    current_channel = {}
                     excluded_count += 1
                     continue
                 
                 match = re.search(r',(.+)$', line)
                 name = match.group(1).strip() if match else "Unnamed Channel"
                 
-                # Log de debug pour voir toutes les chaînes trouvées
-                logging.debug(f"Found channel: '{name}' in group '{group}'")
+                # ← NOUVEAU : Log pour toutes les chaînes détectées
+                logging.debug(f"Line {line_num}: Channel '{name}' in group '{group}'")
                 
                 current_channel = {
                     'name': name,
                     'logo': logo,
                     'group': group,
-                    'source': source_url
+                    'source': source_url,
+                    'line_num': line_num  # Pour debug
                 }
+                
             elif line and not line.startswith('#') and current_channel:
-                # ← CORRECTION MAJEURE : Réinitialisation conditionnelle de current_channel
+                # ← NOUVEAU : Log détaillé des URLs
+                logging.debug(f"Line {line_num}: Processing URL for '{current_channel.get('name', 'Unknown')}': {line}")
+                
                 if line.startswith(('http://', 'https://')):
-                    # URL HTTP/HTTPS valide - traitement normal
+                    # ← NOUVEAU : Log spécialisé pour les URLs du groupe Cuisine
+                    if current_channel.get('group', '').lower() == 'cuisine':
+                        cuisine_urls_processed += 1
+                        logging.debug(f"CUISINE URL PROCESSED: '{current_channel['name']}' -> {line}")
+                    
                     with self.lock:
                         if line not in self.seen_urls:
                             self.seen_urls.add(line)
                             current_channel['url'] = line
                             self.channels[current_channel['group']].append(current_channel)
                             channel_count += 1
-                            logging.debug(f"Added channel '{current_channel['name']}' with URL: {line}")
+                            
+                            # ← NOUVEAU : Log de confirmation d'ajout
+                            logging.debug(f"ADDED: '{current_channel['name']}' to group '{current_channel['group']}'")
+                        else:
+                            logging.debug(f"DUPLICATE URL SKIPPED: {line}")
                     
-                    # ← CLÉE : Réinitialiser SEULEMENT après traitement d'une URL HTTP
                     current_channel = {}
                 else:
-                    # URL non-HTTP (plugin://, rtmp://, etc.) - ignorer mais NE PAS réinitialiser
                     non_http_skipped += 1
-                    logging.debug(f"Skipping non-HTTP URL for '{current_channel.get('name', 'Unknown')}': {line}")
-                    # ← IMPORTANT : Ne PAS réinitialiser current_channel ici
-                    # Cela permet aux métadonnées de survivre aux URLs non-HTTP intermédiaires
-                
-        logging.info(f"Parsed {channel_count} channels from {source_url}")
-        if excluded_count > 0:
-            logging.info(f"Excluded {excluded_count} channels from filtered groups")
-        if non_http_skipped > 0:
-            logging.info(f"Skipped {non_http_skipped} non-HTTP URLs (plugin://, rtmp://, etc.)")
+                    logging.debug(f"SKIPPED non-HTTP: '{current_channel.get('name', 'Unknown')}' -> {line}")
         
-        # Log des groupes trouvés pour diagnostic
+        # ← NOUVEAU : Résumé de diagnostic complet
+        logging.info(f"PARSING SUMMARY for {source_url}:")
+        logging.info(f"  - Total EXTINF lines: {total_extinf_lines}")
+        logging.info(f"  - Cuisine EXTINF found: {cuisine_extinf_found}")
+        logging.info(f"  - Cuisine URLs processed: {cuisine_urls_processed}")
+        logging.info(f"  - Total channels added: {channel_count}")
+        logging.info(f"  - Excluded: {excluded_count}")
+        logging.info(f"  - Non-HTTP skipped: {non_http_skipped}")
+        
+        # Diagnostic des groupes finaux
         found_groups = set(ch['group'] for ch_list in self.channels.values() for ch in ch_list)
         logging.info(f"Groups found in this source: {', '.join(sorted(found_groups))}")
+        
+        # ← NOUVEAU : Vérification spéciale pour Cuisine
+        cuisine_channels = [ch for ch_list in self.channels.values() for ch in ch_list if ch['group'].lower() == 'cuisine']
+        logging.info(f"CUISINE CHANNELS FINAL COUNT: {len(cuisine_channels)}")
+        for ch in cuisine_channels:
+            logging.info(f"  - {ch['name']} -> {ch['url']}")
 
     def filter_active_channels(self):
         """Filter out inactive channels, skippable for speed."""
@@ -366,10 +417,13 @@ class M3UCollector:
                 m3u_urls = self.extract_stream_urls_from_html(html_content, url)
                 all_m3u_urls.update(m3u_urls)
             else:
+                # ← NOUVEAU : Test de détection avant parsing
+                self.test_cuisine_detection(lines)
                 self.parse_and_store(lines, url)
         
         for m3u_url in all_m3u_urls:
             _, lines = self.fetch_content(m3u_url)
+            self.test_cuisine_detection(lines)
             self.parse_and_store(lines, m3u_url)
         
         if self.channels:
