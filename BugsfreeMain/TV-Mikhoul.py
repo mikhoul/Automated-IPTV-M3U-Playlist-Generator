@@ -60,6 +60,7 @@ class M3UCollector:
         self.lock = threading.Lock()
         self.check_links = check_links  # Toggle link checking
         self.excluded_groups = excluded_groups or []  # Liste des groupes à exclure
+        self.skipped_non_http_count = 0  # Compteur des URLs non-HTTP ignorées
         os.makedirs(self.output_dir, exist_ok=True)
 
     def fetch_content(self, url):
@@ -222,10 +223,11 @@ class M3UCollector:
         return False, url, "inactive"
 
     def parse_and_store(self, lines, source_url):
-        """Parse M3U lines and store channels, excluding specified groups."""
+        """Parse M3U lines and store channels, excluding specified groups with improved non-HTTP URL handling."""
         current_channel = {}
         channel_count = 0
         excluded_count = 0
+        non_http_skipped = 0
         
         for line in lines:
             line = line.strip()
@@ -251,18 +253,29 @@ class M3UCollector:
                     'group': group,
                     'source': source_url
                 }
-            elif line.startswith('http') and current_channel:
-                with self.lock:
-                    if line not in self.seen_urls:
-                        self.seen_urls.add(line)
-                        current_channel['url'] = line
-                        self.channels[current_channel['group']].append(current_channel)
-                        channel_count += 1
+            elif line and not line.startswith('#') and current_channel:
+                # ← NOUVELLE LOGIQUE : Gestion améliorée des URLs HTTP et non-HTTP
+                if line.startswith(('http://', 'https://')):
+                    # URL HTTP/HTTPS valide - traitement normal
+                    with self.lock:
+                        if line not in self.seen_urls:
+                            self.seen_urls.add(line)
+                            current_channel['url'] = line
+                            self.channels[current_channel['group']].append(current_channel)
+                            channel_count += 1
+                else:
+                    # URL non-HTTP (plugin://, rtmp://, etc.) - ignorer mais logger
+                    non_http_skipped += 1
+                    logging.debug(f"Skipping non-HTTP URL for '{current_channel.get('name', 'Unknown')}': {line}")
+                
+                # ← CORRECTION CLÉE : Toujours réinitialiser current_channel après traitement d'une URL
                 current_channel = {}
                 
         logging.info(f"Parsed {channel_count} channels from {source_url}")
         if excluded_count > 0:
             logging.info(f"Excluded {excluded_count} channels from filtered groups")
+        if non_http_skipped > 0:
+            logging.info(f"Skipped {non_http_skipped} non-HTTP URLs (plugin://, rtmp://, etc.)")
 
     def filter_active_channels(self):
         """Filter out inactive channels, skippable for speed."""
