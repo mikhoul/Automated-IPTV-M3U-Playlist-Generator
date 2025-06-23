@@ -284,7 +284,7 @@ class M3UCollector:
             sys.stdout.flush()
             sys.stderr.flush()
             
-            # ← NOUVEAU : Force flush après chaque ligne
+            # Force flush après chaque ligne
             for i, (line_num, line) in enumerate(enum_lines):
                 try:
                     # Log AVANT chaque itération avec flush immédiat
@@ -297,7 +297,7 @@ class M3UCollector:
                     sys.stdout.flush()
                     sys.stderr.flush()
                     
-                    # ← NOUVEAU : Force log pour TOUTES les lignes importantes
+                    # Force log pour TOUTES les lignes importantes
                     if line_num in [1, 2, 3, 4, 5, 10, 20, 50, 100, 200, 537, 538, 539, 540, 541, 542]:
                         logging.info(f"CRITICAL LINE {line_num}: '{line}'")
                         sys.stdout.flush()
@@ -333,7 +333,7 @@ class M3UCollector:
                         sys.stdout.flush()
                         sys.stderr.flush()
                     
-                    # ← NOUVEAU : Test de continuation de boucle avec flush
+                    # Test de continuation de boucle avec flush
                     if line_num <= 10:
                         logging.info(f"LOOP TEST: Successfully processing line {line_num}")
                         sys.stdout.flush()
@@ -570,7 +570,7 @@ class M3UCollector:
         self.seen_urls.clear()
         self.url_status_cache.clear()
         
-        # ← NOUVEAU : Parsing COMPLET de toutes les sources AVANT validation
+        # Parsing COMPLET de toutes les sources AVANT validation
         logging.info("=" * 60)
         logging.info("PHASE 1: PARSING ALL SOURCES (NO VALIDATION)")
         logging.info("=" * 60)
@@ -591,7 +591,7 @@ class M3UCollector:
             self.test_cuisine_detection(lines)
             self.parse_and_store(lines, m3u_url)
         
-        # ← NOUVEAU : Log intermédiaire du parsing complet
+        # Log intermédiaire du parsing complet
         total_parsed = sum(len(ch) for ch in self.channels.values())
         parsed_groups = list(self.channels.keys())
         logging.info("=" * 60)
@@ -605,7 +605,7 @@ class M3UCollector:
             logging.info(f"★★★   - {ch['name']} -> {ch['url']}")
         logging.info("=" * 60)
         
-        # ← NOUVEAU : Validation APRÈS parsing complet
+        # Validation APRÈS parsing complet
         if self.channels and self.check_links:
             logging.info("PHASE 2: STARTING VALIDATION OF PARSED CHANNELS")
             self.filter_active_channels()
@@ -634,7 +634,7 @@ class M3UCollector:
                 f.write(f"Group: {group}\n")
                 for channel in channels:
                     f.write(f"Name: {channel['name']}\n")
-                    f.write(f"URL: {channel['url']]\n")
+                    f.write(f"URL: {channel['url']}\n")  # ← CORRIGÉ : ']' remplacé par '}'
                     f.write(f"Logo: {channel['logo']}\n")
                     f.write(f"Source: {channel['source']}\n")
                     f.write("-" * 50 + "\n")
@@ -708,10 +708,10 @@ def main():
         # "https://github.com/BuddyChewChew/app-m3u-generator/raw/refs/heads/main/playlists/samsungtvplus_all.m3u",
     ]
 
-    # ← CORRECTIF : Validation désactivée temporairement
+    # Validation désactivée temporairement
     collector = M3UCollector(
         country="Mikhoul", 
-        check_links=False,  # ← DÉSACTIVÉ pour diagnostic
+        check_links=False,  # Désactivé pour diagnostic
         excluded_groups=excluded_groups
     )
     
