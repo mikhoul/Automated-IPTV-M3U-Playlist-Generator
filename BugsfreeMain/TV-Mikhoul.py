@@ -53,7 +53,8 @@ class M3UCollector:
         try:
             with requests.get(url, stream=True, headers=headers, timeout=10) as response:
                 response.raise_for_status()
-                lines = [line.decode('utf-8', errors='ignore') if isinstance(line, bytes) else line for line in response.iter_lines()]
+                # ← CHANGEMENT : Utilisation de 'replace' pour les erreurs d'encodage
+                lines = [line.decode('utf-8', errors='replace') if isinstance(line, bytes) else line for line in response.iter_lines()]
                 return '\n'.join(lines), lines
         except requests.RequestException as e:
             logging.warning(f"Failed to fetch {url}: {str(e)}")
@@ -70,7 +71,7 @@ class M3UCollector:
             parsed_href = urlparse(href)
             if not parsed_href.scheme:
                 href = f"{parsed_base.scheme}://{parsed_base.netloc}{href}"
-            if (href.endswith(('.m3u', '.m3u8')) or 
+            if (href.endswith(('.m3u', '.m极u8')) or 
                 re.match(r'^https?://.*\.(ts|mp4|avi|mkv|flv|wmv)$', href) or 
                 'playlist' in href.lower() or 'stream' in href.lower()):
                 if not any(exclude in href.lower() for exclude in ['telegram', '.html', '.php', 'github.com', 'login', 'signup']):
@@ -92,10 +93,20 @@ class M3UCollector:
         current_channel = {}
         channel_count = 0
         total_extinf_lines = 0
+        
+        # ← NOUVEAU : Dictionnaire pour suivre les groupes
+        group_occurrences = defaultdict(int)
+        
         for line_num, line in enumerate(lines, 1):
             line = line.strip()
+            
+            # ← NOUVEAU : Log des lignes critiques pour diagnostic
+            if line_num in (537, 539, 541) and "group-title" in line:
+                logging.info(f"RAW GROUP DETECTED Line {line_num}: '{line}'")
+            
             if line_num % 100 == 0 or line_num in (1, 537, 538, 539, 540, 541, 542):
                 logging.info(f"Parsing line {line_num}/{len(lines)}: {line[:60]}")
+            
             if line.startswith('#EXTINF:'):
                 total_extinf_lines += 1
                 try:
@@ -108,6 +119,22 @@ class M3UCollector:
                     group = match.group(1) if match else "Uncategorized"
                 except Exception:
                     group = "Uncategorized"
+                
+                # ← CORRECTION : Normalisation de l'encodage
+                try:
+                    # Essayer de corriger l'encodage Latin-1 vers UTF-8
+                    group = group.encode('latin1').decode('utf-8')
+                except:
+                    # Fallback pour les cas déjà corrects
+                    pass
+                
+                # ← NOUVEAU : Enregistrement du groupe
+                group_occurrences[group] += 1
+                
+                # ← NOUVEAU : Log spécial pour Cuisine
+                if "cuisine" in group.lower():
+                    logging.info(f"★★★ POTENTIAL CUISINE GROUP: '{group}' at line {line_num}")
+                
                 excluded = any(
                     group.lower() == excl.lower() or re.search(r'\b' + re.escape(excl.lower()) + r'\b', group.lower())
                     for excl in self.excluded_groups
@@ -135,6 +162,12 @@ class M3UCollector:
                         self.channels[current_channel['group']].append(current_channel)
                         channel_count += 1
                     current_channel = {}
+        
+        # ← NOUVEAU : Diagnostic des groupes
+        logging.info(f"GROUP OCCURRENCES SUMMARY:")
+        for group, count in group_occurrences.items():
+            logging.info(f"  - {group}: {count} channels")
+        
         logging.info(f"Parsing complete: {channel_count} channels added from {source_url}")
 
     def filter_active_channels(self):
@@ -144,7 +177,7 @@ class M3UCollector:
         active_channels = defaultdict(list)
         all_channels = [(group, ch) for group, chans in self.channels.items() for ch in chans]
         url_set = set()
-        logging.info(f"Total channels to check: {len(all_channels)}")
+        logging.info(f"Total channels to check: {极en(all_channels)}")
         with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
             future_to_channel = {
                 executor.submit(self.check_link_active, ch['url'], ch['name']): (group, ch)
