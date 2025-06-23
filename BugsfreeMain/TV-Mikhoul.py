@@ -247,7 +247,7 @@ class M3UCollector:
         logging.info("=" * 60)
 
     def parse_and_store(self, lines, source_url):
-        """Parse M3U lines with ultimate line-by-line debugging."""
+        """Parse M3U lines with ultimate debugging of the loop itself."""
         current_channel = {}
         channel_count = 0
         excluded_count = 0
@@ -260,18 +260,31 @@ class M3UCollector:
         
         logging.info(f"STARTING PARSE of {len(lines)} lines from {source_url}")
         
+        # ← NOUVEAU : Diagnostic de la liste lines
+        logging.info(f"LINES DIAGNOSTIC: Type={type(lines)}, Length={len(lines)}")
+        logging.info(f"LINES SAMPLE: First 5 lines = {lines[:5] if len(lines) >= 5 else lines}")
+        
         try:
-            for line_num, line in enumerate(lines, 1):
+            # ← NOUVEAU : Diagnostic de enumerate
+            enum_lines = list(enumerate(lines, 1))
+            logging.info(f"ENUMERATE DIAGNOSTIC: Created {len(enum_lines)} items")
+            logging.info(f"ENUMERATE SAMPLE: {enum_lines[:5] if len(enum_lines) >= 5 else enum_lines}")
+            
+            # ← NOUVEAU : Boucle avec diagnostic ultra-détaillé
+            for i, (line_num, line) in enumerate(enum_lines):
                 try:
-                    # ← NOUVEAU : Log AVANT CHAQUE LIGNE après 50
-                    if line_num >= 50:
-                        logging.info(f"ULTIMATE: About to process line {line_num}")
-                        import sys
-                        sys.stdout.flush()
-                        sys.stderr.flush()
+                    # ← NOUVEAU : Log AVANT chaque itération
+                    logging.info(f"LOOP ITERATION {i}: About to process line_num={line_num}")
+                    import sys
+                    sys.stdout.flush()
+                    sys.stderr.flush()
                     
                     # Log de sécurité AVANT chaque opération critique
                     logging.info(f"SAFETY: Starting line {line_num}")
+                    
+                    # ← NOUVEAU : Log APRÈS chaque opération de base
+                    if line_num >= 50:
+                        logging.info(f"ULTIMATE: About to process line {line_num}")
                     
                     # Log ultra-détaillé pour identifier l'interruption
                     if line_num % 10 == 0:
@@ -281,7 +294,6 @@ class M3UCollector:
                     if 25 <= line_num <= 60:
                         logging.info(f"DANGER ZONE Line {line_num}: About to process '{line[:50]}...'")
                     
-                    # ← NOUVEAU : Log ligne par ligne après 50
                     if 50 <= line_num <= 60:
                         logging.info(f"POST-50 Line {line_num}: Raw content = '{line}'")
                     
@@ -294,7 +306,7 @@ class M3UCollector:
                     if 25 <= line_num <= 60:
                         logging.info(f"Line {line_num}: Line stripped successfully: '{line[:50]}...'")
                     
-                    # ← NOUVEAU : Vérification de contenu de ligne vide
+                    # Vérification de contenu de ligne vide
                     if not line and line_num >= 50:
                         logging.info(f"Line {line_num}: EMPTY LINE DETECTED")
                     
@@ -306,9 +318,13 @@ class M3UCollector:
                     if 25 <= line_num <= 60:
                         logging.info(f"Line {line_num}: About to check startswith('#EXTINF:')")
                     
-                    # ← NOUVEAU : Check si la ligne cause des problèmes
+                    # Check si la ligne cause des problèmes
                     if 50 <= line_num <= 60:
                         logging.info(f"Line {line_num}: Line length = {len(line)}, starts with # = {line.startswith('#')}")
+                    
+                    # ← NOUVEAU : Test de continuation de boucle
+                    if line_num <= 10:
+                        logging.info(f"LOOP TEST: Successfully processing line {line_num}")
                     
                     if line.startswith('#EXTINF:'):
                         if 25 <= line_num <= 60:
@@ -470,11 +486,14 @@ class M3UCollector:
                     # Log de sécurité APRÈS chaque ligne critique
                     logging.info(f"SAFETY: Completed line {line_num}")
                     
-                    # ← NOUVEAU : Force flush après chaque ligne problématique
+                    # Force flush après chaque ligne problématique
                     if line_num >= 50:
                         import sys
                         sys.stdout.flush()
                         sys.stderr.flush()
+                    
+                    # ← NOUVEAU : Log de fin d'itération
+                    logging.info(f"LOOP ITERATION {i}: Completed line_num={line_num}")
                             
                 except Exception as line_error:
                     logging.error(f"CRITICAL ERROR processing line {line_num}: '{line}' - Error: {line_error}")
@@ -561,10 +580,15 @@ class M3UCollector:
         logging.info(f"Geo-blocked channels detected: {geo_blocked_count}")
 
     def process_sources(self, source_urls):
-        """Process sources sequentially for better control."""
+        """Process sources with separated parsing and validation phases."""
         self.channels.clear()
         self.seen_urls.clear()
         self.url_status_cache.clear()
+        
+        # ← NOUVEAU : Parsing COMPLET de toutes les sources AVANT validation
+        logging.info("=" * 60)
+        logging.info("PHASE 1: PARSING ALL SOURCES (NO VALIDATION)")
+        logging.info("=" * 60)
         
         all_m3u_urls = set()
         for url in source_urls:
@@ -582,10 +606,30 @@ class M3UCollector:
             self.test_cuisine_detection(lines)
             self.parse_and_store(lines, m3u_url)
         
-        if self.channels:
+        # ← NOUVEAU : Log intermédiaire du parsing complet
+        total_parsed = sum(len(ch) for ch in self.channels.values())
+        parsed_groups = list(self.channels.keys())
+        logging.info("=" * 60)
+        logging.info(f"PHASE 1 COMPLETE: {total_parsed} channels parsed")
+        logging.info(f"Groups parsed: {', '.join(sorted(parsed_groups))}")
+        
+        # Vérification spéciale Cuisine après parsing complet
+        cuisine_channels = [ch for ch_list in self.channels.values() for ch in ch_list if ch['group'].lower() == 'cuisine']
+        logging.info(f"★★★ CUISINE CHANNELS AFTER PARSING: {len(cuisine_channels)} ★★★")
+        for ch in cuisine_channels:
+            logging.info(f"★★★   - {ch['name']} -> {ch['url']}")
+        logging.info("=" * 60)
+        
+        # ← NOUVEAU : Validation APRÈS parsing complet
+        if self.channels and self.check_links:
+            logging.info("PHASE 2: STARTING VALIDATION OF PARSED CHANNELS")
             self.filter_active_channels()
+            logging.info("PHASE 2 COMPLETE: Validation finished")
         else:
-            logging.warning("No channels parsed from sources")
+            if not self.channels:
+                logging.warning("No channels parsed from sources")
+            else:
+                logging.info("Skipping link activity check")
 
     def export_m3u(self, filename="LiveTV.m3u"):
         filepath = os.path.join(self.output_dir, filename)
@@ -679,10 +723,10 @@ def main():
         # "https://github.com/BuddyChewChew/app-m3u-generator/raw/refs/heads/main/playlists/samsungtvplus_all.m3u",
     ]
 
-    # Instanciation avec liste d'exclusion
+    # ← CORRECTIF : Validation désactivée temporairement
     collector = M3UCollector(
         country="Mikhoul", 
-        check_links=True, 
+        check_links=False,  # ← DÉSACTIVÉ pour diagnostic
         excluded_groups=excluded_groups
     )
     
