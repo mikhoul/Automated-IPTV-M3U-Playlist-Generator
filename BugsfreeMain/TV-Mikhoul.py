@@ -51,7 +51,7 @@ def get_server_geolocation():
         return None
 
 class M3UCollector:
-    def __init__(self, country="Mikhoul", base_dir="LiveTV", check_links=True, excluded_groups=None):
+    def __init__(self, country="Mikhoul", base_dir="LiveTV", check_links=False, excluded_groups=None):
         self.channels = defaultdict(list)
         self.default_logo = "https://buddytv.netlify.app/img/no-logo.png"
         self.seen_urls = set()
