@@ -96,49 +96,33 @@ class M3UCollector:
                 except Exception:
                     logo = self.default_logo
                 
-                # **FIXED: Improved group extraction with better error handling**
+                # **COMPLETELY REWRITTEN GROUP EXTRACTION**
                 group = "Uncategorized"  # Default value
                 
                 try:
-                    # Try multiple regex patterns for robustness
-                    patterns = [
-                        r'group-title="([^"]*)"',  # Standard pattern
-                        r'group-title=\'([^\']*)\'',  # Single quotes
-                        r'group-title=([^,\s]*)',  # Unquoted
-                    ]
-                    
-                    for pattern in patterns:
-                        match = re.search(pattern, line, re.IGNORECASE)
-                        if match:
-                            group = match.group(1).strip()
-                            break
-                    
-                    if group and group != "Uncategorized":
-                        # **FIXED: Safer encoding handling**
-                        # Only attempt encoding conversion if there are obvious encoding issues
-                        if any(char in group for char in ['Ã', 'â', 'ï', 'Â']):
-                            try:
-                                group = group.encode('latin1').decode('utf-8')
-                            except (UnicodeEncodeError, UnicodeDecodeError):
-                                pass  # Keep original if conversion fails
+                    # Primary regex pattern
+                    match = re.search(r'group-title="([^"]*)"', line, re.IGNORECASE)
+                    if match:
+                        raw_group = match.group(1).strip()
                         
-                        # Normalize specific groups
-                        if group.lower() == 'cuisine':
-                            group = 'Cuisine'
+                        # **CRITICAL FIX: Direct assignment without encoding manipulation**
+                        if raw_group and not raw_group.isspace():
+                            group = raw_group
+                            
+                            # Normalize only specific known cases
+                            if group.lower() == 'cuisine':
+                                group = 'Cuisine'
                         
-                        # Extra validation for debugging
+                        # **ENHANCED DEBUG FOR CUISINE**
                         if line_num in (537, 539, 541):
-                            logging.info(f"★★★ LINE {line_num} GROUP EXTRACTION: '{group}' from '{line}'")
+                            logging.info(f"★ LINE {line_num} - RAW: '{raw_group}' -> FINAL: '{group}'")
                     
-                    if not group or group.isspace():
-                        group = "Uncategorized"
-                        
                 except Exception as e:
                     logging.error(f"Line {line_num}: GROUP EXTRACTION ERROR: {e}")
                     group = "Uncategorized"
                 
-                # Special logging for Cuisine
-                if "cuisine" in group.lower():
+                # **ENHANCED CUISINE DETECTION**
+                if group.lower() == 'cuisine':
                     logging.info(f"★★★ CUISINE GROUP CONFIRMED: '{group}' at line {line_num}")
                 
                 group_occurrences[group] += 1
@@ -168,12 +152,12 @@ class M3UCollector:
                     'line_num': line_num
                 }
                 
-                # Debug logging for Cuisine channels
+                # **ENHANCED DEBUG FOR CUISINE CHANNELS**
                 if group.lower() == 'cuisine':
                     logging.info(f"★★★ CUISINE CHANNEL PREPARED: '{name}' in group '{group}' at line {line_num}")
                 
             elif line and not line.startswith('#') and current_channel:
-                # **FIXED: Maintain HTTP/HTTPS-only filtering as requested**
+                # HTTP/HTTPS filtering (as requested)
                 if line.startswith(('http://', 'https://')):
                     if line not in self.seen_urls:
                         self.seen_urls.add(line)
@@ -181,9 +165,9 @@ class M3UCollector:
                         self.channels[current_channel['group']].append(current_channel)
                         channel_count += 1
                         
-                        # Special logging for Cuisine channels
+                        # **ENHANCED CUISINE LOGGING**
                         if current_channel['group'].lower() == 'cuisine':
-                            logging.info(f"★★★ CUISINE CHANNEL ADDED: '{current_channel['name']}' to group '{current_channel['group']}' | URL: {line}")
+                            logging.info(f"★★★ CUISINE CHANNEL STORED: '{current_channel['name']}' in group '{current_channel['group']}' | URL: {line}")
                 else:
                     # Log rejected URLs for debugging
                     if line.strip():
@@ -191,10 +175,10 @@ class M3UCollector:
                         if current_channel.get('group', '').lower() == 'cuisine':
                             logging.info(f"★★★ CUISINE CHANNEL REJECTED (non-HTTP): '{current_channel.get('name', 'Unknown')}' | URL: {line}")
                 
-                # **CRITICAL FIX: Reset current_channel after processing URL**
+                # **CRITICAL: Reset current_channel after processing URL**
                 current_channel = {}
         
-        # Summary logging
+        # **ENHANCED SUMMARY LOGGING**
         logging.info(f"GROUP OCCURRENCES SUMMARY:")
         for group, count in group_occurrences.items():
             logging.info(f"  - {group}: {count} channels")
@@ -216,7 +200,7 @@ class M3UCollector:
         total_parsed = sum(len(ch) for ch in self.channels.values())
         logging.info(f"PHASE 1 COMPLETE: {total_parsed} channels parsed, groups: {', '.join(sorted(self.channels.keys()))}")
         
-        # Special check for Cuisine channels
+        # **ENHANCED CUISINE VERIFICATION**
         cuisine_channels = [ch for ch_list in self.channels.values() for ch in ch_list if ch['group'].lower() == 'cuisine']
         logging.info(f"CUISINE channels after parsing: {len(cuisine_channels)}")
         
@@ -226,7 +210,6 @@ class M3UCollector:
                 logging.info(f"★★★   - {ch['name']} -> {ch['url']}")
 
     def get_excluded_groups_info(self):
-        """Get information about excluded groups"""
         return {
             'excluded_groups': self.excluded_groups,
             'excluded_count': len(self.excluded_groups)
