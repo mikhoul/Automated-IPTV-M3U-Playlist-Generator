@@ -14,6 +14,42 @@ from bs4 import BeautifulSoup
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+def get_server_geolocation():
+    """Obtenir la géolocalisation du serveur GitHub Actions."""
+    try:
+        # Obtenir l'IP publique du serveur
+        ip_response = requests.get('https://api.ipify.org?format=json', timeout=10)
+        server_ip = ip_response.json()['ip']
+        
+        # Obtenir la géolocalisation via ipapi.co (gratuit, 1000/jour)
+        geo_response = requests.get(f'https://ipapi.co/{server_ip}/json/', timeout=10)
+        geo_data = geo_response.json()
+        
+        location_info = {
+            'ip': server_ip,
+            'country': geo_data.get('country_name', 'Unknown'),
+            'country_code': geo_data.get('country_code', 'Unknown'),
+            'region': geo_data.get('region', 'Unknown'), 
+            'city': geo_data.get('city', 'Unknown'),
+            'org': geo_data.get('org', 'Unknown'),
+            'timezone': geo_data.get('timezone', 'Unknown')
+        }
+        
+        logging.info("=" * 60)
+        logging.info(f"SERVER GEOLOCATION DETECTED:")
+        logging.info(f"Testing from: {location_info['city']}, {location_info['region']}, {location_info['country']} ({location_info['country_code']})")
+        logging.info(f"Server IP: {location_info['ip']}")
+        logging.info(f"ISP/Organization: {location_info['org']}")
+        logging.info(f"Timezone: {location_info['timezone']}")
+        logging.info("=" * 60)
+        
+        return location_info
+        
+    except Exception as e:
+        logging.warning(f"Failed to get server geolocation: {e}")
+        logging.info("Proceeding without geolocation information...")
+        return None
+
 class M3UCollector:
     def __init__(self, country="Mikhoul", base_dir="LiveTV", check_links=True, excluded_groups=None):
         self.channels = defaultdict(list)
@@ -373,6 +409,9 @@ class M3UCollector:
         }
 
 def main():
+    # Détecter la géolocalisation du serveur GitHub Actions
+    server_location = get_server_geolocation()
+    
     # Liste des groupes à exclure (exemples courants)
     excluded_groups = [
         "Argentina", "Austria", "Brazil", "Chile", "Denmark", "Germany", "India", "Italy", "Mexico", "Norway", "South Korea", "Spain", "Sweden", "Switzerland", "United Kingdom", "United States",   # Pays Exclus
@@ -418,6 +457,10 @@ def main():
     # Affichage des groupes finaux
     final_groups = list(collector.channels.keys())
     logging.info(f"Final groups after exclusion: {', '.join(sorted(final_groups))}")
+    
+    # Affichage final de la géolocalisation pour référence
+    if server_location:
+        logging.info(f"All tests performed from: {server_location['country']} ({server_location['country_code']})")
 
 if __name__ == "__main__":
     main()
