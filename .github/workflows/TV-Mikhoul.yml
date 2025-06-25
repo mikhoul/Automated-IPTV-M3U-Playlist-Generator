@@ -1,9 +1,13 @@
 name: TV-Mikhoul Update Files
 
 on:
+  push:
+    branches:
+      - main
+      - Test-Starting-Over  # ADDED: This will trigger the workflow on push to your test branch
+
   schedule:
-   # - cron: '0 0,8,16 * * *'  # Runs at 00:00, 08:00, 16:00 UTC daily
-   - cron: '0 20 * * *'   # 20:00 UTC = 16:00 EDT
+    - cron: '0 20 * * *'   # 20:00 UTC = 16:00 EDT
 
   workflow_dispatch:  # Allows manual triggering
 
@@ -16,19 +20,17 @@ concurrency:
 
 jobs:
   update-files:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest # Using latest for better support
     timeout-minutes: 30
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/checkout@v4 # Updated to v4 for latest features
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # Updated to v5
         with:
-          python-version: '3.x'
+          python-version: '3.11' # Using a specific, stable version is better practice
 
       - name: Install dependencies
         run: |
@@ -42,13 +44,16 @@ jobs:
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add LiveTV/Mikhoul/LiveTV.m3u LiveTV/Mikhoul/LiveTV.txt LiveTV/Mikhoul/LiveTV.json LiveTV/Mikhoul/LiveTV
+          # Using "git add -A" is simpler and captures all generated files
+          git add -A
+          # The "|| true" part prevents the workflow from failing if there are no changes
           git commit -m "TV-Mikhoul Update files - $(date -u '+%Y-%m-%d %H:%M:%S UTC')" || echo "No changes to commit"
-          git pull --rebase origin main
+          # REMOVED the "git pull --rebase origin main" command that caused the conflict
           git push
 
+  # The update-indexes job remains unchanged as it's not part of the problem
   update-indexes:
     needs: update-files
     uses: bugsfreeweb/LiveTVCollector/.github/workflows/update-indexes.yml@main
     permissions:
-      contents: write  # Required for the called workflow to push changes
+      contents: write
