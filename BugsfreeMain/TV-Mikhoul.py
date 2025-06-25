@@ -9,6 +9,27 @@ import logging
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+def get_server_geolocation():
+    try:
+        ip_response = requests.get('https://api.ipify.org?format=json', timeout=10)
+        server_ip = ip_response.json()['ip']
+        geo_response = requests.get(f'https://ipapi.co/{server_ip}/json/', timeout=10)
+        geo_data = geo_response.json()
+        location_info = {
+            'ip': server_ip,
+            'country': geo_data.get('country_name', 'Unknown'),
+            'country_code': geo_data.get('country_code', 'Unknown'),
+            'region': geo_data.get('region', 'Unknown'), 
+            'city': geo_data.get('city', 'Unknown'),
+            'org': geo_data.get('org', 'Unknown'),
+            'timezone': geo_data.get('timezone', 'Unknown')
+        }
+        logging.info(f"SERVER GEOLOCATION: {location_info['city']}, {location_info['region']}, {location_info['country']} ({location_info['country_code']}) | IP: {location_info['ip']} | Org: {location_info['org']} | TZ: {location_info['timezone']}")
+        return location_info
+    except Exception as e:
+        logging.warning(f"Failed to get server geolocation: {e}")
+        return None
+
 class M3UCollector:
     def __init__(self, country="Mikhoul", base_dir="LiveTV", excluded_groups=None):
         self.country = country
@@ -20,27 +41,6 @@ class M3UCollector:
         self.default_logo = "https://buddytv.netlify.app/img/no-logo.png"
         self.skipped_non_http_count = 0
         os.makedirs(self.output_dir, exist_ok=True)
-
-    def get_server_geolocation(self):
-        try:
-            ip_response = requests.get('https://api.ipify.org?format=json', timeout=10)
-            server_ip = ip_response.json()['ip']
-            geo_response = requests.get(f'https://ipapi.co/{server_ip}/json/', timeout=10)
-            geo_data = geo_response.json()
-            location_info = {
-                'ip': server_ip,
-                'country': geo_data.get('country_name', 'Unknown'),
-                'country_code': geo_data.get('country_code', 'Unknown'),
-                'region': geo_data.get('region', 'Unknown'), 
-                'city': geo_data.get('city', 'Unknown'),
-                'org': geo_data.get('org', 'Unknown'),
-                'timezone': geo_data.get('timezone', 'Unknown')
-            }
-            logging.info(f"SERVER GEOLOCATION: {location_info['city']}, {location_info['region']}, {location_info['country']} ({location_info['country_code']}) | IP: {location_info['ip']} | Org: {location_info['org']} | TZ: {location_info['timezone']}")
-            return location_info
-        except Exception as e:
-            logging.warning(f"Failed to get server geolocation: {e}")
-            return None
 
     def fetch_content(self, url):
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
