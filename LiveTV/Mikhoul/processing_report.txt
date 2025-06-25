@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-06-25 04:08:08
+Generated: 2025-06-25 04:13:42
 ============================================================
 
 PROCESSING STATISTICS
@@ -8,7 +8,7 @@ PROCESSING STATISTICS
 Total Lines Processed: 558
 Total Channels Found: 82
 Parsing Errors: 0
-Total Processing Time: 0.40267395973205566
+Total Processing Time: 0.16298747062683105
 Final Channel Count: 79
 Source Urls Processed: 1
 
