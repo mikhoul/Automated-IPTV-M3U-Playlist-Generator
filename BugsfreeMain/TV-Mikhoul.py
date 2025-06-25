@@ -34,7 +34,8 @@ class M3UCollector:
     def __init__(self, country="Mikhoul", base_dir="LiveTV", excluded_groups=None):
         self.country = country
         self.base_dir = base_dir
-        self.excluded_groups = {group.lower() for group in (excluded_groups or [])}
+        # **FIX 1: Convert to list (not set) to avoid JSON serialization error**
+        self.excluded_groups = [group.lower() for group in (excluded_groups or [])]
         self.output_dir = os.path.join(self.base_dir, self.country)
         self.channels = defaultdict(list)
         self.seen_urls = set()
@@ -84,14 +85,19 @@ class M3UCollector:
                 except Exception:
                     logo = self.default_logo
                 
-                # **FIXED: Simple and direct group extraction**
+                # **FIX 2: Completely rewritten group extraction - DIRECT and SIMPLE**
                 group = "Uncategorized"
                 try:
                     match = re.search(r'group-title="([^"]*)"', line)
                     if match:
                         extracted_group = match.group(1).strip()
-                        if extracted_group:
+                        if extracted_group and not extracted_group.isspace():
                             group = extracted_group
+                            # **CRITICAL: Log every successful extraction for lines 537, 539, 541**
+                            if line_num in (537, 539, 541):
+                                logging.info(f"★★★ LINE {line_num} EXTRACTED GROUP: '{group}'")
+                            
+                            # Normalize case for Cuisine
                             if group.lower() == 'cuisine':
                                 group = 'Cuisine'
                                 logging.info(f"★★★ CUISINE GROUP CONFIRMED: '{group}' at line {line_num}")
@@ -103,8 +109,7 @@ class M3UCollector:
                 
                 # Check if group is excluded
                 excluded = any(
-                    group.lower() == excl.lower() or re.search(r'\b' + re.escape(excl.lower()) + r'\b', group.lower())
-                    for excl in self.excluded_groups
+                    group.lower() == excl.lower() for excl in self.excluded_groups
                 )
                 if excluded:
                     current_channel = {}
@@ -135,7 +140,7 @@ class M3UCollector:
                         
                         # Special logging for Cuisine channels
                         if current_channel['group'].lower() == 'cuisine':
-                            logging.info(f"★★★ CUISINE CHANNEL STORED: '{current_channel['name']}' to group '{current_channel['group']}' | URL: {line}")
+                            logging.info(f"★★★ CUISINE CHANNEL STORED: '{current_channel['name']}' in group '{current_channel['group']}' | URL: {line}")
                 else:
                     self.skipped_non_http_count += 1
                     if current_channel.get('group', '').lower() == 'cuisine':
@@ -212,7 +217,8 @@ class M3UCollector:
         json_data = {
             "date": current_time,
             "channels": dict(self.channels),
-            "excluded_groups": self.excluded_groups
+            # **FIX 3: Convert excluded_groups to list for JSON serialization**
+            "excluded_groups": list(self.excluded_groups)
         }
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(json_data, f, ensure_ascii=False, indent=2)
