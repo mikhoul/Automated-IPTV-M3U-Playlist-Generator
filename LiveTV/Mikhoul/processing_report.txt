@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-06-25 04:17:35
+Generated: 2025-06-25 04:32:23
 ============================================================
 
 PROCESSING STATISTICS
@@ -8,33 +8,32 @@ PROCESSING STATISTICS
 Total Lines Processed: 558
 Total Channels Found: 82
 Parsing Errors: 0
-Total Processing Time: 0.1392965316772461
-Final Channel Count: 79
+Urls Validated: 79
+Active Urls: 55
+Validation Time: 24.668193817138672
+Total Processing Time: 24.855000734329224
+Final Channel Count: 55
 Source Urls Processed: 1
 
 CHANNEL DISTRIBUTION
 --------------------
-Généraliste: 35 channels
-Affaires Publiques: 10 channels
+Généraliste: 33 channels
 Actualités: 8 channels
-Sports: 5 channels
-Communautaire: 5 channels
-Quebec TV: 5 channels
+Communautaire: 3 channels
+Affaires Publiques: 2 channels
 Educatif: 1 channels
-Films: 1 channels
 Multiculturel: 1 channels
-Réréalité: 1 channels
-Comedie: 1 channels
-Film: 1 channels
 Culturelle: 1 channels
-Radio: 1 channels
-Religion: 1 channels
+Comedie: 1 channels
+Réréalité: 1 channels
+Film: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
+Quebec TV: 1 channels
 
 CONFIGURATION
 -------------
-Link checking: False
+Link checking: True
 Deduplication: True
 Quality sorting: True
 Excluded groups: 21
