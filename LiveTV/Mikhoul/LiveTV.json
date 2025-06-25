@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "generated_at": "2025-06-25 09:35:20",
+    "generated_at": "2025-06-25 09:38:08",
     "country": "Mikhoul",
     "total_channels": 79,
     "total_groups": 17,
-    "processing_time": 0.12651729583740234,
+    "processing_time": 0.40267395973205566,
     "validation_enabled": false,
     "deduplication_enabled": true
   },
@@ -12,7 +12,7 @@
     "total_lines_processed": 558,
     "total_channels_found": 82,
     "parsing_errors": 0,
-    "total_processing_time": 0.12651729583740234,
+    "total_processing_time": 0.40267395973205566,
     "final_channel_count": 79,
     "source_urls_processed": 1
   },
@@ -68,7 +68,7 @@
           "tvg-logo": "https://i.imgur.com/27PqVAR.png",
           "group-title": "Educatif"
         },
-        "added_timestamp": "2025-06-25T04:05:20.352833",
+        "added_timestamp": "2025-06-25T04:08:08.572868",
         "url": "https://hls.savoir.media/live/stream.m3u8",
         "url_domain": "hls.savoir.media",
         "is_hls": true
@@ -89,7 +89,7 @@
           "tvg-logo": "https://i.imgur.com/AeVRfbB.png",
           "group-title": "Actualités"
         },
-        "added_timestamp": "2025-06-25T04:05:20.352925",
+        "added_timestamp": "2025-06-25T04:08:08.572960",
         "url": "https://cbcrclinear-tor.akamaized.net/hls/live/2042761/CBCRCLINEAR_TOR_7/master5.m3u8",
         "url_domain": "cbcrclinear-tor.akamaized.net",
         "is_hls": true
@@ -107,7 +107,7 @@
           "tvg-logo": "https://i.imgur.com/jMaP3wK.png",
           "group-title": "Actualités"
         },
-        "added_timestamp": "2025-06-25T04:05:20.353005",
+        "added_timestamp": "2025-06-25T04:08:08.573062",
         "url": "https://citynewsregional.akamaized.net/hls/live/553720/CityNews-Montreal/master.m3u8",
         "url_domain": "citynewsregional.akamaized.net",
         "is_hls": true
@@ -126,7 +126,7 @@
           "tvg-logo": "https://i.imgur.com/0vLVIWr.jpg",
           "group-title": "Actualités"
         },
-        "added_timestamp": "2025-06-25T04:05:20.353260",
+        "added_timestamp": "2025-06-25T04:08:08.573276",
         "url": "https://live.corusdigitaldev.com/groupa/live/6bfb7f13-9d9d-4211-9c50-fb56330e4ccd/live.isml/.m3u8",
         "url_domain": "live.corusdigitaldev.com",
         "is_hls": true
@@ -145,7 +145,7 @@
           "tvg-logo": "https://i.imgur.com/Bb1ZiR6.jpg",
           "group-title": "Actualités"
         },
-        "added_timestamp": "2025-06-25T04:05:20.353363",
+        "added_timestamp": "2025-06-25T04:08:08.573350",
         "url": "https://rcavlive.akamaized.net/hls/live/704026/canrdi/master.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -164,7 +164,7 @@
           "tvg-logo": "https://i.imgur.com/Bb1ZiR6.jpg",
           "group-title": "Actualités"
         },
-        "added_timestamp": "2025-06-25T04:05:20.353444",
+        "added_timestamp": "2025-06-25T04:08:08.573421",
         "url": "https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -183,7 +183,7 @@
           "tvg-logo": "https://i.imgur.com/Bb1ZiR6.jpg",
           "group-title": "Actualités"
         },
-        "added_timestamp": "2025-06-25T04:05:20.353518",
+        "added_timestamp": "2025-06-25T04:08:08.573492",
         "url": "https://rcavlive.akamaized.net/hls/live/704026/canrdi/master_dv.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -202,7 +202,7 @@
           "tvg-logo": "https://i.imgur.com/6cESMfj.png",
           "group-title": "Actualités"
         },
-        "added_timestamp": "2025-06-25T04:05:20.354744",
+        "added_timestamp": "2025-06-25T04:08:08.574670",
         "url": "https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8",
         "url_domain": "tvalive.akamaized.net",
         "is_hls": true
@@ -221,7 +221,7 @@
           "tvg-logo": "https://i.imgur.com/6cESMfj.png",
           "group-title": "Actualités"
         },
-        "added_timestamp": "2025-06-25T04:05:20.354812",
+        "added_timestamp": "2025-06-25T04:08:08.574736",
         "url": "https://tvalive.akamaized.net/hls/live/2014213/tvan01/audio_0_eng.m3u8",
         "url_domain": "tvalive.akamaized.net",
         "is_hls": true
@@ -241,7 +241,7 @@
           "tvg-logo": "https://i.imgur.com/DDTuhkS.png",
           "group-title": "Films"
         },
-        "added_timestamp": "2025-06-25T04:05:20.353141",
+        "added_timestamp": "2025-06-25T04:08:08.573200",
         "url": "https://svbell-hls.secdn.net/svbell-live/play/mp4:HFanatik/playlist.m3u8",
         "url_domain": "svbell-hls.secdn.net",
         "is_hls": true
@@ -262,7 +262,7 @@
           "tvg-logo": "https://i.imgur.com/NdCfrtF.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.354053",
+        "added_timestamp": "2025-06-25T04:08:08.574012",
         "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8",
         "url_domain": "rcavlive-dai.akamaized.net",
         "is_hls": true
@@ -281,7 +281,7 @@
           "tvg-logo": "https://i.imgur.com/i3xFNPE.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.354674",
+        "added_timestamp": "2025-06-25T04:08:08.574600",
         "url": "https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8",
         "url_domain": "amdici.akamaized.net",
         "is_hls": true
@@ -300,7 +300,7 @@
           "tvg-logo": "https://i.imgur.com/3TlTIrd.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.353599",
+        "added_timestamp": "2025-06-25T04:08:08.573571",
         "url": "https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -319,7 +319,7 @@
           "tvg-logo": "https://i.imgur.com/hTXZMsX.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.353677",
+        "added_timestamp": "2025-06-25T04:08:08.573646",
         "url": "https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -338,7 +338,7 @@
           "tvg-logo": "https://i.imgur.com/wMQGKoP.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.353754",
+        "added_timestamp": "2025-06-25T04:08:08.573721",
         "url": "https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -357,7 +357,7 @@
           "tvg-logo": "https://i.imgur.com/aEmwyn6.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.353829",
+        "added_timestamp": "2025-06-25T04:08:08.573793",
         "url": "https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -376,7 +376,7 @@
           "tvg-logo": "https://i.imgur.com/hen9czq.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.353903",
+        "added_timestamp": "2025-06-25T04:08:08.573865",
         "url": "https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -395,7 +395,7 @@
           "tvg-logo": "https://i.imgur.com/jjnIzML.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.353979",
+        "added_timestamp": "2025-06-25T04:08:08.573940",
         "url": "https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -414,7 +414,7 @@
           "tvg-logo": "https://i.imgur.com/ExX8Ojc.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.354126",
+        "added_timestamp": "2025-06-25T04:08:08.574098",
         "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_3000.m3u8",
         "url_domain": "rcavlive-dai.akamaized.net",
         "is_hls": true
@@ -433,7 +433,7 @@
           "tvg-logo": "https://i.imgur.com/PiYf9p0.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.354201",
+        "added_timestamp": "2025-06-25T04:08:08.574173",
         "url": "https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -452,7 +452,7 @@
           "tvg-logo": "https://i.imgur.com/2UOy8xT.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.354299",
+        "added_timestamp": "2025-06-25T04:08:08.574244",
         "url": "https://rcavlive.akamaized.net/hls/live/704022/cancblft/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -471,7 +471,7 @@
           "tvg-logo": "https://i.imgur.com/hvBcsBf.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.354376",
+        "added_timestamp": "2025-06-25T04:08:08.574316",
         "url": "https://rcavlive.akamaized.net/hls/live/704018/cancbwft/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -490,7 +490,7 @@
           "tvg-logo": "https://i.imgur.com/kE4Kn4u.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.354452",
+        "added_timestamp": "2025-06-25T04:08:08.574388",
         "url": "https://rcavlive.akamaized.net/hls/live/704019/cancbkft/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -509,7 +509,7 @@
           "tvg-logo": "https://i.imgur.com/TUBES44.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.354527",
+        "added_timestamp": "2025-06-25T04:08:08.574458",
         "url": "https://rcavlive.akamaized.net/hls/live/704020/cancbxft/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -528,7 +528,7 @@
           "tvg-logo": "https://i.imgur.com/bfqHfNX.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.354602",
+        "added_timestamp": "2025-06-25T04:08:08.574530",
         "url": "https://rcavlive.akamaized.net/hls/live/704017/cancbuft/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -547,7 +547,7 @@
           "tvg-logo": "https://i.imgur.com/8R4EaFu.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.355646",
+        "added_timestamp": "2025-06-25T04:08:08.575636",
         "url": "https://bcovlive-a.akamaihd.net/4b1c462c86094bae93b65adc84e43afc/us-west-2/6101674910001/playlist.m3u8",
         "url_domain": "bcovlive-a.akamaihd.net",
         "is_hls": true
@@ -566,7 +566,7 @@
           "tvg-logo": "https://i.imgur.com/AvJwjcQ.jpg",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.355778",
+        "added_timestamp": "2025-06-25T04:08:08.575768",
         "url": "https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8",
         "url_domain": "tvalive-dai01.akamaized.net",
         "is_hls": true
@@ -585,7 +585,7 @@
           "tvg-logo": "https://i.imgur.com/AvJwjcQ.jpg",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.355848",
+        "added_timestamp": "2025-06-25T04:08:08.575838",
         "url": "https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/05.m3u8",
         "url_domain": "tvalive-dai01.akamaized.net",
         "is_hls": true
@@ -603,7 +603,7 @@
           "tvg-logo": "https://i.imgur.com/uKYAJ7V.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.355979",
+        "added_timestamp": "2025-06-25T04:08:08.575966",
         "url": "https://rtmptv.rncm.ca/hls/cfem/live.m3u8",
         "url_domain": "rtmptv.rncm.ca",
         "is_hls": true
@@ -621,7 +621,7 @@
           "tvg-logo": "https://i.imgur.com/6L78Knq.jpg",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.356055",
+        "added_timestamp": "2025-06-25T04:08:08.576055",
         "url": "https://rtmptv.rncm.ca/hls/chot/live.m3u8",
         "url_domain": "rtmptv.rncm.ca",
         "is_hls": true
@@ -640,7 +640,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.362577",
+        "added_timestamp": "2025-06-25T04:08:08.582556",
         "url": "https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -659,7 +659,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.362653",
+        "added_timestamp": "2025-06-25T04:08:08.582630",
         "url": "https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -678,7 +678,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.362727",
+        "added_timestamp": "2025-06-25T04:08:08.582703",
         "url": "https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -697,7 +697,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.362798",
+        "added_timestamp": "2025-06-25T04:08:08.582773",
         "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive-dai.akamaized.net",
         "is_hls": true
@@ -716,7 +716,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.362872",
+        "added_timestamp": "2025-06-25T04:08:08.582844",
         "url": "https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -735,7 +735,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.362943",
+        "added_timestamp": "2025-06-25T04:08:08.582913",
         "url": "https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_2500.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -754,7 +754,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.363014",
+        "added_timestamp": "2025-06-25T04:08:08.582982",
         "url": "https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -773,7 +773,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.363084",
+        "added_timestamp": "2025-06-25T04:08:08.583064",
         "url": "https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -792,7 +792,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.363154",
+        "added_timestamp": "2025-06-25T04:08:08.583135",
         "url": "https://rcavlive.akamaized.net/hls/live/704022/cancblft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -811,7 +811,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.363409",
+        "added_timestamp": "2025-06-25T04:08:08.583385",
         "url": "https://rcavlive.akamaized.net/hls/live/704020/cancbxft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -830,7 +830,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.363493",
+        "added_timestamp": "2025-06-25T04:08:08.583485",
         "url": "https://rcavlive.akamaized.net/hls/live/704019/cancbkft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -849,7 +849,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.363568",
+        "added_timestamp": "2025-06-25T04:08:08.583560",
         "url": "https://rcavlive.akamaized.net/hls/live/704017/cancbuft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -868,7 +868,7 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.363643",
+        "added_timestamp": "2025-06-25T04:08:08.583631",
         "url": "https://rcavlive.akamaized.net/hls/live/704018/cancbwft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true
@@ -887,7 +887,7 @@
           "tvg-logo": "https://i.imgur.com/8R4EaFu.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.363783",
+        "added_timestamp": "2025-06-25T04:08:08.583769",
         "url": "https://bcovlive-a.akamaihd.net/575d86160eb143458d51f7ab187a4e68/us-east-1/6101674910001/playlist.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "bcovlive-a.akamaihd.net",
         "is_hls": false
@@ -907,7 +907,7 @@
           "tvg-logo": "https://i.imgur.com/AvJwjcQ.jpg",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-25T04:05:20.363855",
+        "added_timestamp": "2025-06-25T04:08:08.583839",
         "url": "https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "tvalive-dai01.akamaized.net",
         "is_hls": true
@@ -928,7 +928,7 @@
           "tvg-logo": "https://i.imgur.com/eNu3N0f.png",
           "group-title": "Multiculturel"
         },
-        "added_timestamp": "2025-06-25T04:05:20.354938",
+        "added_timestamp": "2025-06-25T04:08:08.574859",
         "url": "http://live.greektv.ca/hls1/greektv.m3u8",
         "url_domain": "live.greektv.ca",
         "is_hls": true
@@ -948,7 +948,7 @@
           "tvg-logo": "https://i.imgur.com/84ScGxt.png",
           "group-title": "Réréalité"
         },
-        "added_timestamp": "2025-06-25T04:05:20.355125",
+        "added_timestamp": "2025-06-25T04:08:08.575057",
         "url": "https://d29qczaufx5vc3.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-dxg2k6h0o2l6i/Noovo_Telerealites.m3u8",
         "url_domain": "d29qczaufx5vc3.cloudfront.net",
         "is_hls": true
@@ -968,7 +968,7 @@
           "tvg-logo": "https://i.imgur.com/7rZhGIl.png",
           "group-title": "Comedie"
         },
-        "added_timestamp": "2025-06-25T04:05:20.355315",
+        "added_timestamp": "2025-06-25T04:08:08.575244",
         "url": "https://d2s8iafdyzconc.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-6x2p3ho0vw00a/Noovo_Comedies_Home.m3u8",
         "url_domain": "d2s8iafdyzconc.cloudfront.net",
         "is_hls": true
@@ -988,7 +988,7 @@
           "tvg-logo": "https://i.imgur.com/FNzVlkT.png",
           "group-title": "Film"
         },
-        "added_timestamp": "2025-06-25T04:05:20.355390",
+        "added_timestamp": "2025-06-25T04:08:08.575358",
         "url": "https://dk4ogs46bjxcw.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-xr1ct045l70mz/Noovo_Cinema.m3u8",
         "url_domain": "dk4ogs46bjxcw.cloudfront.net",
         "is_hls": true
@@ -1008,7 +1008,7 @@
           "tvg-logo": "https://i.imgur.com/FsN8wuu.png",
           "group-title": "Culturelle"
         },
-        "added_timestamp": "2025-06-25T04:05:20.355569",
+        "added_timestamp": "2025-06-25T04:08:08.575558",
         "url": "https://stream.castr.com/631f9bb9ecbe28ce6910385a/live_79b37a4032dd11ed85c9d9bece7b557e/index.m3u8|Referer=https://player.castr.com/live_79b37a4032dd11ed85c9d9bece7b557e",
         "url_domain": "stream.castr.com",
         "is_hls": false
@@ -1028,7 +1028,7 @@
           "tvg-logo": "https://i.imgur.com/xWOFj4U.jpg",
           "group-title": "Sports"
         },
-        "added_timestamp": "2025-06-25T04:05:20.356355",
+        "added_timestamp": "2025-06-25T04:08:08.576329",
         "url": "https://webudit.webhd.ru/lb/premium839/index.m3u8|Referer=https://weblivehdplay.ru/premiumtv/daddylivehd.php?id=839",
         "url_domain": "webudit.webhd.ru",
         "is_hls": false
@@ -1046,7 +1046,7 @@
           "tvg-logo": "https://i.imgur.com/meFix5p.jpg",
           "group-title": "Sports"
         },
-        "added_timestamp": "2025-06-25T04:05:20.356422",
+        "added_timestamp": "2025-06-25T04:08:08.576394",
         "url": "https://webudit.webhd.ru/lb/premium840/index.m3u8|Referer=https://weblivehdplay.ru/premiumtv/daddylivehd.php?id=840",
         "url_domain": "webudit.webhd.ru",
         "is_hls": false
@@ -1064,7 +1064,7 @@
           "tvg-logo": "https://i.imgur.com/yAYOjFG.jpg",
           "group-title": "Sports"
         },
-        "added_timestamp": "2025-06-25T04:05:20.356486",
+        "added_timestamp": "2025-06-25T04:08:08.576456",
         "url": "https://webudit.webhd.ru/lb/premium841/index.m3u8|Referer=https://weblivehdplay.ru/premiumtv/daddylivehd.php?id=841",
         "url_domain": "webudit.webhd.ru",
         "is_hls": false
@@ -1082,7 +1082,7 @@
           "tvg-logo": "https://i.imgur.com/t5rroKn.png",
           "group-title": "Sports"
         },
-        "added_timestamp": "2025-06-25T04:05:20.356648",
+        "added_timestamp": "2025-06-25T04:08:08.576614",
         "url": "https://webudit.webhd.ru/lb/premium833/index.m3u8|Referer=https://weblivehdplay.ru/premiumtv/daddylivehd.php?id=833",
         "url_domain": "webudit.webhd.ru",
         "is_hls": false
@@ -1100,7 +1100,7 @@
           "tvg-logo": "https://i.imgur.com/t5rroKn.png",
           "group-title": "Sports"
         },
-        "added_timestamp": "2025-06-25T04:05:20.356760",
+        "added_timestamp": "2025-06-25T04:08:08.576724",
         "url": "https://webudit.webhd.ru/lb/premium834/index.m3u8|Referer=https://weblivehdplay.ru/premiumtv/daddylivehd.php?id=834",
         "url_domain": "webudit.webhd.ru",
         "is_hls": false
@@ -1120,7 +1120,7 @@
           "tvg-logo": "https://i.imgur.com/5Pq17aU.jpg",
           "group-title": "Communautaire"
         },
-        "added_timestamp": "2025-06-25T04:05:20.357168",
+        "added_timestamp": "2025-06-25T04:08:08.577071",
         "url": "https://stream.castr.com/655a9019e6c4692b56396b6d/live_f88ae0808c9911ee9d20297cbe04ce6d/index.fmp4.m3u8|Referer=https://player.castr.com/",
         "url_domain": "stream.castr.com",
         "is_hls": false
@@ -1138,7 +1138,7 @@
           "tvg-logo": "https://i.imgur.com/5Pq17aU.jpg",
           "group-title": "Communautaire"
         },
-        "added_timestamp": "2025-06-25T04:05:20.357314",
+        "added_timestamp": "2025-06-25T04:08:08.577197",
         "url": "https://stream.castr.com/655a9019e6c4692b56396b6d/live_ee53b1d08d9511ee89c1a3cd362d5ce1/index.fmp4.m3u8|Referer=https://player.castr.com/",
         "url_domain": "stream.castr.com",
         "is_hls": false
@@ -1156,7 +1156,7 @@
           "tvg-logo": "https://i.imgur.com/w9XCbWX.jpg",
           "group-title": "Communautaire"
         },
-        "added_timestamp": "2025-06-25T04:05:20.357902",
+        "added_timestamp": "2025-06-25T04:08:08.577847",
         "url": "https://stream.castr.com/63bf0d473321d4909a3876ad/live_d6983bc091e611edbddd7fe8982d8daf/index.fmp4.m3u8|Referer=https://player.castr.com/",
         "url_domain": "stream.castr.com",
         "is_hls": false
@@ -1174,7 +1174,7 @@
           "tvg-logo": "https://i.imgur.com/LjLyEDf.png",
           "group-title": "Communautaire"
         },
-        "added_timestamp": "2025-06-25T04:05:20.362038",
+        "added_timestamp": "2025-06-25T04:08:08.582022",
         "url": "http://66.11.33.44:8081/live/TCF/playlist.m3u8",
         "url_domain": "66.11.33.44:8081",
         "is_hls": true
@@ -1192,7 +1192,7 @@
           "tvg-logo": "https://i.imgur.com/XlJeNba.jpg",
           "group-title": "Communautaire"
         },
-        "added_timestamp": "2025-06-25T04:05:20.362162",
+        "added_timestamp": "2025-06-25T04:08:08.582162",
         "url": "http://unifi.fleetinfo.info:1935/CTRB/myStream/playlist.m3u8",
         "url_domain": "unifi.fleetinfo.info:1935",
         "is_hls": true
@@ -1212,7 +1212,7 @@
           "tvg-logo": "https://i.imgur.com/azFxS50.jpg",
           "group-title": "Radio"
         },
-        "added_timestamp": "2025-06-25T04:05:20.358184",
+        "added_timestamp": "2025-06-25T04:08:08.578155",
         "url": "https://media1.radioservers.biz:1936/cnv/cnv/playlist.m3u8",
         "url_domain": "media1.radioservers.biz:1936",
         "is_hls": true
@@ -1232,7 +1232,7 @@
           "tvg-logo": "https://i.imgur.com/MKk1dfH.jpg",
           "group-title": "Religion"
         },
-        "added_timestamp": "2025-06-25T04:05:20.358875",
+        "added_timestamp": "2025-06-25T04:08:08.578824",
         "url": "https://zm6gdaxeyn93-hls-live.5centscdn.com/slworld/d65ce2bdd03471fde0a1dc5e01d793bb.sdp/index.m3u8",
         "url_domain": "zm6gdaxeyn93-hls-live.5centscdn.com",
         "is_hls": true
@@ -1253,7 +1253,7 @@
           "tvg-logo": "https://i.imgur.com/xKNnoci.png",
           "group-title": "Affaires Publiques"
         },
-        "added_timestamp": "2025-06-25T04:05:20.359656",
+        "added_timestamp": "2025-06-25T04:08:08.579629",
         "url": "https://diffusionm.assnat.qc.ca/diffusion/canal17/playlist.m3u8",
         "url_domain": "diffusionm.assnat.qc.ca",
         "is_hls": true
@@ -1272,7 +1272,7 @@
           "tvg-logo": "https://i.imgur.com/5ym6eJS.png",
           "group-title": "Affaires Publiques"
         },
-        "added_timestamp": "2025-06-25T04:05:20.359732",
+        "added_timestamp": "2025-06-25T04:08:08.579704",
         "url": "https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8",
         "url_domain": "d7z3qjdsxbwoq.cloudfront.net",
         "is_hls": true
@@ -1291,7 +1291,7 @@
           "tvg-logo": "https://i.imgur.com/5ym6eJS.png",
           "group-title": "Affaires Publiques"
         },
-        "added_timestamp": "2025-06-25T04:05:20.359802",
+        "added_timestamp": "2025-06-25T04:08:08.579773",
         "url": "https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/live-audio_track_1_1_fre=96000.m3u8",
         "url_domain": "d7z3qjdsxbwoq.cloudfront.net",
         "is_hls": true
@@ -1310,7 +1310,7 @@
           "tvg-logo": "https://i.imgur.com/5ym6eJS.png",
           "group-title": "Affaires Publiques"
         },
-        "added_timestamp": "2025-06-25T04:05:20.359869",
+        "added_timestamp": "2025-06-25T04:08:08.579839",
         "url": "https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/live-audio_track_2_2_und=96000.m3u8",
         "url_domain": "d7z3qjdsxbwoq.cloudfront.net",
         "is_hls": true
@@ -1329,7 +1329,7 @@
           "tvg-logo": "https://i.imgur.com/5ym6eJS.png",
           "group-title": "Affaires Publiques"
         },
-        "added_timestamp": "2025-06-25T04:05:20.359939",
+        "added_timestamp": "2025-06-25T04:08:08.579908",
         "url": "https://d7z3qjdsxbwoq.cloudfront.net/groupb/live/84f27807-0966-40b5-b118-0517cc126808/live.isml/.m3u8",
         "url_domain": "d7z3qjdsxbwoq.cloudfront.net",
         "is_hls": true
@@ -1348,7 +1348,7 @@
           "tvg-logo": "https://i.imgur.com/5ym6eJS.png",
           "group-title": "Affaires Publiques"
         },
-        "added_timestamp": "2025-06-25T04:05:20.360006",
+        "added_timestamp": "2025-06-25T04:08:08.579973",
         "url": "https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/84f27807-0966-40b5-b118-0517cc126808/live.isml/live-audio_track_1_1_fre=96000.m3u8",
         "url_domain": "d7z3qjdsxbwoq.cloudfront.net",
         "is_hls": true
@@ -1367,7 +1367,7 @@
           "tvg-logo": "https://i.imgur.com/5ym6eJS.png",
           "group-title": "Affaires Publiques"
         },
-        "added_timestamp": "2025-06-25T04:05:20.360074",
+        "added_timestamp": "2025-06-25T04:08:08.580063",
         "url": "https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/84f27807-0966-40b5-b118-0517cc126808/live.isml/live-audio_track_2_2_und=96000.m3u8",
         "url_domain": "d7z3qjdsxbwoq.cloudfront.net",
         "is_hls": true
@@ -1386,7 +1386,7 @@
           "tvg-logo": "https://i.imgur.com/5ym6eJS.png",
           "group-title": "Affaires Publiques"
         },
-        "added_timestamp": "2025-06-25T04:05:20.360227",
+        "added_timestamp": "2025-06-25T04:08:08.580207",
         "url": "https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/9132c6aa-475e-4621-9322-7fd065dbdc37/live.isml/live-audio_track_1_1_fre=96000.m3u8",
         "url_domain": "d7z3qjdsxbwoq.cloudfront.net",
         "is_hls": true
@@ -1405,7 +1405,7 @@
           "tvg-logo": "https://i.imgur.com/5ym6eJS.png",
           "group-title": "Affaires Publiques"
         },
-        "added_timestamp": "2025-06-25T04:05:20.360298",
+        "added_timestamp": "2025-06-25T04:08:08.580274",
         "url": "https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/9132c6aa-475e-4621-9322-7fd065dbdc37/live.isml/live-audio_track_2_2_und=96000.m3u8",
         "url_domain": "d7z3qjdsxbwoq.cloudfront.net",
         "is_hls": true
@@ -1423,7 +1423,7 @@
           "tvg-logo": "https://i.imgur.com/N7JMyFL.png",
           "group-title": "Affaires Publiques"
         },
-        "added_timestamp": "2025-06-25T04:05:20.360426",
+        "added_timestamp": "2025-06-25T04:08:08.580398",
         "url": "https://5976193b91256.streamlock.net/live/canal325.smil/playlist.m3u8",
         "url_domain": "5976193b91256.streamlock.net",
         "is_hls": true
@@ -1443,7 +1443,7 @@
           "tvg-logo": "",
           "group-title": "Quebec TV"
         },
-        "added_timestamp": "2025-06-25T04:05:20.363975",
+        "added_timestamp": "2025-06-25T04:08:08.583957",
         "url": "https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/master.m3u8",
         "url_domain": "tvalcn.akamaized.net",
         "is_hls": true
@@ -1461,7 +1461,7 @@
           "tvg-logo": "",
           "group-title": "Quebec TV"
         },
-        "added_timestamp": "2025-06-25T04:05:20.364037",
+        "added_timestamp": "2025-06-25T04:08:08.584017",
         "url": "https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/high_1080p/high_1080p.m3u8",
         "url_domain": "tvalcn.akamaized.net",
         "is_hls": true
@@ -1479,7 +1479,7 @@
           "tvg-logo": "",
           "group-title": "Quebec TV"
         },
-        "added_timestamp": "2025-06-25T04:05:20.364097",
+        "added_timestamp": "2025-06-25T04:08:08.584092",
         "url": "https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/med_720p/med_720p.m3u8",
         "url_domain": "tvalcn.akamaized.net",
         "is_hls": true
@@ -1497,7 +1497,7 @@
           "tvg-logo": "https://i.imgur.com/BWsxm4p.png",
           "group-title": "Quebec TV"
         },
-        "added_timestamp": "2025-06-25T04:05:20.364161",
+        "added_timestamp": "2025-06-25T04:08:08.584159",
         "url": "https://chaine_tva_uls-lh.akamaihd.net/i/MOIETCIE_1@697478/master.m3u8",
         "url_domain": "chaine_tva_uls-lh.akamaihd.net",
         "is_hls": true
@@ -1515,7 +1515,7 @@
           "tvg-logo": "https://i.imgur.com/YVmkt8p.png",
           "group-title": "Quebec TV"
         },
-        "added_timestamp": "2025-06-25T04:05:20.364564",
+        "added_timestamp": "2025-06-25T04:08:08.584533",
         "url": "https://chaine_tva_uls-lh.akamaihd.net/i/zeste01_1@853162/master.m3u8",
         "url_domain": "chaine_tva_uls-lh.akamaihd.net",
         "is_hls": true
@@ -1536,7 +1536,7 @@
           "tvg-logo": "https://i.imgur.com/ydf6WFN.jpeg",
           "group-title": "Thématique"
         },
-        "added_timestamp": "2025-06-25T04:05:20.364254",
+        "added_timestamp": "2025-06-25T04:08:08.584233",
         "url": "https://temoindirect.akamaized.net/no/V-MOICIE/V-MOICIE.isml/V-MOICIE.m3u8",
         "url_domain": "temoindirect.akamaized.net",
         "is_hls": true
@@ -1557,7 +1557,7 @@
           "tvg-logo": "https://i.imgur.com/YVmkt8p.png",
           "group-title": "Cuisine"
         },
-        "added_timestamp": "2025-06-25T04:05:20.364385",
+        "added_timestamp": "2025-06-25T04:08:08.584357",
         "url": "https://vmediazeste.akamaized.net/no/V-ZESTE/V-ZESTE.isml/V-ZESTE.m3u8",
         "url_domain": "vmediazeste.akamaized.net",
         "is_hls": true
