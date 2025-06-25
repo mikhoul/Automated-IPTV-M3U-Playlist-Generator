@@ -1288,7 +1288,7 @@ def main():
     # Initialize collector with comprehensive configuration
     collector = M3UCollector(
         country="Mikhoul", 
-        check_links=False,  # Set to True to enable link validation (slower but more accurate)
+        check_links=True,  # Set to True to enable link validation (slower but more accurate)
         excluded_groups=excluded_groups,
         config=config
     )
