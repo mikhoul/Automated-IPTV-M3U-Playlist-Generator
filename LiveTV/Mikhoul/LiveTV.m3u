@@ -123,6 +123,8 @@ http://66.11.33.44:8081/live/TCF/playlist.m3u8
 http://unifi.fleetinfo.info:1935/CTRB/myStream/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/azFxS50.jpg" group-title="Radio",CNV
 https://media1.radioservers.biz:1936/cnv/cnv/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/MKk1dfH.jpg" group-title="Religion",SL Media (1080p)
+https://zm6gdaxeyn93-hls-live.5centscdn.com/slworld/d65ce2bdd03471fde0a1dc5e01d793bb.sdp/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/xKNnoci.png" group-title="Affaires Publiques",Assnat (360p)
 https://diffusionm.assnat.qc.ca/diffusion/canal17/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/5ym6eJS.png" group-title="Affaires Publiques",Cpac (1080p) (Kodi Changez Param Audio)
@@ -145,3 +147,19 @@ https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/9132c6aa-475e-4621-9322-7fd065d
 https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/9132c6aa-475e-4621-9322-7fd065dbdc37/live.isml/live-audio_track_2_2_und=96000.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/N7JMyFL.png" group-title="Affaires Publiques",OCPM (lorsque diffusion)
 https://5976193b91256.streamlock.net/live/canal325.smil/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://buddytv.netlify.app/img/no-logo.png" group-title="Quebec TV",LCN master
+https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/master.m3u8
+#EXTINF:-1 tvg-logo="https://buddytv.netlify.app/img/no-logo.png" group-title="Quebec TV",LCN 1080
+https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/high_1080p/high_1080p.m3u8
+#EXTINF:-1 tvg-logo="https://buddytv.netlify.app/img/no-logo.png" group-title="Quebec TV",LCN 720
+https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/med_720p/med_720p.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/BWsxm4p.png" group-title="Quebec TV",MOI ET CIE (OFFLINE)
+https://chaine_tva_uls-lh.akamaihd.net/i/MOIETCIE_1@697478/master.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/YVmkt8p.png" group-title="Quebec TV",Zeste (OFFLINE)
+https://chaine_tva_uls-lh.akamaihd.net/i/zeste01_1@853162/master.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/ydf6WFN.jpeg" group-title="Thématique",Témoin (En Débrouillage)
+https://temoindirect.akamaized.net/no/V-MOICIE/V-MOICIE.isml/V-MOICIE.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/YVmkt8p.png" group-title="Cuisine",Zeste (En Debrouillage)
+https://vmediazeste.akamaized.net/no/V-ZESTE/V-ZESTE.isml/V-ZESTE.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/YVmkt8p.png" group-title="Cuisine",Zeste (En Debrouillage)
+https://ctszeste.akamaized.net/Content/HLS/Live/channel(bdfda20c-b73f-e8fc-8e12-e010830aa276)/index.m3u8
