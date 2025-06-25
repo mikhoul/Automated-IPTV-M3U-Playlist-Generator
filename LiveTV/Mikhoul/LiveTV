@@ -372,12 +372,6 @@
     "img": "https://i.imgur.com/azFxS50.jpg"
   },
   {
-    "name": "Radio Amour - Spiri-Maria, Lac-Etchemin, Québec (STK) (Non 24/7)",
-    "type": "Religion",
-    "url": "https://zm6gdaxeyn93-hls-live.5centscdn.com/slworld/d65ce2bdd03471fde0a1dc5e01d793bb.sdp/index.m3u8",
-    "img": "https://i.imgur.com/I7iCMNO.jpg"
-  },
-  {
     "name": "Assnat (360p)",
     "type": "Affaires Publiques",
     "url": "https://diffusionm.assnat.qc.ca/diffusion/canal17/playlist.m3u8",
@@ -442,11 +436,5 @@
     "type": "Affaires Publiques",
     "url": "https://5976193b91256.streamlock.net/live/canal325.smil/playlist.m3u8",
     "img": "https://i.imgur.com/N7JMyFL.png"
-  },
-  {
-    "name": "png\",★★★★★[COLOR black]Debrouillage Terminer[/COLOR]★★★★★",
-    "type": "Uncategorized",
-    "url": "https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/master.m3u8",
-    "img": "no-logo,png"
   }
 ]

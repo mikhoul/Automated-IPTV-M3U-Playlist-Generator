@@ -1,5 +1,5 @@
 {
-  "date": "2025-06-25 01:59:49",
+  "date": "2025-06-25 07:27:29",
   "channels": {
     "Educatif": [
       {
@@ -521,16 +521,6 @@
         "url": "https://media1.radioservers.biz:1936/cnv/cnv/playlist.m3u8"
       }
     ],
-    "Religion": [
-      {
-        "name": "Radio Amour - Spiri-Maria, Lac-Etchemin, Québec (STK) (Non 24/7)",
-        "logo": "https://i.imgur.com/I7iCMNO.jpg",
-        "group": "Religion",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 283,
-        "url": "https://zm6gdaxeyn93-hls-live.5centscdn.com/slworld/d65ce2bdd03471fde0a1dc5e01d793bb.sdp/index.m3u8"
-      }
-    ],
     "Affaires Publiques": [
       {
         "name": "Assnat (360p)",
@@ -620,39 +610,29 @@
         "line_num": 361,
         "url": "https://5976193b91256.streamlock.net/live/canal325.smil/playlist.m3u8"
       }
-    ],
-    "Uncategorized": [
-      {
-        "name": "png\",★★★★★[COLOR black]Debrouillage Terminer[/COLOR]★★★★★",
-        "logo": "no-logo,png",
-        "group": "Uncategorized",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 517,
-        "url": "https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/master.m3u8"
-      }
     ]
   },
   "excluded_groups": [
-    "Argentina",
-    "Austria",
-    "Brazil",
-    "Chile",
-    "Denmark",
-    "Germany",
-    "India",
-    "Italy",
-    "Mexico",
-    "Norway",
-    "South Korea",
-    "Spain",
-    "Sweden",
-    "Switzerland",
-    "United Kingdom",
-    "United States",
-    "Offline",
-    "Test",
-    "Demo",
-    "Shopping",
-    "Teleshopping"
+    "argentina",
+    "austria",
+    "brazil",
+    "chile",
+    "denmark",
+    "germany",
+    "india",
+    "italy",
+    "mexico",
+    "norway",
+    "south korea",
+    "spain",
+    "sweden",
+    "switzerland",
+    "united kingdom",
+    "united states",
+    "offline",
+    "test",
+    "demo",
+    "shopping",
+    "teleshopping"
   ]
 }

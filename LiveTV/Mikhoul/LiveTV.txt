@@ -355,13 +355,6 @@ Logo: https://i.imgur.com/azFxS50.jpg
 Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
 --------------------------------------------------
 
-Group: Religion
-Name: Radio Amour - Spiri-Maria, Lac-Etchemin, Québec (STK) (Non 24/7)
-URL: https://zm6gdaxeyn93-hls-live.5centscdn.com/slworld/d65ce2bdd03471fde0a1dc5e01d793bb.sdp/index.m3u8
-Logo: https://i.imgur.com/I7iCMNO.jpg
-Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
---------------------------------------------------
-
 Group: Réréalité
 Name: Noovo Téléréalités
 URL: https://d29qczaufx5vc3.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-dxg2k6h0o2l6i/Noovo_Telerealites.m3u8
@@ -393,13 +386,6 @@ Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d
 Name: TVA Sports 2
 URL: https://webudit.webhd.ru/lb/premium834/index.m3u8|Referer=https://weblivehdplay.ru/premiumtv/daddylivehd.php?id=834
 Logo: https://i.imgur.com/t5rroKn.png
-Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
---------------------------------------------------
-
-Group: Uncategorized
-Name: png",★★★★★[COLOR black]Debrouillage Terminer[/COLOR]★★★★★
-URL: https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/master.m3u8
-Logo: no-logo,png
 Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
 --------------------------------------------------
 
