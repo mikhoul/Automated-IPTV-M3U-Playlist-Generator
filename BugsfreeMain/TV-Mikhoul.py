@@ -317,11 +317,11 @@ class M3UCollector:
 
     def check_link_active(self, url, channel_name="Unknown Channel", timeout=None):
         """
-        Comprehensive link validation with caching and specialized stream checking.
+        Comprehensive link validation with detailed logging and caching.
         
         Args:
             url (str): URL to check
-            channel_name (str): Channel name for logging
+            channel_name (str): Channel name for detailed logging
             timeout (int): Request timeout
             
         Returns:
@@ -338,9 +338,14 @@ class M3UCollector:
                     return cached_result['is_active'], cached_result['url'], cached_result['status']
         
         headers = self.get_request_headers(url)
-        result = self.validate_stream_url(url, headers, timeout, channel_name)
         
-        # Cache the result
+        # Use specialized validation based on URL type
+        if url.endswith('.m3u8') or 'hls' in url.lower():
+            result = self.validate_hls_stream(url, headers, timeout, channel_name)
+        else:
+            result = self.validate_regular_url(url, headers, timeout, channel_name)
+        
+        # Cache the result with timestamp
         with self.lock:
             self.url_status_cache[url] = {
                 'is_active': result[0],
@@ -351,53 +356,107 @@ class M3UCollector:
             
         return result
 
-    def validate_stream_url(self, url, headers, timeout, channel_name="Unknown Channel"):
+    def validate_hls_stream(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate streaming URL with specialized handling for different stream types.
+        Validate HLS/M3U8 streams with detailed status logging.
         
         Args:
             url (str): URL to validate
             headers (dict): Request headers
             timeout (int): Request timeout
-            channel_name (str): Channel name for logging
+            channel_name (str): Channel name for detailed logging
             
         Returns:
             tuple: (is_active, final_url, status_info)
         """
         try:
-            # Try HEAD request first (faster)
-            response = requests.head(url, headers=headers, timeout=timeout, allow_redirects=True)
-            
+            response = requests.get(url, headers=headers, timeout=timeout, stream=True)
             if response.status_code == 200:
+                # Check if content looks like a valid M3U8 playlist
+                content = response.text[:2048]
+                if '#EXTM3U' in content or '#EXT-X-VERSION' in content:
+                    logging.info(f"Channel '{channel_name}': Active HLS stream - URL: {url}")
+                    return True, url, 'active'
+                else:
+                    logging.warning(f"Channel '{channel_name}': URL returned 200 but invalid M3U8 content - URL: {url}")
+                    return False, url, 'invalid_content'
+            elif response.status_code == 403:
+                logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked HLS stream - URL: {url}")
+                return True, url, 'geo_blocked'
+            elif response.status_code == 404:
+                logging.warning(f"Channel '{channel_name}': 404 Not Found - HLS stream - URL: {url}")
+                return False, url, 'not_found'
+            else:
+                logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} - HLS stream - URL: {url}")
+                return False, url, f'http_{response.status_code}'
+        except requests.RequestException as e:
+            logging.debug(f"Channel '{channel_name}': HLS validation failed - URL: {url} - Error: {e}")
+        
+        # Fallback to regular URL validation
+        return self.validate_regular_url(url, headers, timeout, channel_name)
+
+    def validate_regular_url(self, url, headers, timeout, channel_name="Unknown Channel"):
+        """
+        Validate regular URLs with detailed status logging.
+        
+        Args:
+            url (str): URL to validate
+            headers (dict): Request headers
+            timeout (int): Request timeout
+            channel_name (str): Channel name for detailed logging
+            
+        Returns:
+            tuple: (is_active, final_url, status_info)
+        """
+        # Try HEAD request first (faster)
+        try:
+            response = requests.head(url, headers=headers, timeout=timeout, allow_redirects=True)
+            if response.status_code < 400:
+                logging.info(f"Channel '{channel_name}': Active (HEAD) - URL: {url}")
                 return True, response.url, 'active'
             elif response.status_code == 403:
-                return True, url, 'geo-blocked'
-            elif response.status_code in [301, 302, 307, 308]:
-                # Follow redirects manually for better control
-                return self.validate_stream_url(response.headers.get('Location', url), headers, timeout, channel_name)
-                
+                logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD) - URL: {url}")
+                return True, url, 'geo_blocked'
+            elif response.status_code == 404:
+                logging.warning(f"Channel '{channel_name}': 404 Not Found (HEAD) - URL: {url}")
+                return False, url, 'not_found'
         except requests.RequestException:
             pass
         
-        # Try GET request for streams that don't respond to HEAD
+        # Try GET request as fallback
         try:
             with requests.get(url, headers=headers, timeout=timeout, stream=True) as response:
-                if response.status_code == 200:
-                    # For HLS streams, check if content looks valid
-                    if url.endswith('.m3u8') or 'hls' in url.lower():
-                        try:
-                            content_sample = response.iter_content(chunk_size=1024).__next__().decode('utf-8', errors='ignore')
-                            if '#EXTM3U' in content_sample or '#EXT-X-VERSION' in content_sample:
-                                return True, response.url, 'active-hls'
-                        except:
-                            pass
+                if response.status_code < 400:
+                    logging.info(f"Channel '{channel_name}': Active (GET) - URL: {url}")
                     return True, response.url, 'active'
                 elif response.status_code == 403:
-                    return True, url, 'geo-blocked'
-                    
+                    logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (GET) - URL: {url}")
+                    return True, url, 'geo_blocked'
+                elif response.status_code == 404:
+                    logging.warning(f"Channel '{channel_name}': 404 Not Found (GET) - URL: {url}")
+                    return False, url, 'not_found'
+                else:
+                    logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} (GET) - URL: {url}")
+                    return False, url, f'http_{response.status_code}'
         except requests.RequestException as e:
-            logging.debug(f"Validation failed for {channel_name} ({url}): {e}")
-            
+            logging.debug(f"Channel '{channel_name}': Regular validation failed - URL: {url} - Error: {e}")
+        
+        # Try protocol switching as last resort
+        try:
+            alt_url = url.replace('http://', 'https://') if url.startswith('http://') else url.replace('https://', 'http://')
+            if alt_url != url:  # Only try if URL actually changed
+                response = requests.head(alt_url, timeout=timeout, headers=headers, allow_redirects=True)
+                if response.status_code < 400:
+                    logging.info(f"Channel '{channel_name}': Active (HEAD, switched protocol) - URL: {alt_url}")
+                    return True, alt_url, 'active'
+                elif response.status_code == 403:
+                    logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD, switched protocol) - URL: {alt_url}")
+                    return True, alt_url, 'geo_blocked'
+        except requests.RequestException:
+            pass
+        
+        # Mark as inactive
+        logging.warning(f"Channel '{channel_name}': All validation methods failed - URL: {url}")
         return False, url, 'inactive'
 
     def detect_content_language(self, text):
@@ -604,6 +663,7 @@ class M3UCollector:
                 logging.info(f"Parsing progress: {progress:.1f}% ({line_num}/{total_lines} lines)")
             
             # Process EXTINF lines with comprehensive attribute extraction
+            # FIXED: Handle both '#EXTINF:' and 'EXTINF:' patterns (Cuisine fix)
             if line.startswith('#EXTINF:') or line.startswith('EXTINF:'):
                 total_extinf_lines += 1
                 
@@ -616,12 +676,12 @@ class M3UCollector:
                     if logo and not logo.startswith(('http://', 'https://')):
                         logo = self.default_logo
                     
-                    # Extract group with robust handling (FIXED: supports both #EXTINF: and EXTINF:)
+                    # Extract group with robust handling
                     group = "Uncategorized"
                     extracted_group = attributes.get('group-title', '').strip()
                     if extracted_group and not extracted_group.isspace():
                         group = extracted_group
-                        # Normalize specific group names
+                        # Normalize specific group names (Cuisine fix)
                         if group.lower() == 'cuisine':
                             group = 'Cuisine'
                     
@@ -802,7 +862,7 @@ class M3UCollector:
 
     def filter_active_channels(self):
         """
-        Filter channels by checking URL availability with comprehensive validation.
+        Filter channels by checking URL availability with detailed validation logging.
         Uses concurrent processing for performance optimization.
         """
         if not self.check_links:
@@ -819,18 +879,22 @@ class M3UCollector:
                 url_to_channels[channel['url']].append((group, channel))
         
         total_urls = len(url_to_channels)
-        logging.info(f"Validating {total_urls} unique URLs across {sum(len(ch) for ch in self.channels.values())} channels")
+        logging.info(f"Total channels to check: {sum(len(channels) for channels in url_to_channels.values())}")
+        logging.info(f"Validating {total_urls} unique URLs")
         
         active_channels = defaultdict(list)
         validation_results = {}
+        geo_blocked_count = 0
         
         # Process URLs concurrently
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             # Submit all validation tasks
-            future_to_url = {
-                executor.submit(self.check_link_active, url, f"Multiple channels ({len(channels)})")
-                : url for url, channels in url_to_channels.items()
-            }
+            future_to_url = {}
+            for url, channels in url_to_channels.items():
+                # Use the first channel's name for logging
+                channel_name = channels[0][1]['name']
+                future = executor.submit(self.check_link_active, url, channel_name)
+                future_to_url[future] = url
             
             # Process results as they complete
             completed = 0
@@ -855,9 +919,23 @@ class M3UCollector:
                             if final_url != url:
                                 channel['url'] = final_url
                                 channel['original_url'] = url
+                            
                             channel['validation_status'] = status
                             channel['validation_timestamp'] = datetime.now().isoformat()
+                            
+                            # Tag geo-blocked channels
+                            if status == 'geo_blocked':
+                                if not channel['name'].endswith('[Geo-blocked]'):
+                                    original_name = channel['name']
+                                    channel['name'] = f"{channel['name']} [Geo-blocked]"
+                                    logging.info(f"Tagged as geo-blocked: {channel['name']} - URL: {channel['url']}")
+                                    geo_blocked_count += 1
+                            
                             active_channels[group].append(channel)
+                    else:
+                        # Log inactive channels
+                        for group, channel in url_to_channels[url]:
+                            logging.warning(f"Channel '{channel['name']}' is inactive ({status}) - URL: {url}")
                     
                 except Exception as e:
                     logging.error(f"Validation error for {url}: {e}")
@@ -868,17 +946,20 @@ class M3UCollector:
         self.channels = active_channels
         final_count = sum(len(ch) for ch in self.channels.values())
         
-        # Log validation statistics
+        # Log detailed validation statistics
         elapsed_time = time.time() - start_time
         active_count = sum(1 for is_active, _, _ in validation_results.values() if is_active)
         
         logging.info(f"Link validation complete in {format_duration(int(elapsed_time))}")
         logging.info(f"Results: {active_count}/{total_urls} URLs active ({(active_count/total_urls*100):.1f}%)")
         logging.info(f"Channels: {final_count}/{original_count} remaining ({(final_count/original_count*100):.1f}%)")
+        logging.info(f"Active channels after filtering: {final_count}")
+        logging.info(f"Geo-blocked channels detected: {geo_blocked_count}")
         
         # Update statistics
         self.statistics['urls_validated'] = total_urls
         self.statistics['active_urls'] = active_count
+        self.statistics['geo_blocked_urls'] = geo_blocked_count
         self.statistics['validation_time'] = elapsed_time
 
     def process_sources(self, source_urls):
@@ -1254,7 +1335,7 @@ class M3UCollector:
 
 def main():
     """
-    Main execution function with comprehensive configuration and error handling.
+    Main execution function with comprehensive configuration and detailed validation logging.
     """
     logging.info("Starting M3U Collector with full functionality")
     
@@ -1288,7 +1369,7 @@ def main():
     # Initialize collector with comprehensive configuration
     collector = M3UCollector(
         country="Mikhoul", 
-        check_links=True,  # Set to True to enable link validation (slower but more accurate)
+        check_links=True,  # ENABLE DETAILED VALIDATION LOGGING
         excluded_groups=excluded_groups,
         config=config
     )
