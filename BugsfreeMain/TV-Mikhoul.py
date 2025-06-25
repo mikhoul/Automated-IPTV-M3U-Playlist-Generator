@@ -74,7 +74,7 @@ class M3UCollector:
     Handles channel extraction, validation, filtering, and export in multiple formats.
     """
     
-    def __init__(self, country="Mikhoul", base_dir="LiveTV", check_links=False, excluded_groups=None, config=None):
+    def __init__(self, country="Mikhoul", base_dir="LiveTV", check_links=True, excluded_groups=None, config=None):
         """
         Initialize the M3U collector with comprehensive configuration options.
         
