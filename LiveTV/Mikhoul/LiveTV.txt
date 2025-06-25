@@ -1,73 +1,73 @@
 Live TV Channel List for Mikhoul
-Generated: 2025-06-25 04:30:50
+Generated: 2025-06-25 04:32:23
 Total Channels: 55
 Total Groups: 13
 ================================================================================
 
 GROUP: Actualités (8 channels)
 ------------------------------------------------------------
-  1. ICI RDI (Audio)
+  1. CBMT-DT - CBC Montreal (720p)
+     URL: https://cbcrclinear-tor.akamaized.net/hls/live/2042761/CBCRCLINEAR_TOR_7/master5.m3u8
+     Logo: https://i.imgur.com/AeVRfbB.png
+     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Status: geo-blocked
+
+  2. ICI RDI (Audio)
      URL: https://rcavlive.akamaized.net/hls/live/704026/canrdi/master_dv.m3u8
      Logo: https://i.imgur.com/Bb1ZiR6.jpg
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: geo-blocked
 
-  2. ICI RDI (Adaptative)
+  3. ICI RDI (Adaptative)
      URL: https://rcavlive.akamaized.net/hls/live/704026/canrdi/master.m3u8
      Logo: https://i.imgur.com/Bb1ZiR6.jpg
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: geo-blocked
 
-  3. CKMI-DT - Global News Montreal (720p)
+  4. CKMI-DT - Global News Montreal (720p)
      URL: https://live.corusdigitaldev.com/groupa/live/6bfb7f13-9d9d-4211-9c50-fb56330e4ccd/live.isml/.m3u8
      Logo: https://i.imgur.com/0vLVIWr.jpg
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Language: en
      Status: active
 
-  4. CBMT-DT - CBC Montreal (720p)
-     URL: https://cbcrclinear-tor.akamaized.net/hls/live/2042761/CBCRCLINEAR_TOR_7/master5.m3u8
-     Logo: https://i.imgur.com/AeVRfbB.png
-     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
-     Status: geo-blocked
-
-  5. LCN (720p)
-     URL: https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8
-     Logo: https://i.imgur.com/6cESMfj.png
-     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
-     Status: geo-blocked
-
-  6. LCN (Audio)
-     URL: https://tvalive.akamaized.net/hls/live/2014213/tvan01/audio_0_eng.m3u8
-     Logo: https://i.imgur.com/6cESMfj.png
-     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
-     Status: geo-blocked
-
-  7. ICI RDI (Adaptative) (OPT-2)
+  5. ICI RDI (Adaptative) (OPT-2)
      URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8
      Logo: https://i.imgur.com/Bb1ZiR6.jpg
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: active
 
-  8. CJNT-DT - CityNews Montreal 6pm a 11pm (Non 24/7)
+  6. CJNT-DT - CityNews Montreal 6pm a 11pm (Non 24/7)
      URL: https://citynewsregional.akamaized.net/hls/live/553720/CityNews-Montreal/master.m3u8
      Logo: https://i.imgur.com/jMaP3wK.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Language: en
      Status: active
 
+  7. LCN (Audio)
+     URL: https://tvalive.akamaized.net/hls/live/2014213/tvan01/audio_0_eng.m3u8
+     Logo: https://i.imgur.com/6cESMfj.png
+     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Status: geo-blocked
+
+  8. LCN (720p)
+     URL: https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8
+     Logo: https://i.imgur.com/6cESMfj.png
+     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Status: geo-blocked
+
 
 GROUP: Affaires Publiques (2 channels)
 ------------------------------------------------------------
-  1. Cpac (1080p) (Kodi Changez Param Audio)
-     URL: https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8
-     Logo: https://i.imgur.com/5ym6eJS.png
+  1. Assnat (360p)
+     URL: https://diffusionm.assnat.qc.ca/diffusion/canal17/playlist.m3u8
+     Logo: https://i.imgur.com/xKNnoci.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: active
 
-  2. Assnat (360p)
-     URL: https://diffusionm.assnat.qc.ca/diffusion/canal17/playlist.m3u8
-     Logo: https://i.imgur.com/xKNnoci.png
+  2. Cpac (1080p) (Kodi Changez Param Audio)
+     URL: https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8
+     Logo: https://i.imgur.com/5ym6eJS.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: active
 
@@ -143,51 +143,53 @@ GROUP: Film (1 channels)
 
 GROUP: Généraliste (33 channels)
 ------------------------------------------------------------
-  1. CBAFT-DT - ICI Radio-Canada Télé Acadie (Moncton) (720p)
-     URL: https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8
-     Logo: https://i.imgur.com/3TlTIrd.png
+  1. CBFT-DT - ICI Radio-Canada Télé Montréal HD (Montréal) (1080p)
+     URL: https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8
+     Logo: https://i.imgur.com/NdCfrtF.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Quality: HD
      Language: fr
      Status: geo-blocked
 
-  2. CJBR-DT - ICI Radio-Canada Télé Est-Québec (Rimouski) (720p)
-     URL: https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8
-     Logo: https://i.imgur.com/hTXZMsX.png
-     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
-     Language: fr
-     Status: geo-blocked
-
-  3. CKTV-DT - ICI Radio-Canada Télé Saguenay-Lac-St-Jean (Saguenay) (720p)
+  2. CKTV-DT - ICI Radio-Canada Télé Saguenay-Lac-St-Jean (Saguenay) (720p)
      URL: https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8
      Logo: https://i.imgur.com/wMQGKoP.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Language: fr
      Status: geo-blocked
 
-  4. CBVT-DT - ICI Radio-Canada Télé Québec (Québec) (720p)
+  3. CBVT-DT - ICI Radio-Canada Télé Québec (Québec) (720p)
      URL: https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_3000.m3u8
      Logo: https://i.imgur.com/aEmwyn6.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Language: fr
      Status: geo-blocked
 
-  5. CBOFT-DT -ICI Radio-Canada Télé Ottawa - Gatineau (Ottawa) (720p)
-     URL: https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8
-     Logo: https://i.imgur.com/PiYf9p0.png
+  4. CJBR-DT - ICI Radio-Canada Télé Est-Québec (Rimouski) (720p)
+     URL: https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8
+     Logo: https://i.imgur.com/hTXZMsX.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Language: fr
      Status: geo-blocked
 
-  6. CKTM-DT - ICI Radio-Canada Télé Mauricie - Centre-du-Québec (Trois-Rivières) (720p)
+  5. CBAFT-DT - ICI Radio-Canada Télé Acadie (Moncton) (720p)
+     URL: https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8
+     Logo: https://i.imgur.com/3TlTIrd.png
+     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Language: fr
+     Status: geo-blocked
+
+  6. CFHD-DT - ICI TV (720p)
+     URL: https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8
+     Logo: https://i.imgur.com/i3xFNPE.png
+     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Quality: HD
+     Language: en
+     Status: active
+
+  7. CKTM-DT - ICI Radio-Canada Télé Mauricie - Centre-du-Québec (Trois-Rivières) (720p)
      URL: https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8
      Logo: https://i.imgur.com/jjnIzML.png
-     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
-     Language: fr
-     Status: geo-blocked
-
-  7. CKSH-DT - ICI Radio-Canada Télé Estrie (Sherbrooke) (720p)
-     URL: https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8
-     Logo: https://i.imgur.com/hen9czq.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Language: fr
      Status: geo-blocked
@@ -199,18 +201,17 @@ GROUP: Généraliste (33 channels)
      Language: fr
      Status: geo-blocked
 
-  9. CBFT-DT - ICI Radio-Canada Télé Montréal (Montréal) (720p)
-     URL: https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_3000.m3u8
-     Logo: https://i.imgur.com/ExX8Ojc.png
+  9. CKSH-DT - ICI Radio-Canada Télé Estrie (Sherbrooke) (720p)
+     URL: https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8
+     Logo: https://i.imgur.com/hen9czq.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Language: fr
      Status: geo-blocked
 
- 10. CBFT-DT - ICI Radio-Canada Télé Montréal HD (Montréal) (1080p)
-     URL: https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8
-     Logo: https://i.imgur.com/NdCfrtF.png
+ 10. CBOFT-DT -ICI Radio-Canada Télé Ottawa - Gatineau (Ottawa) (720p)
+     URL: https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8
+     Logo: https://i.imgur.com/PiYf9p0.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
-     Quality: HD
      Language: fr
      Status: geo-blocked
 
@@ -228,69 +229,68 @@ GROUP: Généraliste (33 channels)
      Language: fr
      Status: geo-blocked
 
- 13. CBWFT-DT - ICI Radio-Canada Télé Manitoba (Winnipeg) (720p)
-     URL: https://rcavlive.akamaized.net/hls/live/704018/cancbwft/master_3000.m3u8
-     Logo: https://i.imgur.com/hvBcsBf.png
-     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
-     Language: fr
-     Status: geo-blocked
-
- 14. CBUFT-DT - ICI Radio-Canada Télé Colombie-Britannique - Yukon (Vancouver) (720p)
+ 13. CBUFT-DT - ICI Radio-Canada Télé Colombie-Britannique - Yukon (Vancouver) (720p)
      URL: https://rcavlive.akamaized.net/hls/live/704017/cancbuft/master_3000.m3u8
      Logo: https://i.imgur.com/bfqHfNX.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Language: fr
      Status: geo-blocked
 
- 15. ICI Tele Est-Quebec (Rimouski) (720p)
-     URL: https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8|X-Forwarded-For=24.37.42.200
-     Logo: https://i.imgur.com/rQyoWsy.png
+ 14. CBWFT-DT - ICI Radio-Canada Télé Manitoba (Winnipeg) (720p)
+     URL: https://rcavlive.akamaized.net/hls/live/704018/cancbwft/master_3000.m3u8
+     Logo: https://i.imgur.com/hvBcsBf.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Language: fr
      Status: geo-blocked
 
- 16. ICI Tele Mauricie (Trois-Rivières) (720p)
-     URL: https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8|X-Forwarded-For=24.37.42.200
-     Logo: https://i.imgur.com/rQyoWsy.png
+ 15. CBFT-DT - ICI Radio-Canada Télé Montréal (Montréal) (720p)
+     URL: https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_3000.m3u8
+     Logo: https://i.imgur.com/ExX8Ojc.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Language: fr
      Status: geo-blocked
 
- 17. ICI Tele Estrie (Sherbrooke) (720p)
+ 16. ICI Tele Estrie (Sherbrooke) (720p)
      URL: https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8|X-Forwarded-For=24.37.42.200
      Logo: https://i.imgur.com/rQyoWsy.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: geo-blocked
 
- 18. ICI Tele Montreal (1080p)
-     URL: https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8|X-Forwarded-For=24.37.42.200
+ 17. ICI Tele Mauricie (Trois-Rivières) (720p)
+     URL: https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8|X-Forwarded-For=24.37.42.200
      Logo: https://i.imgur.com/rQyoWsy.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: geo-blocked
 
- 19. CFTM-DT - TVA Audio
-     URL: https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/05.m3u8
-     Logo: https://i.imgur.com/AvJwjcQ.jpg
+ 18. ICI Tele Est-Quebec (Rimouski) (720p)
+     URL: https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8|X-Forwarded-For=24.37.42.200
+     Logo: https://i.imgur.com/rQyoWsy.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
-     Language: en
      Status: geo-blocked
 
- 20. CFHD-DT - ICI TV (720p)
-     URL: https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8
-     Logo: https://i.imgur.com/i3xFNPE.png
-     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
-     Quality: HD
-     Language: en
-     Status: active
-
- 21. ICI Tele Ottawa-Gatineau (720p)
+ 19. ICI Tele Ottawa-Gatineau (720p)
      URL: https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
      Logo: https://i.imgur.com/rQyoWsy.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: geo-blocked
 
- 22. ICI Tele Quebec (720p)
+ 20. ICI Tele Quebec (720p)
      URL: https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_2500.m3u8|X-Forwarded-For=24.37.42.200
      Logo: https://i.imgur.com/rQyoWsy.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Status: geo-blocked
+
+ 21. ICI Tele Montreal (1080p)
+     URL: https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8|X-Forwarded-For=24.37.42.200
+     Logo: https://i.imgur.com/rQyoWsy.png
+     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Status: geo-blocked
+
+ 22. CFTM-DT - TVA (Adaptative)
+     URL: https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8
+     Logo: https://i.imgur.com/AvJwjcQ.jpg
+     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Language: en
      Status: geo-blocked
 
  23. ICI Tele Saguenay (720p)
@@ -299,14 +299,15 @@ GROUP: Généraliste (33 channels)
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: geo-blocked
 
- 24. ICI Tele Acadie (Moncton) (720p)
-     URL: https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
-     Logo: https://i.imgur.com/rQyoWsy.png
+ 24. CFTM-DT - TVA Audio
+     URL: https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/05.m3u8
+     Logo: https://i.imgur.com/AvJwjcQ.jpg
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Language: en
      Status: geo-blocked
 
- 25. ICI Tele Ontario (Toronto) (720p)
-     URL: https://rcavlive.akamaized.net/hls/live/704022/cancblft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
+ 25. ICI Tele Acadie (Moncton) (720p)
+     URL: https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
      Logo: https://i.imgur.com/rQyoWsy.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: geo-blocked
@@ -317,47 +318,46 @@ GROUP: Généraliste (33 channels)
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: geo-blocked
 
- 27. ICI Tele Saskatchewan (Regina) (720p)
+ 27. ICI Tele Ontario (Toronto) (720p)
+     URL: https://rcavlive.akamaized.net/hls/live/704022/cancblft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
+     Logo: https://i.imgur.com/rQyoWsy.png
+     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Status: geo-blocked
+
+ 28. ICI Tele Saskatchewan (Regina) (720p)
      URL: https://rcavlive.akamaized.net/hls/live/704019/cancbkft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
      Logo: https://i.imgur.com/rQyoWsy.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: geo-blocked
 
- 28. ICI Tele CB-Yukon (Vancouver) (720p)
-     URL: https://rcavlive.akamaized.net/hls/live/704017/cancbuft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
-     Logo: https://i.imgur.com/rQyoWsy.png
-     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
-     Status: geo-blocked
-
- 29. CFTM-DT - TVA (Adaptative)
-     URL: https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8
-     Logo: https://i.imgur.com/AvJwjcQ.jpg
-     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
-     Language: en
-     Status: geo-blocked
-
- 30. ICI Tele Manitoba (Winnipeg) (720p)
+ 29. ICI Tele Manitoba (Winnipeg) (720p)
      URL: https://rcavlive.akamaized.net/hls/live/704018/cancbwft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
      Logo: https://i.imgur.com/rQyoWsy.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Status: geo-blocked
 
- 31. CIVM-DT - Télé Québec (Adaptative)
-     URL: https://bcovlive-a.akamaihd.net/4b1c462c86094bae93b65adc84e43afc/us-west-2/6101674910001/playlist.m3u8
-     Logo: https://i.imgur.com/8R4EaFu.png
+ 30. ICI Tele CB-Yukon (Vancouver) (720p)
+     URL: https://rcavlive.akamaized.net/hls/live/704017/cancbuft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
+     Logo: https://i.imgur.com/rQyoWsy.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
-     Language: fr
      Status: geo-blocked
 
- 32. TVA (Adaptative)
+ 31. TVA (Adaptative)
      URL: https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8|X-Forwarded-For=24.37.42.200
      Logo: https://i.imgur.com/AvJwjcQ.jpg
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Language: en
      Status: geo-blocked
 
- 33. Télé Québec (Adaptative)
+ 32. Télé Québec (Adaptative)
      URL: https://bcovlive-a.akamaihd.net/575d86160eb143458d51f7ab187a4e68/us-east-1/6101674910001/playlist.m3u8|X-Forwarded-For=24.37.42.200
+     Logo: https://i.imgur.com/8R4EaFu.png
+     Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
+     Language: fr
+     Status: geo-blocked
+
+ 33. CIVM-DT - Télé Québec (Adaptative)
+     URL: https://bcovlive-a.akamaihd.net/4b1c462c86094bae93b65adc84e43afc/us-west-2/6101674910001/playlist.m3u8
      Logo: https://i.imgur.com/8R4EaFu.png
      Source: https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u
      Language: fr
