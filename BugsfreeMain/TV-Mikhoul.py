@@ -2,105 +2,72 @@ import requests
 import json
 import os
 import re
-from urllib.parse import urlparse
 from collections import defaultdict
 from datetime import datetime
 import pytz
-import concurrent.futures
-import threading
 import logging
-from bs4 import BeautifulSoup
 
-# Logging plus léger : niveau INFO
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def get_server_geolocation():
-    try:
-        ip_response = requests.get('https://api.ipify.org?format=json', timeout=10)
-        server_ip = ip_response.json()['ip']
-        geo_response = requests.get(f'https://ipapi.co/{server_ip}/json/', timeout=10)
-        geo_data = geo_response.json()
-        location_info = {
-            'ip': server_ip,
-            'country': geo_data.get('country_name', 'Unknown'),
-            'country_code': geo_data.get('country_code', 'Unknown'),
-            'region': geo_data.get('region', 'Unknown'), 
-            'city': geo_data.get('city', 'Unknown'),
-            'org': geo_data.get('org', 'Unknown'),
-            'timezone': geo_data.get('timezone', 'Unknown')
-        }
-        logging.info(f"SERVER GEOLOCATION: {location_info['city']}, {location_info['region']}, {location_info['country']} ({location_info['country_code']}) | IP: {location_info['ip']} | Org: {location_info['org']} | TZ: {location_info['timezone']}")
-        return location_info
-    except Exception as e:
-        logging.warning(f"Failed to get server geolocation: {e}")
-        return None
-
 class M3UCollector:
-    def __init__(self, country="Mikhoul", base_dir="LiveTV", check_links=False, excluded_groups=None):
+    def __init__(self, country="Mikhoul", base_dir="LiveTV", excluded_groups=None):
+        self.country = country
+        self.base_dir = base_dir
+        self.excluded_groups = {group.lower() for group in (excluded_groups or [])}
+        self.output_dir = os.path.join(self.base_dir, self.country)
         self.channels = defaultdict(list)
-        self.default_logo = "https://buddytv.netlify.app/img/no-logo.png"
         self.seen_urls = set()
-        self.url_status_cache = {}
-        self.output_dir = os.path.join(base_dir, country)
-        self.lock = threading.Lock()
-        self.check_links = check_links
-        self.excluded_groups = excluded_groups or []
+        self.default_logo = "https://buddytv.netlify.app/img/no-logo.png"
         self.skipped_non_http_count = 0
         os.makedirs(self.output_dir, exist_ok=True)
+
+    def get_server_geolocation(self):
+        try:
+            ip_response = requests.get('https://api.ipify.org?format=json', timeout=10)
+            server_ip = ip_response.json()['ip']
+            geo_response = requests.get(f'https://ipapi.co/{server_ip}/json/', timeout=10)
+            geo_data = geo_response.json()
+            location_info = {
+                'ip': server_ip,
+                'country': geo_data.get('country_name', 'Unknown'),
+                'country_code': geo_data.get('country_code', 'Unknown'),
+                'region': geo_data.get('region', 'Unknown'), 
+                'city': geo_data.get('city', 'Unknown'),
+                'org': geo_data.get('org', 'Unknown'),
+                'timezone': geo_data.get('timezone', 'Unknown')
+            }
+            logging.info(f"SERVER GEOLOCATION: {location_info['city']}, {location_info['region']}, {location_info['country']} ({location_info['country_code']}) | IP: {location_info['ip']} | Org: {location_info['org']} | TZ: {location_info['timezone']}")
+            return location_info
+        except Exception as e:
+            logging.warning(f"Failed to get server geolocation: {e}")
+            return None
 
     def fetch_content(self, url):
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
         try:
             with requests.get(url, stream=True, headers=headers, timeout=10) as response:
                 response.raise_for_status()
-                # ← CHANGEMENT : Utilisation de 'replace' pour les erreurs d'encodage
                 lines = [line.decode('utf-8', errors='replace') if isinstance(line, bytes) else line for line in response.iter_lines()]
-                return '\n'.join(lines), lines
+                return lines
         except requests.RequestException as e:
             logging.warning(f"Failed to fetch {url}: {str(e)}")
-            return None, []
-
-    def extract_stream_urls_from_html(self, html_content, base_url):
-        if not html_content:
             return []
-        soup = BeautifulSoup(html_content, 'html.parser')
-        stream_urls = set()
-        for link in soup.find_all('a', href=True):
-            href = link['href']
-            parsed_base = urlparse(base_url)
-            parsed_href = urlparse(href)
-            if not parsed_href.scheme:
-                href = f"{parsed_base.scheme}://{parsed_base.netloc}{href}"
-            if (href.endswith(('.m3u', '.m极u8')) or 
-                re.match(r'^https?://.*\.(ts|mp4|avi|mkv|flv|wmv)$', href) or 
-                'playlist' in href.lower() or 'stream' in href.lower()):
-                if not any(exclude in href.lower() for exclude in ['telegram', '.html', '.php', 'github.com', 'login', 'signup']):
-                    stream_urls.add(href)
-        return list(stream_urls)
 
     def test_cuisine_detection(self, lines):
-        cuisine_lines = []
-        zeste_lines = []
-        for line_num, line in enumerate(lines, 1):
-            if 'cuisine' in line.lower():
-                cuisine_lines.append(f"Line {line_num}: {line}")
-            if 'zeste' in line.lower():
-                zeste_lines.append(f"Line {line_num}: {line}")
-        if cuisine_lines or zeste_lines:
-            logging.info(f"CUISINE lines found: {len(cuisine_lines)} | ZESTE lines found: {len(zeste_lines)}")
+        cuisine_lines = sum(1 for line in lines if 'cuisine' in line.lower())
+        zeste_lines = sum(1 for line in lines if 'zeste' in line.lower())
+        logging.info(f"CUISINE lines found: {cuisine_lines} | ZESTE lines found: {zeste_lines}")
 
     def parse_and_store(self, lines, source_url):
         current_channel = {}
         channel_count = 0
         total_extinf_lines = 0
-        
-        # ← NOUVEAU : Dictionnaire pour suivre les groupes
         group_occurrences = defaultdict(int)
         
         for line_num, line in enumerate(lines, 1):
             line = line.strip()
             
-            # ← NOUVEAU : Log des lignes critiques pour diagnostic
+            # Debug logging for critical lines
             if line_num in (537, 539, 541) and "group-title" in line:
                 logging.info(f"RAW GROUP DETECTED Line {line_num}: '{line}'")
             
@@ -109,32 +76,32 @@ class M3UCollector:
             
             if line.startswith('#EXTINF:'):
                 total_extinf_lines += 1
+                
+                # Extract logo
                 try:
                     match = re.search(r'tvg-logo="([^"]*)"', line)
                     logo = match.group(1) if match and match.group(1) else self.default_logo
                 except Exception:
                     logo = self.default_logo
+                
+                # **FIXED: Simple and direct group extraction**
+                group = "Uncategorized"
                 try:
                     match = re.search(r'group-title="([^"]*)"', line)
-                    group = match.group(1) if match else "Uncategorized"
-                except Exception:
+                    if match:
+                        extracted_group = match.group(1).strip()
+                        if extracted_group:
+                            group = extracted_group
+                            if group.lower() == 'cuisine':
+                                group = 'Cuisine'
+                                logging.info(f"★★★ CUISINE GROUP CONFIRMED: '{group}' at line {line_num}")
+                except Exception as e:
+                    logging.error(f"Line {line_num}: GROUP EXTRACTION ERROR: {e}")
                     group = "Uncategorized"
                 
-                # ← CORRECTION : Normalisation de l'encodage
-                try:
-                    # Essayer de corriger l'encodage Latin-1 vers UTF-8
-                    group = group.encode('latin1').decode('utf-8')
-                except:
-                    # Fallback pour les cas déjà corrects
-                    pass
-                
-                # ← NOUVEAU : Enregistrement du groupe
                 group_occurrences[group] += 1
                 
-                # ← NOUVEAU : Log spécial pour Cuisine
-                if "cuisine" in group.lower():
-                    logging.info(f"★★★ POTENTIAL CUISINE GROUP: '{group}' at line {line_num}")
-                
+                # Check if group is excluded
                 excluded = any(
                     group.lower() == excl.lower() or re.search(r'\b' + re.escape(excl.lower()) + r'\b', group.lower())
                     for excl in self.excluded_groups
@@ -142,11 +109,14 @@ class M3UCollector:
                 if excluded:
                     current_channel = {}
                     continue
+                
+                # Extract channel name
                 try:
                     match = re.search(r',(.+)$', line)
                     name = match.group(1).strip() if match else "Unnamed Channel"
                 except Exception:
                     name = "Unnamed Channel"
+                
                 current_channel = {
                     'name': name,
                     'logo': logo,
@@ -154,6 +124,7 @@ class M3UCollector:
                     'source': source_url,
                     'line_num': line_num
                 }
+                
             elif line and not line.startswith('#') and current_channel:
                 if line.startswith(('http://', 'https://')):
                     if line not in self.seen_urls:
@@ -161,65 +132,52 @@ class M3UCollector:
                         current_channel['url'] = line
                         self.channels[current_channel['group']].append(current_channel)
                         channel_count += 1
-                    current_channel = {}
+                        
+                        # Special logging for Cuisine channels
+                        if current_channel['group'].lower() == 'cuisine':
+                            logging.info(f"★★★ CUISINE CHANNEL STORED: '{current_channel['name']}' to group '{current_channel['group']}' | URL: {line}")
+                else:
+                    self.skipped_non_http_count += 1
+                    if current_channel.get('group', '').lower() == 'cuisine':
+                        logging.info(f"★★★ CUISINE CHANNEL REJECTED (non-HTTP): '{current_channel.get('name', 'Unknown')}' | URL: {line}")
+                
+                current_channel = {}
         
-        # ← NOUVEAU : Diagnostic des groupes
+        # Summary logging
         logging.info(f"GROUP OCCURRENCES SUMMARY:")
         for group, count in group_occurrences.items():
             logging.info(f"  - {group}: {count} channels")
         
         logging.info(f"Parsing complete: {channel_count} channels added from {source_url}")
-
-    def filter_active_channels(self):
-        if not self.check_links:
-            logging.info("Skipping link activity check for speed")
-            return
-        active_channels = defaultdict(list)
-        all_channels = [(group, ch) for group, chans in self.channels.items() for ch in chans]
-        url_set = set()
-        logging.info(f"Total channels to check: {极en(all_channels)}")
-        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-            future_to_channel = {
-                executor.submit(self.check_link_active, ch['url'], ch['name']): (group, ch)
-                for group, ch in all_channels if ch['url'] not in url_set and not url_set.add(ch['url'])
-            }
-            for future in concurrent.futures.as_completed(future_to_channel):
-                group, channel = future_to_channel[future]
-                try:
-                    result = future.result()
-                    if result is not None and len(result) >= 2:
-                        is_active, updated_url = result[:2]
-                        if is_active:
-                            channel['url'] = updated_url
-                            active_channels[group].append(channel)
-                except Exception as e:
-                    logging.error(f"Error checking channel '{channel['name']}' - URL: {channel['url']} - Error: {e}")
-        self.channels = active_channels
-        logging.info(f"Active channels after filtering: {sum(len(ch) for ch in active_channels.values())}")
+        logging.info(f"Skipped non-HTTP/HTTPS URLs: {self.skipped_non_http_count}")
 
     def process_sources(self, source_urls):
         self.channels.clear()
         self.seen_urls.clear()
-        self.url_status_cache.clear()
-        all_m3u_urls = set()
+        
         for url in source_urls:
-            html_content, lines = self.fetch_content(url)
-            if url.endswith('.html'):
-                m3u_urls = self.extract_stream_urls_from_html(html_content, url)
-                all_m3u_urls.update(m3u_urls)
-            else:
+            lines = self.fetch_content(url)
+            if lines:
                 self.test_cuisine_detection(lines)
                 self.parse_and_store(lines, url)
-        for m3u_url in all_m3u_urls:
-            _, lines = self.fetch_content(m3u_url)
-            self.test_cuisine_detection(lines)
-            self.parse_and_store(lines, m3u_url)
+        
         total_parsed = sum(len(ch) for ch in self.channels.values())
         logging.info(f"PHASE 1 COMPLETE: {total_parsed} channels parsed, groups: {', '.join(sorted(self.channels.keys()))}")
+        
+        # Special check for Cuisine channels
         cuisine_channels = [ch for ch_list in self.channels.values() for ch in ch_list if ch['group'].lower() == 'cuisine']
         logging.info(f"CUISINE channels after parsing: {len(cuisine_channels)}")
-        if self.channels and self.check_links:
-            self.filter_active_channels()
+        
+        if cuisine_channels:
+            logging.info(f"★★★ CUISINE CHANNELS FOUND:")
+            for ch in cuisine_channels:
+                logging.info(f"★★★   - {ch['name']} -> {ch['url']}")
+
+    def get_excluded_groups_info(self):
+        return {
+            'excluded_groups': self.excluded_groups,
+            'excluded_count': len(self.excluded_groups)
+        }
 
     def export_m3u(self, filename="LiveTV.m3u"):
         filepath = os.path.join(self.output_dir, filename)
@@ -277,12 +235,6 @@ class M3UCollector:
         logging.info(f"Exported custom format to {filepath}")
         return filepath
 
-    def get_excluded_groups_info(self):
-        return {
-            "excluded_groups": self.excluded_groups,
-            "excluded_count": len(self.excluded_groups)
-        }
-
 def main():
     server_location = get_server_geolocation()
     excluded_groups = [
@@ -291,27 +243,32 @@ def main():
         "Sweden", "Switzerland", "United Kingdom", "United States",
         "Offline", "Test", "Demo", "Shopping", "Teleshopping"
     ]
+    
     source_urls = [
         "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
     ]
+    
     collector = M3UCollector(
         country="Mikhoul", 
-        check_links=False,
         excluded_groups=excluded_groups
     )
+    
     excluded_info = collector.get_excluded_groups_info()
     logging.info(f"Groupes exclus: {excluded_info['excluded_count']} | {', '.join(excluded_groups)}")
+    
     collector.process_sources(source_urls)
     collector.export_m3u("LiveTV.m3u")
     collector.export_txt("LiveTV.txt")
     collector.export_json("LiveTV.json")
     collector.export_custom("LiveTV")
+    
     total_channels = sum(len(ch) for ch in collector.channels.values())
     mumbai_time = datetime.now(pytz.timezone('Asia/Kolkata'))
     logging.info(f"[{mumbai_time}] Collected {total_channels} unique channels for Mikhoul")
     logging.info(f"Groups found: {len(collector.channels)}")
     final_groups = list(collector.channels.keys())
     logging.info(f"Final groups after exclusion: {', '.join(sorted(final_groups))}")
+    
     if server_location:
         logging.info(f"All tests performed from: {server_location['country']} ({server_location['country_code']})")
 
