@@ -1,5 +1,5 @@
 {
-  "date": "2025-06-25 08:25:25",
+  "date": "2025-06-25 08:59:34",
   "channels": {
     "Educatif": [
       {
@@ -693,26 +693,26 @@
     ]
   },
   "excluded_groups": [
-    "argentina",
-    "austria",
-    "brazil",
-    "chile",
-    "denmark",
-    "germany",
-    "india",
-    "italy",
-    "mexico",
-    "norway",
-    "south korea",
-    "spain",
-    "sweden",
-    "switzerland",
-    "united kingdom",
-    "united states",
-    "offline",
-    "test",
-    "demo",
-    "shopping",
-    "teleshopping"
+    "Argentina",
+    "Austria",
+    "Brazil",
+    "Chile",
+    "Denmark",
+    "Germany",
+    "India",
+    "Italy",
+    "Mexico",
+    "Norway",
+    "South Korea",
+    "Spain",
+    "Sweden",
+    "Switzerland",
+    "United Kingdom",
+    "United States",
+    "Offline",
+    "Test",
+    "Demo",
+    "Shopping",
+    "Teleshopping"
   ]
 }
