@@ -1,5 +1,5 @@
 {
-  "date": "2025-06-25 01:59:49",
+  "date": "2025-06-25 07:49:10",
   "channels": {
     "Educatif": [
       {
@@ -523,11 +523,11 @@
     ],
     "Religion": [
       {
-        "name": "Radio Amour - Spiri-Maria, Lac-Etchemin, Québec (STK) (Non 24/7)",
-        "logo": "https://i.imgur.com/I7iCMNO.jpg",
+        "name": "SL Media (1080p)",
+        "logo": "https://i.imgur.com/MKk1dfH.jpg",
         "group": "Religion",
         "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 283,
+        "line_num": 287,
         "url": "https://zm6gdaxeyn93-hls-live.5centscdn.com/slworld/d65ce2bdd03471fde0a1dc5e01d793bb.sdp/index.m3u8"
       }
     ],
@@ -621,38 +621,98 @@
         "url": "https://5976193b91256.streamlock.net/live/canal325.smil/playlist.m3u8"
       }
     ],
-    "Uncategorized": [
+    "Quebec TV": [
       {
-        "name": "png\",★★★★★[COLOR black]Debrouillage Terminer[/COLOR]★★★★★",
-        "logo": "no-logo,png",
-        "group": "Uncategorized",
+        "name": "LCN master",
+        "logo": "https://buddytv.netlify.app/img/no-logo.png",
+        "group": "Quebec TV",
         "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 517,
+        "line_num": 520,
         "url": "https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/master.m3u8"
+      },
+      {
+        "name": "LCN 1080",
+        "logo": "https://buddytv.netlify.app/img/no-logo.png",
+        "group": "Quebec TV",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 522,
+        "url": "https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/high_1080p/high_1080p.m3u8"
+      },
+      {
+        "name": "LCN 720",
+        "logo": "https://buddytv.netlify.app/img/no-logo.png",
+        "group": "Quebec TV",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 524,
+        "url": "https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/med_720p/med_720p.m3u8"
+      },
+      {
+        "name": "MOI ET CIE (OFFLINE)",
+        "logo": "https://i.imgur.com/BWsxm4p.png",
+        "group": "Quebec TV",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 527,
+        "url": "https://chaine_tva_uls-lh.akamaihd.net/i/MOIETCIE_1@697478/master.m3u8"
+      },
+      {
+        "name": "Zeste (OFFLINE)",
+        "logo": "https://i.imgur.com/YVmkt8p.png",
+        "group": "Quebec TV",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 543,
+        "url": "https://chaine_tva_uls-lh.akamaihd.net/i/zeste01_1@853162/master.m3u8"
+      }
+    ],
+    "Thématique": [
+      {
+        "name": "Témoin (En Débrouillage)",
+        "logo": "https://i.imgur.com/ydf6WFN.jpeg",
+        "group": "Thématique",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 531,
+        "url": "https://temoindirect.akamaized.net/no/V-MOICIE/V-MOICIE.isml/V-MOICIE.m3u8"
+      }
+    ],
+    "Cuisine": [
+      {
+        "name": "Zeste (En Debrouillage)",
+        "logo": "https://i.imgur.com/YVmkt8p.png",
+        "group": "Cuisine",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 537,
+        "url": "https://vmediazeste.akamaized.net/no/V-ZESTE/V-ZESTE.isml/V-ZESTE.m3u8"
+      },
+      {
+        "name": "Zeste (En Debrouillage)",
+        "logo": "https://i.imgur.com/YVmkt8p.png",
+        "group": "Cuisine",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 541,
+        "url": "https://ctszeste.akamaized.net/Content/HLS/Live/channel(bdfda20c-b73f-e8fc-8e12-e010830aa276)/index.m3u8"
       }
     ]
   },
   "excluded_groups": [
-    "Argentina",
-    "Austria",
-    "Brazil",
-    "Chile",
-    "Denmark",
-    "Germany",
-    "India",
-    "Italy",
-    "Mexico",
-    "Norway",
-    "South Korea",
-    "Spain",
-    "Sweden",
-    "Switzerland",
-    "United Kingdom",
-    "United States",
-    "Offline",
-    "Test",
-    "Demo",
-    "Shopping",
-    "Teleshopping"
+    "argentina",
+    "austria",
+    "brazil",
+    "chile",
+    "denmark",
+    "germany",
+    "india",
+    "italy",
+    "mexico",
+    "norway",
+    "south korea",
+    "spain",
+    "sweden",
+    "switzerland",
+    "united kingdom",
+    "united states",
+    "offline",
+    "test",
+    "demo",
+    "shopping",
+    "teleshopping"
   ]
 }

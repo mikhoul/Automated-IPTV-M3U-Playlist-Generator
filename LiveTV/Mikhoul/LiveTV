@@ -372,10 +372,10 @@
     "img": "https://i.imgur.com/azFxS50.jpg"
   },
   {
-    "name": "Radio Amour - Spiri-Maria, Lac-Etchemin, Québec (STK) (Non 24/7)",
+    "name": "SL Media (1080p)",
     "type": "Religion",
     "url": "https://zm6gdaxeyn93-hls-live.5centscdn.com/slworld/d65ce2bdd03471fde0a1dc5e01d793bb.sdp/index.m3u8",
-    "img": "https://i.imgur.com/I7iCMNO.jpg"
+    "img": "https://i.imgur.com/MKk1dfH.jpg"
   },
   {
     "name": "Assnat (360p)",
@@ -444,9 +444,51 @@
     "img": "https://i.imgur.com/N7JMyFL.png"
   },
   {
-    "name": "png\",★★★★★[COLOR black]Debrouillage Terminer[/COLOR]★★★★★",
-    "type": "Uncategorized",
+    "name": "LCN master",
+    "type": "Quebec TV",
     "url": "https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/master.m3u8",
-    "img": "no-logo,png"
+    "img": "https://buddytv.netlify.app/img/no-logo.png"
+  },
+  {
+    "name": "LCN 1080",
+    "type": "Quebec TV",
+    "url": "https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/high_1080p/high_1080p.m3u8",
+    "img": "https://buddytv.netlify.app/img/no-logo.png"
+  },
+  {
+    "name": "LCN 720",
+    "type": "Quebec TV",
+    "url": "https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/med_720p/med_720p.m3u8",
+    "img": "https://buddytv.netlify.app/img/no-logo.png"
+  },
+  {
+    "name": "MOI ET CIE (OFFLINE)",
+    "type": "Quebec TV",
+    "url": "https://chaine_tva_uls-lh.akamaihd.net/i/MOIETCIE_1@697478/master.m3u8",
+    "img": "https://i.imgur.com/BWsxm4p.png"
+  },
+  {
+    "name": "Zeste (OFFLINE)",
+    "type": "Quebec TV",
+    "url": "https://chaine_tva_uls-lh.akamaihd.net/i/zeste01_1@853162/master.m3u8",
+    "img": "https://i.imgur.com/YVmkt8p.png"
+  },
+  {
+    "name": "Témoin (En Débrouillage)",
+    "type": "Thématique",
+    "url": "https://temoindirect.akamaized.net/no/V-MOICIE/V-MOICIE.isml/V-MOICIE.m3u8",
+    "img": "https://i.imgur.com/ydf6WFN.jpeg"
+  },
+  {
+    "name": "Zeste (En Debrouillage)",
+    "type": "Cuisine",
+    "url": "https://vmediazeste.akamaized.net/no/V-ZESTE/V-ZESTE.isml/V-ZESTE.m3u8",
+    "img": "https://i.imgur.com/YVmkt8p.png"
+  },
+  {
+    "name": "Zeste (En Debrouillage)",
+    "type": "Cuisine",
+    "url": "https://ctszeste.akamaized.net/Content/HLS/Live/channel(bdfda20c-b73f-e8fc-8e12-e010830aa276)/index.m3u8",
+    "img": "https://i.imgur.com/YVmkt8p.png"
   }
 ]
