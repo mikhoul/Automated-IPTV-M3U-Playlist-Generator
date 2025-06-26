@@ -1,6 +1,6 @@
 # LiveTVCollector
 
-A GitHub repository that automatically collects, filters, and exports live TV streaming links for Country/Category wise using GitHub Actions. This project fetches M3U playlists from multiple sources, removes duplicates, verifies active links, and exports them into various formats under the `LiveTV/Country Name/` directory.
+A GitHub repository that automatically collects, filters, and exports live TV streaming links while using GitHub Actions. This project fetches M3U playlists from multiple sources, removes duplicates, verifies active links, and exports them into various formats under the `LiveTV/Country Name/` directory.
 # Status
 [![GitHub forks](https://img.shields.io/github/forks/bugsfreeweb/LiveTVCollector?logo=forks&style=plastic)](https://github.com/bugsfreeweb/LiveTVCollector/network) [![GitHub stars](https://img.shields.io/github/stars/bugsfreeweb/LiveTVCollector)](https://github.com/bugsfreeweb/LiveTVCollector/stargazers) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)  [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
@@ -20,7 +20,7 @@ A GitHub repository that automatically collects, filters, and exports live TV st
 
 ## Features
 
-- **Automated Updates**: Runs every 8 hours (approximately 05:30, 13:30, 21:30 IST) via GitHub Actions.
+- **Automated Updates**: Runs every once a day via GitHub Actions.
 - **Large Source Handling**: Processes large M3U files efficiently with streaming to minimize memory usage.
 - **Active Link Verification**: Checks links for availability using concurrent requests (50 workers).
 - **Duplicate Removal**: Ensures no duplicate streams (based on URL) are included.
@@ -154,7 +154,6 @@ pip install requests pytz beautifulsoup4
 ## Contributing
 
 Feel free to:
-- Add more Country Name-specific sources to `BugsfreeMain/CountryName.py`.
 - Suggest improvements via issues or pull requests.
 
 ## License
