@@ -19,13 +19,13 @@ from bs4 import BeautifulSoup
 import csv
 
 class ValidationColorFormatter(logging.Formatter):
-    """Enhanced logging formatter with corrected colors for validation keywords."""
+    """Enhanced logging formatter with FIXED colors - single red shade, lighter gray URLs."""
     
     # ANSI escape codes for colors
     RESET = "\x1b[0m"
     BOLD = "\x1b[1m"
     
-    # Color definitions - FIXED with better colors
+    # Color definitions - FIXED: Single red shade and lighter gray
     RED = "\x1b[31m"
     GREEN = "\x1b[32m"
     YELLOW = "\x1b[33m"
@@ -39,9 +39,9 @@ class ValidationColorFormatter(logging.Formatter):
     BRIGHT_BLUE = "\x1b[94m"
     BRIGHT_CYAN = "\x1b[96m"
     
-    # FIXED: More "bloody" red and consistent orange
-    BLOOD_RED = "\x1b[38;2;139;0;0m"  # RGB dark red (bloody)
-    BRIGHT_BLOOD_RED = "\x1b[38;2;220;20;60m"  # RGB crimson (bloody)
+    # FIXED: Single red shade (bloody) and lighter gray for URLs
+    INACTIVE_RED = "\x1b[38;2;220;20;60m"  # Single consistent red for INACTIVE
+    LIGHT_GRAY = "\x1b[38;5;250m"  # Light gray for URLs
     LIGHT_ORANGE = "\x1b[38;5;214m"  # Consistent light orange for geo-blocking
 
     # Map log levels to colors
@@ -53,32 +53,32 @@ class ValidationColorFormatter(logging.Formatter):
         logging.CRITICAL: BOLD + BRIGHT_RED
     }
 
-    # FIXED: Keywords to color - removed conflicts and fixed colors
+    # FIXED: Single red shade, lighter URLs, removed Warning color
     KEYWORD_COLORS = {
         # Positive status - GREEN ONLY
         'Active HLS stream': BRIGHT_GREEN,
         'Active (HEAD)': BRIGHT_GREEN,
         'Active (GET)': BRIGHT_GREEN,
-        'Active': BRIGHT_GREEN,  # This must come after the longer phrases
+        'Active': BRIGHT_GREEN,
         'SUCCESS': BRIGHT_GREEN,
         'Success': BRIGHT_GREEN,
         
-        # Negative status - BLOODY RED ONLY (FIXED)
-        'INACTIVE': BOLD + BRIGHT_BLOOD_RED,  # Bold bloody red
-        'inactive': BLOOD_RED,  # Removed any conflicting green
-        'All validation methods failed': BRIGHT_BLOOD_RED,
-        'Failed': BLOOD_RED,
-        'FAILED': BOLD + BLOOD_RED,
+        # Negative status - SINGLE RED SHADE (FIXED)
+        'INACTIVE': BOLD + INACTIVE_RED,  # Single consistent red
+        'inactive': INACTIVE_RED,
+        'All validation methods failed': INACTIVE_RED,
+        'Failed': INACTIVE_RED,
+        'FAILED': BOLD + INACTIVE_RED,
         
-        # Error codes - BLOODY RED (FIXED)
-        '[ERROR_400]': BOLD + BLOOD_RED,
-        '[ERROR_404]': BOLD + BLOOD_RED,
-        '[ERROR_500]': BOLD + BLOOD_RED,
-        '[ERROR_502]': BOLD + BLOOD_RED,
-        '[ERROR_503]': BOLD + BLOOD_RED,
-        '[CONNECTION_FAILED]': BOLD + BLOOD_RED,
+        # Error codes - SINGLE RED SHADE (FIXED)
+        '[ERROR_400]': BOLD + INACTIVE_RED,
+        '[ERROR_404]': BOLD + INACTIVE_RED,
+        '[ERROR_500]': BOLD + INACTIVE_RED,
+        '[ERROR_502]': BOLD + INACTIVE_RED,
+        '[ERROR_503]': BOLD + INACTIVE_RED,
+        '[CONNECTION_FAILED]': BOLD + INACTIVE_RED,
         
-        # Geo-blocking - CONSISTENT LIGHT ORANGE (FIXED)
+        # Geo-blocking - CONSISTENT LIGHT ORANGE
         'Geo-blocked HLS stream': LIGHT_ORANGE,
         'Geo-blocked (HEAD)': LIGHT_ORANGE,
         'Geo-blocked (GET)': LIGHT_ORANGE,
@@ -88,26 +88,27 @@ class ValidationColorFormatter(logging.Formatter):
         'geo_blocked': LIGHT_ORANGE,
         '403 Forbidden': LIGHT_ORANGE,
         
-        # Warnings
-        'Warning': BRIGHT_YELLOW,
-        'WARNING': BOLD + BRIGHT_YELLOW,
+        # REMOVED: Warning color (redundant with red error tags)
+        # 'Warning': BRIGHT_YELLOW,  # REMOVED
+        # 'WARNING': BOLD + BRIGHT_YELLOW,  # REMOVED
         
-        # Channel processing - REMOVED ZESTE COLORING
+        # Channel processing
         'CUISINE': BOLD + MAGENTA,
         'Cuisine': MAGENTA,
-        # 'ZESTE': removed as requested
         
         # Validation progress
         'Validation progress': BLUE,
         'Starting comprehensive link validation': BOLD + BLUE,
         'Link validation complete': BOLD + GREEN,
         
-        # HTTP status codes - BLOODY RED (FIXED)
-        '404 Not Found': BLOOD_RED,
-        '400 Bad Request': BLOOD_RED,
-        '500 Internal Server Error': BLOOD_RED,
-        '502 Bad Gateway': BLOOD_RED,
-        '503 Service Unavailable': BLOOD_RED,
+        # HTTP status codes - SINGLE RED SHADE (FIXED)
+        'Bad Request': INACTIVE_RED,
+        'Internal Server Error': INACTIVE_RED,
+        'Bad Gateway': INACTIVE_RED,
+        'Service Unavailable': INACTIVE_RED,
+        
+        # URLs - LIGHT GRAY (FIXED)
+        'URL:': LIGHT_GRAY,  # Color the "URL:" prefix
         
         # Processing stages
         'PHASE 1 COMPLETE': BOLD + GREEN,
@@ -133,7 +134,13 @@ class ValidationColorFormatter(logging.Formatter):
         # Restore original levelname
         record.levelname = original_levelname
 
-        # FIXED: Color keywords with proper order (longer phrases first to prevent conflicts)
+        # FIXED: Color URLs with light gray
+        import re
+        # Color full URLs (http/https) with light gray
+        url_pattern = r'(https?://[^\s]+)'
+        message = re.sub(url_pattern, f'{self.LIGHT_GRAY}\\1{self.RESET}', message)
+
+        # Color keywords with proper order (longer phrases first)
         sorted_keywords = sorted(self.KEYWORD_COLORS.items(), key=lambda x: len(x[0]), reverse=True)
         for keyword, color_code in sorted_keywords:
             if keyword in message:
@@ -144,10 +151,7 @@ class ValidationColorFormatter(logging.Formatter):
 
 def setup_colored_logging():
     """Setup colored logging with fixed colors."""
-    # Create formatter
     formatter = ValidationColorFormatter()
-    
-    # Get root logger
     logger = logging.getLogger()
     
     # Clear existing handlers
@@ -504,7 +508,7 @@ class M3UCollector:
 
     def validate_hls_stream(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate HLS/M3U8 streams with detailed status logging including error codes.
+        Validate HLS/M3U8 streams with FIXED logging - no duplicate error codes.
         
         Args:
             url (str): URL to validate
@@ -530,22 +534,27 @@ class M3UCollector:
                 logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked HLS stream - URL: {url}")
                 return True, url, 'geo_blocked'
             elif response.status_code == 404:
-                logging.warning(f"Channel '{channel_name}': 404 Not Found - HLS stream INACTIVE [ERROR_404] - URL: {url}")
+                # FIXED: Remove duplicate 404 - only show [ERROR_404] at end
+                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_404] - URL: {url}")
                 return False, url, 'not_found'
             elif response.status_code == 400:
-                logging.warning(f"Channel '{channel_name}': 400 Bad Request - HLS stream INACTIVE [ERROR_400] - URL: {url}")
+                # FIXED: Remove duplicate 400 - only show [ERROR_400] at end
+                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_400] - URL: {url}")
                 return False, url, 'http_400'
             elif response.status_code == 500:
-                logging.warning(f"Channel '{channel_name}': 500 Internal Server Error - HLS stream INACTIVE [ERROR_500] - URL: {url}")
+                # FIXED: Remove duplicate 500 - only show [ERROR_500] at end
+                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_500] - URL: {url}")
                 return False, url, 'http_500'
             elif response.status_code == 502:
-                logging.warning(f"Channel '{channel_name}': 502 Bad Gateway - HLS stream INACTIVE [ERROR_502] - URL: {url}")
+                # FIXED: Remove duplicate 502 - only show [ERROR_502] at end
+                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_502] - URL: {url}")
                 return False, url, 'http_502'
             elif response.status_code == 503:
-                logging.warning(f"Channel '{channel_name}': 503 Service Unavailable - HLS stream INACTIVE [ERROR_503] - URL: {url}")
+                # FIXED: Remove duplicate 503 - only show [ERROR_503] at end
+                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_503] - URL: {url}")
                 return False, url, 'http_503'
             else:
-                logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} - HLS stream INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_{response.status_code}] - URL: {url}")
                 return False, url, f'http_{response.status_code}'
         except requests.RequestException as e:
             logging.debug(f"Channel '{channel_name}': HLS validation failed - URL: {url} - Error: {e}")
@@ -555,7 +564,7 @@ class M3UCollector:
 
     def validate_regular_url(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate regular URLs with detailed status logging including error codes.
+        Validate regular URLs with FIXED logging - no duplicate error codes.
         
         Args:
             url (str): URL to validate
@@ -576,16 +585,19 @@ class M3UCollector:
                 logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD) - URL: {url}")
                 return True, url, 'geo_blocked'
             elif response.status_code == 404:
-                logging.warning(f"Channel '{channel_name}': 404 Not Found (HEAD) - INACTIVE [ERROR_404] - URL: {url}")
+                # FIXED: Remove duplicate 404 - only show [ERROR_404] at end
+                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_404] - URL: {url}")
                 return False, url, 'not_found'
             elif response.status_code == 400:
-                logging.warning(f"Channel '{channel_name}': 400 Bad Request (HEAD) - INACTIVE [ERROR_400] - URL: {url}")
+                # FIXED: Remove duplicate 400 - only show [ERROR_400] at end
+                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_400] - URL: {url}")
                 return False, url, 'http_400'
             elif response.status_code == 500:
-                logging.warning(f"Channel '{channel_name}': 500 Internal Server Error (HEAD) - INACTIVE [ERROR_500] - URL: {url}")
+                # FIXED: Remove duplicate 500 - only show [ERROR_500] at end
+                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_500] - URL: {url}")
                 return False, url, 'http_500'
             elif response.status_code >= 400:
-                logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} (HEAD) - INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_{response.status_code}] - URL: {url}")
                 return False, url, f'http_{response.status_code}'
         except requests.RequestException:
             pass
@@ -600,22 +612,27 @@ class M3UCollector:
                     logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (GET) - URL: {url}")
                     return True, url, 'geo_blocked'
                 elif response.status_code == 404:
-                    logging.warning(f"Channel '{channel_name}': 404 Not Found (GET) - INACTIVE [ERROR_404] - URL: {url}")
+                    # FIXED: Remove duplicate 404 - only show [ERROR_404] at end
+                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_404] - URL: {url}")
                     return False, url, 'not_found'
                 elif response.status_code == 400:
-                    logging.warning(f"Channel '{channel_name}': 400 Bad Request (GET) - INACTIVE [ERROR_400] - URL: {url}")
+                    # FIXED: Remove duplicate 400 - only show [ERROR_400] at end
+                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_400] - URL: {url}")
                     return False, url, 'http_400'
                 elif response.status_code == 500:
-                    logging.warning(f"Channel '{channel_name}': 500 Internal Server Error (GET) - INACTIVE [ERROR_500] - URL: {url}")
+                    # FIXED: Remove duplicate 500 - only show [ERROR_500] at end
+                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_500] - URL: {url}")
                     return False, url, 'http_500'
                 elif response.status_code == 502:
-                    logging.warning(f"Channel '{channel_name}': 502 Bad Gateway (GET) - INACTIVE [ERROR_502] - URL: {url}")
+                    # FIXED: Remove duplicate 502 - only show [ERROR_502] at end
+                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_502] - URL: {url}")
                     return False, url, 'http_502'
                 elif response.status_code == 503:
-                    logging.warning(f"Channel '{channel_name}': 503 Service Unavailable (GET) - INACTIVE [ERROR_503] - URL: {url}")
+                    # FIXED: Remove duplicate 503 - only show [ERROR_503] at end
+                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_503] - URL: {url}")
                     return False, url, 'http_503'
                 else:
-                    logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} (GET) - INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_{response.status_code}] - URL: {url}")
                     return False, url, f'http_{response.status_code}'
         except requests.RequestException as e:
             logging.debug(f"Channel '{channel_name}': Regular validation failed - URL: {url} - Error: {e}")
@@ -632,7 +649,7 @@ class M3UCollector:
                     logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD, switched protocol) - URL: {alt_url}")
                     return True, alt_url, 'geo_blocked'
                 elif response.status_code >= 400:
-                    logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} (HEAD, switched protocol) - INACTIVE [ERROR_{response.status_code}] - URL: {alt_url}")
+                    logging.warning(f"Channel '{channel_name}': (HEAD, switched protocol) INACTIVE [ERROR_{response.status_code}] - URL: {alt_url}")
                     return False, alt_url, f'http_{response.status_code}'
         except requests.RequestException:
             pass
@@ -1570,7 +1587,7 @@ def main():
     # Initialize collector with comprehensive configuration
     collector = M3UCollector(
         country="Mikhoul", 
-        check_links=True,  # ENABLE DETAILED VALIDATION LOGGING WITH FIXED COLORS
+        check_links=True,  # ENABLE VALIDATION WITH FIXED COLORS
         excluded_groups=excluded_groups,
         config=config
     )
