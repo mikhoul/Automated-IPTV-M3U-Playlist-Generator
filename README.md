@@ -1,8 +1,6 @@
-# LiveTVCollector
+# LiveTVCollector Mikhoul Fork
 
 A GitHub repository that automatically collects, filters, and exports live TV streaming links while using GitHub Actions. This project fetches M3U playlists from multiple sources, removes duplicates, verifies active links, and exports them into various formats under the `LiveTV/Country Name/` directory.
-# Status
-[![GitHub forks](https://img.shields.io/github/forks/bugsfreeweb/LiveTVCollector?logo=forks&style=plastic)](https://github.com/bugsfreeweb/LiveTVCollector/network) [![GitHub stars](https://img.shields.io/github/stars/bugsfreeweb/LiveTVCollector)](https://github.com/bugsfreeweb/LiveTVCollector/stargazers) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)  [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 ## Online Useable Tools:
 <a href="https://lolstream.netlify.app" target="_blank"><img src="https://lolstream.netlify.app/img/logo.png" style="width:auto; height:60px" alt="Stream Player"></a>
