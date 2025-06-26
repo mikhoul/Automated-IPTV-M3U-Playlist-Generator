@@ -358,7 +358,7 @@ class M3UCollector:
 
     def validate_hls_stream(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate HLS/M3U8 streams with detailed status logging.
+        Validate HLS/M3U8 streams with detailed status logging including error codes.
         
         Args:
             url (str): URL to validate
@@ -384,10 +384,22 @@ class M3UCollector:
                 logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked HLS stream - URL: {url}")
                 return True, url, 'geo_blocked'
             elif response.status_code == 404:
-                logging.warning(f"Channel '{channel_name}': 404 Not Found - HLS stream - URL: {url}")
+                logging.warning(f"Channel '{channel_name}': 404 Not Found - HLS stream INACTIVE [ERROR_404] - URL: {url}")
                 return False, url, 'not_found'
+            elif response.status_code == 400:
+                logging.warning(f"Channel '{channel_name}': HTTP 400 Bad Request - HLS stream INACTIVE [ERROR_400] - URL: {url}")
+                return False, url, 'http_400'
+            elif response.status_code == 500:
+                logging.warning(f"Channel '{channel_name}': HTTP 500 Internal Server Error - HLS stream INACTIVE [ERROR_500] - URL: {url}")
+                return False, url, 'http_500'
+            elif response.status_code == 502:
+                logging.warning(f"Channel '{channel_name}': HTTP 502 Bad Gateway - HLS stream INACTIVE [ERROR_502] - URL: {url}")
+                return False, url, 'http_502'
+            elif response.status_code == 503:
+                logging.warning(f"Channel '{channel_name}': HTTP 503 Service Unavailable - HLS stream INACTIVE [ERROR_503] - URL: {url}")
+                return False, url, 'http_503'
             else:
-                logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} - HLS stream - URL: {url}")
+                logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} - HLS stream INACTIVE [ERROR_{response.status_code}] - URL: {url}")
                 return False, url, f'http_{response.status_code}'
         except requests.RequestException as e:
             logging.debug(f"Channel '{channel_name}': HLS validation failed - URL: {url} - Error: {e}")
@@ -397,7 +409,7 @@ class M3UCollector:
 
     def validate_regular_url(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate regular URLs with detailed status logging.
+        Validate regular URLs with detailed status logging including error codes.
         
         Args:
             url (str): URL to validate
@@ -418,8 +430,17 @@ class M3UCollector:
                 logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD) - URL: {url}")
                 return True, url, 'geo_blocked'
             elif response.status_code == 404:
-                logging.warning(f"Channel '{channel_name}': 404 Not Found (HEAD) - URL: {url}")
+                logging.warning(f"Channel '{channel_name}': 404 Not Found (HEAD) - INACTIVE [ERROR_404] - URL: {url}")
                 return False, url, 'not_found'
+            elif response.status_code == 400:
+                logging.warning(f"Channel '{channel_name}': 400 Bad Request (HEAD) - INACTIVE [ERROR_400] - URL: {url}")
+                return False, url, 'http_400'
+            elif response.status_code == 500:
+                logging.warning(f"Channel '{channel_name}': 500 Internal Server Error (HEAD) - INACTIVE [ERROR_500] - URL: {url}")
+                return False, url, 'http_500'
+            elif response.status_code >= 400:
+                logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} (HEAD) - INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+                return False, url, f'http_{response.status_code}'
         except requests.RequestException:
             pass
         
@@ -433,10 +454,22 @@ class M3UCollector:
                     logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (GET) - URL: {url}")
                     return True, url, 'geo_blocked'
                 elif response.status_code == 404:
-                    logging.warning(f"Channel '{channel_name}': 404 Not Found (GET) - URL: {url}")
+                    logging.warning(f"Channel '{channel_name}': 404 Not Found (GET) - INACTIVE [ERROR_404] - URL: {url}")
                     return False, url, 'not_found'
+                elif response.status_code == 400:
+                    logging.warning(f"Channel '{channel_name}': 400 Bad Request (GET) - INACTIVE [ERROR_400] - URL: {url}")
+                    return False, url, 'http_400'
+                elif response.status_code == 500:
+                    logging.warning(f"Channel '{channel_name}': 500 Internal Server Error (GET) - INACTIVE [ERROR_500] - URL: {url}")
+                    return False, url, 'http_500'
+                elif response.status_code == 502:
+                    logging.warning(f"Channel '{channel_name}': 502 Bad Gateway (GET) - INACTIVE [ERROR_502] - URL: {url}")
+                    return False, url, 'http_502'
+                elif response.status_code == 503:
+                    logging.warning(f"Channel '{channel_name}': 503 Service Unavailable (GET) - INACTIVE [ERROR_503] - URL: {url}")
+                    return False, url, 'http_503'
                 else:
-                    logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} (GET) - URL: {url}")
+                    logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} (GET) - INACTIVE [ERROR_{response.status_code}] - URL: {url}")
                     return False, url, f'http_{response.status_code}'
         except requests.RequestException as e:
             logging.debug(f"Channel '{channel_name}': Regular validation failed - URL: {url} - Error: {e}")
@@ -452,11 +485,14 @@ class M3UCollector:
                 elif response.status_code == 403:
                     logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD, switched protocol) - URL: {alt_url}")
                     return True, alt_url, 'geo_blocked'
+                elif response.status_code >= 400:
+                    logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} (HEAD, switched protocol) - INACTIVE [ERROR_{response.status_code}] - URL: {alt_url}")
+                    return False, alt_url, f'http_{response.status_code}'
         except requests.RequestException:
             pass
         
-        # Mark as inactive
-        logging.warning(f"Channel '{channel_name}': All validation methods failed - URL: {url}")
+        # Mark as completely inactive
+        logging.warning(f"Channel '{channel_name}': All validation methods failed - INACTIVE [CONNECTION_FAILED] - URL: {url}")
         return False, url, 'inactive'
 
     def detect_content_language(self, text):
@@ -862,7 +898,7 @@ class M3UCollector:
 
     def filter_active_channels(self):
         """
-        Filter channels by checking URL availability with detailed validation logging.
+        Filter channels by checking URL availability with detailed validation logging and error breakdown.
         Uses concurrent processing for performance optimization.
         """
         if not self.check_links:
@@ -885,6 +921,7 @@ class M3UCollector:
         active_channels = defaultdict(list)
         validation_results = {}
         geo_blocked_count = 0
+        inactive_by_error = defaultdict(int)  # Count inactive channels by error type
         
         # Process URLs concurrently
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.max_workers) as executor:
@@ -933,20 +970,27 @@ class M3UCollector:
                             
                             active_channels[group].append(channel)
                     else:
-                        # Log inactive channels
+                        # Log inactive channels with detailed error information
+                        inactive_by_error[status] += len(url_to_channels[url])
                         for group, channel in url_to_channels[url]:
-                            logging.warning(f"Channel '{channel['name']}' is inactive ({status}) - URL: {url}")
+                            if status.startswith('http_'):
+                                error_code = status.split('_')[1]
+                                logging.warning(f"Channel '{channel['name']}' is INACTIVE [ERROR_{error_code}] - Status: {status} - URL: {url}")
+                            else:
+                                logging.warning(f"Channel '{channel['name']}' is INACTIVE - Status: {status} - URL: {url}")
                     
                 except Exception as e:
                     logging.error(f"Validation error for {url}: {e}")
                     validation_results[url] = (False, url, f'error: {e}')
+                    # Count validation errors
+                    inactive_by_error['validation_error'] += len(url_to_channels[url])
         
         # Update channels with filtered results
         original_count = sum(len(ch) for ch in self.channels.values())
         self.channels = active_channels
         final_count = sum(len(ch) for ch in self.channels.values())
         
-        # Log detailed validation statistics
+        # Log detailed validation statistics with error breakdown
         elapsed_time = time.time() - start_time
         active_count = sum(1 for is_active, _, _ in validation_results.values() if is_active)
         
@@ -956,11 +1000,22 @@ class M3UCollector:
         logging.info(f"Active channels after filtering: {final_count}")
         logging.info(f"Geo-blocked channels detected: {geo_blocked_count}")
         
+        # Log detailed breakdown of inactive channels by error type
+        if inactive_by_error:
+            logging.info("INACTIVE channels breakdown by error type:")
+            for error_type, count in sorted(inactive_by_error.items()):
+                if error_type.startswith('http_'):
+                    error_code = error_type.split('_')[1]
+                    logging.info(f"  - HTTP {error_code} errors: {count} channels")
+                else:
+                    logging.info(f"  - {error_type}: {count} channels")
+        
         # Update statistics
         self.statistics['urls_validated'] = total_urls
         self.statistics['active_urls'] = active_count
         self.statistics['geo_blocked_urls'] = geo_blocked_count
         self.statistics['validation_time'] = elapsed_time
+        self.statistics['inactive_by_error'] = dict(inactive_by_error)
 
     def process_sources(self, source_urls):
         """
@@ -1369,7 +1424,7 @@ def main():
     # Initialize collector with comprehensive configuration
     collector = M3UCollector(
         country="Mikhoul", 
-        check_links=True,  # ENABLE DETAILED VALIDATION LOGGING
+        check_links=True,  # ENABLE DETAILED VALIDATION LOGGING WITH ERROR CODES
         excluded_groups=excluded_groups,
         config=config
     )
