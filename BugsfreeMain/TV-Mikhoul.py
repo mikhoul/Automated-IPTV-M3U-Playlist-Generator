@@ -19,13 +19,13 @@ from bs4 import BeautifulSoup
 import csv
 
 class ValidationColorFormatter(logging.Formatter):
-    """Enhanced logging formatter with colors for log levels and validation keywords."""
+    """Enhanced logging formatter with corrected colors for validation keywords."""
     
     # ANSI escape codes for colors
     RESET = "\x1b[0m"
     BOLD = "\x1b[1m"
     
-    # Color definitions
+    # Color definitions - FIXED with better colors
     RED = "\x1b[31m"
     GREEN = "\x1b[32m"
     YELLOW = "\x1b[33m"
@@ -38,8 +38,11 @@ class ValidationColorFormatter(logging.Formatter):
     BRIGHT_YELLOW = "\x1b[93m"
     BRIGHT_BLUE = "\x1b[94m"
     BRIGHT_CYAN = "\x1b[96m"
-    ORANGE = "\x1b[38;5;208m"  # 256-color orange
-    BRIGHT_ORANGE = "\x1b[38;5;214m"  # Bright orange
+    
+    # FIXED: More "bloody" red and consistent orange
+    BLOOD_RED = "\x1b[38;2;139;0;0m"  # RGB dark red (bloody)
+    BRIGHT_BLOOD_RED = "\x1b[38;2;220;20;60m"  # RGB crimson (bloody)
+    LIGHT_ORANGE = "\x1b[38;5;214m"  # Consistent light orange for geo-blocking
 
     # Map log levels to colors
     LEVEL_COLORS = {
@@ -50,60 +53,61 @@ class ValidationColorFormatter(logging.Formatter):
         logging.CRITICAL: BOLD + BRIGHT_RED
     }
 
-    # Keywords to color in messages - geo-blocking now uses ORANGE
+    # FIXED: Keywords to color - removed conflicts and fixed colors
     KEYWORD_COLORS = {
-        # Positive status
-        'Active': BRIGHT_GREEN,
-        'ACTIVE': BRIGHT_GREEN,
-        'Success': BRIGHT_GREEN,
-        'SUCCESS': BRIGHT_GREEN,
+        # Positive status - GREEN ONLY
         'Active HLS stream': BRIGHT_GREEN,
         'Active (HEAD)': BRIGHT_GREEN,
         'Active (GET)': BRIGHT_GREEN,
+        'Active': BRIGHT_GREEN,  # This must come after the longer phrases
+        'SUCCESS': BRIGHT_GREEN,
+        'Success': BRIGHT_GREEN,
         
-        # Negative status
-        'INACTIVE': BOLD + BRIGHT_RED,
-        'inactive': BRIGHT_RED,
-        'Failed': BRIGHT_RED,
-        'FAILED': BRIGHT_RED,
-        'All validation methods failed': BRIGHT_RED,
+        # Negative status - BLOODY RED ONLY (FIXED)
+        'INACTIVE': BOLD + BRIGHT_BLOOD_RED,  # Bold bloody red
+        'inactive': BLOOD_RED,  # Removed any conflicting green
+        'All validation methods failed': BRIGHT_BLOOD_RED,
+        'Failed': BLOOD_RED,
+        'FAILED': BOLD + BLOOD_RED,
         
-        # Error codes
-        '[ERROR_400]': BOLD + RED,
-        '[ERROR_404]': BOLD + RED,
-        '[ERROR_500]': BOLD + RED,
-        '[ERROR_502]': BOLD + RED,
-        '[ERROR_503]': BOLD + RED,
-        '[CONNECTION_FAILED]': BOLD + RED,
+        # Error codes - BLOODY RED (FIXED)
+        '[ERROR_400]': BOLD + BLOOD_RED,
+        '[ERROR_404]': BOLD + BLOOD_RED,
+        '[ERROR_500]': BOLD + BLOOD_RED,
+        '[ERROR_502]': BOLD + BLOOD_RED,
+        '[ERROR_503]': BOLD + BLOOD_RED,
+        '[CONNECTION_FAILED]': BOLD + BLOOD_RED,
         
-        # Geo-blocking - CHANGED TO ORANGE
-        'Geo-blocked': BRIGHT_ORANGE,
-        '[Geo-blocked]': BRIGHT_ORANGE,
-        'Tagged as geo-blocked': ORANGE,
-        'geo_blocked': ORANGE,
-        '403 Forbidden - Geo-blocked': ORANGE,
+        # Geo-blocking - CONSISTENT LIGHT ORANGE (FIXED)
+        'Geo-blocked HLS stream': LIGHT_ORANGE,
+        'Geo-blocked (HEAD)': LIGHT_ORANGE,
+        'Geo-blocked (GET)': LIGHT_ORANGE,
+        'Geo-blocked': LIGHT_ORANGE,
+        '[Geo-blocked]': LIGHT_ORANGE,
+        'Tagged as geo-blocked': LIGHT_ORANGE,
+        'geo_blocked': LIGHT_ORANGE,
+        '403 Forbidden': LIGHT_ORANGE,
         
         # Warnings
         'Warning': BRIGHT_YELLOW,
         'WARNING': BOLD + BRIGHT_YELLOW,
         
-        # Channel processing
+        # Channel processing - REMOVED ZESTE COLORING
         'CUISINE': BOLD + MAGENTA,
         'Cuisine': MAGENTA,
-        'ZESTE': BOLD + CYAN,
+        # 'ZESTE': removed as requested
         
         # Validation progress
         'Validation progress': BLUE,
         'Starting comprehensive link validation': BOLD + BLUE,
         'Link validation complete': BOLD + GREEN,
         
-        # HTTP status codes
-        '403 Forbidden': ORANGE,  # Changed to orange
-        '404 Not Found': RED,
-        '400 Bad Request': RED,
-        '500 Internal Server Error': RED,
-        '502 Bad Gateway': RED,
-        '503 Service Unavailable': RED,
+        # HTTP status codes - BLOODY RED (FIXED)
+        '404 Not Found': BLOOD_RED,
+        '400 Bad Request': BLOOD_RED,
+        '500 Internal Server Error': BLOOD_RED,
+        '502 Bad Gateway': BLOOD_RED,
+        '503 Service Unavailable': BLOOD_RED,
         
         # Processing stages
         'PHASE 1 COMPLETE': BOLD + GREEN,
@@ -129,7 +133,7 @@ class ValidationColorFormatter(logging.Formatter):
         # Restore original levelname
         record.levelname = original_levelname
 
-        # Color specific keywords in the message (order matters - longer phrases first)
+        # FIXED: Color keywords with proper order (longer phrases first to prevent conflicts)
         sorted_keywords = sorted(self.KEYWORD_COLORS.items(), key=lambda x: len(x[0]), reverse=True)
         for keyword, color_code in sorted_keywords:
             if keyword in message:
@@ -139,7 +143,7 @@ class ValidationColorFormatter(logging.Formatter):
         return message
 
 def setup_colored_logging():
-    """Setup colored logging for the application."""
+    """Setup colored logging with fixed colors."""
     # Create formatter
     formatter = ValidationColorFormatter()
     
@@ -160,7 +164,7 @@ def setup_colored_logging():
     
     return logger
 
-# Configure colored logging
+# Configure colored logging with fixes
 setup_colored_logging()
 
 def get_server_geolocation():
@@ -529,16 +533,16 @@ class M3UCollector:
                 logging.warning(f"Channel '{channel_name}': 404 Not Found - HLS stream INACTIVE [ERROR_404] - URL: {url}")
                 return False, url, 'not_found'
             elif response.status_code == 400:
-                logging.warning(f"Channel '{channel_name}': HTTP 400 Bad Request - HLS stream INACTIVE [ERROR_400] - URL: {url}")
+                logging.warning(f"Channel '{channel_name}': 400 Bad Request - HLS stream INACTIVE [ERROR_400] - URL: {url}")
                 return False, url, 'http_400'
             elif response.status_code == 500:
-                logging.warning(f"Channel '{channel_name}': HTTP 500 Internal Server Error - HLS stream INACTIVE [ERROR_500] - URL: {url}")
+                logging.warning(f"Channel '{channel_name}': 500 Internal Server Error - HLS stream INACTIVE [ERROR_500] - URL: {url}")
                 return False, url, 'http_500'
             elif response.status_code == 502:
-                logging.warning(f"Channel '{channel_name}': HTTP 502 Bad Gateway - HLS stream INACTIVE [ERROR_502] - URL: {url}")
+                logging.warning(f"Channel '{channel_name}': 502 Bad Gateway - HLS stream INACTIVE [ERROR_502] - URL: {url}")
                 return False, url, 'http_502'
             elif response.status_code == 503:
-                logging.warning(f"Channel '{channel_name}': HTTP 503 Service Unavailable - HLS stream INACTIVE [ERROR_503] - URL: {url}")
+                logging.warning(f"Channel '{channel_name}': 503 Service Unavailable - HLS stream INACTIVE [ERROR_503] - URL: {url}")
                 return False, url, 'http_503'
             else:
                 logging.warning(f"Channel '{channel_name}': HTTP {response.status_code} - HLS stream INACTIVE [ERROR_{response.status_code}] - URL: {url}")
@@ -1532,7 +1536,7 @@ class M3UCollector:
 
 def main():
     """
-    Main execution function with comprehensive configuration and colored validation logging.
+    Main execution function with comprehensive configuration and FIXED colored validation logging.
     """
     logging.info("Starting M3U Collector with full functionality")
     
@@ -1566,7 +1570,7 @@ def main():
     # Initialize collector with comprehensive configuration
     collector = M3UCollector(
         country="Mikhoul", 
-        check_links=True,  # ENABLE DETAILED VALIDATION LOGGING WITH COLORED OUTPUT
+        check_links=True,  # ENABLE DETAILED VALIDATION LOGGING WITH FIXED COLORS
         excluded_groups=excluded_groups,
         config=config
     )
