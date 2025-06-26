@@ -19,13 +19,13 @@ from bs4 import BeautifulSoup
 import csv
 
 class ValidationColorFormatter(logging.Formatter):
-    """Enhanced logging formatter with FIXED colors - single red shade, lighter gray URLs."""
+    """Enhanced logging formatter with comprehensive color support for validation results."""
     
     # ANSI escape codes for colors
     RESET = "\x1b[0m"
     BOLD = "\x1b[1m"
     
-    # Color definitions - FIXED: Single red shade and lighter gray
+    # Color definitions
     RED = "\x1b[31m"
     GREEN = "\x1b[32m"
     YELLOW = "\x1b[33m"
@@ -39,10 +39,10 @@ class ValidationColorFormatter(logging.Formatter):
     BRIGHT_BLUE = "\x1b[94m"
     BRIGHT_CYAN = "\x1b[96m"
     
-    # FIXED: Single red shade (bloody) and lighter gray for URLs
-    INACTIVE_RED = "\x1b[38;5;203m"  # Single consistent red for INACTIVE
-    LIGHT_GRAY = "\x1b[38;5;255m"    # Light gray for URLs
-    LIGHT_ORANGE = "\x1b[38;5;214m"  # Consistent light orange for geo-blocking
+    # Consistent color scheme for validation results
+    INACTIVE_RED = "\x1b[38;5;203m"    # Single consistent red for INACTIVE
+    LIGHT_GRAY = "\x1b[38;5;255m"      # Light gray for URLs
+    LIGHT_ORANGE = "\x1b[38;5;214m"    # Consistent light orange for geo-blocking
     
     # Map log levels to colors
     LEVEL_COLORS = {
@@ -53,9 +53,9 @@ class ValidationColorFormatter(logging.Formatter):
         logging.CRITICAL: BOLD + BRIGHT_RED
     }
     
-    # FIXED: Single red shade, lighter URLs, removed Warning color
+    # Keyword color mapping for validation results
     KEYWORD_COLORS = {
-        # Positive status - GREEN ONLY
+        # Positive status - GREEN
         'Active HLS stream': BRIGHT_GREEN,
         'Active (HEAD)': BRIGHT_GREEN,
         'Active (GET)': BRIGHT_GREEN,
@@ -63,14 +63,14 @@ class ValidationColorFormatter(logging.Formatter):
         'SUCCESS': BRIGHT_GREEN,
         'Success': BRIGHT_GREEN,
         
-        # Negative status - SINGLE RED SHADE (FIXED)
-        'INACTIVE': BOLD + INACTIVE_RED,  # Single consistent red
+        # Negative status - CONSISTENT RED
+        'INACTIVE': BOLD + INACTIVE_RED,
         'inactive': INACTIVE_RED,
         'All validation methods failed': INACTIVE_RED,
         'Failed': INACTIVE_RED,
         'FAILED': BOLD + INACTIVE_RED,
         
-        # Error codes - SINGLE RED SHADE (FIXED)
+        # Error codes - CONSISTENT RED
         '[ERROR_400]': BOLD + INACTIVE_RED,
         '[ERROR_404]': BOLD + INACTIVE_RED,
         '[ERROR_500]': BOLD + INACTIVE_RED,
@@ -78,7 +78,7 @@ class ValidationColorFormatter(logging.Formatter):
         '[ERROR_503]': BOLD + INACTIVE_RED,
         '[CONNECTION_FAILED]': BOLD + INACTIVE_RED,
         
-        # Geo-blocking - CONSISTENT LIGHT ORANGE
+        # Geo-blocking - CONSISTENT ORANGE
         'Geo-blocked HLS stream': LIGHT_ORANGE,
         'Geo-blocked (HEAD)': LIGHT_ORANGE,
         'Geo-blocked (GET)': LIGHT_ORANGE,
@@ -97,7 +97,7 @@ class ValidationColorFormatter(logging.Formatter):
         'Starting comprehensive link validation': BOLD + BLUE,
         'Link validation complete': BOLD + GREEN,
         
-        # HTTP status codes - SINGLE RED SHADE (FIXED)
+        # HTTP status codes - CONSISTENT RED
         'Bad Request': INACTIVE_RED,
         'Internal Server Error': INACTIVE_RED,
         'Bad Gateway': INACTIVE_RED,
@@ -141,7 +141,7 @@ class ValidationColorFormatter(logging.Formatter):
         return message
 
 def setup_colored_logging():
-    """Setup colored logging with fixes."""
+    """Setup colored logging system."""
     formatter = ValidationColorFormatter()
     logger = logging.getLogger()
     # Clear existing handlers
@@ -158,7 +158,7 @@ def setup_colored_logging():
     
     return logger
 
-# Configure colored logging with fixes
+# Configure colored logging
 setup_colored_logging()
 
 def get_server_geolocation():
@@ -467,6 +467,7 @@ class M3UCollector:
                 cached_result = self.url_status_cache[url]
                 # Check if cache is still valid (e.g., 1 hour)
                 if time.time() - cached_result.get('timestamp', 0) < 3600:
+                    # Use separate URL logging for cached results
                     self.log_url_separately(channel_name, url, cached_result['status'])
                     return cached_result['is_active'], cached_result['url'], cached_result['status']
         
@@ -491,7 +492,7 @@ class M3UCollector:
 
     def validate_hls_stream(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate HLS/M3U8 streams with FIXED logging - no duplicate error codes.
+        Validate HLS/M3U8 streams with separate URL logging.
         Args:
             url (str): URL to validate
             headers (dict): Request headers
@@ -555,7 +556,7 @@ class M3UCollector:
 
     def validate_regular_url(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate regular URLs with FIXED logging - no duplicate error codes.
+        Validate regular URLs with separate URL logging.
         Args:
             url (str): URL to validate
             headers (dict): Request headers
@@ -581,16 +582,6 @@ class M3UCollector:
                 self.log_url_separately(channel_name, url, "INACTIVE [ERROR_404]")
                 return False, url, 'not_found'
                 
-            elif response.status_code == 400:
-                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_400]")
-                self.log_url_separately(channel_name, url, "INACTIVE [ERROR_400]")
-                return False, url, 'http_400'
-                
-            elif response.status_code == 500:
-                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_500]")
-                self.log_url_separately(channel_name, url, "INACTIVE [ERROR_500]")
-                return False, url, 'http_500'
-                
             elif response.status_code >= 400:
                 logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_{response.status_code}]")
                 self.log_url_separately(channel_name, url, f"INACTIVE [ERROR_{response.status_code}]")
@@ -610,32 +601,7 @@ class M3UCollector:
                     self.log_url_separately(channel_name, url, "403 Forbidden - Geo-blocked (GET)")
                     return True, url, 'geo_blocked'
                     
-                elif response.status_code == 404:
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_404]")
-                    self.log_url_separately(channel_name, url, "INACTIVE [ERROR_404]")
-                    return False, url, 'not_found'
-                    
-                elif response.status_code == 400:
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_400]")
-                    self.log_url_separately(channel_name, url, "INACTIVE [ERROR_400]")
-                    return False, url, 'http_400'
-                    
-                elif response.status_code == 500:
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_500]")
-                    self.log_url_separately(channel_name, url, "INACTIVE [ERROR_500]")
-                    return False, url, 'http_500'
-                    
-                elif response.status_code == 502:
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_502]")
-                    self.log_url_separately(channel_name, url, "INACTIVE [ERROR_502]")
-                    return False, url, 'http_502'
-                    
-                elif response.status_code == 503:
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_503]")
-                    self.log_url_separately(channel_name, url, "INACTIVE [ERROR_503]")
-                    return False, url, 'http_503'
-                    
-                else:
+                elif response.status_code >= 400:
                     logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_{response.status_code}]")
                     self.log_url_separately(channel_name, url, f"INACTIVE [ERROR_{response.status_code}]")
                     return False, url, f'http_{response.status_code}'
@@ -859,7 +825,6 @@ class M3UCollector:
                 logging.info(f"Parsing progress: {progress:.1f}% ({line_num}/{total_lines} lines)")
             
             # Process EXTINF lines with comprehensive attribute extraction
-            # FIXED: Handle both '#EXTINF:' and 'EXTINF:' patterns (Cuisine fix)
             if line.startswith('#EXTINF:') or line.startswith('EXTINF:'):
                 total_extinf_lines += 1
                 try:
@@ -1545,7 +1510,7 @@ class M3UCollector:
 
 def main():
     """
-    Main execution function with comprehensive configuration and FIXED colored validation logging.
+    Main execution function with comprehensive configuration and consistent URL logging.
     """
     logging.info("Starting M3U Collector with full functionality")
     
@@ -1579,7 +1544,7 @@ def main():
     # Initialize collector with comprehensive configuration
     collector = M3UCollector(
         country="Mikhoul",
-        check_links=True,  # ENABLE VALIDATION WITH FIXED COLORS
+        check_links=True,  # Enable validation with consistent URL logging
         excluded_groups=excluded_groups,
         config=config
     )
