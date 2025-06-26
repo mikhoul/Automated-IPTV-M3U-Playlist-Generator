@@ -34,7 +34,7 @@ class ValidationColorFormatter(logging.Formatter):
     CYAN = "\x1b[36m"
     WHITE = "\x1b[37m"
     BRIGHT_RED = "\x1b[91m"
-    BRIGHT_GREEN = "\x1b[92m"
+    BRIGHT_GREEN = "\x1b[38;5;82m"
     BRIGHT_YELLOW = "\x1b[93m"
     BRIGHT_BLUE = "\x1b[94m"
     BRIGHT_CYAN = "\x1b[96m"
