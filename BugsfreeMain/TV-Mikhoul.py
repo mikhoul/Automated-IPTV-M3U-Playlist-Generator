@@ -40,7 +40,7 @@ class ValidationColorFormatter(logging.Formatter):
     BRIGHT_CYAN = "\x1b[96m"
     
     # FIXED: Single red shade (bloody) and lighter gray for URLs
-    INACTIVE_RED = "\x1b[38;2;220;20;60m"  # Single consistent red for INACTIVE
+    INACTIVE_RED = "\x1b[38;5;203m"  # Single consistent red for INACTIVE
     LIGHT_GRAY = "\x1b[38;5;255m"  # Light gray for URLs
     LIGHT_ORANGE = "\x1b[38;5;214m"  # Consistent light orange for geo-blocking
 
