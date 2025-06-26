@@ -18,8 +18,150 @@ import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 import csv
 
-# Configure logging for production use
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+class ValidationColorFormatter(logging.Formatter):
+    """Enhanced logging formatter with colors for log levels and validation keywords."""
+    
+    # ANSI escape codes for colors
+    RESET = "\x1b[0m"
+    BOLD = "\x1b[1m"
+    
+    # Color definitions
+    RED = "\x1b[31m"
+    GREEN = "\x1b[32m"
+    YELLOW = "\x1b[33m"
+    BLUE = "\x1b[34m"
+    MAGENTA = "\x1b[35m"
+    CYAN = "\x1b[36m"
+    WHITE = "\x1b[37m"
+    BRIGHT_RED = "\x1b[91m"
+    BRIGHT_GREEN = "\x1b[92m"
+    BRIGHT_YELLOW = "\x1b[93m"
+    BRIGHT_BLUE = "\x1b[94m"
+    BRIGHT_CYAN = "\x1b[96m"
+    ORANGE = "\x1b[38;5;208m"  # 256-color orange
+    BRIGHT_ORANGE = "\x1b[38;5;214m"  # Bright orange
+
+    # Map log levels to colors
+    LEVEL_COLORS = {
+        logging.DEBUG: CYAN,
+        logging.INFO: BRIGHT_BLUE,
+        logging.WARNING: BRIGHT_YELLOW,
+        logging.ERROR: BRIGHT_RED,
+        logging.CRITICAL: BOLD + BRIGHT_RED
+    }
+
+    # Keywords to color in messages - geo-blocking now uses ORANGE
+    KEYWORD_COLORS = {
+        # Positive status
+        'Active': BRIGHT_GREEN,
+        'ACTIVE': BRIGHT_GREEN,
+        'Success': BRIGHT_GREEN,
+        'SUCCESS': BRIGHT_GREEN,
+        'Active HLS stream': BRIGHT_GREEN,
+        'Active (HEAD)': BRIGHT_GREEN,
+        'Active (GET)': BRIGHT_GREEN,
+        
+        # Negative status
+        'INACTIVE': BOLD + BRIGHT_RED,
+        'inactive': BRIGHT_RED,
+        'Failed': BRIGHT_RED,
+        'FAILED': BRIGHT_RED,
+        'All validation methods failed': BRIGHT_RED,
+        
+        # Error codes
+        '[ERROR_400]': BOLD + RED,
+        '[ERROR_404]': BOLD + RED,
+        '[ERROR_500]': BOLD + RED,
+        '[ERROR_502]': BOLD + RED,
+        '[ERROR_503]': BOLD + RED,
+        '[CONNECTION_FAILED]': BOLD + RED,
+        
+        # Geo-blocking - CHANGED TO ORANGE
+        'Geo-blocked': BRIGHT_ORANGE,
+        '[Geo-blocked]': BRIGHT_ORANGE,
+        'Tagged as geo-blocked': ORANGE,
+        'geo_blocked': ORANGE,
+        '403 Forbidden - Geo-blocked': ORANGE,
+        
+        # Warnings
+        'Warning': BRIGHT_YELLOW,
+        'WARNING': BOLD + BRIGHT_YELLOW,
+        
+        # Channel processing
+        'CUISINE': BOLD + MAGENTA,
+        'Cuisine': MAGENTA,
+        'ZESTE': BOLD + CYAN,
+        
+        # Validation progress
+        'Validation progress': BLUE,
+        'Starting comprehensive link validation': BOLD + BLUE,
+        'Link validation complete': BOLD + GREEN,
+        
+        # HTTP status codes
+        '403 Forbidden': ORANGE,  # Changed to orange
+        '404 Not Found': RED,
+        '400 Bad Request': RED,
+        '500 Internal Server Error': RED,
+        '502 Bad Gateway': RED,
+        '503 Service Unavailable': RED,
+        
+        # Processing stages
+        'PHASE 1 COMPLETE': BOLD + GREEN,
+        'Processing complete': BOLD + GREEN,
+        'Deduplication complete': GREEN,
+        'Starting post-processing': BLUE,
+    }
+
+    def __init__(self, fmt=None, datefmt=None):
+        if fmt is None:
+            fmt = '%(asctime)s - %(levelname)s - %(message)s'
+        super().__init__(fmt, datefmt)
+
+    def format(self, record):
+        # Color the levelname
+        level_color = self.LEVEL_COLORS.get(record.levelno, self.RESET)
+        original_levelname = record.levelname
+        record.levelname = f"{level_color}{record.levelname}{self.RESET}"
+
+        # Get the formatted message
+        message = super().format(record)
+        
+        # Restore original levelname
+        record.levelname = original_levelname
+
+        # Color specific keywords in the message (order matters - longer phrases first)
+        sorted_keywords = sorted(self.KEYWORD_COLORS.items(), key=lambda x: len(x[0]), reverse=True)
+        for keyword, color_code in sorted_keywords:
+            if keyword in message:
+                colored_keyword = f"{color_code}{keyword}{self.RESET}"
+                message = message.replace(keyword, colored_keyword)
+        
+        return message
+
+def setup_colored_logging():
+    """Setup colored logging for the application."""
+    # Create formatter
+    formatter = ValidationColorFormatter()
+    
+    # Get root logger
+    logger = logging.getLogger()
+    
+    # Clear existing handlers
+    for handler in logger.handlers[:]:
+        logger.removeHandler(handler)
+    
+    # Create console handler with colored formatting
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(formatter)
+    
+    # Add handler to logger
+    logger.addHandler(console_handler)
+    logger.setLevel(logging.INFO)
+    
+    return logger
+
+# Configure colored logging
+setup_colored_logging()
 
 def get_server_geolocation():
     """
@@ -1390,7 +1532,7 @@ class M3UCollector:
 
 def main():
     """
-    Main execution function with comprehensive configuration and detailed validation logging.
+    Main execution function with comprehensive configuration and colored validation logging.
     """
     logging.info("Starting M3U Collector with full functionality")
     
@@ -1424,7 +1566,7 @@ def main():
     # Initialize collector with comprehensive configuration
     collector = M3UCollector(
         country="Mikhoul", 
-        check_links=True,  # ENABLE DETAILED VALIDATION LOGGING WITH ERROR CODES
+        check_links=True,  # ENABLE DETAILED VALIDATION LOGGING WITH COLORED OUTPUT
         excluded_groups=excluded_groups,
         config=config
     )
