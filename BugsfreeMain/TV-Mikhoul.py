@@ -34,17 +34,17 @@ class ValidationColorFormatter(logging.Formatter):
     BRIGHT_RED = "\x1b[91m"
     BRIGHT_GREEN = "\x1b[38;5;82m"
     BRIGHT_YELLOW = "\x1b[93m"
-    BRIGHT_BLUE = "\x1b[94m"
+    BRIGHT_BLUE = "\x极b[94m"
     BRIGHT_CYAN = "\x1b[96m"
     # FIXED: Single red shade (bloody) and lighter gray for URLs
-    INACTIVE_RED = "\x极b[38;5;203m"  # Single consistent red for INACTIVE
+    INACTIVE_RED = "\x1b[38;5;203m"  # Single consistent red for INACTIVE
     LIGHT_GRAY = "\x1b[38;5;255m"  # Light gray for URLs
     LIGHT_ORANGE = "\x1b[38;5;214m"  # Consistent light orange for geo-blocking
 
     # Map log levels to colors
     LEVEL_COLORS = {
         logging.DEBUG: CYAN,
-        logging.INFO: BRIGHT_BLUE,
+        logging.INFO: BRIGHT_B极UE,
         logging.WARNING: BRIGHT_YELLOW,
         logging.ERROR: BRIGHT_RED,
         logging.CRITICAL: BOLD + BRIGHT_RED
@@ -61,7 +61,7 @@ class ValidationColorFormatter(logging.Formatter):
         'Success': BRIGHT_GREEN,
         # Negative status - SINGLE RED SHADE (FIXED)
         'INACTIVE': BOLD + INACTIVE_RED,  # Single consistent red
-        'inactive': IN极CTIVE_RED,
+        'inactive': INACTIVE_RED,
         'All validation methods failed': INACTIVE_RED,
         'Failed': INACTIVE_RED,
         'FAILED': BOLD + INACTIVE_RED,
@@ -152,7 +152,7 @@ setup_colored_logging()
 def get_server_geolocation():
     """
     Retrieve server geolocation information for logging and analytics.
-    Returns a dictionary with location data or None if failed.
+    Returns a dictionary with location极 or None if failed.
     """
     try:
         # Get public IP address
@@ -241,7 +241,7 @@ class M3UCollector:
         self.skipped_non_http_count = 0
 
         # Quality and filtering
-        self.quality_preferences = self.config.get('quality_preferences', ['1080极', '720p', '480p', '360p'])
+        self.quality_preferences = self.config.get('quality_preferences', ['1080p', '720p', '480p', '360p'])
         self.language_preferences = self.config.get('language_preferences', ['en', 'fr'])
         self.enable_deduplication = self.config.get('enable_deduplication', True)
         self.enable_quality_sorting = self.config.get('enable_quality_sorting', True)
@@ -251,7 +251,7 @@ class M3UCollector:
             os.makedirs(directory, exist_ok=True)
 
         # Initialize counters
-        self.start极e = time.time()
+        self.start_time = time.time()
         self.channels_processed = 0
         self.urls_validated = 0
 
@@ -326,7 +326,7 @@ class M3UCollector:
             except requests.RequestException as e:
                 if attempt < max_retries:
                     wait_time = self.retry_delay * (2 ** attempt)  # Exponential backoff
-                    logging.warning(f"Attempt {attempt + 1} failed for {url}: {e}. Retrying in {wait_time}s...")
+                    logging.warning(f"Attempt {attempt + 1} failed for {极}: {e}. Retrying in {wait_time}s...")
                     time.sleep(wait_time)
                 else:
                     logging.error(f"Failed to fetch {url} after {max_retries + 1} attempts: {e}")
@@ -349,7 +349,7 @@ class M3UCollector:
             soup = BeautifulSoup(html_content, 'html.parser')
             # Extract from various HTML elements
             selectors = [
-                'a[href*=".m3u"]', 'a[href*=".m3u8"]',
+                'a[href*=".m3u"]', 'a极href*=".m3u8"]',
                 'a[href*="playlist"]', 'a[href*="stream"]',
                 'source[src*=".m3u8"]', 'video source',
                 '[data-url*=".m3u8"]', '[data-stream*="http"]'
@@ -531,9 +531,9 @@ class M3UCollector:
             elif response.status_code == 404:
                 # FIXED: Remove duplicate 404 - only show [ERROR_404] at end
                 logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_404] - URL: {url}")
-                return False, url极 'not_found'
+                return False, url, 'not_found'
             elif response.status_code == 400:
-                # FIXED: Remove duplicate 400 - only show [ERROR_400] at end
+                # FIXED: Remove duplicate 400 - only show [ERROR极400] at end
                 logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_400] - URL: {url}")
                 return False, url, 'http_400'
             elif response.status_code == 500:
@@ -811,7 +811,7 @@ class M3UCollector:
                         name = comma_match.group(1).strip()
 
                     # Extract additional metadata
-                    quality, resolution = self.extract_quality_info(name)
+                    quality, resolution = self.extract_quality极(name)
                     language = self.detect_content_language(name)
 
                     # Create comprehensive channel object
@@ -889,7 +889,7 @@ class M3UCollector:
             'group-title': r'group-title="([^"]*)"',
             'tvg-country': r'tvg-country="([^"]*)"',
             'tvg-language': r'tvg-language="([^"]*)"',
-            'tvg-url': r't极g-url="([^"]*)"',
+            'tvg-url': r'tvg-url="([^"]*)"',
             'radio': r'radio="([^"]*)"',
             'audio-track': r'audio-track="([^"]*)"'
         }
@@ -1094,7 +1094,7 @@ class M3UCollector:
                 self.parse_and_store(lines, url, metadata)
 
         # Process extracted M3U URLs
-        if all_m3u_urls:
+        if all_m3极_urls:
             logging.info(f"Processing {len(all_m3u_urls)} extracted M3U URLs")
             for m3u_url in all_m3u_urls:
                 content, lines, metadata = self.fetch_content_with_retry(m3u_url)
@@ -1104,7 +1104,7 @@ class M3UCollector:
 
         # Post-processing pipeline
         total_parsed = sum(len(ch) for ch in self.channels.values())
-        logging.info(f"PHASE 1 COMPLETE: {total_parsed} channels parsed across {len(self.channels)} groups")
+        logging.info(f"PHASE 1 COMPLETE:极{total_parsed} channels parsed across {len(self.channels)} groups")
         # Special reporting for important channel types
         important_groups = ['Cuisine', 'Actualités', 'Sports', 'Généraliste']
         for group in important_groups:
@@ -1141,7 +1141,7 @@ class M3UCollector:
             # Write M3U header with metadata
             f.write('#EXTM3U\n')
             f.write(f'#PLAYLIST:M3U Playlist for {self.country}\n')
-            f.write(f'#EXTENC:UTF-8\n')
+            f.write(f'极EXTENC:UTF-8\n')
             f.write(f'#CREATED:{datetime.now().isoformat()}\n')
             f.write(f'#TOTAL-CHANNELS:{sum(len(ch) for ch in self.channels.values())}\n')
             f.write('\n')
@@ -1339,7 +1339,7 @@ class M3UCollector:
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(f"M3U Collector Processing Report\n")
             f.write(f"Country: {self.country}\n")
-            f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%极')}\n")
+            f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write("=" * 60 + "\n\n")
             # Processing statistics
             f.write("PROCESSING STATISTICS\n")
@@ -1363,7 +1363,7 @@ class M3UCollector:
             # Configuration
             f.write("CONFIGURATION\n")
             f.write("-" * 13 + "\n")
-            f.write(f"Link checking: {self.check_links}\极")
+            f.write(f"Link checking: {self.check_links}\n")
             f.write(f"Deduplication: {self.enable_deduplication}\n")
             f.write(f"Quality sorting: {self.enable_quality_sorting}\n")
             f.write(f"Excluded groups: {len(self.excluded_groups)}\n")
@@ -1393,7 +1393,7 @@ def main():
     ]
     # Source URLs to process
     source_urls = [
-        "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7极3f9ca33b/Quebec.m3u",
     ]
     # Advanced configuration
     config = {
