@@ -1,23 +1,5 @@
 [
   {
-    "name": "LCN (Audio) [Geo-blocked]",
-    "type": "Actualités",
-    "url": "https://tvalive.akamaized.net/hls/live/2014213/tvan01/audio_0_eng.m3u8",
-    "img": "https://i.imgur.com/6cESMfj.png",
-    "quality": "Unknown",
-    "language": "unknown",
-    "active": true
-  },
-  {
-    "name": "LCN (720p) [Geo-blocked]",
-    "type": "Actualités",
-    "url": "https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8",
-    "img": "https://i.imgur.com/6cESMfj.png",
-    "quality": "Unknown",
-    "language": "unknown",
-    "active": true
-  },
-  {
     "name": "CKMI-DT - Global News Montreal (720p)",
     "type": "Actualités",
     "url": "https://live.corusdigitaldev.com/groupa/live/6bfb7f13-9d9d-4211-9c50-fb56330e4ccd/live.isml/.m3u8",
@@ -36,12 +18,12 @@
     "active": true
   },
   {
-    "name": "CJNT-DT - CityNews Montreal 6pm a 11pm (Non 24/7)",
+    "name": "ICI RDI (Audio) [Geo-blocked]",
     "type": "Actualités",
-    "url": "https://citynewsregional.akamaized.net/hls/live/553720/CityNews-Montreal/master.m3u8",
-    "img": "https://i.imgur.com/jMaP3wK.png",
+    "url": "https://rcavlive.akamaized.net/hls/live/704026/canrdi/master_dv.m3u8",
+    "img": "https://i.imgur.com/Bb1ZiR6.jpg",
     "quality": "Unknown",
-    "language": "en",
+    "language": "unknown",
     "active": true
   },
   {
@@ -54,10 +36,19 @@
     "active": true
   },
   {
-    "name": "ICI RDI (Audio) [Geo-blocked]",
+    "name": "LCN (720p) [Geo-blocked]",
     "type": "Actualités",
-    "url": "https://rcavlive.akamaized.net/hls/live/704026/canrdi/master_dv.m3u8",
-    "img": "https://i.imgur.com/Bb1ZiR6.jpg",
+    "url": "https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8",
+    "img": "https://i.imgur.com/6cESMfj.png",
+    "quality": "Unknown",
+    "language": "unknown",
+    "active": true
+  },
+  {
+    "name": "LCN (Audio) [Geo-blocked]",
+    "type": "Actualités",
+    "url": "https://tvalive.akamaized.net/hls/live/2014213/tvan01/audio_0_eng.m3u8",
+    "img": "https://i.imgur.com/6cESMfj.png",
     "quality": "Unknown",
     "language": "unknown",
     "active": true
@@ -72,6 +63,24 @@
     "active": true
   },
   {
+    "name": "CJNT-DT - CityNews Montreal 6pm a 11pm (Non 24/7)",
+    "type": "Actualités",
+    "url": "https://citynewsregional.akamaized.net/hls/live/553720/CityNews-Montreal/master.m3u8",
+    "img": "https://i.imgur.com/jMaP3wK.png",
+    "quality": "Unknown",
+    "language": "en",
+    "active": true
+  },
+  {
+    "name": "CFTU-DT - Canal Savoir (360p)",
+    "type": "Educatif",
+    "url": "https://hls.savoir.media/live/stream.m3u8",
+    "img": "https://i.imgur.com/27PqVAR.png",
+    "quality": "Unknown",
+    "language": "unknown",
+    "active": true
+  },
+  {
     "name": "CBFT-DT - ICI Radio-Canada Télé Montréal HD (Montréal) (1080p) [Geo-blocked]",
     "type": "Généraliste",
     "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8",
@@ -81,12 +90,30 @@
     "active": true
   },
   {
-    "name": "CFHD-DT - ICI TV (720p)",
+    "name": "CKSH-DT - ICI Radio-Canada Télé Estrie (Sherbrooke) (720p) [Geo-blocked]",
     "type": "Généraliste",
-    "url": "https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8",
-    "img": "https://i.imgur.com/i3xFNPE.png",
-    "quality": "1080p",
-    "language": "en",
+    "url": "https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8",
+    "img": "https://i.imgur.com/hen9czq.png",
+    "quality": "Unknown",
+    "language": "fr",
+    "active": true
+  },
+  {
+    "name": "CBAFT-DT - ICI Radio-Canada Télé Acadie (Moncton) (720p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8",
+    "img": "https://i.imgur.com/3TlTIrd.png",
+    "quality": "Unknown",
+    "language": "fr",
+    "active": true
+  },
+  {
+    "name": "CKTM-DT - ICI Radio-Canada Télé Mauricie - Centre-du-Québec (Trois-Rivières) (720p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8",
+    "img": "https://i.imgur.com/jjnIzML.png",
+    "quality": "Unknown",
+    "language": "fr",
     "active": true
   },
   {
@@ -94,6 +121,51 @@
     "type": "Généraliste",
     "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_3000.m3u8",
     "img": "https://i.imgur.com/ExX8Ojc.png",
+    "quality": "Unknown",
+    "language": "fr",
+    "active": true
+  },
+  {
+    "name": "CBVT-DT - ICI Radio-Canada Télé Québec (Québec) (720p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_3000.m3u8",
+    "img": "https://i.imgur.com/aEmwyn6.png",
+    "quality": "Unknown",
+    "language": "fr",
+    "active": true
+  },
+  {
+    "name": "CKTV-DT - ICI Radio-Canada Télé Saguenay-Lac-St-Jean (Saguenay) (720p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8",
+    "img": "https://i.imgur.com/wMQGKoP.png",
+    "quality": "Unknown",
+    "language": "fr",
+    "active": true
+  },
+  {
+    "name": "CJBR-DT - ICI Radio-Canada Télé Est-Québec (Rimouski) (720p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8",
+    "img": "https://i.imgur.com/hTXZMsX.png",
+    "quality": "Unknown",
+    "language": "fr",
+    "active": true
+  },
+  {
+    "name": "CBOFT-DT -ICI Radio-Canada Télé Ottawa - Gatineau (Ottawa) (720p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8",
+    "img": "https://i.imgur.com/PiYf9p0.png",
+    "quality": "Unknown",
+    "language": "fr",
+    "active": true
+  },
+  {
+    "name": "CBLFT-DT - ICI Radio-Canada Télé Ontario (Toronto) (720p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive.akamaized.net/hls/live/704022/cancblft/master_3000.m3u8",
+    "img": "https://i.imgur.com/2UOy8xT.png",
     "quality": "Unknown",
     "language": "fr",
     "active": true
@@ -117,78 +189,6 @@
     "active": true
   },
   {
-    "name": "CBLFT-DT - ICI Radio-Canada Télé Ontario (Toronto) (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/704022/cancblft/master_3000.m3u8",
-    "img": "https://i.imgur.com/2UOy8xT.png",
-    "quality": "Unknown",
-    "language": "fr",
-    "active": true
-  },
-  {
-    "name": "CKSH-DT - ICI Radio-Canada Télé Estrie (Sherbrooke) (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8",
-    "img": "https://i.imgur.com/hen9czq.png",
-    "quality": "Unknown",
-    "language": "fr",
-    "active": true
-  },
-  {
-    "name": "CBOFT-DT -ICI Radio-Canada Télé Ottawa - Gatineau (Ottawa) (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8",
-    "img": "https://i.imgur.com/PiYf9p0.png",
-    "quality": "Unknown",
-    "language": "fr",
-    "active": true
-  },
-  {
-    "name": "CJBR-DT - ICI Radio-Canada Télé Est-Québec (Rimouski) (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8",
-    "img": "https://i.imgur.com/hTXZMsX.png",
-    "quality": "Unknown",
-    "language": "fr",
-    "active": true
-  },
-  {
-    "name": "CBAFT-DT - ICI Radio-Canada Télé Acadie (Moncton) (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8",
-    "img": "https://i.imgur.com/3TlTIrd.png",
-    "quality": "Unknown",
-    "language": "fr",
-    "active": true
-  },
-  {
-    "name": "CBVT-DT - ICI Radio-Canada Télé Québec (Québec) (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_3000.m3u8",
-    "img": "https://i.imgur.com/aEmwyn6.png",
-    "quality": "Unknown",
-    "language": "fr",
-    "active": true
-  },
-  {
-    "name": "CKTM-DT - ICI Radio-Canada Télé Mauricie - Centre-du-Québec (Trois-Rivières) (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8",
-    "img": "https://i.imgur.com/jjnIzML.png",
-    "quality": "Unknown",
-    "language": "fr",
-    "active": true
-  },
-  {
-    "name": "CKTV-DT - ICI Radio-Canada Télé Saguenay-Lac-St-Jean (Saguenay) (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8",
-    "img": "https://i.imgur.com/wMQGKoP.png",
-    "quality": "Unknown",
-    "language": "fr",
-    "active": true
-  },
-  {
     "name": "CBXFT-DT - ICI Radio-Canada Télé Alberta (Edmonton) (720p) [Geo-blocked]",
     "type": "Généraliste",
     "url": "https://rcavlive.akamaized.net/hls/live/704020/cancbxft/master_3000.m3u8",
@@ -207,24 +207,6 @@
     "active": true
   },
   {
-    "name": "ICI Tele Estrie (Sherbrooke) (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
-    "img": "https://i.imgur.com/rQyoWsy.png",
-    "quality": "Unknown",
-    "language": "unknown",
-    "active": true
-  },
-  {
-    "name": "ICI Tele Ottawa-Gatineau (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
-    "img": "https://i.imgur.com/rQyoWsy.png",
-    "quality": "Unknown",
-    "language": "unknown",
-    "active": true
-  },
-  {
     "name": "ICI Tele Est-Quebec (Rimouski) (720p) [Geo-blocked]",
     "type": "Généraliste",
     "url": "https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
@@ -234,27 +216,9 @@
     "active": true
   },
   {
-    "name": "ICI Tele Quebec (720p) [Geo-blocked]",
+    "name": "ICI Tele Estrie (Sherbrooke) (720p) [Geo-blocked]",
     "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_2500.m3u8|X-Forwarded-For=24.37.42.200",
-    "img": "https://i.imgur.com/rQyoWsy.png",
-    "quality": "Unknown",
-    "language": "unknown",
-    "active": true
-  },
-  {
-    "name": "ICI Tele Montreal (1080p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8|X-Forwarded-For=24.37.42.200",
-    "img": "https://i.imgur.com/rQyoWsy.png",
-    "quality": "Unknown",
-    "language": "unknown",
-    "active": true
-  },
-  {
-    "name": "ICI Tele Saguenay (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
+    "url": "https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
     "img": "https://i.imgur.com/rQyoWsy.png",
     "quality": "Unknown",
     "language": "unknown",
@@ -270,9 +234,63 @@
     "active": true
   },
   {
+    "name": "ICI Tele Montreal (1080p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8|X-Forwarded-For=24.37.42.200",
+    "img": "https://i.imgur.com/rQyoWsy.png",
+    "quality": "Unknown",
+    "language": "unknown",
+    "active": true
+  },
+  {
+    "name": "ICI Tele Ottawa-Gatineau (720p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
+    "img": "https://i.imgur.com/rQyoWsy.png",
+    "quality": "Unknown",
+    "language": "unknown",
+    "active": true
+  },
+  {
+    "name": "ICI Tele Saguenay (720p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
+    "img": "https://i.imgur.com/rQyoWsy.png",
+    "quality": "Unknown",
+    "language": "unknown",
+    "active": true
+  },
+  {
+    "name": "ICI Tele Quebec (720p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_2500.m3u8|X-Forwarded-For=24.37.42.200",
+    "img": "https://i.imgur.com/rQyoWsy.png",
+    "quality": "Unknown",
+    "language": "unknown",
+    "active": true
+  },
+  {
+    "name": "ICI Tele Alberta (Edmonton) (720p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive.akamaized.net/hls/live/704020/cancbxft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
+    "img": "https://i.imgur.com/rQyoWsy.png",
+    "quality": "Unknown",
+    "language": "unknown",
+    "active": true
+  },
+  {
     "name": "ICI Tele Acadie (Moncton) (720p) [Geo-blocked]",
     "type": "Généraliste",
     "url": "https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
+    "img": "https://i.imgur.com/rQyoWsy.png",
+    "quality": "Unknown",
+    "language": "unknown",
+    "active": true
+  },
+  {
+    "name": "ICI Tele Ontario (Toronto) (720p) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://rcavlive.akamaized.net/hls/live/704022/cancblft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
     "img": "https://i.imgur.com/rQyoWsy.png",
     "quality": "Unknown",
     "language": "unknown",
@@ -297,24 +315,6 @@
     "active": true
   },
   {
-    "name": "ICI Tele Alberta (Edmonton) (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/704020/cancbxft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
-    "img": "https://i.imgur.com/rQyoWsy.png",
-    "quality": "Unknown",
-    "language": "unknown",
-    "active": true
-  },
-  {
-    "name": "ICI Tele Ontario (Toronto) (720p) [Geo-blocked]",
-    "type": "Généraliste",
-    "url": "https://rcavlive.akamaized.net/hls/live/704022/cancblft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
-    "img": "https://i.imgur.com/rQyoWsy.png",
-    "quality": "Unknown",
-    "language": "unknown",
-    "active": true
-  },
-  {
     "name": "ICI Tele Manitoba (Winnipeg) (720p) [Geo-blocked]",
     "type": "Généraliste",
     "url": "https://rcavlive.akamaized.net/hls/live/704018/cancbwft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
@@ -324,11 +324,11 @@
     "active": true
   },
   {
-    "name": "TVA (Adaptative) [Geo-blocked]",
+    "name": "CFHD-DT - ICI TV (720p)",
     "type": "Généraliste",
-    "url": "https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8|X-Forwarded-For=24.37.42.200",
-    "img": "https://i.imgur.com/AvJwjcQ.jpg",
-    "quality": "Unknown",
+    "url": "https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8",
+    "img": "https://i.imgur.com/i3xFNPE.png",
+    "quality": "1080p",
     "language": "en",
     "active": true
   },
@@ -351,12 +351,12 @@
     "active": true
   },
   {
-    "name": "Télé Québec (Adaptative) [Geo-blocked]",
+    "name": "TVA (Adaptative) [Geo-blocked]",
     "type": "Généraliste",
-    "url": "https://bcovlive-a.akamaihd.net/575d86160eb143458d51f7ab187a4e68/us-east-1/6101674910001/playlist.m3u8|X-Forwarded-For=24.37.42.200",
-    "img": "https://i.imgur.com/8R4EaFu.png",
+    "url": "https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8|X-Forwarded-For=24.37.42.200",
+    "img": "https://i.imgur.com/AvJwjcQ.jpg",
     "quality": "Unknown",
-    "language": "fr",
+    "language": "en",
     "active": true
   },
   {
@@ -369,57 +369,12 @@
     "active": true
   },
   {
-    "name": "CFTU-DT - Canal Savoir (360p)",
-    "type": "Educatif",
-    "url": "https://hls.savoir.media/live/stream.m3u8",
-    "img": "https://i.imgur.com/27PqVAR.png",
-    "quality": "Unknown",
-    "language": "unknown",
-    "active": true
-  },
-  {
-    "name": "Télé Culturelle Médias (TCM-TV) [Geo-blocked]",
-    "type": "Culturelle",
-    "url": "https://stream.castr.com/631f9bb9ecbe28ce6910385a/live_79b37a4032dd11ed85c9d9bece7b557e/index.m3u8|Referer=https://player.castr.com/live_79b37a4032dd11ed85c9d9bece7b557e",
-    "img": "https://i.imgur.com/FsN8wuu.png",
-    "quality": "Unknown",
-    "language": "unknown",
-    "active": true
-  },
-  {
-    "name": "Csur la télé ch 1 - Vaudreuil-Dorion (1080p) [Geo-blocked]",
-    "type": "Communautaire",
-    "url": "https://stream.castr.com/655a9019e6c4692b56396b6d/live_f88ae0808c9911ee9d20297cbe04ce6d/index.fmp4.m3u8|Referer=https://player.castr.com/",
-    "img": "https://i.imgur.com/5Pq17aU.jpg",
+    "name": "Télé Québec (Adaptative) [Geo-blocked]",
+    "type": "Généraliste",
+    "url": "https://bcovlive-a.akamaihd.net/575d86160eb143458d51f7ab187a4e68/us-east-1/6101674910001/playlist.m3u8|X-Forwarded-For=24.37.42.200",
+    "img": "https://i.imgur.com/8R4EaFu.png",
     "quality": "Unknown",
     "language": "fr",
-    "active": true
-  },
-  {
-    "name": "Csur la télé ch 2 - Vaudreuil-Dorion  (1080p) [Geo-blocked]",
-    "type": "Communautaire",
-    "url": "https://stream.castr.com/655a9019e6c4692b56396b6d/live_ee53b1d08d9511ee89c1a3cd362d5ce1/index.fmp4.m3u8|Referer=https://player.castr.com/",
-    "img": "https://i.imgur.com/5Pq17aU.jpg",
-    "quality": "Unknown",
-    "language": "fr",
-    "active": true
-  },
-  {
-    "name": "TVRS - Longueuil (1080p) [Geo-blocked]",
-    "type": "Communautaire",
-    "url": "https://stream.castr.com/63bf0d473321d4909a3876ad/live_d6983bc091e611edbddd7fe8982d8daf/index.fmp4.m3u8|Referer=https://player.castr.com/",
-    "img": "https://i.imgur.com/w9XCbWX.jpg",
-    "quality": "Unknown",
-    "language": "en",
-    "active": true
-  },
-  {
-    "name": "Noovo Cinéma",
-    "type": "Film",
-    "url": "https://dk4ogs46bjxcw.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-xr1ct045l70mz/Noovo_Cinema.m3u8",
-    "img": "https://i.imgur.com/FNzVlkT.png",
-    "quality": "Unknown",
-    "language": "unknown",
     "active": true
   },
   {
@@ -441,12 +396,57 @@
     "active": true
   },
   {
+    "name": "Noovo Cinéma",
+    "type": "Film",
+    "url": "https://dk4ogs46bjxcw.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-xr1ct045l70mz/Noovo_Cinema.m3u8",
+    "img": "https://i.imgur.com/FNzVlkT.png",
+    "quality": "Unknown",
+    "language": "unknown",
+    "active": true
+  },
+  {
     "name": "Montreal Greek TV",
     "type": "Multiculturel",
     "url": "http://live.greektv.ca/hls1/greektv.m3u8",
     "img": "https://i.imgur.com/eNu3N0f.png",
     "quality": "Unknown",
     "language": "en",
+    "active": true
+  },
+  {
+    "name": "Télé Culturelle Médias (TCM-TV) [Geo-blocked]",
+    "type": "Culturelle",
+    "url": "https://stream.castr.com/631f9bb9ecbe28ce6910385a/live_79b37a4032dd11ed85c9d9bece7b557e/index.m3u8|Referer=https://player.castr.com/live_79b37a4032dd11ed85c9d9bece7b557e",
+    "img": "https://i.imgur.com/FsN8wuu.png",
+    "quality": "Unknown",
+    "language": "unknown",
+    "active": true
+  },
+  {
+    "name": "TVRS - Longueuil (1080p) [Geo-blocked]",
+    "type": "Communautaire",
+    "url": "https://stream.castr.com/63bf0d473321d4909a3876ad/live_d6983bc091e611edbddd7fe8982d8daf/index.fmp4.m3u8|Referer=https://player.castr.com/",
+    "img": "https://i.imgur.com/w9XCbWX.jpg",
+    "quality": "Unknown",
+    "language": "en",
+    "active": true
+  },
+  {
+    "name": "Csur la télé ch 1 - Vaudreuil-Dorion (1080p) [Geo-blocked]",
+    "type": "Communautaire",
+    "url": "https://stream.castr.com/655a9019e6c4692b56396b6d/live_f88ae0808c9911ee9d20297cbe04ce6d/index.fmp4.m3u8|Referer=https://player.castr.com/",
+    "img": "https://i.imgur.com/5Pq17aU.jpg",
+    "quality": "Unknown",
+    "language": "fr",
+    "active": true
+  },
+  {
+    "name": "Csur la télé ch 2 - Vaudreuil-Dorion  (1080p) [Geo-blocked]",
+    "type": "Communautaire",
+    "url": "https://stream.castr.com/655a9019e6c4692b56396b6d/live_ee53b1d08d9511ee89c1a3cd362d5ce1/index.fmp4.m3u8|Referer=https://player.castr.com/",
+    "img": "https://i.imgur.com/5Pq17aU.jpg",
+    "quality": "Unknown",
+    "language": "fr",
     "active": true
   },
   {
