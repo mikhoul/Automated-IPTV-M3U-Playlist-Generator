@@ -19,7 +19,7 @@ from bs4 import BeautifulSoup
 import csv
 
 class ValidationColorFormatter(logging.Formatter):
-    """Enhanced logging formatter with FIXED colors - single red shade, lighter gray URLs."""
+    """Enhanced logging formatter with FIXED colors and cleaner output."""
     
     # ANSI escape codes for colors
     RESET = "\x1b[0m"
@@ -44,18 +44,19 @@ class ValidationColorFormatter(logging.Formatter):
     LIGHT_GRAY = "\x1b[38;5;255m"   # Light gray for URLs
     LIGHT_ORANGE = "\x1b[38;5;214m" # Consistent light orange for geo-blocking
     
-    # Map log levels to colors
+    # Map log levels to colors - HIDE INFO and WARNING prefixes
     LEVEL_COLORS = {
         logging.DEBUG: CYAN,
-        logging.INFO: BRIGHT_BLUE,
-        logging.WARNING: BRIGHT_YELLOW,
+        logging.INFO: "",  # HIDE INFO prefix
+        logging.WARNING: "",  # HIDE WARNING prefix for cleaner logs
         logging.ERROR: BRIGHT_RED,
         logging.CRITICAL: BOLD + BRIGHT_RED
     }
     
-    # FIXED: Single red shade, lighter URLs, removed Warning color
+    # FIXED: Proper color mappings without overlapping words
     KEYWORD_COLORS = {
-        # Positive status - GREEN ONLY
+        # Positive status - GREEN ONLY - FIXED: Full words
+        'Successfully': BRIGHT_GREEN,  # FIXED: Full word instead of just "Success"
         'ACTIVE HLS stream': BRIGHT_GREEN,
         'ACTIVE (HEAD)': BRIGHT_GREEN,
         'ACTIVE (GET)': BRIGHT_GREEN,
@@ -63,8 +64,8 @@ class ValidationColorFormatter(logging.Formatter):
         'SUCCESS': BRIGHT_GREEN,
         'Success': BRIGHT_GREEN,
         
-        # Negative status - SINGLE RED SHADE (FIXED)
-        'INACTIVE': BOLD + INACTIVE_RED,  # Single consistent red
+        # Negative status - SINGLE RED SHADE (FIXED) - Order matters!
+        'INACTIVE': BOLD + INACTIVE_RED,  # FIXED: Must be before "ACTIVE" to avoid color conflicts
         'inactive': INACTIVE_RED,
         'All validation methods failed': INACTIVE_RED,
         'Failed': INACTIVE_RED,
@@ -78,7 +79,10 @@ class ValidationColorFormatter(logging.Formatter):
         '[ERROR_503]': BOLD + INACTIVE_RED,
         '[CONNECTION_FAILED]': BOLD + INACTIVE_RED,
         
-        # Geo-blocking - CONSISTENT LIGHT ORANGE
+        # Geo-blocking - CONSISTENT LIGHT ORANGE + ACTIVE green
+        'ACTIVE Geo-blocked HLS stream': LIGHT_ORANGE,  # NEW: Added ACTIVE for geo-blocked
+        'ACTIVE Geo-blocked (HEAD)': LIGHT_ORANGE,      # NEW: Added ACTIVE for geo-blocked
+        'ACTIVE Geo-blocked (GET)': LIGHT_ORANGE,       # NEW: Added ACTIVE for geo-blocked
         'Geo-blocked HLS stream': LIGHT_ORANGE,
         'Geo-blocked (HEAD)': LIGHT_ORANGE,
         'Geo-blocked (GET)': LIGHT_ORANGE,
@@ -87,10 +91,6 @@ class ValidationColorFormatter(logging.Formatter):
         'Tagged as geo-blocked': LIGHT_ORANGE,
         'geo_blocked': LIGHT_ORANGE,
         '403 Forbidden': LIGHT_ORANGE,
-        
-        # REMOVED: Warning color (redundant with red error tags)
-        # 'Warning': BRIGHT_YELLOW,  # REMOVED
-        # 'WARNING': BOLD + BRIGHT_YELLOW,  # REMOVED
         
         # Channel processing
         'CUISINE': BOLD + MAGENTA,
@@ -119,14 +119,19 @@ class ValidationColorFormatter(logging.Formatter):
     
     def __init__(self, fmt=None, datefmt=None):
         if fmt is None:
-            fmt = '%(asctime)s - %(levelname)s - %(message)s'
+            fmt = '%(asctime)s - %(message)s'  # REMOVED %(levelname)s for cleaner output
         super().__init__(fmt, datefmt)
     
     def format(self, record):
-        # Color the levelname
+        # HIDE INFO and WARNING level names for cleaner output
         level_color = self.LEVEL_COLORS.get(record.levelno, self.RESET)
         original_levelname = record.levelname
-        record.levelname = f"{level_color}{record.levelname}{self.RESET}"
+        
+        # Only show level name for ERROR and CRITICAL, hide INFO and WARNING
+        if record.levelno in [logging.INFO, logging.WARNING]:
+            record.levelname = ""
+        else:
+            record.levelname = f"{level_color}{record.levelname}{self.RESET}"
         
         # Get the formatted message
         message = super().format(record)
@@ -140,7 +145,7 @@ class ValidationColorFormatter(logging.Formatter):
         url_pattern = r'(https?://[^\s]+)'
         message = re.sub(url_pattern, f'{self.LIGHT_GRAY}\\1{self.RESET}', message)
         
-        # Color keywords with proper order (longer phrases first)
+        # Color keywords with proper order (longer phrases first to avoid conflicts)
         sorted_keywords = sorted(self.KEYWORD_COLORS.items(), key=lambda x: len(x[0]), reverse=True)
         for keyword, color_code in sorted_keywords:
             if keyword in message:
@@ -508,7 +513,7 @@ class M3UCollector:
     
     def validate_hls_stream(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate HLS/M3U8 streams with FIXED logging - no duplicate error codes.
+        Validate HLS/M3U8 streams with FIXED logging - cleaner output.
         
         Args:
             url (str): URL to validate
@@ -535,36 +540,38 @@ class M3UCollector:
                     return False, url, 'invalid_content'
             
             elif response.status_code == 403:
-                logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked HLS stream - URL: {url}")
+                # FIXED: Added ACTIVE for geo-blocked channels
+                logging.info(f"Channel '{channel_name}': ACTIVE Geo-blocked HLS stream - URL: {url}")
                 return True, url, 'geo_blocked'
             
             elif response.status_code == 404:
-                # FIXED: Remove duplicate 404 - only show [ERROR_404] at end
-                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_404] - URL: {url}")
+                # FIXED: Use logging.error to avoid WARNING prefix
+                logging.error(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_404] - URL: {url}")
                 return False, url, 'not_found'
             
             elif response.status_code == 400:
-                # FIXED: Remove duplicate 400 - only show [ERROR_400] at end
-                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_400] - URL: {url}")
+                # FIXED: Use logging.error to avoid WARNING prefix
+                logging.error(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_400] - URL: {url}")
                 return False, url, 'http_400'
             
             elif response.status_code == 500:
-                # FIXED: Remove duplicate 500 - only show [ERROR_500] at end
-                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_500] - URL: {url}")
+                # FIXED: Use logging.error to avoid WARNING prefix
+                logging.error(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_500] - URL: {url}")
                 return False, url, 'http_500'
             
             elif response.status_code == 502:
-                # FIXED: Remove duplicate 502 - only show [ERROR_502] at end
-                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_502] - URL: {url}")
+                # FIXED: Use logging.error to avoid WARNING prefix
+                logging.error(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_502] - URL: {url}")
                 return False, url, 'http_502'
             
             elif response.status_code == 503:
-                # FIXED: Remove duplicate 503 - only show [ERROR_503] at end
-                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_503] - URL: {url}")
+                # FIXED: Use logging.error to avoid WARNING prefix
+                logging.error(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_503] - URL: {url}")
                 return False, url, 'http_503'
             
             else:
-                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+                # FIXED: Use logging.error to avoid WARNING prefix
+                logging.error(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_{response.status_code}] - URL: {url}")
                 return False, url, f'http_{response.status_code}'
         
         except requests.RequestException as e:
@@ -574,7 +581,7 @@ class M3UCollector:
     
     def validate_regular_url(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate regular URLs with FIXED logging - no duplicate error codes.
+        Validate regular URLs with FIXED logging - cleaner output.
         
         Args:
             url (str): URL to validate
@@ -596,26 +603,28 @@ class M3UCollector:
                 return True, response.url, 'active'
             
             elif response.status_code == 403:
-                logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD) - URL: {url}")
+                # FIXED: Added ACTIVE for geo-blocked channels
+                logging.info(f"Channel '{channel_name}': ACTIVE Geo-blocked (HEAD) - URL: {url}")
                 return True, url, 'geo_blocked'
             
             elif response.status_code == 404:
-                # FIXED: Remove duplicate 404 - only show [ERROR_404] at end
-                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_404] - URL: {url}")
+                # FIXED: Use logging.error to avoid WARNING prefix
+                logging.error(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_404] - URL: {url}")
                 return False, url, 'not_found'
             
             elif response.status_code == 400:
-                # FIXED: Remove duplicate 400 - only show [ERROR_400] at end
-                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_400] - URL: {url}")
+                # FIXED: Use logging.error to avoid WARNING prefix
+                logging.error(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_400] - URL: {url}")
                 return False, url, 'http_400'
             
             elif response.status_code == 500:
-                # FIXED: Remove duplicate 500 - only show [ERROR_500] at end
-                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_500] - URL: {url}")
+                # FIXED: Use logging.error to avoid WARNING prefix
+                logging.error(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_500] - URL: {url}")
                 return False, url, 'http_500'
             
             elif response.status_code >= 400:
-                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+                # FIXED: Use logging.error to avoid WARNING prefix
+                logging.error(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_{response.status_code}] - URL: {url}")
                 return False, url, f'http_{response.status_code}'
         
         except requests.RequestException:
@@ -631,36 +640,38 @@ class M3UCollector:
                     return True, response.url, 'active'
                 
                 elif response.status_code == 403:
-                    logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (GET) - URL: {url}")
+                    # FIXED: Added ACTIVE for geo-blocked channels
+                    logging.info(f"Channel '{channel_name}': ACTIVE Geo-blocked (GET) - URL: {url}")
                     return True, url, 'geo_blocked'
                 
                 elif response.status_code == 404:
-                    # FIXED: Remove duplicate 404 - only show [ERROR_404] at end
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_404] - URL: {url}")
+                    # FIXED: Use logging.error to avoid WARNING prefix
+                    logging.error(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_404] - URL: {url}")
                     return False, url, 'not_found'
                 
                 elif response.status_code == 400:
-                    # FIXED: Remove duplicate 400 - only show [ERROR_400] at end
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_400] - URL: {url}")
+                    # FIXED: Use logging.error to avoid WARNING prefix
+                    logging.error(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_400] - URL: {url}")
                     return False, url, 'http_400'
                 
                 elif response.status_code == 500:
-                    # FIXED: Remove duplicate 500 - only show [ERROR_500] at end
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_500] - URL: {url}")
+                    # FIXED: Use logging.error to avoid WARNING prefix
+                    logging.error(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_500] - URL: {url}")
                     return False, url, 'http_500'
                 
                 elif response.status_code == 502:
-                    # FIXED: Remove duplicate 502 - only show [ERROR_502] at end
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_502] - URL: {url}")
+                    # FIXED: Use logging.error to avoid WARNING prefix
+                    logging.error(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_502] - URL: {url}")
                     return False, url, 'http_502'
                 
                 elif response.status_code == 503:
-                    # FIXED: Remove duplicate 503 - only show [ERROR_503] at end
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_503] - URL: {url}")
+                    # FIXED: Use logging.error to avoid WARNING prefix
+                    logging.error(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_503] - URL: {url}")
                     return False, url, 'http_503'
                 
                 else:
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+                    # FIXED: Use logging.error to avoid WARNING prefix
+                    logging.error(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_{response.status_code}] - URL: {url}")
                     return False, url, f'http_{response.status_code}'
         
         except requests.RequestException as e:
@@ -679,18 +690,21 @@ class M3UCollector:
                     return True, alt_url, 'active'
                 
                 elif response.status_code == 403:
-                    logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD, switched protocol) - URL: {alt_url}")
+                    # FIXED: Added ACTIVE for geo-blocked channels
+                    logging.info(f"Channel '{channel_name}': ACTIVE Geo-blocked (HEAD, switched protocol) - URL: {alt_url}")
                     return True, alt_url, 'geo_blocked'
                 
                 elif response.status_code >= 400:
-                    logging.warning(f"Channel '{channel_name}': (HEAD, switched protocol) INACTIVE [ERROR_{response.status_code}] - URL: {alt_url}")
+                    # FIXED: Use logging.error to avoid WARNING prefix
+                    logging.error(f"Channel '{channel_name}': (HEAD, switched protocol) INACTIVE [ERROR_{response.status_code}] - URL: {alt_url}")
                     return False, alt_url, f'http_{response.status_code}'
         
         except requests.RequestException:
             pass
         
         # Mark as completely inactive
-        logging.warning(f"Channel '{channel_name}': All validation methods failed - INACTIVE [CONNECTION_FAILED] - URL: {url}")
+        # FIXED: Use logging.error to avoid WARNING prefix
+        logging.error(f"Channel '{channel_name}': All validation methods failed - INACTIVE [CONNECTION_FAILED] - URL: {url}")
         return False, url, 'inactive'
     
     def detect_content_language(self, text):
@@ -1175,9 +1189,11 @@ class M3UCollector:
                         for group, channel in url_to_channels[url]:
                             if status.startswith('http_'):
                                 error_code = status.split('_')[1]
-                                logging.warning(f"Channel '{channel['name']}' is INACTIVE [ERROR_{error_code}] - Status: {status} - URL: {url}")
+                                # FIXED: Use logging.error to avoid WARNING prefix
+                                logging.error(f"Channel '{channel['name']}' is INACTIVE [ERROR_{error_code}] - Status: {status} - URL: {url}")
                             else:
-                                logging.warning(f"Channel '{channel['name']}' is INACTIVE - Status: {status} - URL: {url}")
+                                # FIXED: Use logging.error to avoid WARNING prefix
+                                logging.error(f"Channel '{channel['name']}' is INACTIVE - Status: {status} - URL: {url}")
                 
                 except Exception as e:
                     logging.error(f"Validation error for {url}: {e}")
