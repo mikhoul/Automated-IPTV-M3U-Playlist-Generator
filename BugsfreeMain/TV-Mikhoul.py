@@ -20,7 +20,7 @@ import csv
 
 class ValidationColorFormatter(logging.Formatter):
     """Enhanced logging formatter with FIXED keyword filtering - no color overlap."""
-    
+
     # ANSI escape codes for colors
     RESET = "\x1b[0m"
     BOLD = "\x1b[1m"
@@ -89,7 +89,6 @@ class ValidationColorFormatter(logging.Formatter):
         'Geo-blocked (GET)': LIGHT_ORANGE,
         'Geo-blocked': LIGHT_ORANGE,
         '[Geo-blocked]': LIGHT_ORANGE,
-        'Tagged as geo-blocked': LIGHT_ORANGE,
         'geo_blocked': LIGHT_ORANGE,
         '403 Forbidden': LIGHT_ORANGE,
         
@@ -140,7 +139,7 @@ class ValidationColorFormatter(logging.Formatter):
         
         # First, add all INACTIVE-related keywords
         inactive_keywords = [(k, v) for k, v in self.KEYWORD_COLORS.items() 
-                           if 'INACTIVE' in k.upper() or 'OFFLINE' in k.upper()]
+                            if 'INACTIVE' in k.upper() or 'OFFLINE' in k.upper()]
         sorted_keywords.extend(sorted(inactive_keywords, key=lambda x: len(x[0]), reverse=True))
         
         # Then add all other keywords except ACTIVE-only ones
@@ -1180,9 +1179,8 @@ class M3UCollector:
                             # Tag geo-blocked channels
                             if status == 'geo_blocked':
                                 if not channel['name'].endswith('[Geo-blocked]'):
-                                    original_name = channel['name']
                                     channel['name'] = f"{channel['name']} [Geo-blocked]"
-                                    logging.info(f"Tagged as geo-blocked: {channel['name']} - URL: {channel['url']}")
+                                    # FIXED: Removed "Tagged as geo-blocked" logging
                                 geo_blocked_count += 1
                             
                             active_channels[group].append(channel)
