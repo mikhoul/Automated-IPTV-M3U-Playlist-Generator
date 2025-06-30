@@ -284,6 +284,9 @@ class M3UCollector:
         self.lock = threading.Lock()
         self.skipped_non_http_count = 0
         
+        # FIXED: Add logging lock to prevent interleaving
+        self.logging_lock = threading.Lock()
+        
         # Quality and filtering
         self.quality_preferences = self.config.get('quality_preferences', ['1080p', '720p', '480p', '360p'])
         self.language_preferences = self.config.get('language_preferences', ['en', 'fr'])
@@ -526,7 +529,7 @@ class M3UCollector:
     
     def validate_hls_stream(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate HLS/M3U8 streams with COMPLETELY CONSISTENT logging format.
+        Validate HLS/M3U8 streams with FIXED consistent logging format and threading lock.
         
         Args:
             url (str): URL to validate
@@ -544,29 +547,34 @@ class M3UCollector:
                 # Check if content looks like a valid M3U8 playlist
                 content = response.text[:2048]
                 if '#EXTM3U' in content or '#EXT-X-VERSION' in content:
-                    logging.info(f"Channel '{channel_name}': ACTIVE HLS stream")
-                    logging.info(f"URL: {url}")
-                    logging.info("")  # Blank line for readability
+                    # FIXED: Use logging lock to prevent interleaving
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': ACTIVE HLS stream")
+                        logging.info(f"URL: {url}")
+                        logging.info("")  # Blank line for readability
                     return True, url, 'active'
                 else:
-                    # FIXED: Consistent format - status first, then URL on separate line
-                    logging.info(f"Channel '{channel_name}': URL returned 200 but invalid M3U8 content")
-                    logging.info(f"URL: {url}")
-                    logging.info("")
+                    # FIXED: Consistent format with logging lock
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': URL returned 200 but invalid M3U8 content")
+                        logging.info(f"URL: {url}")
+                        logging.info("")
                     return False, url, 'invalid_content'
             
             elif response.status_code == 403:
-                # FIXED: Consistent format for geo-blocked channels
-                logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked HLS stream")
-                logging.info(f"URL: {url}")
-                logging.info("")  # Blank line for readability
+                # FIXED: Consistent format for geo-blocked channels with logging lock
+                with self.logging_lock:
+                    logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked HLS stream")
+                    logging.info(f"URL: {url}")
+                    logging.info("")  # Blank line for readability
                 return True, url, 'geo_blocked'
             
             else:
-                # FIXED: Consistent format for ALL other status codes
-                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_{response.status_code}]")
-                logging.info(f"URL: {url}")
-                logging.info("")
+                # FIXED: Consistent format for ALL other status codes with logging lock
+                with self.logging_lock:
+                    logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_{response.status_code}]")
+                    logging.info(f"URL: {url}")
+                    logging.info("")
                 return False, url, f'http_{response.status_code}'
         
         except requests.RequestException as e:
@@ -576,7 +584,7 @@ class M3UCollector:
     
     def validate_regular_url(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate regular URLs with COMPLETELY CONSISTENT logging format.
+        Validate regular URLs with FIXED consistent logging format and threading lock.
         
         Args:
             url (str): URL to validate
@@ -592,23 +600,27 @@ class M3UCollector:
             response = requests.head(url, headers=headers, timeout=timeout, allow_redirects=True)
             
             if response.status_code < 400:
-                logging.info(f"Channel '{channel_name}': ACTIVE (HEAD)")
-                logging.info(f"URL: {url}")
-                logging.info("")  # Blank line for readability
+                # FIXED: Use logging lock to prevent interleaving
+                with self.logging_lock:
+                    logging.info(f"Channel '{channel_name}': ACTIVE (HEAD)")
+                    logging.info(f"URL: {url}")
+                    logging.info("")  # Blank line for readability
                 return True, response.url, 'active'
             
             elif response.status_code == 403:
-                # FIXED: Consistent format for geo-blocked channels
-                logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (HEAD)")
-                logging.info(f"URL: {url}")
-                logging.info("")  # Blank line for readability
+                # FIXED: Consistent format for geo-blocked channels with logging lock
+                with self.logging_lock:
+                    logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (HEAD)")
+                    logging.info(f"URL: {url}")
+                    logging.info("")  # Blank line for readability
                 return True, url, 'geo_blocked'
             
             else:
-                # FIXED: Consistent format for ALL other status codes
-                logging.info(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_{response.status_code}]")
-                logging.info(f"URL: {url}")
-                logging.info("")
+                # FIXED: Consistent format for ALL other status codes with logging lock
+                with self.logging_lock:
+                    logging.info(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_{response.status_code}]")
+                    logging.info(f"URL: {url}")
+                    logging.info("")
                 return False, url, f'http_{response.status_code}'
         
         except requests.RequestException:
@@ -618,23 +630,27 @@ class M3UCollector:
         try:
             with requests.get(url, headers=headers, timeout=timeout, stream=True) as response:
                 if response.status_code < 400:
-                    logging.info(f"Channel '{channel_name}': ACTIVE (GET)")
-                    logging.info(f"URL: {url}")
-                    logging.info("")  # Blank line for readability
+                    # FIXED: Use logging lock to prevent interleaving
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': ACTIVE (GET)")
+                        logging.info(f"URL: {url}")
+                        logging.info("")  # Blank line for readability
                     return True, response.url, 'active'
                 
                 elif response.status_code == 403:
-                    # FIXED: Consistent format for geo-blocked channels
-                    logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (GET)")
-                    logging.info(f"URL: {url}")
-                    logging.info("")  # Blank line for readability
+                    # FIXED: Consistent format for geo-blocked channels with logging lock
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (GET)")
+                        logging.info(f"URL: {url}")
+                        logging.info("")  # Blank line for readability
                     return True, url, 'geo_blocked'
                 
                 else:
-                    # FIXED: Consistent format for ALL other status codes
-                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_{response.status_code}]")
-                    logging.info(f"URL: {url}")
-                    logging.info("")
+                    # FIXED: Consistent format for ALL other status codes with logging lock
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_{response.status_code}]")
+                        logging.info(f"URL: {url}")
+                        logging.info("")
                     return False, url, f'http_{response.status_code}'
         
         except requests.RequestException as e:
@@ -647,33 +663,38 @@ class M3UCollector:
                 response = requests.head(alt_url, timeout=timeout, headers=headers, allow_redirects=True)
                 
                 if response.status_code < 400:
-                    logging.info(f"Channel '{channel_name}': ACTIVE (HEAD, switched protocol)")
-                    logging.info(f"URL: {alt_url}")
-                    logging.info("")  # Blank line for readability
+                    # FIXED: Use logging lock to prevent interleaving
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': ACTIVE (HEAD, switched protocol)")
+                        logging.info(f"URL: {alt_url}")
+                        logging.info("")  # Blank line for readability
                     return True, alt_url, 'active'
                 
                 elif response.status_code == 403:
-                    # FIXED: Consistent format for geo-blocked channels
-                    logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (HEAD, switched protocol)")
-                    logging.info(f"URL: {alt_url}")
-                    logging.info("")  # Blank line for readability
+                    # FIXED: Consistent format for geo-blocked channels with logging lock
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (HEAD, switched protocol)")
+                        logging.info(f"URL: {alt_url}")
+                        logging.info("")  # Blank line for readability
                     return True, alt_url, 'geo_blocked'
                 
                 else:
-                    # FIXED: Consistent format for ALL other status codes
-                    logging.info(f"Channel '{channel_name}': (HEAD, switched protocol) INACTIVE [ERROR_{response.status_code}]")
-                    logging.info(f"URL: {alt_url}")
-                    logging.info("")
+                    # FIXED: Consistent format for ALL other status codes with logging lock
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': (HEAD, switched protocol) INACTIVE [ERROR_{response.status_code}]")
+                        logging.info(f"URL: {alt_url}")
+                        logging.info("")
                     return False, alt_url, f'http_{response.status_code}'
         
         except requests.RequestException:
             pass
         
         # Mark as completely inactive
-        # FIXED: Consistent format for completely failed channels
-        logging.info(f"Channel '{channel_name}': All validation methods failed - INACTIVE [CONNECTION_FAILED]")
-        logging.info(f"URL: {url}")
-        logging.info("")
+        # FIXED: Consistent format for completely failed channels with logging lock
+        with self.logging_lock:
+            logging.info(f"Channel '{channel_name}': All validation methods failed - INACTIVE [CONNECTION_FAILED]")
+            logging.info(f"URL: {url}")
+            logging.info("")
         return False, url, 'inactive'
     
     def detect_content_language(self, text):
@@ -1151,20 +1172,8 @@ class M3UCollector:
                             active_channels[group].append(channel)
                     
                     else:
-                        # Log inactive channels with detailed error information
+                        # FIXED: REMOVED DUPLICATE SUMMARY LOGGING - Individual validation methods already log properly
                         inactive_by_error[status] += len(url_to_channels[url])
-                        for group, channel in url_to_channels[url]:
-                            if status.startswith('http_'):
-                                error_code = status.split('_')[1]
-                                # FIXED: Consistent format for summary logging
-                                logging.info(f"Channel '{channel['name']}' is INACTIVE [ERROR_{error_code}] - Status: {status}")
-                                logging.info(f"URL: {url}")
-                                logging.info("")
-                            else:
-                                # FIXED: Consistent format for summary logging
-                                logging.info(f"Channel '{channel['name']}' is INACTIVE - Status: {status}")
-                                logging.info(f"URL: {url}")
-                                logging.info("")
                 
                 except Exception as e:
                     logging.error(f"Validation error for {url}: {e}")
