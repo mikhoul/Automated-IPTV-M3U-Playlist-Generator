@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-06-30 21:44:22
+Generated: 2025-06-30 21:55:28
 ============================================================
 
 PROCESSING STATISTICS
@@ -11,9 +11,9 @@ Parsing Errors: 0
 Urls Validated: 79
 Active Urls: 54
 Geo Blocked Urls: 43
-Validation Time: 48.75962996482849
+Validation Time: 48.94167232513428
 Inactive By Error: {'inactive': 10, 'http_404': 12, 'http_400': 2, 'http_502': 1}
-Total Processing Time: 49.18783402442932
+Total Processing Time: 49.40676951408386
 Final Channel Count: 54
 Source Urls Processed: 1
 
@@ -24,12 +24,12 @@ Actualités: 8 channels
 Communautaire: 3 channels
 Affaires Publiques: 2 channels
 Educatif: 1 channels
-Comedie: 1 channels
 Culturelle: 1 channels
+Comedie: 1 channels
 Réréalité: 1 channels
 Film: 1 channels
-Thématique: 1 channels
 Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
 
 CONFIGURATION
