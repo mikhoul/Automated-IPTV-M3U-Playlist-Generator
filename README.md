@@ -1,6 +1,6 @@
 # LiveTVCollector Mikhoul Fork
 
-A GitHub repository that automatically collects, filters, and exports live TV streaming links while using GitHub Actions. This project fetches M3U playlists from multiple sources, removes duplicates, verifies active links, and exports them into various formats under the `LiveTV/Country Name/` directory.
+A GitHub repository that automatically collects, filters, and exports french live TV streaming links while using GitHub Actions. This project fetches M3U playlists from multiple sources, it give an extensive logging to see all the channel status (actives, inactives, geoblocked, 403), removes duplicates, and exports them into various formats under the `LiveTV/Mikhoul` directory with a processing_report.txt that will give you a report on what was processed by the script.
 
 ## Online Useable Tools:
 <a href="https://lolstream.netlify.app" target="_blank"><img src="https://lolstream.netlify.app/img/logo.png" style="width:auto; height:60px" alt="Stream Player"></a>
@@ -18,20 +18,22 @@ A GitHub repository that automatically collects, filters, and exports live TV st
 
 ## Features
 
-- **Automated Updates**: Runs every once a day via GitHub Actions.
+- **Automated Updates**: Runs once a day via GitHub Actions.
 - **Large Source Handling**: Processes large M3U files efficiently with streaming to minimize memory usage.
 - **Active Link Verification**: Checks links for availability using concurrent requests (50 workers).
 - **Duplicate Removal**: Ensures no duplicate streams (based on URL) are included.
 - **HTML Source Parsing**: Extracts streaming URLs from HTML pages, filtering out non-stream links (e.g., Telegram, GitHub).
+- **You can exclude groups from being processed**.
+- **Give you the location of the server in the log**: This way you know why some channels are online but are Geo-blocked.
 - **Multiple Export Formats**:
-  - `LiveTV.m3u`: Standard M3U playlist.
-  - `LiveTV.txt`: Human-readable text format with detailed channel info.
-  - `LiveTV.json`: Structured JSON with channel metadata.
-  - `LiveTV`: Custom JSON format without extension, designed for easy integration.
+  - `Mikhoul.m3u`: Standard M3U playlist.
+  - `Mikhoul.txt`: Human-readable text format with detailed channel info.
+  - `Mikhoul.json`: Structured JSON with channel metadata.
+  - `Mikhoul`: Custom JSON format without extension, designed for easy integration.
 
 ## Exported File Formats
 
-### `LiveTV.m3u`
+### `Mikhoul.m3u`
 Standard M3U playlist format:
 ```
 #EXTM3U
@@ -39,7 +41,7 @@ Standard M3U playlist format:
 http://109.233.89.170/Adventure_HD/index.m3u8
 ```
 
-### `LiveTV.txt`
+### `Mikhoul.txt`
 Readable text format:
 ```
 Group: Entertainment
@@ -50,7 +52,7 @@ Source: https://example.com/source.m3u
 --------------------------------------------------
 ```
 
-### `LiveTV.json`
+### `Mikhoul.json`
 Structured JSON with timestamp:
 ```json
 {
@@ -69,7 +71,7 @@ Structured JSON with timestamp:
 }
 ```
 
-### `LiveTV` (Custom Format)
+### `Mikhoul` (Custom Format)
 Custom JSON list without extension:
 ```json
 [
@@ -85,18 +87,18 @@ Custom JSON list without extension:
 ## Setup Instructions
 
 ### Prerequisites
-- A GitHub account and repository (`bugsfreeweb/LiveTVCollector`).
+- A GitHub account and repository (`mikhoul/LiveTVCollectormMkhoul`).
 - No local setup required; everything runs via GitHub Actions.
 
 ### Steps
 1. **Clone or Fork**:
    ```bash
-   git clone https://github.com/bugsfreeweb/LiveTVCollector.git
+   git clone https://github.com/mikhoul/LiveTVCollectorMikhoul.git
    cd LiveTVCollector
    ```
 
 2. **Customize Sources** (Optional):
-   - Edit `BugsfreeMain/Country Name.py` to update the `source_urls` list with additional CountryName-specific M3U sources.
+   - Edit `BugsfreeMain/TV-Mikhoul.py` to update the `source_urls` list with additional CountryName-specific M3U sources.
 
 3. **Push Changes**:
    ```bash
@@ -117,13 +119,13 @@ Custom JSON list without extension:
 
 2. **Processing**:
    - Removes duplicates based on stream URLs.
-   - Verifies link activity with concurrent HEAD/GET requests (5-second timeout).
+   - Verifies link activity with concurrent HEAD/GET requests (9-second timeout).
 
 3. **Exporting**:
-   - Saves active, unique channels to four files in `LiveTV/Country Name/`.
+   - Saves active, unique channels to four files in `LiveTV/`.
 
 4. **Automation**:
-   - GitHub Actions runs `BugsfreeMain/Country Name.py` every 8 hours (UTC: 00:00, 08:00, 16:00 ≈ IST: 05:30, 13:30, 21:30).
+   - GitHub Actions runs `BugsfreeMain/Country Name.py` every day at 4pm ET.
    - Commits and pushes changes automatically using `GITHUB_TOKEN`.
 
 ## Dependencies
