@@ -526,7 +526,7 @@ class M3UCollector:
     
     def validate_hls_stream(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate HLS/M3U8 streams with FIXED geo-blocked ACTIVE status logging.
+        Validate HLS/M3U8 streams with FIXED consistent logging format.
         
         Args:
             url (str): URL to validate
@@ -549,38 +549,59 @@ class M3UCollector:
                     logging.info("")  # Blank line for readability
                     return True, url, 'active'
                 else:
-                    logging.info(f"Channel '{channel_name}': URL returned 200 but invalid M3U8 content - URL: {url}")
+                    # FIXED: Consistent format - status first, then URL on separate line
+                    logging.info(f"Channel '{channel_name}': URL returned 200 but invalid M3U8 content")
+                    logging.info(f"URL: {url}")
+                    logging.info("")
                     return False, url, 'invalid_content'
             
             elif response.status_code == 403:
-                # FIXED: Ensure ACTIVE is always shown for geo-blocked channels
+                # FIXED: Consistent format for geo-blocked channels
                 logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked HLS stream")
                 logging.info(f"URL: {url}")
                 logging.info("")  # Blank line for readability
                 return True, url, 'geo_blocked'
             
             elif response.status_code == 404:
-                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_404] - URL: {url}")
+                # FIXED: Consistent format for inactive channels
+                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_404]")
+                logging.info(f"URL: {url}")
+                logging.info("")
                 return False, url, 'not_found'
             
             elif response.status_code == 400:
-                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_400] - URL: {url}")
+                # FIXED: Consistent format for inactive channels
+                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_400]")
+                logging.info(f"URL: {url}")
+                logging.info("")
                 return False, url, 'http_400'
             
             elif response.status_code == 500:
-                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_500] - URL: {url}")
+                # FIXED: Consistent format for inactive channels
+                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_500]")
+                logging.info(f"URL: {url}")
+                logging.info("")
                 return False, url, 'http_500'
             
             elif response.status_code == 502:
-                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_502] - URL: {url}")
+                # FIXED: Consistent format for inactive channels
+                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_502]")
+                logging.info(f"URL: {url}")
+                logging.info("")
                 return False, url, 'http_502'
             
             elif response.status_code == 503:
-                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_503] - URL: {url}")
+                # FIXED: Consistent format for inactive channels
+                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_503]")
+                logging.info(f"URL: {url}")
+                logging.info("")
                 return False, url, 'http_503'
             
             else:
-                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+                # FIXED: Consistent format for inactive channels
+                logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_{response.status_code}]")
+                logging.info(f"URL: {url}")
+                logging.info("")
                 return False, url, f'http_{response.status_code}'
         
         except requests.RequestException as e:
@@ -590,7 +611,7 @@ class M3UCollector:
     
     def validate_regular_url(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate regular URLs with FIXED geo-blocked ACTIVE status logging.
+        Validate regular URLs with FIXED consistent logging format.
         
         Args:
             url (str): URL to validate
@@ -612,26 +633,38 @@ class M3UCollector:
                 return True, response.url, 'active'
             
             elif response.status_code == 403:
-                # FIXED: Ensure ACTIVE is always shown for geo-blocked channels
+                # FIXED: Consistent format for geo-blocked channels
                 logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (HEAD)")
                 logging.info(f"URL: {url}")
                 logging.info("")  # Blank line for readability
                 return True, url, 'geo_blocked'
             
             elif response.status_code == 404:
-                logging.info(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_404] - URL: {url}")
+                # FIXED: Consistent format for inactive channels
+                logging.info(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_404]")
+                logging.info(f"URL: {url}")
+                logging.info("")
                 return False, url, 'not_found'
             
             elif response.status_code == 400:
-                logging.info(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_400] - URL: {url}")
+                # FIXED: Consistent format for inactive channels
+                logging.info(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_400]")
+                logging.info(f"URL: {url}")
+                logging.info("")
                 return False, url, 'http_400'
             
             elif response.status_code == 500:
-                logging.info(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_500] - URL: {url}")
+                # FIXED: Consistent format for inactive channels
+                logging.info(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_500]")
+                logging.info(f"URL: {url}")
+                logging.info("")
                 return False, url, 'http_500'
             
             elif response.status_code >= 400:
-                logging.info(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+                # FIXED: Consistent format for inactive channels
+                logging.info(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_{response.status_code}]")
+                logging.info(f"URL: {url}")
+                logging.info("")
                 return False, url, f'http_{response.status_code}'
         
         except requests.RequestException:
@@ -647,34 +680,52 @@ class M3UCollector:
                     return True, response.url, 'active'
                 
                 elif response.status_code == 403:
-                    # FIXED: Ensure ACTIVE is always shown for geo-blocked channels
+                    # FIXED: Consistent format for geo-blocked channels
                     logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (GET)")
                     logging.info(f"URL: {url}")
                     logging.info("")  # Blank line for readability
                     return True, url, 'geo_blocked'
                 
                 elif response.status_code == 404:
-                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_404] - URL: {url}")
+                    # FIXED: Consistent format for inactive channels
+                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_404]")
+                    logging.info(f"URL: {url}")
+                    logging.info("")
                     return False, url, 'not_found'
                 
                 elif response.status_code == 400:
-                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_400] - URL: {url}")
+                    # FIXED: Consistent format for inactive channels
+                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_400]")
+                    logging.info(f"URL: {url}")
+                    logging.info("")
                     return False, url, 'http_400'
                 
                 elif response.status_code == 500:
-                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_500] - URL: {url}")
+                    # FIXED: Consistent format for inactive channels
+                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_500]")
+                    logging.info(f"URL: {url}")
+                    logging.info("")
                     return False, url, 'http_500'
                 
                 elif response.status_code == 502:
-                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_502] - URL: {url}")
+                    # FIXED: Consistent format for inactive channels
+                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_502]")
+                    logging.info(f"URL: {url}")
+                    logging.info("")
                     return False, url, 'http_502'
                 
                 elif response.status_code == 503:
-                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_503] - URL: {url}")
+                    # FIXED: Consistent format for inactive channels
+                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_503]")
+                    logging.info(f"URL: {url}")
+                    logging.info("")
                     return False, url, 'http_503'
                 
                 else:
-                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+                    # FIXED: Consistent format for inactive channels
+                    logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_{response.status_code}]")
+                    logging.info(f"URL: {url}")
+                    logging.info("")
                     return False, url, f'http_{response.status_code}'
         
         except requests.RequestException as e:
@@ -693,21 +744,27 @@ class M3UCollector:
                     return True, alt_url, 'active'
                 
                 elif response.status_code == 403:
-                    # FIXED: Ensure ACTIVE is always shown for geo-blocked channels
+                    # FIXED: Consistent format for geo-blocked channels
                     logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (HEAD, switched protocol)")
                     logging.info(f"URL: {alt_url}")
                     logging.info("")  # Blank line for readability
                     return True, alt_url, 'geo_blocked'
                 
                 elif response.status_code >= 400:
-                    logging.info(f"Channel '{channel_name}': (HEAD, switched protocol) INACTIVE [ERROR_{response.status_code}] - URL: {alt_url}")
+                    # FIXED: Consistent format for inactive channels
+                    logging.info(f"Channel '{channel_name}': (HEAD, switched protocol) INACTIVE [ERROR_{response.status_code}]")
+                    logging.info(f"URL: {alt_url}")
+                    logging.info("")
                     return False, alt_url, f'http_{response.status_code}'
         
         except requests.RequestException:
             pass
         
         # Mark as completely inactive
-        logging.info(f"Channel '{channel_name}': All validation methods failed - INACTIVE [CONNECTION_FAILED] - URL: {url}")
+        # FIXED: Consistent format for completely failed channels
+        logging.info(f"Channel '{channel_name}': All validation methods failed - INACTIVE [CONNECTION_FAILED]")
+        logging.info(f"URL: {url}")
+        logging.info("")
         return False, url, 'inactive'
     
     def detect_content_language(self, text):
@@ -1180,7 +1237,6 @@ class M3UCollector:
                             if status == 'geo_blocked':
                                 if not channel['name'].endswith('[Geo-blocked]'):
                                     channel['name'] = f"{channel['name']} [Geo-blocked]"
-                                    # FIXED: Removed "Tagged as geo-blocked" logging
                                 geo_blocked_count += 1
                             
                             active_channels[group].append(channel)
@@ -1191,9 +1247,15 @@ class M3UCollector:
                         for group, channel in url_to_channels[url]:
                             if status.startswith('http_'):
                                 error_code = status.split('_')[1]
-                                logging.info(f"Channel '{channel['name']}' is INACTIVE [ERROR_{error_code}] - Status: {status} - URL: {url}")
+                                # FIXED: Consistent format for summary logging
+                                logging.info(f"Channel '{channel['name']}' is INACTIVE [ERROR_{error_code}] - Status: {status}")
+                                logging.info(f"URL: {url}")
+                                logging.info("")
                             else:
-                                logging.info(f"Channel '{channel['name']}' is INACTIVE - Status: {status} - URL: {url}")
+                                # FIXED: Consistent format for summary logging
+                                logging.info(f"Channel '{channel['name']}' is INACTIVE - Status: {status}")
+                                logging.info(f"URL: {url}")
+                                logging.info("")
                 
                 except Exception as e:
                     logging.error(f"Validation error for {url}: {e}")
