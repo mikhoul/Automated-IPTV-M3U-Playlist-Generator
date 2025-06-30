@@ -1448,74 +1448,6 @@ class M3UCollector:
         logging.info(f"Exported custom format to {filepath}")
         return filepath
     
-    def export_csv(self, filename="LiveTV.csv"):
-        """Export channels to CSV format for spreadsheet applications."""
-        filepath = os.path.join(self.output_dir, filename)
-        
-        with open(filepath, 'w', newline='', encoding='utf-8') as f:
-            fieldnames = ['name', 'group', 'url', 'logo', 'quality', 'resolution',
-                         'language', 'source', 'status', 'added_timestamp']
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
-            writer.writeheader()
-            
-            for group, channels in self.channels.items():
-                for channel in channels:
-                    row = {
-                        'name': channel['name'],
-                        'group': group,
-                        'url': channel['url'],
-                        'logo': channel.get('logo', ''),
-                        'quality': channel.get('quality', 'Unknown'),
-                        'resolution': channel.get('resolution', 'Unknown'),
-                        'language': channel.get('language', 'unknown'),
-                        'source': channel['source'],
-                        'status': channel.get('validation_status', 'unknown'),
-                        'added_timestamp': channel.get('added_timestamp', '')
-                    }
-                    writer.writerow(row)
-        
-        logging.info(f"Exported CSV to {filepath}")
-        return filepath
-    
-    def export_xmltv(self, filename="LiveTV.xml"):
-        """Export channels to XMLTV format for EPG applications."""
-        filepath = os.path.join(self.output_dir, filename)
-        
-        # Create XMLTV structure
-        root = ET.Element("tv")
-        root.set("source-info-name", f"Live TV Collector - {self.country}")
-        root.set("generator-info-name", "M3UCollector")
-        
-        # Add channels
-        for group, channels in self.channels.items():
-            for channel in channels:
-                channel_elem = ET.SubElement(root, "channel")
-                channel_elem.set("id", f"ch_{hash(channel['url']) & 0x7FFFFFFF}")
-                
-                # Display name
-                display_name = ET.SubElement(channel_elem, "display-name")
-                display_name.text = channel['name']
-                
-                # Icon
-                if channel.get('logo'):
-                    icon = ET.SubElement(channel_elem, "icon")
-                    icon.set("src", channel['logo'])
-                
-                # URL (custom extension)
-                url_elem = ET.SubElement(channel_elem, "url")
-                url_elem.text = channel['url']
-                
-                # Group (custom extension)
-                group_elem = ET.SubElement(channel_elem, "group")
-                group_elem.text = group
-        
-        # Write XML file
-        tree = ET.ElementTree(root)
-        tree.write(filepath, encoding='utf-8', xml_declaration=True)
-        
-        logging.info(f"Exported XMLTV to {filepath}")
-        return filepath
-    
     def export_all_formats(self):
         """Export channels to all supported formats."""
         exported_files = []
@@ -1525,8 +1457,6 @@ class M3UCollector:
             ('TXT', self.export_txt),
             ('JSON', self.export_json),
             ('Custom', self.export_custom),
-            ('CSV', self.export_csv),
-            ('XMLTV', self.export_xmltv)
         ]
         
         for format_name, export_method in export_methods:
