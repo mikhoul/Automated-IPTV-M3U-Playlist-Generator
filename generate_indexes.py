@@ -10,4 +10,3 @@ def generate_index(folder, output_file):
 
 # Generate indexes
 generate_index('LiveTV', 'LiveTV/index.json')
-generate_index('Movies', 'Movies/index.json')
