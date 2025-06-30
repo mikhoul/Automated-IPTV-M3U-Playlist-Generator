@@ -1,4 +1,4 @@
-te Indexes
+name: Update Indexes
 
 on:
   workflow_call:  # Makes this workflow reusable
