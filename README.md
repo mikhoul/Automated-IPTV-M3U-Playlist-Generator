@@ -1,184 +1,129 @@
-# LiveTVCollector Mikhoul Fork
+# LiveTVCollectorMikhoul
 
-A GitHub repository that automatically collects, filters, and exports french live TV streaming links while using GitHub Actions. This project fetches M3U playlists from multiple sources, it give an extensive logging to see all the channel status (actives, inactives, geoblocked, 403), removes duplicates, and exports them into various formats under the `LiveTV/Mikhoul` directory with a processing_report.txt that will give you a report on what was processed by the script.
+A self-contained Python 3 application and GitHub Actions workflow that **automatically discovers, validates, deduplicates, and exports live TV streaming links** (IPTV / HLS) for a given country or custom source list.  The project started as a simple playlist grabber but has evolved into a full-featured pipeline capable of handling very large source files (>50 000 lines), extracting streams from HTML pages, and producing production-ready playlists in several formats.
 
-## Online Useable Tools:
-<a href="https://lolstream.netlify.app" target="_blank"><img src="https://lolstream.netlify.app/img/logo.png" style="width:auto; height:60px" alt="Stream Player"></a>
-<a href="https://pismarttv.netlify.app" target="_blank"><img src="https://pismarttv.netlify.app/img/logo.png" style="width:auto; height:60px" alt="IPTV Player"></a>
-<a href="https://hodliptv.netlify.app" target="_blank"><img src="https://hodliptv.netlify.app/img/logo.png" style="width:auto; height:60px" alt="IPTV Player"></a>
-<a href="https://pixstream.netlify.app" target="_blank"><img src="https://pixstream.netlify.app/img/logo.png" style="width:auto; height:60px" alt="IPTV Player"></a>
-<a href="https://buddytv.netlify.app" target="_blank"><img src="https://buddytv.netlify.app/img/logo.png" style="width:auto; height:60px" alt="BuddyTv"></a>
-<a href="https://m3uchecker.netlify.app" target="_blank"><img src="https://m3uchecker.netlify.app/img/logo.png" style="width:auto; height:60px" alt="M3U Checker"></a>
-<a href="https://birdseyetv.netlify.app" target="_blank"><img src="https://birdseyetv.netlify.app/img/logo.png" style="width:auto; height:60px" alt="BirdseyeTV player"></a>
-<a href="https://circletv.netlify.app" target="_blank"><img src="https://circletv.netlify.app/img/logo.png" style="width:auto; height:60px" alt="CircleTV player"></a>
-<a href="https://bugsfreeweb.github.io/iptv" target="_blank"><img src="https://bugsfreeweb.github.io/iptv/img/logo.png" style="width:auto; height:60px" alt="IPTV player"></a>
-<a href="https://m3ueditor.netlify.app" target="_blank"><img src="https://m3ueditor.netlify.app/img/logo.png" style="width:auto; height:60px" alt="M3U Editor"></a>
-<a href="https://bugsfreeweb.github.io/WebIPTV" target="_blank"><img src="https://bugsfreeweb.github.io/iptv/img/logo.png" style="width:auto; height:60px" alt="Web IPTV"></a>
+---
 
+## ✨ Key Features
 
-## Features
+| Category                               | Capability |
+|----------------------------------------|------------|
+| **Playlist ingestion**                 | • Streams M3U files line-by-line to keep memory usage low<br>• Recursively follows HTTP, HTTPS, and HTML pages to locate additional *.m3u8* links |
+| **Smart parsing**                      | • Robust `#EXTINF` attribute extraction (logo, group-title, language, resolution, etc.)<br>• Cuisine/Zeste and other special-case tag fixes |
+| **Fast validation**                    | • 15-thread `ThreadPoolExecutor` (configurable) <br>• HEAD → GET fall-back with protocol switching <br>• HLS‐aware probe for real playlists <br>• Geo-blocking detection (403) |
+| **Deduplication & ranking**            | • URL + fuzzy title check (Jaccard similarity) <br>• Keeps best resolution (4K > 1080p > 720p …) |
+| **Filtering**                          | • Excludes 20+ predefined countries / spam categories <br>• Skip non-HTTP URLs and offline/test/demo groups |
+| **Metadata enrichment**                | • Automatic language guess (en / fr) <br>• Quality & resolution tags <br>• Server geolocation stamp for audits |
+| **Multi-format export**                | • `LiveTV.m3u` (fully tagged) <br>• `LiveTV.txt` (human readable) <br>• `LiveTV.json` (rich metadata + stats) <br>• `LiveTV` (compact custom JSON) |
+| **Colored logging**                    | • ANSI colour formatter with collision-free palette for SUCCESS / INACTIVE / GEO-BLOCKED, etc. |
+| **Statistics & reports**               | • Auto-generated processing report summarising channels, groups, failures, timings |
+| **Extensible config**                  | • All tunables exposed via a single `config` dict (workers, retries, quality order …) |
 
-- **Automated Updates**: Runs once a day via GitHub Actions.
-- **Large Source Handling**: Processes large M3U files efficiently with streaming to minimize memory usage.
-- **Active Link Verification**: Checks links for availability using concurrent requests (50 workers).
-- **Duplicate Removal**: Ensures no duplicate streams (based on URL) are included.
-- **HTML Source Parsing**: Extracts streaming URLs from HTML pages, filtering out non-stream links (e.g., Telegram, GitHub).
-- **You can exclude groups from being processed**.
-- **Give you the location of the server in the log**: This way you know why some channels are online but are Geo-blocked.
-- **Multiple Export Formats**:
-  - `Mikhoul.m3u`: Standard M3U playlist.
-  - `Mikhoul.txt`: Human-readable text format with detailed channel info.
-  - `Mikhoul.json`: Structured JSON with channel metadata.
-  - `Mikhoul`: Custom JSON format without extension, designed for easy integration.
+> All of the above are implemented in a single file – [`TV-Mikhoul.py`](BugsfreeMain/TV-Mikhoul.py) – making deployment and CI very easy.[1]
 
-## Exported File Formats
+---
 
-### `Mikhoul.m3u`
-Standard M3U playlist format:
+## 🔧 How It Works
+
 ```
-#EXTM3U
-#EXTINF:-1 tvg-logo="https://i.imgur.com/VQVr4Nk.png" group-title="Entertainment",Adventure TV
-http://109.233.89.170/Adventure_HD/index.m3u8
-```
-
-### `Mikhoul.txt`
-Readable text format:
-```
-Group: Entertainment
-Name: Adventure TV
-URL: http://109.233.89.170/Adventure_HD/index.m3u8
-Logo: https://i.imgur.com/VQVr4Nk.png
-Source: https://example.com/source.m3u
---------------------------------------------------
-```
-
-### `Mikhoul.json`
-Structured JSON with timestamp:
-```json
-{
-  "date": "2025-03-25 13:30:00",
-  "channels": {
-    "Entertainment": [
-      {
-        "name": "Adventure TV",
-        "logo": "https://i.imgur.com/VQVr4Nk.png",
-        "group": "Entertainment",
-        "source": "https://example.com/source.m3u",
-        "url": "http://109.233.89.170/Adventure_HD/index.m3u8"
-      }
-    ]
-  }
-}
+┌────────────┐      1. Fetch each source (M3U / HTML)
+│  Sources   │──┐  2. Optional HTML scraping discovers extra .m3u8 links
+└────────────┘  │
+                ▼
+        ┌──────────────────┐
+        │   Parser &       │  — line-streaming, EXTINF attr extraction,
+        │  Pre-filtering   │    cuisine detection, URL cleaning
+        └──────────────────┘
+                ▼
+        ┌──────────────────┐
+        │ Deduplication &  │  — hash + fuzzy title, quality ranking,
+        │  Group sorting   │    skip excluded categories
+        └──────────────────┘
+                ▼
+        ┌──────────────────┐
+        │  Concurrent Link │  — HEAD→GET, HLS probe, geo-block flag,
+        │   Validation     │    cache + retry
+        └──────────────────┘
+                ▼
+        ┌──────────────────┐
+        │    Exporters     │  — M3U · TXT · JSON · custom
+        └──────────────────┘
+                ▼
+        ┌──────────────────┐
+        │   Reports &      │  — stats, error   breakdown, timing
+        │   GitHub Action  │    summary
+        └──────────────────┘
 ```
 
-### `Mikhoul` (Custom Format)
-Custom JSON list without extension:
-```json
-[
-  {
-    "name": "Adventure TV",
-    "type": "Entertainment",
-    "url": "http://109.233.89.170/Adventure_HD/index.m3u8",
-    "img": "https://i.imgur.com/VQVr4Nk.png"
-  }
-]
-```
+---
 
-## Setup Instructions
+## 🚀 Quick Start
 
-### Prerequisites
-- A GitHub account and repository (`mikhoul/LiveTVCollectormMkhoul`).
-- No local setup required; everything runs via GitHub Actions.
-
-### Steps
-1. **Clone or Fork**:
-   ```bash
-   git clone https://github.com/mikhoul/LiveTVCollectorMikhoul.git
-   cd LiveTVCollector
-   ```
-
-2. **Customize Sources** (Optional):
-   - Edit `BugsfreeMain/TV-Mikhoul.py` to update the `source_urls` list with additional CountryName-specific M3U sources.
-
-3. **Push Changes**:
-   ```bash
-   git add .
-   git commit -m "Initial setup or source update"
-   git push origin main
-   ```
-
-4. **Verify Workflow**:
-   - Go to the "Actions" tab in your GitHub repository.
-   - The workflow "Country Name LiveTV Files" runs every 8 hours or can be triggered manually.
-
-## How It Works
-
-1. **Source Fetching**:
-   - Streams M3U files and parses HTML for streaming URLs.
-   - Uses `requests` with streaming to handle large files.
-
-2. **Processing**:
-   - Removes duplicates based on stream URLs.
-   - Verifies link activity with concurrent HEAD/GET requests (9-second timeout).
-
-3. **Exporting**:
-   - Saves active, unique channels to four files in `LiveTV/`.
-
-4. **Automation**:
-   - GitHub Actions runs `BugsfreeMain/Country Name.py` every day at 4pm ET.
-   - Commits and pushes changes automatically using `GITHUB_TOKEN`.
-
-## Dependencies
-
-Managed by GitHub Actions:
-- `requests`: For fetching M3U and HTML content.
-- `pytz`: For Mumbai timezone timestamps.
-- `beautifulsoup4`: For HTML parsing.
-
-Installed in the workflow:
+### 1. Clone & install deps
 ```bash
-pip install requests pytz beautifulsoup4
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt   # requests, beautifulsoup4, pytz, etc.
 ```
 
-## Troubleshooting
+### 2. Run locally
+```bash
+python TV-Mikhoul.py            # processes default source list
+```
 
-- **Empty Files**: Check the Actions logs for errors:
-  - "Error fetching [url]": Source might be down or inaccessible.
-  - "No channels parsed": Verify source format (`#EXTINF:` followed by URL).
-  - "Active channels after filtering: 0": Links may be timing out; increase `timeout` in `check_link_active`.
+The resulting playlists are written under `LiveTV/<Country>/` (default: *LiveTV/Mikhoul*).
 
-- **Permissions Error**: Ensure `permissions: contents: write` is in `Country Name.yml`.
+### 3. Run via GitHub Actions
+The repository ships with **`update-indexes.yml`** which:
+1. Executes the collector every 8 hours.
+2. Commits only changed index files (automatic MD5 comparison).
+3. Pushes artefacts so the latest playlists are always available.
 
-- **Logs**: View detailed logs in the "Actions" tab to diagnose issues.
+👉 If you removed old paths (e.g. `Movies/index.json`) be sure the workflow **does not reference them**, otherwise a `pathspec` error will appear.[1]
 
-## Contributing
+---
 
-Feel free to:
-- Suggest improvements via issues or pull requests.
+## ⚙️ Important Configuration Flags
+| Variable            | Default | Description |
+|---------------------|---------|-------------|
+| `max_workers`       | `15`    | Threads used during validation |
+| `request_timeout`   | `12` s | Per-request network timeout |
+| `max_retries`       | `2`     | Network retries with exponential back-off |
+| `excluded_groups`   | list    | Groups or countries to skip |
+| `quality_preferences` | `["4K", "1080p", …]` | Order used when keeping best duplicate |
+| `enable_deduplication` | `True` | Toggle duplicate removal |
+| `enable_quality_sorting` | `True` | Toggle resolution-first sort |
 
-## License
+Change any of these by passing a `config` dict to the `M3UCollector` constructor or editing the **`main()`** section.
 
-This project is open-source and available under the [MIT License](LICENSE) (add a `LICENSE` file if desired).
+---
 
-## Disclaimer
+## 📂 Output Tree (example)
+```
+LiveTV/
+└── Mikhoul/
+    ├── LiveTV.m3u
+    ├── LiveTV.txt
+    ├── LiveTV.json
+    ├── LiveTV           # custom
+    ├── processing_report.txt
+    └── cache/ …
+```
+Each format is fully self-contained and ready for players such as **VLC**, **Kodi**, **OTT Navigator**, **Emby** or **Jellyfin**.
 
-This project is intended solely for educational and research purposes. It aggregates publicly available streaming links from various sources on the internet for convenience and does not host, distribute, or provide any streaming content itself. The maintainers of this repository are not affiliated with the content providers or the streams listed in the exported files.
+---
 
-- **Usage Responsibility**: Users are responsible for ensuring their use of the streaming links complies with local laws and regulations, including copyright and intellectual property rights.
-- **No Warranty**: The links provided are sourced from third-party repositories and may become unavailable or change without notice. This project offers no guarantee regarding the availability, quality, or legality of the streams.
-- **Content Ownership**: All streaming content belongs to its respective owners, and this project does not claim ownership or endorse any specific content.
+## 🛠️ Extending the Collector
+1. **Add new sources** – append URLs to `source_urls` list in `main()`.
+2. **Custom validation logic** – override `validate_hls_stream` or `validate_regular_url`.
+3. **New exporters** – implement `export_<format>()` and register in `export_all_formats()`.
+4. **Use as a library** – import `M3UCollector` and call `process_sources()` from your own code.
 
-By using this repository or its generated files, you acknowledge and agree to these terms.
+---
 
-## Usage Policy
-- Personal Use Only: These files are intended for personal, non-commercial use.
-- No Redistribution for Profit: Do not redistribute or sell these files for commercial purposes.
-- Respect Source Terms: Adhere to the terms of service of the original stream providers.
-- Attribution: If you share or use this data, please credit bugsfreeweb/LiveTVCollector.
-- Modification: Feel free to modify the files for personal use, but do not misrepresent them as official or endorsed content.
+## 🤝 Contributing
+Pull requests are welcome — see `CONTRIBUTING.md` for linting rules and commit message conventions.  Bug reports can be opened via GitHub Issues.
 
-## Donate the project
-- DOGE: <b>DEtH2yFUjjUEBUyd3scjs38X7S1Z7ee7zD</b>
-- BTC Lightening: <b>bugsfree@speed.app</b>
-- SOL: <b>bugsfree.sol</b>
-- EVM: <b>bugsfree.bnb</b>
+---
+
+## 📜 License
+This project is released under the **MIT License**.  See `LICENSE` for details.
