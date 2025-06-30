@@ -1534,6 +1534,11 @@ def main():
     # Source URLs to process
     source_urls = [
         "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "https://raw.githubusercontent.com/HelmerLuzo/PlutoTV_HL/refs/heads/main/tv/m3u/PlutoTV_tv_CA.m3u",
+        "https://iptv-org.github.io/iptv/countries/ca.m3u",
+        "https://list.iptvcat.com/my_list/33b417553a834a782ea5d4d15abbef92.m3u8",
+        "https://github.com/BuddyChewChew/app-m3u-generator/raw/refs/heads/main/playlists/plutotv_all.m3u",
+        "https://github.com/BuddyChewChew/app-m3u-generator/raw/refs/heads/main/playlists/samsungtvplus_all.m3u",
     ]
     
     # Advanced configuration
