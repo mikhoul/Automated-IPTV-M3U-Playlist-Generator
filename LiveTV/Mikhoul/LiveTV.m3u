@@ -1,44 +1,44 @@
 #EXTM3U
 #PLAYLIST:M3U Playlist for Mikhoul
 #EXTENC:UTF-8
-#CREATED:2025-06-30T00:29:59.451917
+#CREATED:2025-06-30T00:32:00.549632
 #TOTAL-CHANNELS:55
 
 # --- Actualités (8 channels) ---
-#EXTINF:-1 tvg-logo="https://i.imgur.com/6cESMfj.png" group-title="Actualités" tvg-id="LeCanalNouvelles.ca",LCN (720p) [Geo-blocked]
-https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/6cESMfj.png" group-title="Actualités" tvg-id="LeCanalNouvelles.ca",LCN (Audio) [Geo-blocked]
-https://tvalive.akamaized.net/hls/live/2014213/tvan01/audio_0_eng.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/AeVRfbB.png" group-title="Actualités" tvg-id="CBCCBMTMontreal.ca",CBMT-DT - CBC Montreal (720p) [Geo-blocked]
-https://cbcrclinear-tor.akamaized.net/hls/live/2042761/CBCRCLINEAR_TOR_7/master5.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/0vLVIWr.jpg" group-title="Actualités" tvg-id="GlobalNewsMontreal.ca" tvg-language="en",CKMI-DT - Global News Montreal (720p)
-https://live.corusdigitaldev.com/groupa/live/6bfb7f13-9d9d-4211-9c50-fb56330e4ccd/live.isml/.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/Bb1ZiR6.jpg" group-title="Actualités" tvg-id="ICIRadioCanadaRDI.ca",ICI RDI (Adaptative) [Geo-blocked]
-https://rcavlive.akamaized.net/hls/live/704026/canrdi/master.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/Bb1ZiR6.jpg" group-title="Actualités" tvg-id="ICIRadioCanadaRDI.ca",ICI RDI (Audio) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704026/canrdi/master_dv.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/jMaP3wK.png" group-title="Actualités" tvg-language="en",CJNT-DT - CityNews Montreal 6pm a 11pm (Non 24/7)
-https://citynewsregional.akamaized.net/hls/live/553720/CityNews-Montreal/master.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/Bb1ZiR6.jpg" group-title="Actualités" tvg-id="ICIRadioCanadaRDI.ca",ICI RDI (Adaptative) [Geo-blocked]
+https://rcavlive.akamaized.net/hls/live/704026/canrdi/master.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/0vLVIWr.jpg" group-title="Actualités" tvg-id="GlobalNewsMontreal.ca" tvg-language="en",CKMI-DT - Global News Montreal (720p)
+https://live.corusdigitaldev.com/groupa/live/6bfb7f13-9d9d-4211-9c50-fb56330e4ccd/live.isml/.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/Bb1ZiR6.jpg" group-title="Actualités" tvg-id="ICIRadioCanadaRDI.ca",ICI RDI (Adaptative) (OPT-2)
 https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/AeVRfbB.png" group-title="Actualités" tvg-id="CBCCBMTMontreal.ca",CBMT-DT - CBC Montreal (720p) [Geo-blocked]
+https://cbcrclinear-tor.akamaized.net/hls/live/2042761/CBCRCLINEAR_TOR_7/master5.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/6cESMfj.png" group-title="Actualités" tvg-id="LeCanalNouvelles.ca",LCN (Audio) [Geo-blocked]
+https://tvalive.akamaized.net/hls/live/2014213/tvan01/audio_0_eng.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/6cESMfj.png" group-title="Actualités" tvg-id="LeCanalNouvelles.ca",LCN (720p) [Geo-blocked]
+https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/jMaP3wK.png" group-title="Actualités" tvg-language="en",CJNT-DT - CityNews Montreal 6pm a 11pm (Non 24/7)
+https://citynewsregional.akamaized.net/hls/live/553720/CityNews-Montreal/master.m3u8
 
 # --- Affaires Publiques (2 channels) ---
-#EXTINF:-1 tvg-logo="https://i.imgur.com/5ym6eJS.png" group-title="Affaires Publiques" tvg-id="CPAC.ca",Cpac (1080p) (Kodi Changez Param Audio)
-https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/xKNnoci.png" group-title="Affaires Publiques" tvg-id="AssembleeNationale.ca",Assnat (360p)
 https://diffusionm.assnat.qc.ca/diffusion/canal17/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/5ym6eJS.png" group-title="Affaires Publiques" tvg-id="CPAC.ca",Cpac (1080p) (Kodi Changez Param Audio)
+https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8
 
 # --- Comedie (1 channels) ---
 #EXTINF:-1 tvg-logo="https://i.imgur.com/7rZhGIl.png" group-title="Comedie",Noovo Comédies
 https://d2s8iafdyzconc.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-6x2p3ho0vw00a/Noovo_Comedies_Home.m3u8
 
 # --- Communautaire (3 channels) ---
-#EXTINF:-1 tvg-logo="https://i.imgur.com/w9XCbWX.jpg" group-title="Communautaire" tvg-language="en",TVRS - Longueuil (1080p) [Geo-blocked]
-https://stream.castr.com/63bf0d473321d4909a3876ad/live_d6983bc091e611edbddd7fe8982d8daf/index.fmp4.m3u8|Referer=https://player.castr.com/
-#EXTINF:-1 tvg-logo="https://i.imgur.com/5Pq17aU.jpg" group-title="Communautaire" tvg-language="fr",Csur la télé ch 1 - Vaudreuil-Dorion (1080p) [Geo-blocked]
-https://stream.castr.com/655a9019e6c4692b56396b6d/live_f88ae0808c9911ee9d20297cbe04ce6d/index.fmp4.m3u8|Referer=https://player.castr.com/
 #EXTINF:-1 tvg-logo="https://i.imgur.com/5Pq17aU.jpg" group-title="Communautaire" tvg-language="fr",Csur la télé ch 2 - Vaudreuil-Dorion  (1080p) [Geo-blocked]
 https://stream.castr.com/655a9019e6c4692b56396b6d/live_ee53b1d08d9511ee89c1a3cd362d5ce1/index.fmp4.m3u8|Referer=https://player.castr.com/
+#EXTINF:-1 tvg-logo="https://i.imgur.com/5Pq17aU.jpg" group-title="Communautaire" tvg-language="fr",Csur la télé ch 1 - Vaudreuil-Dorion (1080p) [Geo-blocked]
+https://stream.castr.com/655a9019e6c4692b56396b6d/live_f88ae0808c9911ee9d20297cbe04ce6d/index.fmp4.m3u8|Referer=https://player.castr.com/
+#EXTINF:-1 tvg-logo="https://i.imgur.com/w9XCbWX.jpg" group-title="Communautaire" tvg-language="en",TVRS - Longueuil (1080p) [Geo-blocked]
+https://stream.castr.com/63bf0d473321d4909a3876ad/live_d6983bc091e611edbddd7fe8982d8daf/index.fmp4.m3u8|Referer=https://player.castr.com/
 
 # --- Cuisine (1 channels) ---
 #EXTINF:-1 tvg-logo="https://i.imgur.com/YVmkt8p.png" group-title="Cuisine" tvg-id="Zeste.ca",Zeste (En Debrouillage) [Geo-blocked]
@@ -57,72 +57,72 @@ https://hls.savoir.media/live/stream.m3u8
 https://dk4ogs46bjxcw.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-xr1ct045l70mz/Noovo_Cinema.m3u8
 
 # --- Généraliste (33 channels) ---
-#EXTINF:-1 tvg-logo="https://i.imgur.com/NdCfrtF.png" group-title="Généraliste" tvg-id="ICIRadioCanadaMontrealHD.ca" tvg-resolution="1080p" tvg-language="fr",CBFT-DT - ICI Radio-Canada Télé Montréal HD (Montréal) (1080p) [Geo-blocked]
-https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/ExX8Ojc.png" group-title="Généraliste" tvg-id="ICIRadioCanadaMontreal.ca" tvg-language="fr",CBFT-DT - ICI Radio-Canada Télé Montréal (Montréal) (720p) [Geo-blocked]
-https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_3000.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/3TlTIrd.png" group-title="Généraliste" tvg-id="ICIRadioCanadaAcadie.ca" tvg-language="fr",CBAFT-DT - ICI Radio-Canada Télé Acadie (Moncton) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/wMQGKoP.png" group-title="Généraliste" tvg-id="ICIRadioCanadaSaguenay.ca" tvg-language="fr",CKTV-DT - ICI Radio-Canada Télé Saguenay-Lac-St-Jean (Saguenay) (720p) [Geo-blocked]
-https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/jjnIzML.png" group-title="Généraliste" tvg-id="ICIRadioCanadaMauricie.ca" tvg-language="fr",CKTM-DT - ICI Radio-Canada Télé Mauricie - Centre-du-Québec (Trois-Rivières) (720p) [Geo-blocked]
-https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/aEmwyn6.png" group-title="Généraliste" tvg-id="ICIRadioCanadaQuebec.ca" tvg-language="fr",CBVT-DT - ICI Radio-Canada Télé Québec (Québec) (720p) [Geo-blocked]
-https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_3000.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/hTXZMsX.png" group-title="Généraliste" tvg-id="ICIRadioCanadaEstQuebec.ca" tvg-language="fr",CJBR-DT - ICI Radio-Canada Télé Est-Québec (Rimouski) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/wMQGKoP.png" group-title="Généraliste" tvg-id="ICIRadioCanadaSaguenay.ca" tvg-language="fr",CKTV-DT - ICI Radio-Canada Télé Saguenay-Lac-St-Jean (Saguenay) (720p) [Geo-blocked]
+https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/hen9czq.png" group-title="Généraliste" tvg-id="ICIRadioCanadaEstrie.ca" tvg-language="fr",CKSH-DT - ICI Radio-Canada Télé Estrie (Sherbrooke) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/PiYf9p0.png" group-title="Généraliste" tvg-id="ICIRadioCanadaOttawa-Gatineau.ca" tvg-language="fr",CBOFT-DT -ICI Radio-Canada Télé Ottawa - Gatineau (Ottawa) (720p) [Geo-blocked]
-https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/NdCfrtF.png" group-title="Généraliste" tvg-id="ICIRadioCanadaMontrealHD.ca" tvg-resolution="1080p" tvg-language="fr",CBFT-DT - ICI Radio-Canada Télé Montréal HD (Montréal) (1080p) [Geo-blocked]
+https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/aEmwyn6.png" group-title="Généraliste" tvg-id="ICIRadioCanadaQuebec.ca" tvg-language="fr",CBVT-DT - ICI Radio-Canada Télé Québec (Québec) (720p) [Geo-blocked]
+https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_3000.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/2UOy8xT.png" group-title="Généraliste" tvg-id="ICIRadioCanadaOntario.ca" tvg-language="fr",CBLFT-DT - ICI Radio-Canada Télé Ontario (Toronto) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704022/cancblft/master_3000.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/kE4Kn4u.png" group-title="Généraliste" tvg-id="ICIRadioCanadaSaskatchewan.ca" tvg-language="fr",CBKFT-DT - ICI Radio-Canada Télé Saskatchewan (Regina) (720p) [Geo-blocked]
-https://rcavlive.akamaized.net/hls/live/704019/cancbkft/master_3000.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/TUBES44.png" group-title="Généraliste" tvg-id="ICIRadioCanadaAlberta.ca" tvg-language="fr",CBXFT-DT - ICI Radio-Canada Télé Alberta (Edmonton) (720p) [Geo-blocked]
-https://rcavlive.akamaized.net/hls/live/704020/cancbxft/master_3000.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/jjnIzML.png" group-title="Généraliste" tvg-id="ICIRadioCanadaMauricie.ca" tvg-language="fr",CKTM-DT - ICI Radio-Canada Télé Mauricie - Centre-du-Québec (Trois-Rivières) (720p) [Geo-blocked]
+https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/PiYf9p0.png" group-title="Généraliste" tvg-id="ICIRadioCanadaOttawa-Gatineau.ca" tvg-language="fr",CBOFT-DT -ICI Radio-Canada Télé Ottawa - Gatineau (Ottawa) (720p) [Geo-blocked]
+https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/ExX8Ojc.png" group-title="Généraliste" tvg-id="ICIRadioCanadaMontreal.ca" tvg-language="fr",CBFT-DT - ICI Radio-Canada Télé Montréal (Montréal) (720p) [Geo-blocked]
+https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_3000.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/hvBcsBf.png" group-title="Généraliste" tvg-id="ICIRadioCanadaManitoba.ca" tvg-language="fr",CBWFT-DT - ICI Radio-Canada Télé Manitoba (Winnipeg) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704018/cancbwft/master_3000.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/kE4Kn4u.png" group-title="Généraliste" tvg-id="ICIRadioCanadaSaskatchewan.ca" tvg-language="fr",CBKFT-DT - ICI Radio-Canada Télé Saskatchewan (Regina) (720p) [Geo-blocked]
+https://rcavlive.akamaized.net/hls/live/704019/cancbkft/master_3000.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/bfqHfNX.png" group-title="Généraliste" tvg-id="ICIRadioCanadaCB-Yukon.ca" tvg-language="fr",CBUFT-DT - ICI Radio-Canada Télé Colombie-Britannique - Yukon (Vancouver) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704017/cancbuft/master_3000.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/TUBES44.png" group-title="Généraliste" tvg-id="ICIRadioCanadaAlberta.ca" tvg-language="fr",CBXFT-DT - ICI Radio-Canada Télé Alberta (Edmonton) (720p) [Geo-blocked]
+https://rcavlive.akamaized.net/hls/live/704020/cancbxft/master_3000.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaEstQuebec.ca",ICI Tele Est-Quebec (Rimouski) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8|X-Forwarded-For=24.37.42.200
 #EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaMontreal.ca",ICI Tele Montreal (1080p) [Geo-blocked]
 https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8|X-Forwarded-For=24.37.42.200
-#EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaMauricie.ca",ICI Tele Mauricie (Trois-Rivières) (720p) [Geo-blocked]
-https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8|X-Forwarded-For=24.37.42.200
 #EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaEstrie.ca",ICI Tele Estrie (Sherbrooke) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8|X-Forwarded-For=24.37.42.200
+#EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaMauricie.ca",ICI Tele Mauricie (Trois-Rivières) (720p) [Geo-blocked]
+https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8|X-Forwarded-For=24.37.42.200
 #EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaOttawa-Gatineau.ca",ICI Tele Ottawa-Gatineau (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
-#EXTINF:-1 tvg-logo="https://i.imgur.com/AvJwjcQ.jpg" group-title="Généraliste" tvg-id="TVA.ca" tvg-language="en",CFTM-DT - TVA (Adaptative) [Geo-blocked]
-https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/AvJwjcQ.jpg" group-title="Généraliste" tvg-id="TVA.ca" tvg-language="en",CFTM-DT - TVA Audio [Geo-blocked]
-https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/05.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaQuebec.ca",ICI Tele Quebec (720p) [Geo-blocked]
-https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_2500.m3u8|X-Forwarded-For=24.37.42.200
 #EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaAcadie.ca",ICI Tele Acadie (Moncton) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
-#EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaSaguenay.ca",ICI Tele Saguenay (720p) [Geo-blocked]
-https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8|X-Forwarded-For=24.37.42.200
+#EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaQuebec.ca",ICI Tele Quebec (720p) [Geo-blocked]
+https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_2500.m3u8|X-Forwarded-For=24.37.42.200
 #EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaOntario.ca",ICI Tele Ontario (Toronto) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704022/cancblft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
+#EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaSaguenay.ca",ICI Tele Saguenay (720p) [Geo-blocked]
+https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8|X-Forwarded-For=24.37.42.200
 #EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaAlberta.ca",ICI Tele Alberta (Edmonton) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704020/cancbxft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
 #EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaSaskatchewan.ca",ICI Tele Saskatchewan (Regina) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704019/cancbkft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
-#EXTINF:-1 tvg-logo="https://i.imgur.com/8R4EaFu.png" group-title="Généraliste" tvg-id="TeleQuebec.ca" tvg-language="fr",CIVM-DT - Télé Québec (Adaptative) [Geo-blocked]
-https://bcovlive-a.akamaihd.net/4b1c462c86094bae93b65adc84e43afc/us-west-2/6101674910001/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaCB-Yukon.ca",ICI Tele CB-Yukon (Vancouver) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704017/cancbuft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
 #EXTINF:-1 tvg-logo="https://i.imgur.com/rQyoWsy.png" group-title="Généraliste" tvg-id="ICIRadioCanadaManitoba.ca",ICI Tele Manitoba (Winnipeg) (720p) [Geo-blocked]
 https://rcavlive.akamaized.net/hls/live/704018/cancbwft/master_3000.m3u8|X-Forwarded-For=24.37.42.200
-#EXTINF:-1 tvg-logo="https://i.imgur.com/AvJwjcQ.jpg" group-title="Généraliste" tvg-id="TVA.ca" tvg-name="TVA CA" tvg-language="en",TVA (Adaptative) [Geo-blocked]
-https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8|X-Forwarded-For=24.37.42.200
 #EXTINF:-1 tvg-logo="https://i.imgur.com/i3xFNPE.png" group-title="Généraliste" tvg-id="ICITelevisionMontreal.ca" tvg-resolution="1080p" tvg-language="en",CFHD-DT - ICI TV (720p)
 https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/AvJwjcQ.jpg" group-title="Généraliste" tvg-id="TVA.ca" tvg-language="en",CFTM-DT - TVA (Adaptative) [Geo-blocked]
+https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/AvJwjcQ.jpg" group-title="Généraliste" tvg-id="TVA.ca" tvg-name="TVA CA" tvg-language="en",TVA (Adaptative) [Geo-blocked]
+https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8|X-Forwarded-For=24.37.42.200
+#EXTINF:-1 tvg-logo="https://i.imgur.com/AvJwjcQ.jpg" group-title="Généraliste" tvg-id="TVA.ca" tvg-language="en",CFTM-DT - TVA Audio [Geo-blocked]
+https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/05.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/8R4EaFu.png" group-title="Généraliste" tvg-id="TeleQuebec.ca" tvg-language="fr",Télé Québec (Adaptative) [Geo-blocked]
 https://bcovlive-a.akamaihd.net/575d86160eb143458d51f7ab187a4e68/us-east-1/6101674910001/playlist.m3u8|X-Forwarded-For=24.37.42.200
+#EXTINF:-1 tvg-logo="https://i.imgur.com/8R4EaFu.png" group-title="Généraliste" tvg-id="TeleQuebec.ca" tvg-language="fr",CIVM-DT - Télé Québec (Adaptative) [Geo-blocked]
+https://bcovlive-a.akamaihd.net/4b1c462c86094bae93b65adc84e43afc/us-west-2/6101674910001/playlist.m3u8
 
 # --- Multiculturel (1 channels) ---
 #EXTINF:-1 tvg-logo="https://i.imgur.com/eNu3N0f.png" group-title="Multiculturel" tvg-id="MontrealGreekTV.ca" tvg-language="en",Montreal Greek TV
