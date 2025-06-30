@@ -1,28 +1,18 @@
-name: Update Indexes
-
-on:
-  workflow_call:  # Makes this workflow reusable
-
-jobs:
-  update-indexes:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # Ensures push permissions
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Generate Indexes
-        run: python generate_indexes.py
-
-      - name: Commit and Push Indexes
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git commit -m "Update LiveTV index files" || echo "No changes to commit"
-          git pull --rebase origin main  # Fetch and rebase remote changes
-          git push
+- name: Commit and Push Indexes
+  run: |
+    git config --local user.email "github-actions[bot]@users.noreply.github.com"
+    git config --local user.name "github-actions[bot]"
+    
+    # Only add files that exist
+    if [ -f "LiveTV/index.json" ]; then
+      git add LiveTV/index.json
+    fi
+    
+    # Check if there are changes to commit
+    if git diff --staged --quiet; then
+      echo "No changes to commit"
+    else
+      git commit -m "Update LiveTV index files"
+      git pull --rebase origin main
+      git push
+    fi
