@@ -19,8 +19,8 @@ from bs4 import BeautifulSoup
 import csv
 
 class ValidationColorFormatter(logging.Formatter):
-    """Enhanced logging formatter with FIXED colors - single red shade, lighter gray URLs."""
-    
+    """Enhanced logging formatter with FIXED keyword filtering - no color overlap."""
+
     # ANSI escape codes for colors
     RESET = "\x1b[0m"
     BOLD = "\x1b[1m"
@@ -41,10 +41,10 @@ class ValidationColorFormatter(logging.Formatter):
     
     # FIXED: Single red shade (bloody) and lighter gray for URLs
     INACTIVE_RED = "\x1b[38;5;203m"  # Single consistent red for INACTIVE
-    LIGHT_GRAY = "\x1b[38;5;255m"    # Light gray for URLs
-    LIGHT_ORANGE = "\x1b[38;5;214m"  # Consistent light orange for geo-blocking
+    LIGHT_GRAY = "\x1b[38;5;255m"   # Light gray for URLs
+    LIGHT_ORANGE = "\x1b[38;5;214m" # Consistent light orange for geo-blocking
     
-    # Map log levels to colors
+    # Map log levels to colors (not used anymore since we remove INFO/WARNING prefixes)
     LEVEL_COLORS = {
         logging.DEBUG: CYAN,
         logging.INFO: BRIGHT_BLUE,
@@ -53,24 +53,29 @@ class ValidationColorFormatter(logging.Formatter):
         logging.CRITICAL: BOLD + BRIGHT_RED
     }
     
-    # FIXED: Single red shade, lighter URLs, removed Warning color
+    # FIXED: Proper keyword ordering to prevent overlap - INACTIVE must come before ACTIVE
     KEYWORD_COLORS = {
-        # Positive status - GREEN ONLY
-        'Active HLS stream': BRIGHT_GREEN,
-        'Active (HEAD)': BRIGHT_GREEN,
-        'Active (GET)': BRIGHT_GREEN,
-        'Active': BRIGHT_GREEN,
-        'SUCCESS': BRIGHT_GREEN,
-        'Success': BRIGHT_GREEN,
+        # FIXED: Complete word coloring with proper priority ordering
+        'Successfully': BRIGHT_GREEN,  # Complete word
         
-        # Negative status - SINGLE RED SHADE (FIXED)
-        'INACTIVE': BOLD + INACTIVE_RED,  # Single consistent red
+        # Negative status - SINGLE RED SHADE (MUST COME FIRST to prevent ACTIVE overlap)
+        'INACTIVE': BOLD + INACTIVE_RED,  # FIXED: Must be processed before ACTIVE
         'inactive': INACTIVE_RED,
+        'OFFLINE': BOLD + INACTIVE_RED,  # FIXED: Added OFFLINE in red
+        'offline': INACTIVE_RED,
         'All validation methods failed': INACTIVE_RED,
         'Failed': INACTIVE_RED,
         'FAILED': BOLD + INACTIVE_RED,
         
-        # Error codes - SINGLE RED SHADE (FIXED)
+        # Positive status - GREEN ONLY (MUST COME AFTER negative status)
+        'ACTIVE HLS stream': BRIGHT_GREEN,
+        'ACTIVE (HEAD)': BRIGHT_GREEN,
+        'ACTIVE (GET)': BRIGHT_GREEN,
+        'ACTIVE': BRIGHT_GREEN,  # FIXED: Comes after INACTIVE to prevent overlap
+        'SUCCESS': BRIGHT_GREEN,
+        'Success': BRIGHT_GREEN,
+        
+        # Error codes - SINGLE RED SHADE
         '[ERROR_400]': BOLD + INACTIVE_RED,
         '[ERROR_404]': BOLD + INACTIVE_RED,
         '[ERROR_500]': BOLD + INACTIVE_RED,
@@ -84,13 +89,8 @@ class ValidationColorFormatter(logging.Formatter):
         'Geo-blocked (GET)': LIGHT_ORANGE,
         'Geo-blocked': LIGHT_ORANGE,
         '[Geo-blocked]': LIGHT_ORANGE,
-        'Tagged as geo-blocked': LIGHT_ORANGE,
         'geo_blocked': LIGHT_ORANGE,
         '403 Forbidden': LIGHT_ORANGE,
-        
-        # REMOVED: Warning color (redundant with red error tags)
-        # 'Warning': BRIGHT_YELLOW,  # REMOVED
-        # 'WARNING': BOLD + BRIGHT_YELLOW,  # REMOVED
         
         # Channel processing
         'CUISINE': BOLD + MAGENTA,
@@ -101,13 +101,13 @@ class ValidationColorFormatter(logging.Formatter):
         'Starting comprehensive link validation': BOLD + BLUE,
         'Link validation complete': BOLD + GREEN,
         
-        # HTTP status codes - SINGLE RED SHADE (FIXED)
+        # HTTP status codes - SINGLE RED SHADE
         'Bad Request': INACTIVE_RED,
         'Internal Server Error': INACTIVE_RED,
         'Bad Gateway': INACTIVE_RED,
         'Service Unavailable': INACTIVE_RED,
         
-        # URLs - LIGHT GRAY (FIXED)
+        # URLs - LIGHT GRAY
         'URL:': LIGHT_GRAY,  # Color the "URL:" prefix
         
         # Processing stages
@@ -118,21 +118,14 @@ class ValidationColorFormatter(logging.Formatter):
     }
     
     def __init__(self, fmt=None, datefmt=None):
+        # Remove INFO/WARNING prefixes for cleaner output
         if fmt is None:
-            fmt = '%(asctime)s - %(levelname)s - %(message)s'
+            fmt = '%(asctime)s - %(message)s'
         super().__init__(fmt, datefmt)
     
     def format(self, record):
-        # Color the levelname
-        level_color = self.LEVEL_COLORS.get(record.levelno, self.RESET)
-        original_levelname = record.levelname
-        record.levelname = f"{level_color}{record.levelname}{self.RESET}"
-        
-        # Get the formatted message
+        # Get the formatted message without level name coloring
         message = super().format(record)
-        
-        # Restore original levelname
-        record.levelname = original_levelname
         
         # FIXED: Color URLs with light gray
         import re
@@ -140,12 +133,37 @@ class ValidationColorFormatter(logging.Formatter):
         url_pattern = r'(https?://[^\s]+)'
         message = re.sub(url_pattern, f'{self.LIGHT_GRAY}\\1{self.RESET}', message)
         
-        # Color keywords with proper order (longer phrases first)
-        sorted_keywords = sorted(self.KEYWORD_COLORS.items(), key=lambda x: len(x[0]), reverse=True)
+        # FIXED: Use word boundary matching to prevent overlap and process in correct order
+        # Sort by length (longer first) but ensure INACTIVE comes before ACTIVE
+        sorted_keywords = []
+        
+        # First, add all INACTIVE-related keywords
+        inactive_keywords = [(k, v) for k, v in self.KEYWORD_COLORS.items() 
+                            if 'INACTIVE' in k.upper() or 'OFFLINE' in k.upper()]
+        sorted_keywords.extend(sorted(inactive_keywords, key=lambda x: len(x[0]), reverse=True))
+        
+        # Then add all other keywords except ACTIVE-only ones
+        other_keywords = [(k, v) for k, v in self.KEYWORD_COLORS.items() 
+                         if 'INACTIVE' not in k.upper() and 'OFFLINE' not in k.upper() 
+                         and k != 'ACTIVE']
+        sorted_keywords.extend(sorted(other_keywords, key=lambda x: len(x[0]), reverse=True))
+        
+        # Finally add ACTIVE to avoid overlap with INACTIVE
+        if 'ACTIVE' in self.KEYWORD_COLORS:
+            sorted_keywords.append(('ACTIVE', self.KEYWORD_COLORS['ACTIVE']))
+        
+        # Apply coloring with word boundary protection
         for keyword, color_code in sorted_keywords:
             if keyword in message:
-                colored_keyword = f"{color_code}{keyword}{self.RESET}"
-                message = message.replace(keyword, colored_keyword)
+                # Use word boundaries for single words to prevent partial matches
+                if len(keyword.split()) == 1 and keyword.isalpha():
+                    pattern = r'\b' + re.escape(keyword) + r'\b'
+                    colored_keyword = f"{color_code}{keyword}{self.RESET}"
+                    message = re.sub(pattern, colored_keyword, message)
+                else:
+                    # For phrases and special characters, use exact match
+                    colored_keyword = f"{color_code}{keyword}{self.RESET}"
+                    message = message.replace(keyword, colored_keyword)
         
         return message
 
@@ -266,6 +284,9 @@ class M3UCollector:
         self.lock = threading.Lock()
         self.skipped_non_http_count = 0
         
+        # FIXED: Add logging lock to prevent interleaving
+        self.logging_lock = threading.Lock()
+        
         # Quality and filtering
         self.quality_preferences = self.config.get('quality_preferences', ['1080p', '720p', '480p', '360p'])
         self.language_preferences = self.config.get('language_preferences', ['en', 'fr'])
@@ -367,7 +388,7 @@ class M3UCollector:
                 else:
                     logging.error(f"Failed to fetch {url} after {max_retries + 1} attempts: {e}")
                     self.failed_urls.append({'url': url, 'error': str(e)})
-                    
+        
         return None, [], {}
     
     def extract_stream_urls_from_html(self, html_content, base_url):
@@ -420,7 +441,7 @@ class M3UCollector:
                         clean_url = js_url.strip('\'"')
                         if self.is_valid_stream_url(clean_url):
                             stream_urls.add(clean_url)
-            
+        
         except Exception as e:
             logging.warning(f"Error parsing HTML content: {e}")
         
@@ -508,7 +529,7 @@ class M3UCollector:
     
     def validate_hls_stream(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate HLS/M3U8 streams with FIXED logging - no duplicate error codes.
+        Validate HLS/M3U8 streams with FIXED consistent logging format and threading lock.
         
         Args:
             url (str): URL to validate
@@ -526,38 +547,36 @@ class M3UCollector:
                 # Check if content looks like a valid M3U8 playlist
                 content = response.text[:2048]
                 if '#EXTM3U' in content or '#EXT-X-VERSION' in content:
-                    logging.info(f"Channel '{channel_name}': Active HLS stream - URL: {url}")
+                    # FIXED: Use logging lock to prevent interleaving
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': ACTIVE HLS stream")
+                        logging.info(f"URL: {url}")
+                        logging.info("")  # Blank line for readability
                     return True, url, 'active'
                 else:
-                    logging.warning(f"Channel '{channel_name}': URL returned 200 but invalid M3U8 content - URL: {url}")
+                    # FIXED: Consistent format with logging lock
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': URL returned 200 but invalid M3U8 content")
+                        logging.info(f"URL: {url}")
+                        logging.info("")
                     return False, url, 'invalid_content'
+            
             elif response.status_code == 403:
-                logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked HLS stream - URL: {url}")
+                # FIXED: Consistent format for geo-blocked channels with logging lock
+                with self.logging_lock:
+                    logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked HLS stream")
+                    logging.info(f"URL: {url}")
+                    logging.info("")  # Blank line for readability
                 return True, url, 'geo_blocked'
-            elif response.status_code == 404:
-                # FIXED: Remove duplicate 404 - only show [ERROR_404] at end
-                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_404] - URL: {url}")
-                return False, url, 'not_found'
-            elif response.status_code == 400:
-                # FIXED: Remove duplicate 400 - only show [ERROR_400] at end
-                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_400] - URL: {url}")
-                return False, url, 'http_400'
-            elif response.status_code == 500:
-                # FIXED: Remove duplicate 500 - only show [ERROR_500] at end
-                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_500] - URL: {url}")
-                return False, url, 'http_500'
-            elif response.status_code == 502:
-                # FIXED: Remove duplicate 502 - only show [ERROR_502] at end
-                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_502] - URL: {url}")
-                return False, url, 'http_502'
-            elif response.status_code == 503:
-                # FIXED: Remove duplicate 503 - only show [ERROR_503] at end
-                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_503] - URL: {url}")
-                return False, url, 'http_503'
+            
             else:
-                logging.warning(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+                # FIXED: Consistent format for ALL other status codes with logging lock
+                with self.logging_lock:
+                    logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_{response.status_code}]")
+                    logging.info(f"URL: {url}")
+                    logging.info("")
                 return False, url, f'http_{response.status_code}'
-                
+        
         except requests.RequestException as e:
             logging.debug(f"Channel '{channel_name}': HLS validation failed - URL: {url} - Error: {e}")
             # Fallback to regular URL validation
@@ -565,7 +584,7 @@ class M3UCollector:
     
     def validate_regular_url(self, url, headers, timeout, channel_name="Unknown Channel"):
         """
-        Validate regular URLs with FIXED logging - no duplicate error codes.
+        Validate regular URLs with FIXED consistent logging format and threading lock.
         
         Args:
             url (str): URL to validate
@@ -579,27 +598,31 @@ class M3UCollector:
         # Try HEAD request first (faster)
         try:
             response = requests.head(url, headers=headers, timeout=timeout, allow_redirects=True)
+            
             if response.status_code < 400:
-                logging.info(f"Channel '{channel_name}': Active (HEAD) - URL: {url}")
+                # FIXED: Use logging lock to prevent interleaving
+                with self.logging_lock:
+                    logging.info(f"Channel '{channel_name}': ACTIVE (HEAD)")
+                    logging.info(f"URL: {url}")
+                    logging.info("")  # Blank line for readability
                 return True, response.url, 'active'
+            
             elif response.status_code == 403:
-                logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD) - URL: {url}")
+                # FIXED: Consistent format for geo-blocked channels with logging lock
+                with self.logging_lock:
+                    logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (HEAD)")
+                    logging.info(f"URL: {url}")
+                    logging.info("")  # Blank line for readability
                 return True, url, 'geo_blocked'
-            elif response.status_code == 404:
-                # FIXED: Remove duplicate 404 - only show [ERROR_404] at end
-                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_404] - URL: {url}")
-                return False, url, 'not_found'
-            elif response.status_code == 400:
-                # FIXED: Remove duplicate 400 - only show [ERROR_400] at end
-                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_400] - URL: {url}")
-                return False, url, 'http_400'
-            elif response.status_code == 500:
-                # FIXED: Remove duplicate 500 - only show [ERROR_500] at end
-                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_500] - URL: {url}")
-                return False, url, 'http_500'
-            elif response.status_code >= 400:
-                logging.warning(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+            
+            else:
+                # FIXED: Consistent format for ALL other status codes with logging lock
+                with self.logging_lock:
+                    logging.info(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_{response.status_code}]")
+                    logging.info(f"URL: {url}")
+                    logging.info("")
                 return False, url, f'http_{response.status_code}'
+        
         except requests.RequestException:
             pass
         
@@ -607,34 +630,29 @@ class M3UCollector:
         try:
             with requests.get(url, headers=headers, timeout=timeout, stream=True) as response:
                 if response.status_code < 400:
-                    logging.info(f"Channel '{channel_name}': Active (GET) - URL: {url}")
+                    # FIXED: Use logging lock to prevent interleaving
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': ACTIVE (GET)")
+                        logging.info(f"URL: {url}")
+                        logging.info("")  # Blank line for readability
                     return True, response.url, 'active'
+                
                 elif response.status_code == 403:
-                    logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (GET) - URL: {url}")
+                    # FIXED: Consistent format for geo-blocked channels with logging lock
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (GET)")
+                        logging.info(f"URL: {url}")
+                        logging.info("")  # Blank line for readability
                     return True, url, 'geo_blocked'
-                elif response.status_code == 404:
-                    # FIXED: Remove duplicate 404 - only show [ERROR_404] at end
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_404] - URL: {url}")
-                    return False, url, 'not_found'
-                elif response.status_code == 400:
-                    # FIXED: Remove duplicate 400 - only show [ERROR_400] at end
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_400] - URL: {url}")
-                    return False, url, 'http_400'
-                elif response.status_code == 500:
-                    # FIXED: Remove duplicate 500 - only show [ERROR_500] at end
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_500] - URL: {url}")
-                    return False, url, 'http_500'
-                elif response.status_code == 502:
-                    # FIXED: Remove duplicate 502 - only show [ERROR_502] at end
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_502] - URL: {url}")
-                    return False, url, 'http_502'
-                elif response.status_code == 503:
-                    # FIXED: Remove duplicate 503 - only show [ERROR_503] at end
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_503] - URL: {url}")
-                    return False, url, 'http_503'
+                
                 else:
-                    logging.warning(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_{response.status_code}] - URL: {url}")
+                    # FIXED: Consistent format for ALL other status codes with logging lock
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_{response.status_code}]")
+                        logging.info(f"URL: {url}")
+                        logging.info("")
                     return False, url, f'http_{response.status_code}'
+        
         except requests.RequestException as e:
             logging.debug(f"Channel '{channel_name}': Regular validation failed - URL: {url} - Error: {e}")
         
@@ -643,20 +661,40 @@ class M3UCollector:
             alt_url = url.replace('http://', 'https://') if url.startswith('http://') else url.replace('https://', 'http://')
             if alt_url != url:  # Only try if URL actually changed
                 response = requests.head(alt_url, timeout=timeout, headers=headers, allow_redirects=True)
+                
                 if response.status_code < 400:
-                    logging.info(f"Channel '{channel_name}': Active (HEAD, switched protocol) - URL: {alt_url}")
+                    # FIXED: Use logging lock to prevent interleaving
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': ACTIVE (HEAD, switched protocol)")
+                        logging.info(f"URL: {alt_url}")
+                        logging.info("")  # Blank line for readability
                     return True, alt_url, 'active'
+                
                 elif response.status_code == 403:
-                    logging.info(f"Channel '{channel_name}': 403 Forbidden - Geo-blocked (HEAD, switched protocol) - URL: {alt_url}")
+                    # FIXED: Consistent format for geo-blocked channels with logging lock
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (HEAD, switched protocol)")
+                        logging.info(f"URL: {alt_url}")
+                        logging.info("")  # Blank line for readability
                     return True, alt_url, 'geo_blocked'
-                elif response.status_code >= 400:
-                    logging.warning(f"Channel '{channel_name}': (HEAD, switched protocol) INACTIVE [ERROR_{response.status_code}] - URL: {alt_url}")
+                
+                else:
+                    # FIXED: Consistent format for ALL other status codes with logging lock
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': (HEAD, switched protocol) INACTIVE [ERROR_{response.status_code}]")
+                        logging.info(f"URL: {alt_url}")
+                        logging.info("")
                     return False, alt_url, f'http_{response.status_code}'
+        
         except requests.RequestException:
             pass
         
         # Mark as completely inactive
-        logging.warning(f"Channel '{channel_name}': All validation methods failed - INACTIVE [CONNECTION_FAILED] - URL: {url}")
+        # FIXED: Consistent format for completely failed channels with logging lock
+        with self.logging_lock:
+            logging.info(f"Channel '{channel_name}': All validation methods failed - INACTIVE [CONNECTION_FAILED]")
+            logging.info(f"URL: {url}")
+            logging.info("")
         return False, url, 'inactive'
     
     def detect_content_language(self, text):
@@ -865,6 +903,7 @@ class M3UCollector:
             # FIXED: Handle both '#EXTINF:' and 'EXTINF:' patterns (Cuisine fix)
             if line.startswith('#EXTINF:') or line.startswith('EXTINF:'):
                 total_extinf_lines += 1
+                
                 try:
                     # Extract all attributes using comprehensive regex patterns
                     attributes = self.extract_extinf_attributes(line)
@@ -920,7 +959,7 @@ class M3UCollector:
                         'attributes': attributes,
                         'added_timestamp': datetime.now().isoformat()
                     }
-                    
+                
                 except Exception as e:
                     parsing_errors.append({
                         'line_num': line_num,
@@ -946,10 +985,10 @@ class M3UCollector:
                         self.channels[current_channel['group']].append(current_channel)
                         channel_count += 1
                         self.channels_processed += 1
-                else:
-                    self.skipped_non_http_count += 1
-                
-                current_channel = {}
+                    else:
+                        self.skipped_non_http_count += 1
+                    
+                    current_channel = {}
         
         # Log parsing results
         logging.info(f"Parsing complete: {channel_count} channels added from {source_url}")
@@ -957,9 +996,9 @@ class M3UCollector:
         logging.info(f"Skipped non-HTTP URLs: {self.skipped_non_http_count}")
         
         if parsing_errors:
-            logging.warning(f"Encountered {len(parsing_errors)} parsing errors")
+            logging.info(f"Encountered {len(parsing_errors)} parsing errors")
             for error in parsing_errors[:5]:  # Log first 5 errors
-                logging.warning(f"Line {error['line_num']}: {error['error']}")
+                logging.info(f"Line {error['line_num']}: {error['error']}")
         
         # Log group statistics
         logging.info("Group distribution:")
@@ -1039,7 +1078,7 @@ class M3UCollector:
                 clean_url += f"#{parsed.fragment}"
             
             return clean_url
-            
+        
         except Exception:
             return None
     
@@ -1127,26 +1166,19 @@ class M3UCollector:
                             # Tag geo-blocked channels
                             if status == 'geo_blocked':
                                 if not channel['name'].endswith('[Geo-blocked]'):
-                                    original_name = channel['name']
                                     channel['name'] = f"{channel['name']} [Geo-blocked]"
-                                    logging.info(f"Tagged as geo-blocked: {channel['name']} - URL: {channel['url']}")
                                 geo_blocked_count += 1
                             
                             active_channels[group].append(channel)
+                    
                     else:
-                        # Log inactive channels with detailed error information
+                        # FIXED: REMOVED DUPLICATE SUMMARY LOGGING - Individual validation methods already log properly
                         inactive_by_error[status] += len(url_to_channels[url])
-                        
-                        for group, channel in url_to_channels[url]:
-                            if status.startswith('http_'):
-                                error_code = status.split('_')[1]
-                                logging.warning(f"Channel '{channel['name']}' is INACTIVE [ERROR_{error_code}] - Status: {status} - URL: {url}")
-                            else:
-                                logging.warning(f"Channel '{channel['name']}' is INACTIVE - Status: {status} - URL: {url}")
                 
                 except Exception as e:
                     logging.error(f"Validation error for {url}: {e}")
                     validation_results[url] = (False, url, f'error: {e}')
+                    
                     # Count validation errors
                     inactive_by_error['validation_error'] += len(url_to_channels[url])
         
@@ -1206,8 +1238,9 @@ class M3UCollector:
             logging.info(f"Processing source {i}/{len(source_urls)}: {url}")
             
             content, lines, metadata = self.fetch_content_with_retry(url)
+            
             if not lines:
-                logging.warning(f"No content retrieved from {url}")
+                logging.info(f"No content retrieved from {url}")
                 continue
             
             # Handle different content types
@@ -1254,18 +1287,18 @@ class M3UCollector:
             # Validate links if enabled
             if self.check_links:
                 self.filter_active_channels()
-        
-        # Final statistics
-        final_count = sum(len(ch) for ch in self.channels.values())
-        processing_time = time.time() - self.start_time
-        
-        logging.info(f"Processing complete: {final_count} final channels in {format_duration(int(processing_time))}")
-        logging.info(f"Groups: {', '.join(sorted(self.channels.keys()))}")
-        
-        # Update global statistics
-        self.statistics['total_processing_time'] = processing_time
-        self.statistics['final_channel_count'] = final_count
-        self.statistics['source_urls_processed'] = len(source_urls)
+            
+            # Final statistics
+            final_count = sum(len(ch) for ch in self.channels.values())
+            processing_time = time.time() - self.start_time
+            
+            logging.info(f"Processing complete: {final_count} final channels in {format_duration(int(processing_time))}")
+            logging.info(f"Groups: {', '.join(sorted(self.channels.keys()))}")
+            
+            # Update global statistics
+            self.statistics['total_processing_time'] = processing_time
+            self.statistics['final_channel_count'] = final_count
+            self.statistics['source_urls_processed'] = len(source_urls)
     
     def export_m3u(self, filename="LiveTV.m3u"):
         """Export channels to standard M3U playlist format with enhanced metadata."""
@@ -1302,6 +1335,7 @@ class M3UCollector:
                     # Add quality and language info
                     if channel.get('resolution') and channel['resolution'] != 'Unknown':
                         extinf_parts.append(f'tvg-resolution="{channel["resolution"]}"')
+                    
                     if channel.get('language') and channel['language'] != 'unknown':
                         extinf_parts.append(f'tvg-language="{channel["language"]}"')
                     
@@ -1340,8 +1374,10 @@ class M3UCollector:
                     # Add additional metadata if available
                     if channel.get('quality') and channel['quality'] != 'Unknown':
                         f.write(f"     Quality: {channel['quality']}\n")
+                    
                     if channel.get('language') and channel['language'] != 'unknown':
                         f.write(f"     Language: {channel['language']}\n")
+                    
                     if channel.get('validation_status'):
                         f.write(f"     Status: {channel['validation_status']}\n")
                     
@@ -1412,6 +1448,74 @@ class M3UCollector:
         logging.info(f"Exported custom format to {filepath}")
         return filepath
     
+    def export_csv(self, filename="LiveTV.csv"):
+        """Export channels to CSV format for spreadsheet applications."""
+        filepath = os.path.join(self.output_dir, filename)
+        
+        with open(filepath, 'w', newline='', encoding='utf-8') as f:
+            fieldnames = ['name', 'group', 'url', 'logo', 'quality', 'resolution',
+                         'language', 'source', 'status', 'added_timestamp']
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            
+            for group, channels in self.channels.items():
+                for channel in channels:
+                    row = {
+                        'name': channel['name'],
+                        'group': group,
+                        'url': channel['url'],
+                        'logo': channel.get('logo', ''),
+                        'quality': channel.get('quality', 'Unknown'),
+                        'resolution': channel.get('resolution', 'Unknown'),
+                        'language': channel.get('language', 'unknown'),
+                        'source': channel['source'],
+                        'status': channel.get('validation_status', 'unknown'),
+                        'added_timestamp': channel.get('added_timestamp', '')
+                    }
+                    writer.writerow(row)
+        
+        logging.info(f"Exported CSV to {filepath}")
+        return filepath
+    
+    def export_xmltv(self, filename="LiveTV.xml"):
+        """Export channels to XMLTV format for EPG applications."""
+        filepath = os.path.join(self.output_dir, filename)
+        
+        # Create XMLTV structure
+        root = ET.Element("tv")
+        root.set("source-info-name", f"Live TV Collector - {self.country}")
+        root.set("generator-info-name", "M3UCollector")
+        
+        # Add channels
+        for group, channels in self.channels.items():
+            for channel in channels:
+                channel_elem = ET.SubElement(root, "channel")
+                channel_elem.set("id", f"ch_{hash(channel['url']) & 0x7FFFFFFF}")
+                
+                # Display name
+                display_name = ET.SubElement(channel_elem, "display-name")
+                display_name.text = channel['name']
+                
+                # Icon
+                if channel.get('logo'):
+                    icon = ET.SubElement(channel_elem, "icon")
+                    icon.set("src", channel['logo'])
+                
+                # URL (custom extension)
+                url_elem = ET.SubElement(channel_elem, "url")
+                url_elem.text = channel['url']
+                
+                # Group (custom extension)
+                group_elem = ET.SubElement(channel_elem, "group")
+                group_elem.text = group
+        
+        # Write XML file
+        tree = ET.ElementTree(root)
+        tree.write(filepath, encoding='utf-8', xml_declaration=True)
+        
+        logging.info(f"Exported XMLTV to {filepath}")
+        return filepath
+    
     def export_all_formats(self):
         """Export channels to all supported formats."""
         exported_files = []
@@ -1420,7 +1524,9 @@ class M3UCollector:
             ('M3U', self.export_m3u),
             ('TXT', self.export_txt),
             ('JSON', self.export_json),
-            ('Custom', self.export_custom)
+            ('Custom', self.export_custom),
+            ('CSV', self.export_csv),
+            ('XMLTV', self.export_xmltv)
         ]
         
         for format_name, export_method in export_methods:
