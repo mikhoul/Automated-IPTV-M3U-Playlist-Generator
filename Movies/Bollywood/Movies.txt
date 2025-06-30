@@ -1,7 +1,0 @@
-Group: Uncategorized
-Name: tvg-logo="https://i.ibb.co/8YJPCnv/FB-IMG-1676125032376.jpg",Md.Mahabubul Alam Mim
-URL: https://drive.google.com/file/d/1klrntX1ueTiHqk0lbJ5yoQoQ9u9H4c5K/view
-Logo: https://i.ibb.co/8YJPCnv/FB-IMG-1676125032376.jpg
-Source: https://raw.githubusercontent.com/Mahabubulalammim/New/refs/heads/main/Mim%20New%20Movie%20Collection
---------------------------------------------------
-
