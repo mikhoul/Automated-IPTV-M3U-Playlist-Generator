@@ -2,6 +2,8 @@
 
 A self-contained Python 3 application and GitHub Actions workflow that **automatically discovers, validates, deduplicates, and exports live TV streaming links** (IPTV / HLS) for a given country or custom source list.  The project started as a simple playlist grabber but has evolved into a full-featured pipeline capable of handling very large source files (>50 000 lines), extracting streams from HTML pages, and producing production-ready playlists in several formats.
 
+**👉** **Important:** This version is configurated to pull mainly french channels. You can configure it for any URL/language with the flag _**"source_urls"**_ in the code.
+
 ---
 
 ## ✨ Key Features
@@ -74,11 +76,8 @@ The resulting playlists are written under `LiveTV/<Country>/` (default: *LiveTV/
 
 ### 3. Run via GitHub Actions
 The repository ships with **`update-indexes.yml`** which:
-1. Executes the collector every 8 hours.
-2. Commits only changed index files (automatic MD5 comparison).
-3. Pushes artefacts so the latest playlists are always available.
-
-👉 If you removed old paths (e.g. `Movies/index.json`) be sure the workflow **does not reference them**, otherwise a `pathspec` error will appear.[1]
+1. Executes the collector every 24 hours.
+2. Pushes artefacts so the latest playlists are always available.
 
 ---
 
@@ -93,6 +92,8 @@ The repository ships with **`update-indexes.yml`** which:
 | `enable_deduplication` | `True` | Toggle duplicate removal |
 | `enable_quality_sorting` | `True` | Toggle resolution-first sort |
 
+
+There is many more flags/options in the code they are well commented and easy to understand.
 Change any of these by passing a `config` dict to the `M3UCollector` constructor or editing the **`main()`** section.
 
 ---
@@ -108,7 +109,7 @@ LiveTV/
     ├── processing_report.txt
     └── cache/ …
 ```
-Each format is fully self-contained and ready for players such as **VLC**, **Kodi**, **OTT Navigator**, **Emby** or **Jellyfin**.
+Each format is fully self-contained and ready for players such as **VLC**, **Kodi**, **OTT Navigator**, **Tivimate** or **Jellyfin**.
 
 ---
 
