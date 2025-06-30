@@ -2,21 +2,16 @@ import requests
 import json
 import os
 import re
-from urllib.parse import urlparse, urljoin, quote
-from collections import defaultdict, Counter
-from datetime import datetime, timedelta
+from urllib.parse import urlparse, urljoin
+from collections import defaultdict
+from datetime import datetime
 import pytz
 import concurrent.futures
 import threading
 import logging
 import time
 import hashlib
-import tempfile
-import zipfile
-from pathlib import Path
-import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
-import csv
 
 class ValidationColorFormatter(logging.Formatter):
     """Enhanced logging formatter with FIXED keyword filtering - no color overlap."""
