@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-06-30 22:54:32
+Generated: 2025-06-30 23:02:58
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,12 +9,12 @@ Total Lines Processed: 11524
 Total Channels Found: 1295
 Parsing Errors: 0
 Urls Validated: 1219
-Active Urls: 1089
+Active Urls: 1104
 Geo Blocked Urls: 85
-Validation Time: 349.76332902908325
-Inactive By Error: {'inactive': 19, 'http_404': 103, 'http_401': 1, 'http_502': 2, 'http_400': 4, 'http_500': 1}
-Total Processing Time: 353.5205936431885
-Final Channel Count: 1089
+Validation Time: 346.59022641181946
+Inactive By Error: {'inactive': 21, 'http_401': 1, 'http_404': 86, 'http_400': 4, 'http_502': 2, 'http_500': 1}
+Total Processing Time: 348.78419971466064
+Final Channel Count: 1104
 Source Urls Processed: 6
 
 CHANNEL DISTRIBUTION
@@ -23,57 +23,59 @@ Canada: 432 channels
 France: 261 channels
 General: 40 channels
 Généraliste: 33 channels
-Music: 30 channels
+Music: 28 channels
 Undefined: 23 channels
-Movies: 15 channels
-Comedy: 15 channels
-Sports: 14 channels
+Movies: 17 channels
+Comedy: 17 channels
+Sports: 15 channels
 FRANCE: 14 channels
+Home + Food: 13 channels
+Kids: 13 channels
 Crime Drama: 12 channels
-Reality: 12 channels
-Home + Food: 12 channels
-Kids: 12 channels
+Reality: 10 channels
 Entertainment: 10 channels
+Local News: 10 channels
 Religious: 10 channels
 Classic TV Comedy: 9 channels
 True Crime: 9 channels
 News: 9 channels
 Actualités: 8 channels
+Competition Reality: 8 channels
 South Park: 7 channels
 Drama: 7 channels
-Competition Reality: 7 channels
-Game Shows: 7 channels
-Local News: 7 channels
-Culture: 7 channels
-Classic TV: 6 channels
+Documentary + Science: 7 channels
+Game Shows: 6 channels
 Daytime TV: 6 channels
+Culture: 6 channels
+Classic TV: 5 channels
 Westerns: 5 channels
+News + Opinion: 5 channels
+Anime: 5 channels
 Legislative: 5 channels
 Sci-Fi: 4 channels
-News + Opinion: 4 channels
-Anime: 4 channels
 Communautaire: 3 channels
 Supernatural: 3 channels
-Documentary + Science: 3 channels
+Multicultural: 3 channels
+Animals + Nature: 3 channels
 En Français: 3 channels
 Affaires Publiques: 2 channels
-Animals + Nature: 2 channels
 Outdoor: 2 channels
-Comedie: 1 channels
 Educatif: 1 channels
 Réréalité: 1 channels
 Culturelle: 1 channels
 Film: 1 channels
-Cuisine: 1 channels
-New on Pluto TV: 1 channels
+Comedie: 1 channels
+Multiculturel: 1 channels
 Thématique: 1 channels
+New on Pluto TV: 1 channels
+Cuisine: 1 channels
 Quebec TV: 1 channels
 Kids en Français: 1 channels
 Series: 1 channels
-Movies;Series: 1 channels
 Culture;Music: 1 channels
-Shop: 1 channels
+Movies;Series: 1 channels
 Weather: 1 channels
+Shop: 1 channels
 
 CONFIGURATION
 -------------
