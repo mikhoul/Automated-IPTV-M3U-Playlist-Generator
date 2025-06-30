@@ -4,12 +4,10 @@ on:
   push:
     branches:
       - main
-      - Test-Starting-Over  # ADDED: This will trigger the workflow on push to your test branch
-
+      - Test-Starting-Over  # Trigger on test branch
   schedule:
-    - cron: '0 20 * * *'   # 20:00 UTC = 16:00 EDT
-
-  workflow_dispatch:  # Allows manual triggering
+    - cron: '0 20 * * *'     # 20:00 UTC = 16:00 EDT
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -20,17 +18,16 @@ concurrency:
 
 jobs:
   update-files:
-    runs-on: ubuntu-latest # Using latest for better support
+    runs-on: ubuntu-latest
     timeout-minutes: 30
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4 # Updated to v4 for latest features
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5 # Updated to v5
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.11' # Using a specific, stable version is better practice
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
@@ -44,16 +41,30 @@ jobs:
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          # Using "git add -A" is simpler and captures all generated files
           git add -A
-          # The "|| true" part prevents the workflow from failing if there are no changes
           git commit -m "TV-Mikhoul Update files - $(date -u '+%Y-%m-%d %H:%M:%S UTC')" || echo "No changes to commit"
-          # REMOVED the "git pull --rebase origin main" command that caused the conflict
           git push
 
-  # The update-indexes job remains unchanged as it's not part of the problem
   update-indexes:
     needs: update-files
-    uses: bugsfreeweb/LiveTVCollector/.github/workflows/update-indexes.yml@main
+    runs-on: ubuntu-latest
     permissions:
       contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Commit and Push Indexes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name  "github-actions[bot]"
+          if [ -f "LiveTV/index.json" ]; then
+            git add LiveTV/index.json
+          fi
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update LiveTV index files"
+            git pull --rebase origin main || echo "Rebase failed, continuing"
+            git push || echo "Push failed"
+          fi
