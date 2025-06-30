@@ -1,4 +1,4 @@
-name: Update Indexes
+te Indexes
 
 on:
   workflow_call:  # Makes this workflow reusable
@@ -23,7 +23,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add LiveTV/index.json Movies/index.json
-          git commit -m "Update LiveTV and Movies index files" || echo "No changes to commit"
+          git commit -m "Update LiveTV index files" || echo "No changes to commit"
           git pull --rebase origin main  # Fetch and rebase remote changes
           git push

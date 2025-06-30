@@ -2,12 +2,12 @@
 settings:
   concurrency: 50  # High concurrency for faster processing
   fetchTimeout: 3000  # Timeout for fetching M3U files
-  linkCheckTimeout: 2000  # Timeout for checking link activity
+  linkCheckTimeout: 9000  # Timeout for checking link activity
   batchSize: 100  # Number of links to check in a single batch
   outputDirPrefix: SpecialLinks  # Base name for output directories/files
-  channelsPerFile: 2000  # Maximum number of channels per file
+  channelsPerFile: 9000  # Maximum number of channels per file
 
 urls:
-- http://zefaultgen.com:8880/get.php?username=total&password=aNXa8Vn7XL&type=m3u&output=hls
+- http://MyWebsitezzz.net
 
   # Add more URLs here (up to 100)
