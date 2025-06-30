@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "generated_at": "2025-07-01 00:43:14",
+    "generated_at": "2025-07-01 00:46:21",
     "country": "Mikhoul",
     "total_channels": 55,
     "total_groups": 13,
-    "processing_time": 48.97548246383667,
+    "processing_time": 48.85262703895569,
     "validation_enabled": true,
     "deduplication_enabled": true
   },
@@ -15,14 +15,14 @@
     "urls_validated": 79,
     "active_urls": 55,
     "geo_blocked_urls": 43,
-    "validation_time": 48.55726408958435,
+    "validation_time": 48.611409187316895,
     "inactive_by_error": {
       "inactive": 10,
       "http_404": 11,
       "http_400": 2,
       "http_502": 1
     },
-    "total_processing_time": 48.97548246383667,
+    "total_processing_time": 48.85262703895569,
     "final_channel_count": 55,
     "source_urls_processed": 1
   },
@@ -63,197 +63,7 @@
     ]
   },
   "channels": {
-    "Actualités": [
-      {
-        "name": "ICI RDI (Adaptative) [Geo-blocked]",
-        "logo": "https://i.imgur.com/Bb1ZiR6.jpg",
-        "group": "Actualités",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 38,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "unknown",
-        "attributes": {
-          "tvg-id": "ICIRadioCanadaRDI.ca",
-          "tvg-logo": "https://i.imgur.com/Bb1ZiR6.jpg",
-          "group-title": "Actualités"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.224169",
-        "url": "https://rcavlive.akamaized.net/hls/live/704026/canrdi/master.m3u8",
-        "url_domain": "rcavlive.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.276221"
-      },
-      {
-        "name": "ICI RDI (Audio) [Geo-blocked]",
-        "logo": "https://i.imgur.com/Bb1ZiR6.jpg",
-        "group": "Actualités",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 42,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "unknown",
-        "attributes": {
-          "tvg-id": "ICIRadioCanadaRDI.ca",
-          "tvg-logo": "https://i.imgur.com/Bb1ZiR6.jpg",
-          "group-title": "Actualités"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.224331",
-        "url": "https://rcavlive.akamaized.net/hls/live/704026/canrdi/master_dv.m3u8",
-        "url_domain": "rcavlive.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.285168"
-      },
-      {
-        "name": "CKMI-DT - Global News Montreal (720p)",
-        "logo": "https://i.imgur.com/0vLVIWr.jpg",
-        "group": "Actualités",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 35,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "en",
-        "attributes": {
-          "tvg-id": "GlobalNewsMontreal.ca",
-          "tvg-logo": "https://i.imgur.com/0vLVIWr.jpg",
-          "group-title": "Actualités"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.224095",
-        "url": "https://live.corusdigitaldev.com/groupa/live/6bfb7f13-9d9d-4211-9c50-fb56330e4ccd/live.isml/.m3u8",
-        "url_domain": "live.corusdigitaldev.com",
-        "is_hls": true,
-        "validation_status": "active",
-        "validation_timestamp": "2025-06-30T19:12:26.468081"
-      },
-      {
-        "name": "ICI RDI (Adaptative) (OPT-2)",
-        "logo": "https://i.imgur.com/Bb1ZiR6.jpg",
-        "group": "Actualités",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 40,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "unknown",
-        "attributes": {
-          "tvg-id": "ICIRadioCanadaRDI.ca",
-          "tvg-logo": "https://i.imgur.com/Bb1ZiR6.jpg",
-          "group-title": "Actualités"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.224255",
-        "url": "https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8",
-        "url_domain": "rcavlive.akamaized.net",
-        "is_hls": true,
-        "validation_status": "active",
-        "validation_timestamp": "2025-06-30T19:12:26.503340"
-      },
-      {
-        "name": "CBMT-DT - CBC Montreal (720p) [Geo-blocked]",
-        "logo": "https://i.imgur.com/AeVRfbB.png",
-        "group": "Actualités",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 21,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "unknown",
-        "attributes": {
-          "tvg-id": "CBCCBMTMontreal.ca",
-          "tvg-logo": "https://i.imgur.com/AeVRfbB.png",
-          "group-title": "Actualités"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.223800",
-        "url": "https://cbcrclinear-tor.akamaized.net/hls/live/2042761/CBCRCLINEAR_TOR_7/master5.m3u8",
-        "url_domain": "cbcrclinear-tor.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.532837"
-      },
-      {
-        "name": "LCN (720p) [Geo-blocked]",
-        "logo": "https://i.imgur.com/6cESMfj.png",
-        "group": "Actualités",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 79,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "unknown",
-        "attributes": {
-          "tvg-id": "LeCanalNouvelles.ca",
-          "tvg-logo": "https://i.imgur.com/6cESMfj.png",
-          "group-title": "Actualités"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.225533",
-        "url": "https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8",
-        "url_domain": "tvalive.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.536475"
-      },
-      {
-        "name": "LCN (Audio) [Geo-blocked]",
-        "logo": "https://i.imgur.com/6cESMfj.png",
-        "group": "Actualités",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 81,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "unknown",
-        "attributes": {
-          "tvg-id": "LeCanalNouvelles.ca",
-          "tvg-logo": "https://i.imgur.com/6cESMfj.png",
-          "group-title": "Actualités"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.225601",
-        "url": "https://tvalive.akamaized.net/hls/live/2014213/tvan01/audio_0_eng.m3u8",
-        "url_domain": "tvalive.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.546701"
-      },
-      {
-        "name": "CJNT-DT - CityNews Montreal 6pm a 11pm (Non 24/7)",
-        "logo": "https://i.imgur.com/jMaP3wK.png",
-        "group": "Actualités",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 25,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "en",
-        "attributes": {
-          "tvg-logo": "https://i.imgur.com/jMaP3wK.png",
-          "group-title": "Actualités"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.223880",
-        "url": "https://citynewsregional.akamaized.net/hls/live/553720/CityNews-Montreal/master.m3u8",
-        "url_domain": "citynewsregional.akamaized.net",
-        "is_hls": true,
-        "validation_status": "active",
-        "validation_timestamp": "2025-06-30T19:12:26.688046"
-      }
-    ],
     "Généraliste": [
-      {
-        "name": "CJBR-DT - ICI Radio-Canada Télé Est-Québec (Rimouski) (720p) [Geo-blocked]",
-        "logo": "https://i.imgur.com/hTXZMsX.png",
-        "group": "Généraliste",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 48,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "fr",
-        "attributes": {
-          "tvg-id": "ICIRadioCanadaEstQuebec.ca",
-          "tvg-logo": "https://i.imgur.com/hTXZMsX.png",
-          "group-title": "Généraliste"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.224490",
-        "url": "https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8",
-        "url_domain": "rcavlive.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.278403"
-      },
       {
         "name": "CKTV-DT - ICI Radio-Canada Télé Saguenay-Lac-St-Jean (Saguenay) (720p) [Geo-blocked]",
         "logo": "https://i.imgur.com/wMQGKoP.png",
@@ -268,12 +78,33 @@
           "tvg-logo": "https://i.imgur.com/wMQGKoP.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.224566",
+        "added_timestamp": "2025-06-30T19:15:32.602001",
         "url": "https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.282940"
+        "validation_timestamp": "2025-06-30T19:15:32.698414"
+      },
+      {
+        "name": "CJBR-DT - ICI Radio-Canada Télé Est-Québec (Rimouski) (720p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/hTXZMsX.png",
+        "group": "Généraliste",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 48,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "fr",
+        "attributes": {
+          "tvg-id": "ICIRadioCanadaEstQuebec.ca",
+          "tvg-logo": "https://i.imgur.com/hTXZMsX.png",
+          "group-title": "Généraliste"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.601925",
+        "url": "https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8",
+        "url_domain": "rcavlive.akamaized.net",
+        "is_hls": true,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:32.705342"
       },
       {
         "name": "CBAFT-DT - ICI Radio-Canada Télé Acadie (Moncton) (720p) [Geo-blocked]",
@@ -289,12 +120,12 @@
           "tvg-logo": "https://i.imgur.com/3TlTIrd.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.224413",
+        "added_timestamp": "2025-06-30T19:15:32.601848",
         "url": "https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.282953"
+        "validation_timestamp": "2025-06-30T19:15:32.709606"
       },
       {
         "name": "CBVT-DT - ICI Radio-Canada Télé Québec (Québec) (720p) [Geo-blocked]",
@@ -310,33 +141,12 @@
           "tvg-logo": "https://i.imgur.com/aEmwyn6.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.224638",
+        "added_timestamp": "2025-06-30T19:15:32.602075",
         "url": "https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.293912"
-      },
-      {
-        "name": "CBFT-DT - ICI Radio-Canada Télé Montréal (Montréal) (720p) [Geo-blocked]",
-        "logo": "https://i.imgur.com/ExX8Ojc.png",
-        "group": "Généraliste",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 60,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "fr",
-        "attributes": {
-          "tvg-id": "ICIRadioCanadaMontreal.ca",
-          "tvg-logo": "https://i.imgur.com/ExX8Ojc.png",
-          "group-title": "Généraliste"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.224932",
-        "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_3000.m3u8",
-        "url_domain": "rcavlive-dai.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.297659"
+        "validation_timestamp": "2025-06-30T19:15:32.725584"
       },
       {
         "name": "CKSH-DT - ICI Radio-Canada Télé Estrie (Sherbrooke) (720p) [Geo-blocked]",
@@ -352,12 +162,12 @@
           "tvg-logo": "https://i.imgur.com/hen9czq.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.224711",
+        "added_timestamp": "2025-06-30T19:15:32.602148",
         "url": "https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.298650"
+        "validation_timestamp": "2025-06-30T19:15:32.727709"
       },
       {
         "name": "CKTM-DT - ICI Radio-Canada Télé Mauricie - Centre-du-Québec (Trois-Rivières) (720p) [Geo-blocked]",
@@ -373,54 +183,12 @@
           "tvg-logo": "https://i.imgur.com/jjnIzML.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.224785",
+        "added_timestamp": "2025-06-30T19:15:32.602255",
         "url": "https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.301101"
-      },
-      {
-        "name": "CBOFT-DT -ICI Radio-Canada Télé Ottawa - Gatineau (Ottawa) (720p) [Geo-blocked]",
-        "logo": "https://i.imgur.com/PiYf9p0.png",
-        "group": "Généraliste",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 62,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "fr",
-        "attributes": {
-          "tvg-id": "ICIRadioCanadaOttawa-Gatineau.ca",
-          "tvg-logo": "https://i.imgur.com/PiYf9p0.png",
-          "group-title": "Généraliste"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.225006",
-        "url": "https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8",
-        "url_domain": "rcavlive.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.303167"
-      },
-      {
-        "name": "CBFT-DT - ICI Radio-Canada Télé Montréal HD (Montréal) (1080p) [Geo-blocked]",
-        "logo": "https://i.imgur.com/NdCfrtF.png",
-        "group": "Généraliste",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 58,
-        "quality": "HD",
-        "resolution": "1080p",
-        "language": "fr",
-        "attributes": {
-          "tvg-id": "ICIRadioCanadaMontrealHD.ca",
-          "tvg-logo": "https://i.imgur.com/NdCfrtF.png",
-          "group-title": "Généraliste"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.224859",
-        "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8",
-        "url_domain": "rcavlive-dai.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.306154"
+        "validation_timestamp": "2025-06-30T19:15:32.733798"
       },
       {
         "name": "CBLFT-DT - ICI Radio-Canada Télé Ontario (Toronto) (720p) [Geo-blocked]",
@@ -436,33 +204,12 @@
           "tvg-logo": "https://i.imgur.com/2UOy8xT.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.225078",
+        "added_timestamp": "2025-06-30T19:15:32.602553",
         "url": "https://rcavlive.akamaized.net/hls/live/704022/cancblft/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.312758"
-      },
-      {
-        "name": "CBKFT-DT - ICI Radio-Canada Télé Saskatchewan (Regina) (720p) [Geo-blocked]",
-        "logo": "https://i.imgur.com/kE4Kn4u.png",
-        "group": "Généraliste",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 68,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "fr",
-        "attributes": {
-          "tvg-id": "ICIRadioCanadaSaskatchewan.ca",
-          "tvg-logo": "https://i.imgur.com/kE4Kn4u.png",
-          "group-title": "Généraliste"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.225224",
-        "url": "https://rcavlive.akamaized.net/hls/live/704019/cancbkft/master_3000.m3u8",
-        "url_domain": "rcavlive.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.315091"
+        "validation_timestamp": "2025-06-30T19:15:32.735640"
       },
       {
         "name": "CBWFT-DT - ICI Radio-Canada Télé Manitoba (Winnipeg) (720p) [Geo-blocked]",
@@ -478,12 +225,33 @@
           "tvg-logo": "https://i.imgur.com/hvBcsBf.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.225150",
+        "added_timestamp": "2025-06-30T19:15:32.602625",
         "url": "https://rcavlive.akamaized.net/hls/live/704018/cancbwft/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.319906"
+        "validation_timestamp": "2025-06-30T19:15:32.739887"
+      },
+      {
+        "name": "CBOFT-DT -ICI Radio-Canada Télé Ottawa - Gatineau (Ottawa) (720p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/PiYf9p0.png",
+        "group": "Généraliste",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 62,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "fr",
+        "attributes": {
+          "tvg-id": "ICIRadioCanadaOttawa-Gatineau.ca",
+          "tvg-logo": "https://i.imgur.com/PiYf9p0.png",
+          "group-title": "Généraliste"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.602480",
+        "url": "https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8",
+        "url_domain": "rcavlive.akamaized.net",
+        "is_hls": true,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:32.741531"
       },
       {
         "name": "CBXFT-DT - ICI Radio-Canada Télé Alberta (Edmonton) (720p) [Geo-blocked]",
@@ -499,12 +267,33 @@
           "tvg-logo": "https://i.imgur.com/TUBES44.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.225314",
+        "added_timestamp": "2025-06-30T19:15:32.602771",
         "url": "https://rcavlive.akamaized.net/hls/live/704020/cancbxft/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.319918"
+        "validation_timestamp": "2025-06-30T19:15:32.749205"
+      },
+      {
+        "name": "CBKFT-DT - ICI Radio-Canada Télé Saskatchewan (Regina) (720p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/kE4Kn4u.png",
+        "group": "Généraliste",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 68,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "fr",
+        "attributes": {
+          "tvg-id": "ICIRadioCanadaSaskatchewan.ca",
+          "tvg-logo": "https://i.imgur.com/kE4Kn4u.png",
+          "group-title": "Généraliste"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.602698",
+        "url": "https://rcavlive.akamaized.net/hls/live/704019/cancbkft/master_3000.m3u8",
+        "url_domain": "rcavlive.akamaized.net",
+        "is_hls": true,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:32.751803"
       },
       {
         "name": "CBUFT-DT - ICI Radio-Canada Télé Colombie-Britannique - Yukon (Vancouver) (720p) [Geo-blocked]",
@@ -520,12 +309,12 @@
           "tvg-logo": "https://i.imgur.com/bfqHfNX.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.225391",
+        "added_timestamp": "2025-06-30T19:15:32.602844",
         "url": "https://rcavlive.akamaized.net/hls/live/704017/cancbuft/master_3000.m3u8",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.319927"
+        "validation_timestamp": "2025-06-30T19:15:32.758069"
       },
       {
         "name": "ICI Tele Est-Quebec (Rimouski) (720p) [Geo-blocked]",
@@ -541,33 +330,12 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.233535",
+        "added_timestamp": "2025-06-30T19:15:32.611108",
         "url": "https://rcavlive.akamaized.net/hls/live/704024/cancjbr/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.330980"
-      },
-      {
-        "name": "CFTM-DT - TVA (Adaptative) [Geo-blocked]",
-        "logo": "https://i.imgur.com/AvJwjcQ.jpg",
-        "group": "Généraliste",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 123,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "en",
-        "attributes": {
-          "tvg-id": "TVA.ca",
-          "tvg-logo": "https://i.imgur.com/AvJwjcQ.jpg",
-          "group-title": "Généraliste"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.226635",
-        "url": "https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8",
-        "url_domain": "tvalive-dai01.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.343776"
+        "validation_timestamp": "2025-06-30T19:15:32.777828"
       },
       {
         "name": "ICI Tele Estrie (Sherbrooke) (720p) [Geo-blocked]",
@@ -583,12 +351,12 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.233609",
+        "added_timestamp": "2025-06-30T19:15:32.611183",
         "url": "https://rcavlive.akamaized.net/hls/live/704016/cancksh/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.345039"
+        "validation_timestamp": "2025-06-30T19:15:32.788682"
       },
       {
         "name": "ICI Tele Mauricie (Trois-Rivières) (720p) [Geo-blocked]",
@@ -604,54 +372,12 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.233683",
+        "added_timestamp": "2025-06-30T19:15:32.611268",
         "url": "https://rcavlive.akamaized.net/hls/live/704021/cancktm/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.356223"
-      },
-      {
-        "name": "ICI Tele Montreal (1080p) [Geo-blocked]",
-        "logo": "https://i.imgur.com/rQyoWsy.png",
-        "group": "Généraliste",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 488,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "unknown",
-        "attributes": {
-          "tvg-id": "ICIRadioCanadaMontreal.ca",
-          "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
-          "group-title": "Généraliste"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.233752",
-        "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8|X-Forwarded-For=24.37.42.200",
-        "url_domain": "rcavlive-dai.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.358438"
-      },
-      {
-        "name": "CFTM-DT - TVA Audio [Geo-blocked]",
-        "logo": "https://i.imgur.com/AvJwjcQ.jpg",
-        "group": "Généraliste",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 125,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "en",
-        "attributes": {
-          "tvg-id": "TVA.ca",
-          "tvg-logo": "https://i.imgur.com/AvJwjcQ.jpg",
-          "group-title": "Généraliste"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.226706",
-        "url": "https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/05.m3u8",
-        "url_domain": "tvalive-dai01.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.362659"
+        "validation_timestamp": "2025-06-30T19:15:32.808838"
       },
       {
         "name": "ICI Tele Ottawa-Gatineau (720p) [Geo-blocked]",
@@ -667,12 +393,12 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.233941",
+        "added_timestamp": "2025-06-30T19:15:32.611513",
         "url": "https://rcavlive.akamaized.net/hls/live/664046/cancboft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.369336"
+        "validation_timestamp": "2025-06-30T19:15:32.828754"
       },
       {
         "name": "ICI Tele Quebec (720p) [Geo-blocked]",
@@ -688,33 +414,12 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.234016",
+        "added_timestamp": "2025-06-30T19:15:32.611589",
         "url": "https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master_2500.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.372922"
-      },
-      {
-        "name": "CIVM-DT - Télé Québec (Adaptative) [Geo-blocked]",
-        "logo": "https://i.imgur.com/8R4EaFu.png",
-        "group": "Généraliste",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 115,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "fr",
-        "attributes": {
-          "tvg-id": "TeleQuebec.ca",
-          "tvg-logo": "https://i.imgur.com/8R4EaFu.png",
-          "group-title": "Généraliste"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.226504",
-        "url": "https://bcovlive-a.akamaihd.net/4b1c462c86094bae93b65adc84e43afc/us-west-2/6101674910001/playlist.m3u8",
-        "url_domain": "bcovlive-a.akamaihd.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.378094"
+        "validation_timestamp": "2025-06-30T19:15:32.846914"
       },
       {
         "name": "ICI Tele Saguenay (720p) [Geo-blocked]",
@@ -730,12 +435,12 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.234087",
+        "added_timestamp": "2025-06-30T19:15:32.611661",
         "url": "https://rcavlive.akamaized.net/hls/live/704023/cancktv/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.379383"
+        "validation_timestamp": "2025-06-30T19:15:32.869506"
       },
       {
         "name": "ICI Tele Acadie (Moncton) (720p) [Geo-blocked]",
@@ -751,12 +456,12 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.234157",
+        "added_timestamp": "2025-06-30T19:15:32.611733",
         "url": "https://rcavlive.akamaized.net/hls/live/704014/cancbaft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.384953"
+        "validation_timestamp": "2025-06-30T19:15:32.885840"
       },
       {
         "name": "ICI Tele Ontario (Toronto) (720p) [Geo-blocked]",
@@ -772,33 +477,12 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.234228",
+        "added_timestamp": "2025-06-30T19:15:32.611804",
         "url": "https://rcavlive.akamaized.net/hls/live/704022/cancblft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.387198"
-      },
-      {
-        "name": "ICI Tele Saskatchewan (Regina) (720p) [Geo-blocked]",
-        "logo": "https://i.imgur.com/rQyoWsy.png",
-        "group": "Généraliste",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 502,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "unknown",
-        "attributes": {
-          "tvg-id": "ICIRadioCanadaSaskatchewan.ca",
-          "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
-          "group-title": "Généraliste"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.234532",
-        "url": "https://rcavlive.akamaized.net/hls/live/704019/cancbkft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
-        "url_domain": "rcavlive.akamaized.net",
-        "is_hls": true,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.391842"
+        "validation_timestamp": "2025-06-30T19:15:32.890465"
       },
       {
         "name": "ICI Tele Alberta (Edmonton) (720p) [Geo-blocked]",
@@ -814,12 +498,33 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.234428",
+        "added_timestamp": "2025-06-30T19:15:32.612008",
         "url": "https://rcavlive.akamaized.net/hls/live/704020/cancbxft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.393907"
+        "validation_timestamp": "2025-06-30T19:15:32.918737"
+      },
+      {
+        "name": "ICI Tele Saskatchewan (Regina) (720p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/rQyoWsy.png",
+        "group": "Généraliste",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 502,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "unknown",
+        "attributes": {
+          "tvg-id": "ICIRadioCanadaSaskatchewan.ca",
+          "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
+          "group-title": "Généraliste"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.612134",
+        "url": "https://rcavlive.akamaized.net/hls/live/704019/cancbkft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
+        "url_domain": "rcavlive.akamaized.net",
+        "is_hls": true,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:32.919971"
       },
       {
         "name": "ICI Tele CB-Yukon (Vancouver) (720p) [Geo-blocked]",
@@ -835,12 +540,12 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.234608",
+        "added_timestamp": "2025-06-30T19:15:32.612212",
         "url": "https://rcavlive.akamaized.net/hls/live/704017/cancbuft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.401421"
+        "validation_timestamp": "2025-06-30T19:15:32.925862"
       },
       {
         "name": "ICI Tele Manitoba (Winnipeg) (720p) [Geo-blocked]",
@@ -856,12 +561,33 @@
           "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.234679",
+        "added_timestamp": "2025-06-30T19:15:32.612301",
         "url": "https://rcavlive.akamaized.net/hls/live/704018/cancbwft/master_3000.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "rcavlive.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.402934"
+        "validation_timestamp": "2025-06-30T19:15:32.931711"
+      },
+      {
+        "name": "CFHD-DT - ICI TV (720p)",
+        "logo": "https://i.imgur.com/i3xFNPE.png",
+        "group": "Généraliste",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 76,
+        "quality": "HD",
+        "resolution": "1080p",
+        "language": "en",
+        "attributes": {
+          "tvg-id": "ICITelevisionMontreal.ca",
+          "tvg-logo": "https://i.imgur.com/i3xFNPE.png",
+          "group-title": "Généraliste"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.602915",
+        "url": "https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8",
+        "url_domain": "amdici.akamaized.net",
+        "is_hls": true,
+        "validation_status": "active",
+        "validation_timestamp": "2025-06-30T19:15:33.023067"
       },
       {
         "name": "TVA (Adaptative) [Geo-blocked]",
@@ -878,33 +604,117 @@
           "tvg-logo": "https://i.imgur.com/AvJwjcQ.jpg",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.234891",
+        "added_timestamp": "2025-06-30T19:15:32.612516",
         "url": "https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "tvalive-dai01.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.433418"
+        "validation_timestamp": "2025-06-30T19:15:33.037549"
       },
       {
-        "name": "CFHD-DT - ICI TV (720p)",
-        "logo": "https://i.imgur.com/i3xFNPE.png",
+        "name": "CFTM-DT - TVA Audio [Geo-blocked]",
+        "logo": "https://i.imgur.com/AvJwjcQ.jpg",
         "group": "Généraliste",
         "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 76,
-        "quality": "HD",
-        "resolution": "1080p",
+        "line_num": 125,
+        "quality": "Unknown",
+        "resolution": "Unknown",
         "language": "en",
         "attributes": {
-          "tvg-id": "ICITelevisionMontreal.ca",
-          "tvg-logo": "https://i.imgur.com/i3xFNPE.png",
+          "tvg-id": "TVA.ca",
+          "tvg-logo": "https://i.imgur.com/AvJwjcQ.jpg",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.225463",
-        "url": "https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8",
-        "url_domain": "amdici.akamaized.net",
+        "added_timestamp": "2025-06-30T19:15:32.604193",
+        "url": "https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/05.m3u8",
+        "url_domain": "tvalive-dai01.akamaized.net",
         "is_hls": true,
-        "validation_status": "active",
-        "validation_timestamp": "2025-06-30T19:12:26.602188"
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:33.039793"
+      },
+      {
+        "name": "CFTM-DT - TVA (Adaptative) [Geo-blocked]",
+        "logo": "https://i.imgur.com/AvJwjcQ.jpg",
+        "group": "Généraliste",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 123,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "en",
+        "attributes": {
+          "tvg-id": "TVA.ca",
+          "tvg-logo": "https://i.imgur.com/AvJwjcQ.jpg",
+          "group-title": "Généraliste"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.604122",
+        "url": "https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8",
+        "url_domain": "tvalive-dai01.akamaized.net",
+        "is_hls": true,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:33.041659"
+      },
+      {
+        "name": "CBFT-DT - ICI Radio-Canada Télé Montréal (Montréal) (720p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/ExX8Ojc.png",
+        "group": "Généraliste",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 60,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "fr",
+        "attributes": {
+          "tvg-id": "ICIRadioCanadaMontreal.ca",
+          "tvg-logo": "https://i.imgur.com/ExX8Ojc.png",
+          "group-title": "Généraliste"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.602406",
+        "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_3000.m3u8",
+        "url_domain": "rcavlive-dai.akamaized.net",
+        "is_hls": true,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:33.069131"
+      },
+      {
+        "name": "ICI Tele Montreal (1080p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/rQyoWsy.png",
+        "group": "Généraliste",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 488,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "unknown",
+        "attributes": {
+          "tvg-id": "ICIRadioCanadaMontreal.ca",
+          "tvg-logo": "https://i.imgur.com/rQyoWsy.png",
+          "group-title": "Généraliste"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.611341",
+        "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8|X-Forwarded-For=24.37.42.200",
+        "url_domain": "rcavlive-dai.akamaized.net",
+        "is_hls": true,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:33.071037"
+      },
+      {
+        "name": "CBFT-DT - ICI Radio-Canada Télé Montréal HD (Montréal) (1080p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/NdCfrtF.png",
+        "group": "Généraliste",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 58,
+        "quality": "HD",
+        "resolution": "1080p",
+        "language": "fr",
+        "attributes": {
+          "tvg-id": "ICIRadioCanadaMontrealHD.ca",
+          "tvg-logo": "https://i.imgur.com/NdCfrtF.png",
+          "group-title": "Généraliste"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.602332",
+        "url": "https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/master_5000.m3u8",
+        "url_domain": "rcavlive-dai.akamaized.net",
+        "is_hls": true,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:33.073315"
       },
       {
         "name": "Télé Québec (Adaptative) [Geo-blocked]",
@@ -920,96 +730,202 @@
           "tvg-logo": "https://i.imgur.com/8R4EaFu.png",
           "group-title": "Généraliste"
         },
-        "added_timestamp": "2025-06-30T19:12:26.234819",
+        "added_timestamp": "2025-06-30T19:15:32.612443",
         "url": "https://bcovlive-a.akamaihd.net/575d86160eb143458d51f7ab187a4e68/us-east-1/6101674910001/playlist.m3u8|X-Forwarded-For=24.37.42.200",
         "url_domain": "bcovlive-a.akamaihd.net",
         "is_hls": false,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.668262"
+        "validation_timestamp": "2025-06-30T19:15:33.146033"
+      },
+      {
+        "name": "CIVM-DT - Télé Québec (Adaptative) [Geo-blocked]",
+        "logo": "https://i.imgur.com/8R4EaFu.png",
+        "group": "Généraliste",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 115,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "fr",
+        "attributes": {
+          "tvg-id": "TeleQuebec.ca",
+          "tvg-logo": "https://i.imgur.com/8R4EaFu.png",
+          "group-title": "Généraliste"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.603992",
+        "url": "https://bcovlive-a.akamaihd.net/4b1c462c86094bae93b65adc84e43afc/us-west-2/6101674910001/playlist.m3u8",
+        "url_domain": "bcovlive-a.akamaihd.net",
+        "is_hls": true,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:33.274653"
       }
     ],
-    "Culturelle": [
+    "Actualités": [
       {
-        "name": "Télé Culturelle Médias (TCM-TV) [Geo-blocked]",
-        "logo": "https://i.imgur.com/FsN8wuu.png",
-        "group": "Culturelle",
+        "name": "ICI RDI (Audio) [Geo-blocked]",
+        "logo": "https://i.imgur.com/Bb1ZiR6.jpg",
+        "group": "Actualités",
         "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 111,
+        "line_num": 42,
         "quality": "Unknown",
         "resolution": "Unknown",
         "language": "unknown",
         "attributes": {
-          "tvg-logo": "https://i.imgur.com/FsN8wuu.png",
-          "group-title": "Culturelle"
+          "tvg-id": "ICIRadioCanadaRDI.ca",
+          "tvg-logo": "https://i.imgur.com/Bb1ZiR6.jpg",
+          "group-title": "Actualités"
         },
-        "added_timestamp": "2025-06-30T19:12:26.226426",
-        "url": "https://stream.castr.com/631f9bb9ecbe28ce6910385a/live_79b37a4032dd11ed85c9d9bece7b557e/index.m3u8|Referer=https://player.castr.com/live_79b37a4032dd11ed85c9d9bece7b557e",
-        "url_domain": "stream.castr.com",
-        "is_hls": false,
+        "added_timestamp": "2025-06-30T19:15:32.601770",
+        "url": "https://rcavlive.akamaized.net/hls/live/704026/canrdi/master_dv.m3u8",
+        "url_domain": "rcavlive.akamaized.net",
+        "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.560916"
-      }
-    ],
-    "Communautaire": [
-      {
-        "name": "Csur la télé ch 1 - Vaudreuil-Dorion (1080p) [Geo-blocked]",
-        "logo": "https://i.imgur.com/5Pq17aU.jpg",
-        "group": "Communautaire",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 191,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "fr",
-        "attributes": {
-          "tvg-logo": "https://i.imgur.com/5Pq17aU.jpg",
-          "group-title": "Communautaire"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.227947",
-        "url": "https://stream.castr.com/655a9019e6c4692b56396b6d/live_f88ae0808c9911ee9d20297cbe04ce6d/index.fmp4.m3u8|Referer=https://player.castr.com/",
-        "url_domain": "stream.castr.com",
-        "is_hls": false,
-        "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.658581"
+        "validation_timestamp": "2025-06-30T19:15:32.702041"
       },
       {
-        "name": "Csur la télé ch 2 - Vaudreuil-Dorion  (1080p) [Geo-blocked]",
-        "logo": "https://i.imgur.com/5Pq17aU.jpg",
-        "group": "Communautaire",
+        "name": "ICI RDI (Adaptative) [Geo-blocked]",
+        "logo": "https://i.imgur.com/Bb1ZiR6.jpg",
+        "group": "Actualités",
         "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 195,
+        "line_num": 38,
         "quality": "Unknown",
         "resolution": "Unknown",
-        "language": "fr",
+        "language": "unknown",
         "attributes": {
-          "tvg-logo": "https://i.imgur.com/5Pq17aU.jpg",
-          "group-title": "Communautaire"
+          "tvg-id": "ICIRadioCanadaRDI.ca",
+          "tvg-logo": "https://i.imgur.com/Bb1ZiR6.jpg",
+          "group-title": "Actualités"
         },
-        "added_timestamp": "2025-06-30T19:12:26.228073",
-        "url": "https://stream.castr.com/655a9019e6c4692b56396b6d/live_ee53b1d08d9511ee89c1a3cd362d5ce1/index.fmp4.m3u8|Referer=https://player.castr.com/",
-        "url_domain": "stream.castr.com",
-        "is_hls": false,
+        "added_timestamp": "2025-06-30T19:15:32.601633",
+        "url": "https://rcavlive.akamaized.net/hls/live/704026/canrdi/master.m3u8",
+        "url_domain": "rcavlive.akamaized.net",
+        "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.658596"
+        "validation_timestamp": "2025-06-30T19:15:32.711921"
       },
       {
-        "name": "TVRS - Longueuil (1080p) [Geo-blocked]",
-        "logo": "https://i.imgur.com/w9XCbWX.jpg",
-        "group": "Communautaire",
+        "name": "CKMI-DT - Global News Montreal (720p)",
+        "logo": "https://i.imgur.com/0vLVIWr.jpg",
+        "group": "Actualités",
         "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 229,
+        "line_num": 35,
         "quality": "Unknown",
         "resolution": "Unknown",
         "language": "en",
         "attributes": {
-          "tvg-logo": "https://i.imgur.com/w9XCbWX.jpg",
-          "group-title": "Communautaire"
+          "tvg-id": "GlobalNewsMontreal.ca",
+          "tvg-logo": "https://i.imgur.com/0vLVIWr.jpg",
+          "group-title": "Actualités"
         },
-        "added_timestamp": "2025-06-30T19:12:26.228730",
-        "url": "https://stream.castr.com/63bf0d473321d4909a3876ad/live_d6983bc091e611edbddd7fe8982d8daf/index.fmp4.m3u8|Referer=https://player.castr.com/",
-        "url_domain": "stream.castr.com",
-        "is_hls": false,
+        "added_timestamp": "2025-06-30T19:15:32.601560",
+        "url": "https://live.corusdigitaldev.com/groupa/live/6bfb7f13-9d9d-4211-9c50-fb56330e4ccd/live.isml/.m3u8",
+        "url_domain": "live.corusdigitaldev.com",
+        "is_hls": true,
+        "validation_status": "active",
+        "validation_timestamp": "2025-06-30T19:15:32.711935"
+      },
+      {
+        "name": "CBMT-DT - CBC Montreal (720p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/AeVRfbB.png",
+        "group": "Actualités",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 21,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "unknown",
+        "attributes": {
+          "tvg-id": "CBCCBMTMontreal.ca",
+          "tvg-logo": "https://i.imgur.com/AeVRfbB.png",
+          "group-title": "Actualités"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.601266",
+        "url": "https://cbcrclinear-tor.akamaized.net/hls/live/2042761/CBCRCLINEAR_TOR_7/master5.m3u8",
+        "url_domain": "cbcrclinear-tor.akamaized.net",
+        "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:26.690930"
+        "validation_timestamp": "2025-06-30T19:15:32.714871"
+      },
+      {
+        "name": "ICI RDI (Adaptative) (OPT-2)",
+        "logo": "https://i.imgur.com/Bb1ZiR6.jpg",
+        "group": "Actualités",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 40,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "unknown",
+        "attributes": {
+          "tvg-id": "ICIRadioCanadaRDI.ca",
+          "tvg-logo": "https://i.imgur.com/Bb1ZiR6.jpg",
+          "group-title": "Actualités"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.601703",
+        "url": "https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8",
+        "url_domain": "rcavlive.akamaized.net",
+        "is_hls": true,
+        "validation_status": "active",
+        "validation_timestamp": "2025-06-30T19:15:32.756203"
+      },
+      {
+        "name": "CJNT-DT - CityNews Montreal 6pm a 11pm (Non 24/7)",
+        "logo": "https://i.imgur.com/jMaP3wK.png",
+        "group": "Actualités",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 25,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "en",
+        "attributes": {
+          "tvg-logo": "https://i.imgur.com/jMaP3wK.png",
+          "group-title": "Actualités"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.601348",
+        "url": "https://citynewsregional.akamaized.net/hls/live/553720/CityNews-Montreal/master.m3u8",
+        "url_domain": "citynewsregional.akamaized.net",
+        "is_hls": true,
+        "validation_status": "active",
+        "validation_timestamp": "2025-06-30T19:15:32.865308"
+      },
+      {
+        "name": "LCN (720p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/6cESMfj.png",
+        "group": "Actualités",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 79,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "unknown",
+        "attributes": {
+          "tvg-id": "LeCanalNouvelles.ca",
+          "tvg-logo": "https://i.imgur.com/6cESMfj.png",
+          "group-title": "Actualités"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.602983",
+        "url": "https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8",
+        "url_domain": "tvalive.akamaized.net",
+        "is_hls": true,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:32.904955"
+      },
+      {
+        "name": "LCN (Audio) [Geo-blocked]",
+        "logo": "https://i.imgur.com/6cESMfj.png",
+        "group": "Actualités",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 81,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "unknown",
+        "attributes": {
+          "tvg-id": "LeCanalNouvelles.ca",
+          "tvg-logo": "https://i.imgur.com/6cESMfj.png",
+          "group-title": "Actualités"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.603051",
+        "url": "https://tvalive.akamaized.net/hls/live/2014213/tvan01/audio_0_eng.m3u8",
+        "url_domain": "tvalive.akamaized.net",
+        "is_hls": true,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:32.907299"
       }
     ],
     "Comedie": [
@@ -1026,35 +942,12 @@
           "tvg-logo": "https://i.imgur.com/7rZhGIl.png",
           "group-title": "Comedie"
         },
-        "added_timestamp": "2025-06-30T19:12:26.226124",
+        "added_timestamp": "2025-06-30T19:15:32.603608",
         "url": "https://d2s8iafdyzconc.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-6x2p3ho0vw00a/Noovo_Comedies_Home.m3u8",
         "url_domain": "d2s8iafdyzconc.cloudfront.net",
         "is_hls": true,
         "validation_status": "active",
-        "validation_timestamp": "2025-06-30T19:12:26.711648"
-      }
-    ],
-    "Educatif": [
-      {
-        "name": "CFTU-DT - Canal Savoir (360p)",
-        "logo": "https://i.imgur.com/27PqVAR.png",
-        "group": "Educatif",
-        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 18,
-        "quality": "Unknown",
-        "resolution": "Unknown",
-        "language": "unknown",
-        "attributes": {
-          "tvg-id": "CanalSavoir.ca",
-          "tvg-logo": "https://i.imgur.com/27PqVAR.png",
-          "group-title": "Educatif"
-        },
-        "added_timestamp": "2025-06-30T19:12:26.223706",
-        "url": "https://hls.savoir.media/live/stream.m3u8",
-        "url_domain": "hls.savoir.media",
-        "is_hls": true,
-        "validation_status": "active",
-        "validation_timestamp": "2025-06-30T19:12:26.730919"
+        "validation_timestamp": "2025-06-30T19:15:33.085877"
       }
     ],
     "Réréalité": [
@@ -1071,12 +964,12 @@
           "tvg-logo": "https://i.imgur.com/84ScGxt.png",
           "group-title": "Réréalité"
         },
-        "added_timestamp": "2025-06-30T19:12:26.225912",
+        "added_timestamp": "2025-06-30T19:15:32.603381",
         "url": "https://d29qczaufx5vc3.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-dxg2k6h0o2l6i/Noovo_Telerealites.m3u8",
         "url_domain": "d29qczaufx5vc3.cloudfront.net",
         "is_hls": true,
         "validation_status": "active",
-        "validation_timestamp": "2025-06-30T19:12:26.740366"
+        "validation_timestamp": "2025-06-30T19:15:33.099297"
       }
     ],
     "Film": [
@@ -1093,12 +986,96 @@
           "tvg-logo": "https://i.imgur.com/FNzVlkT.png",
           "group-title": "Film"
         },
-        "added_timestamp": "2025-06-30T19:12:26.226225",
+        "added_timestamp": "2025-06-30T19:15:32.603724",
         "url": "https://dk4ogs46bjxcw.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-xr1ct045l70mz/Noovo_Cinema.m3u8",
         "url_domain": "dk4ogs46bjxcw.cloudfront.net",
         "is_hls": true,
         "validation_status": "active",
-        "validation_timestamp": "2025-06-30T19:12:26.766511"
+        "validation_timestamp": "2025-06-30T19:15:33.126681"
+      }
+    ],
+    "Communautaire": [
+      {
+        "name": "TVRS - Longueuil (1080p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/w9XCbWX.jpg",
+        "group": "Communautaire",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 229,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "en",
+        "attributes": {
+          "tvg-logo": "https://i.imgur.com/w9XCbWX.jpg",
+          "group-title": "Communautaire"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.606258",
+        "url": "https://stream.castr.com/63bf0d473321d4909a3876ad/live_d6983bc091e611edbddd7fe8982d8daf/index.fmp4.m3u8|Referer=https://player.castr.com/",
+        "url_domain": "stream.castr.com",
+        "is_hls": false,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:33.129095"
+      },
+      {
+        "name": "Csur la télé ch 2 - Vaudreuil-Dorion  (1080p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/5Pq17aU.jpg",
+        "group": "Communautaire",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 195,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "fr",
+        "attributes": {
+          "tvg-logo": "https://i.imgur.com/5Pq17aU.jpg",
+          "group-title": "Communautaire"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.605552",
+        "url": "https://stream.castr.com/655a9019e6c4692b56396b6d/live_ee53b1d08d9511ee89c1a3cd362d5ce1/index.fmp4.m3u8|Referer=https://player.castr.com/",
+        "url_domain": "stream.castr.com",
+        "is_hls": false,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:33.132315"
+      },
+      {
+        "name": "Csur la télé ch 1 - Vaudreuil-Dorion (1080p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/5Pq17aU.jpg",
+        "group": "Communautaire",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 191,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "fr",
+        "attributes": {
+          "tvg-logo": "https://i.imgur.com/5Pq17aU.jpg",
+          "group-title": "Communautaire"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.605427",
+        "url": "https://stream.castr.com/655a9019e6c4692b56396b6d/live_f88ae0808c9911ee9d20297cbe04ce6d/index.fmp4.m3u8|Referer=https://player.castr.com/",
+        "url_domain": "stream.castr.com",
+        "is_hls": false,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:33.134362"
+      }
+    ],
+    "Culturelle": [
+      {
+        "name": "Télé Culturelle Médias (TCM-TV) [Geo-blocked]",
+        "logo": "https://i.imgur.com/FsN8wuu.png",
+        "group": "Culturelle",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 111,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "unknown",
+        "attributes": {
+          "tvg-logo": "https://i.imgur.com/FsN8wuu.png",
+          "group-title": "Culturelle"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.603914",
+        "url": "https://stream.castr.com/631f9bb9ecbe28ce6910385a/live_79b37a4032dd11ed85c9d9bece7b557e/index.m3u8|Referer=https://player.castr.com/live_79b37a4032dd11ed85c9d9bece7b557e",
+        "url_domain": "stream.castr.com",
+        "is_hls": false,
+        "validation_status": "geo_blocked",
+        "validation_timestamp": "2025-06-30T19:15:33.131997"
       }
     ],
     "Multiculturel": [
@@ -1116,36 +1093,38 @@
           "tvg-logo": "https://i.imgur.com/eNu3N0f.png",
           "group-title": "Multiculturel"
         },
-        "added_timestamp": "2025-06-30T19:12:26.225727",
+        "added_timestamp": "2025-06-30T19:15:32.603178",
         "url": "http://live.greektv.ca/hls1/greektv.m3u8",
         "url_domain": "live.greektv.ca",
         "is_hls": true,
         "validation_status": "active",
-        "validation_timestamp": "2025-06-30T19:12:26.804211"
+        "validation_timestamp": "2025-06-30T19:15:33.212492"
       }
     ],
-    "Affaires Publiques": [
+    "Educatif": [
       {
-        "name": "Cpac (1080p) (Kodi Changez Param Audio)",
-        "logo": "https://i.imgur.com/5ym6eJS.png",
-        "group": "Affaires Publiques",
+        "name": "CFTU-DT - Canal Savoir (360p)",
+        "logo": "https://i.imgur.com/27PqVAR.png",
+        "group": "Educatif",
         "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "line_num": 336,
+        "line_num": 18,
         "quality": "Unknown",
         "resolution": "Unknown",
         "language": "unknown",
         "attributes": {
-          "tvg-id": "CPAC.ca",
-          "tvg-logo": "https://i.imgur.com/5ym6eJS.png",
-          "group-title": "Affaires Publiques"
+          "tvg-id": "CanalSavoir.ca",
+          "tvg-logo": "https://i.imgur.com/27PqVAR.png",
+          "group-title": "Educatif"
         },
-        "added_timestamp": "2025-06-30T19:12:26.230622",
-        "url": "https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8",
-        "url_domain": "d7z3qjdsxbwoq.cloudfront.net",
+        "added_timestamp": "2025-06-30T19:15:32.601156",
+        "url": "https://hls.savoir.media/live/stream.m3u8",
+        "url_domain": "hls.savoir.media",
         "is_hls": true,
         "validation_status": "active",
-        "validation_timestamp": "2025-06-30T19:12:26.946322"
-      },
+        "validation_timestamp": "2025-06-30T19:15:33.230043"
+      }
+    ],
+    "Affaires Publiques": [
       {
         "name": "Assnat (360p)",
         "logo": "https://i.imgur.com/xKNnoci.png",
@@ -1160,12 +1139,33 @@
           "tvg-logo": "https://i.imgur.com/xKNnoci.png",
           "group-title": "Affaires Publiques"
         },
-        "added_timestamp": "2025-06-30T19:12:26.230546",
+        "added_timestamp": "2025-06-30T19:15:32.608101",
         "url": "https://diffusionm.assnat.qc.ca/diffusion/canal17/playlist.m3u8",
         "url_domain": "diffusionm.assnat.qc.ca",
         "is_hls": true,
         "validation_status": "active",
-        "validation_timestamp": "2025-06-30T19:12:27.100628"
+        "validation_timestamp": "2025-06-30T19:15:33.261116"
+      },
+      {
+        "name": "Cpac (1080p) (Kodi Changez Param Audio)",
+        "logo": "https://i.imgur.com/5ym6eJS.png",
+        "group": "Affaires Publiques",
+        "source": "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
+        "line_num": 336,
+        "quality": "Unknown",
+        "resolution": "Unknown",
+        "language": "unknown",
+        "attributes": {
+          "tvg-id": "CPAC.ca",
+          "tvg-logo": "https://i.imgur.com/5ym6eJS.png",
+          "group-title": "Affaires Publiques"
+        },
+        "added_timestamp": "2025-06-30T19:15:32.608178",
+        "url": "https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8",
+        "url_domain": "d7z3qjdsxbwoq.cloudfront.net",
+        "is_hls": true,
+        "validation_status": "active",
+        "validation_timestamp": "2025-06-30T19:15:33.289244"
       }
     ],
     "Thématique": [
@@ -1183,12 +1183,12 @@
           "tvg-logo": "https://i.imgur.com/ydf6WFN.jpeg",
           "group-title": "Thématique"
         },
-        "added_timestamp": "2025-06-30T19:12:26.235295",
+        "added_timestamp": "2025-06-30T19:15:32.612894",
         "url": "https://temoindirect.akamaized.net/no/V-MOICIE/V-MOICIE.isml/V-MOICIE.m3u8",
         "url_domain": "temoindirect.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:27.107957"
+        "validation_timestamp": "2025-06-30T19:15:33.718360"
       }
     ],
     "Cuisine": [
@@ -1206,12 +1206,12 @@
           "tvg-logo": "https://i.imgur.com/YVmkt8p.png",
           "group-title": "Cuisine"
         },
-        "added_timestamp": "2025-06-30T19:12:26.235425",
+        "added_timestamp": "2025-06-30T19:15:32.613018",
         "url": "https://vmediazeste.akamaized.net/no/V-ZESTE/V-ZESTE.isml/V-ZESTE.m3u8",
         "url_domain": "vmediazeste.akamaized.net",
         "is_hls": true,
         "validation_status": "geo_blocked",
-        "validation_timestamp": "2025-06-30T19:12:27.325981"
+        "validation_timestamp": "2025-06-30T19:15:33.743611"
       }
     ],
     "Quebec TV": [
@@ -1228,12 +1228,12 @@
           "tvg-logo": "",
           "group-title": "Quebec TV"
         },
-        "added_timestamp": "2025-06-30T19:12:26.235012",
+        "added_timestamp": "2025-06-30T19:15:32.612635",
         "url": "https://tvalcn.akamaized.net/hls/live/2013847/tvalcn01/master.m3u8",
         "url_domain": "tvalcn.akamaized.net",
         "is_hls": true,
         "validation_status": "active",
-        "validation_timestamp": "2025-06-30T19:12:28.491756"
+        "validation_timestamp": "2025-06-30T19:15:34.865896"
       }
     ]
   },
