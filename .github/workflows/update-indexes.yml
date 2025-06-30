@@ -1,18 +1,21 @@
-- name: Commit and Push Indexes
-  run: |
-    git config --local user.email "github-actions[bot]@users.noreply.github.com"
-    git config --local user.name "github-actions[bot]"
-    
-    # Only add files that exist
-    if [ -f "LiveTV/index.json" ]; then
-      git add LiveTV/index.json
-    fi
-    
-    # Check if there are changes to commit
-    if git diff --staged --quiet; then
-      echo "No changes to commit"
-    else
-      git commit -m "Update LiveTV index files"
-      git pull --rebase origin main
-      git push
-    fi
+update-indexes:
+  needs: update-files
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Commit and Push Indexes
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]@users.noreply.github.com"
+        if [ -f "LiveTV/index.json" ]; then
+          git add LiveTV/index.json
+        fi
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update LiveTV index files"
+          git pull --rebase origin main
+          git push
+        fi
