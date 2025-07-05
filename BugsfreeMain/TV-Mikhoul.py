@@ -620,14 +620,7 @@ class M3UCollector:
                     logging.info("")  # Blank line for readability
                 return True, url, 'geo_blocked'
             
-            else:
-                # FIXED: Consistent format for ALL other status codes with logging lock
-                with self.logging_lock:
-                    logging.info(f"Channel '{channel_name}': (HEAD) INACTIVE [ERROR_{response.status_code}]")
-                    logging.info(f"URL: {url}")
-                    logging.info("")
-                return False, url, f'http_{response.status_code}'
-        
+                    
         except requests.RequestException:
             pass
         
