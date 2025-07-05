@@ -6,3 +6,67 @@
         "https://raw.githubusercontent.com/altn2025/iptv/refs/heads/main/international.m3u",
 
    LG+ Pluto en Francais sans VPN    https://www.apsattv.com/frlg.m3u
+
+https://iptv-org.github.io/iptv/countries/fr.m3u
+
+
+_________________
+
+Google App Script
+
+https://script.google.com
+
+https://tinyurl.com/multiservice21?region=fr&service=PlutoTV
+
+Service Params:
+
+Plex Roku SamsungTVPlus PlutoTV PBS Stirr
+
+Region Params:
+
+all at ca ch de es fr gb in it kr us
+
+
+My URL original : https://script.google.com/macros/s/AKfycbzHoJGQ2lzO1mTsufgT1MZCVt1RDl8Ezm7Af0-XJdGsau7JJwwQAxIKMS8oY62acuen/exec?region=fr&service=PlutoTV
+
+My shortned URL: https://tinyurl.com/Stream2IPTV
+
+https://tinyurl.com/Stream2IPTV?region=fr&service=PlutoTV
+
+https://tinyurl.com/Stream2IPTV?region=fr&service=Plex
+
+https://tinyurl.com/Stream2IPTV?region=fr&service=SamsungTVPlus
+
+--------------
+
+https://jmp2.uk/  Sans VPN
+
+Thanks for this, yes yours works for some reason mine did not. I redeployed on GAS, ensure I copied the correct deployment version link, and it works. I think I had something mixed up earlier, perhaps the permissions were set wrong. Works now on m3u4u, and on IPYTVMerge in Kodi. Note, here is an example of your service with pluto and my targeted channels, I also do similar for sam, rok and plex. All working correctly, but I edited my GAS script to remove group and chn#s, and sort by name, which works for my setup. In case anyone has the patients and wants to do what I did by channels, I thought this might help others out by showing my example. Again, thanks for helping out the noobs, I am so very appreciative of all the help from the community in general..Now I will learn to code, since I just retired. :)
+
+https://tinyurl.com/multiservice21?region=all&include=PlutoTV-6549310a53fc97000838fcc9,PlutoTV-62fb6d4308f5ec0007453c09,PlutoTV-6549316d2c1d330008631496,PlutoTV-62fb6cd97b90e60007bc318a,PlutoTV-62fb9844db5a4a0007ebc2a3,PlutoTV-60f5d389985a0c0007357304,PlutoTV-5dc0c78281eddb0009a02d5e,PlutoTV-5ad8d883e738977e2c31096b,PlutoTV-5e54187aae660e00093561d6,PlutoTV-622b393e32669a00071a6d4c,PlutoTV-62fb62669f35b8000757204e,PlutoTV-5c5c2e9d8002db3c3e0b1c72,PlutoTV-5db0ad56edc89300090d2ebb,PlutoTV-65dde148ec9fda0008b3c541,PlutoTV-654ca7f92c1d3300086b608c,PlutoTV-640a64bd73e013000893d4e0,PlutoTV-5db050444f3c52000984c72a,PlutoTV-5b4fc274694c027be6ed3eea,PlutoTV-563a970aa1a1f7fe7c9daad7,PlutoTV-5dbc2f98777f2e0009934ae7,PlutoTV-5ba3fb9c4b078e0f37ad34e8,PlutoTV-5f4d863b98b41000076cd061,PlutoTV-64ff1d3d3a0d700008b110e9,PlutoTV-6654adb1f99922000854388c&service=PlutoTV&sort=name
+
+___________________________________________________
+
+Open your playlist in notepad on windows and replace all instances of https://jmp2.uk/plu- with http://stitcher-ipv4.pluto.tv/v1/stitch/embed/hls/channel/ and also replace all instances of -alt.m3u8 with /master.m3u8?deviceType=samsung-tvplus&deviceMake=samsung&deviceModel=samsung&deviceVersion=unknown&appVersion=unknown&deviceLat=0&deviceLon=0&deviceDNT=%7BTARGETOPT%7D&deviceId=%7BPSID%7D&advertisingId=%7BPSID%7D&us_privacy=1YNY&samsung_app_domain=%7BAPP_DOMAIN%7D&samsung_app_name=%7BAPP_NAME%7D&profileLimit=&profileFloor=&embedPartner=samsung-tvplus
+
+_____________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

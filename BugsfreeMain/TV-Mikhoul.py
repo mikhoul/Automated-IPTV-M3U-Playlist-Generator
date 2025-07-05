@@ -565,6 +565,16 @@ class M3UCollector:
                 return True, url, 'geo_blocked'
             
             else:
+                content = response.text
+                # Cas particulier : 404 mais message de géo-blocage dans le corps
+                if response.status_code == 404 and 'Channel not available in current location' in content:
+                    with self.logging_lock:
+                        logging.info(f"Channel '{channel_name}': ACTIVE – 404 Forbidden Geo-blocked HLS stream")
+                        logging.info(f"URL: {url}")
+                        logging.info("")
+                    return True, url, 'geo_blocked'
+
+                # Gérez ensuite les autres codes ≠ 200/403
                 # FIXED: Consistent format for ALL other status codes with logging lock
                 with self.logging_lock:
                     logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_{response.status_code}]")
@@ -1534,11 +1544,12 @@ def main():
     # Source URLs to process
     source_urls = [
         "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "https://raw.githubusercontent.com/HelmerLuzo/PlutoTV_HL/refs/heads/main/tv/m3u/PlutoTV_tv_CA.m3u",
         "https://iptv-org.github.io/iptv/countries/ca.m3u",
+        "https://tinyurl.com/Stream2IPTV?region=fr&service=PlutoTV", # Pas besoin de VPN
+        "https://tinyurl.com/Stream2IPTV?region=fr&service=SamsungTVPlus",  # Avec et sans VPN
+        "https://tinyurl.com/Stream2IPTV?region=fr&service=Plex",  # VPN France
+        "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/fr_rakuten.m3u", # Sans VPN
         "https://list.iptvcat.com/my_list/33b417553a834a782ea5d4d15abbef92.m3u8",
-        "https://github.com/BuddyChewChew/app-m3u-generator/raw/refs/heads/main/playlists/plutotv_all.m3u",
-        "https://github.com/BuddyChewChew/app-m3u-generator/raw/refs/heads/main/playlists/samsungtvplus_all.m3u",
     ]
     
     # Advanced configuration
