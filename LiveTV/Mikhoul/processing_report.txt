@@ -1,56 +1,68 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-05 20:32:42
+Generated: 2025-07-06 20:33:45
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 1916
-Total Channels Found: 748
+Total Lines Processed: 2190
+Total Channels Found: 885
 Parsing Errors: 0
-Urls Validated: 742
-Active Urls: 677
+Urls Validated: 875
+Active Urls: 809
 Geo Blocked Urls: 147
-Validation Time: 346.83923077583313
-Inactive By Error: {'inactive': 21, 'http_404': 32, 'http_502': 2, 'http_400': 4, 'http_500': 1, 'http_421': 1, 'http_504': 4}
-Total Processing Time: 358.0880742073059
-Final Channel Count: 677
+Validation Time: 347.40307807922363
+Inactive By Error: {'inactive': 21, 'http_502': 2, 'http_404': 33, 'http_400': 4, 'http_500': 1, 'http_421': 1, 'http_504': 4}
+Total Processing Time: 355.1417405605316
+Final Channel Count: 809
 Source Urls Processed: 7
 
 CHANNEL DISTRIBUTION
 --------------------
 Uncategorized: 113 channels
-Sports: 56 channels
+Sports: 55 channels
 Music: 46 channels
 General: 40 channels
+Cinéma: 38 channels
 Généraliste: 33 channels
-Cinéma: 26 channels
+Divertissement: 28 channels
 Undefined: 25 channels
-Divertissement: 24 channels
-News: 21 channels
+News: 23 channels
 FRANCE: 21 channels
 Actualités: 20 channels
 Séries TV: 20 channels
 Documentaires: 17 channels
+100% Français: 16 channels
 Jeunesse: 15 channels
+Musique: 14 channels
+Kids: 12 channels
+Lifestyle: 12 channels
 Kids & Family: 12 channels
+Emissions cultes: 11 channels
+Séries: 11 channels
 Movies: 10 channels
 Religious: 10 channels
-Lifestyle: 10 channels
+TV Réalité: 10 channels
+Crime & Mystère: 10 channels
+Animation: 9 channels
 Classic TV: 9 channels
 Food & Home: 9 channels
 Voyages et Gastronomie: 8 channels
-Musique: 8 channels
 Crime: 8 channels
 Nature & Travel: 8 channels
 Entertainment: 7 channels
+Séries Policières: 7 channels
 En Español: 7 channels
 Daytime TV: 7 channels
 Culture: 6 channels
+Nouveau sur Pluto TV: 6 channels
+Sports & Auto: 6 channels
 Comedy: 6 channels
+Documentaire: 5 channels
 Sci-Fi & Action: 5 channels
 History & Science: 5 channels
 Legislative: 4 channels
+Comédie: 4 channels
 Anime: 4 channels
 Black Entertainment: 4 channels
 Drama TV: 4 channels
@@ -60,25 +72,25 @@ Music, En Español: 3 channels
 Chills & Thrills: 3 channels
 Affaires Publiques: 2 channels
 Series: 2 channels
-Kids: 2 channels
 Outdoor: 2 channels
+Fight: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
 Hit TV, True Crime: 2 channels
-Reality: 2 channels
 True Crime: 2 channels
+Reality: 2 channels
 Educatif: 1 channels
-Culturelle: 1 channels
 Réréalité: 1 channels
 Comedie: 1 channels
 Film: 1 channels
+Culturelle: 1 channels
 Multiculturel: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
 Movies;Series: 1 channels
-Culture;Music: 1 channels
 Shop: 1 channels
+Culture;Music: 1 channels
 Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
