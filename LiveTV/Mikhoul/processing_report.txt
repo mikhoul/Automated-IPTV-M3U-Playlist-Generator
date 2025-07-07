@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-06 20:33:45
+Generated: 2025-07-07 20:35:30
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,19 +9,19 @@ Total Lines Processed: 2190
 Total Channels Found: 885
 Parsing Errors: 0
 Urls Validated: 875
-Active Urls: 809
-Geo Blocked Urls: 147
-Validation Time: 347.40307807922363
-Inactive By Error: {'inactive': 21, 'http_502': 2, 'http_404': 33, 'http_400': 4, 'http_500': 1, 'http_421': 1, 'http_504': 4}
-Total Processing Time: 355.1417405605316
-Final Channel Count: 809
+Active Urls: 811
+Geo Blocked Urls: 146
+Validation Time: 346.2832279205322
+Inactive By Error: {'inactive': 21, 'http_404': 32, 'http_502': 2, 'http_400': 4, 'http_500': 1, 'http_504': 4}
+Total Processing Time: 354.50554060935974
+Final Channel Count: 811
 Source Urls Processed: 7
 
 CHANNEL DISTRIBUTION
 --------------------
 Uncategorized: 113 channels
 Sports: 55 channels
-Music: 46 channels
+Music: 47 channels
 General: 40 channels
 Cinéma: 38 channels
 Généraliste: 33 channels
@@ -51,10 +51,10 @@ Voyages et Gastronomie: 8 channels
 Crime: 8 channels
 Nature & Travel: 8 channels
 Entertainment: 7 channels
+Culture: 7 channels
 Séries Policières: 7 channels
 En Español: 7 channels
 Daytime TV: 7 channels
-Culture: 6 channels
 Nouveau sur Pluto TV: 6 channels
 Sports & Auto: 6 channels
 Comedy: 6 channels
@@ -77,26 +77,26 @@ Fight: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
 Hit TV, True Crime: 2 channels
-True Crime: 2 channels
 Reality: 2 channels
+True Crime: 2 channels
 Educatif: 1 channels
 Réréalité: 1 channels
 Comedie: 1 channels
 Film: 1 channels
-Culturelle: 1 channels
 Multiculturel: 1 channels
-Thématique: 1 channels
+Culturelle: 1 channels
 Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
-Movies;Series: 1 channels
-Shop: 1 channels
 Culture;Music: 1 channels
+Shop: 1 channels
+Movies;Series: 1 channels
 Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 News, En Español: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 Movies, Chills & Thrills: 1 channels
 
 CONFIGURATION
