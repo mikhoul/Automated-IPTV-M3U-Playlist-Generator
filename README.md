@@ -1,4 +1,4 @@
-# LiveTVCollectorMikhoul
+# Automated IPTV M3U Playlist Generator (via GitHub Actions or Local)
 
 A self-contained Python 3 application and GitHub Actions workflow that **automatically discovers, validates, deduplicates, and exports live TV streaming links** (IPTV / HLS) for a given country or custom source list.  The project started as a simple playlist grabber but has evolved into a full-featured pipeline capable of handling very large source files (>50 000 lines), extracting streams from HTML pages, and producing production-ready playlists in several formats.
 
