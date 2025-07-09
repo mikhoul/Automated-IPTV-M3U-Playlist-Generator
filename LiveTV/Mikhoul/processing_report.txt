@@ -1,26 +1,26 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-09 03:16:12
+Generated: 2025-07-09 20:35:32
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 2193
-Total Channels Found: 886
+Total Lines Processed: 2189
+Total Channels Found: 884
 Parsing Errors: 0
-Urls Validated: 876
-Active Urls: 811
+Urls Validated: 874
+Active Urls: 808
 Geo Blocked Urls: 140
-Validation Time: 347.1240408420563
-Inactive By Error: {'inactive': 21, 'http_404': 32, 'http_502': 2, 'http_400': 4, 'http_500': 1, 'invalid_content': 1, 'http_504': 4}
-Total Processing Time: 354.9017663002014
-Final Channel Count: 811
+Validation Time: 348.78379797935486
+Inactive By Error: {'inactive': 21, 'http_404': 34, 'http_502': 2, 'http_400': 4, 'http_500': 1, 'http_504': 4}
+Total Processing Time: 357.0811998844147
+Final Channel Count: 808
 Source Urls Processed: 7
 
 CHANNEL DISTRIBUTION
 --------------------
-Uncategorized: 112 channels
-Sports: 55 channels
+Uncategorized: 113 channels
+Sports: 51 channels
 Music: 47 channels
 General: 40 channels
 Cinéma: 38 channels
@@ -34,7 +34,7 @@ Séries TV: 20 channels
 Documentaires: 17 channels
 100% Français: 16 channels
 Jeunesse: 15 channels
-Musique: 14 channels
+Musique: 13 channels
 Kids: 12 channels
 Lifestyle: 12 channels
 Kids & Family: 12 channels
@@ -50,11 +50,11 @@ Food & Home: 9 channels
 Voyages et Gastronomie: 8 channels
 Crime: 8 channels
 Nature & Travel: 8 channels
+Entertainment: 7 channels
 Culture: 7 channels
 Séries Policières: 7 channels
 En Español: 7 channels
 Daytime TV: 7 channels
-Entertainment: 6 channels
 Nouveau sur Pluto TV: 6 channels
 Sports & Auto: 6 channels
 Comedy: 6 channels
@@ -80,22 +80,22 @@ Hit TV, True Crime: 2 channels
 Reality: 2 channels
 True Crime: 2 channels
 Educatif: 1 channels
-Comedie: 1 channels
-Réréalité: 1 channels
 Culturelle: 1 channels
-Multiculturel: 1 channels
 Film: 1 channels
-Thématique: 1 channels
+Comedie: 1 channels
+Multiculturel: 1 channels
+Réréalité: 1 channels
 Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
-Culture;Music: 1 channels
 Movies;Series: 1 channels
+Culture;Music: 1 channels
 Shop: 1 channels
 Documentary;Education;Science: 1 channels
 Weather: 1 channels
 Hit TV: 1 channels
-News, En Español: 1 channels
 Anime & Gaming: 1 channels
+News, En Español: 1 channels
 Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
 Movies, Chills & Thrills: 1 channels
