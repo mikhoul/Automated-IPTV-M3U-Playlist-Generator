@@ -1,20 +1,20 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-08 20:35:44
+Generated: 2025-07-09 03:16:12
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 2190
-Total Channels Found: 885
+Total Lines Processed: 2193
+Total Channels Found: 886
 Parsing Errors: 0
-Urls Validated: 875
-Active Urls: 809
-Geo Blocked Urls: 146
-Validation Time: 347.6475386619568
-Inactive By Error: {'inactive': 21, 'http_404': 33, 'http_502': 2, 'http_400': 4, 'http_500': 1, 'invalid_content': 1, 'http_504': 4}
-Total Processing Time: 355.3545837402344
-Final Channel Count: 809
+Urls Validated: 876
+Active Urls: 811
+Geo Blocked Urls: 140
+Validation Time: 347.1240408420563
+Inactive By Error: {'inactive': 21, 'http_404': 32, 'http_502': 2, 'http_400': 4, 'http_500': 1, 'invalid_content': 1, 'http_504': 4}
+Total Processing Time: 354.9017663002014
+Final Channel Count: 811
 Source Urls Processed: 7
 
 CHANNEL DISTRIBUTION
@@ -67,34 +67,35 @@ Anime: 4 channels
 Black Entertainment: 4 channels
 Drama TV: 4 channels
 Communautaire: 3 channels
+Outdoor: 3 channels
 Télé réalité: 3 channels
 Music, En Español: 3 channels
 Chills & Thrills: 3 channels
 Affaires Publiques: 2 channels
 Series: 2 channels
-Outdoor: 2 channels
 Fight: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
 Hit TV, True Crime: 2 channels
-True Crime: 2 channels
 Reality: 2 channels
+True Crime: 2 channels
 Educatif: 1 channels
-Culturelle: 1 channels
-Film: 1 channels
-Réréalité: 1 channels
 Comedie: 1 channels
+Réréalité: 1 channels
+Culturelle: 1 channels
 Multiculturel: 1 channels
+Film: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
-Movies;Series: 1 channels
 Culture;Music: 1 channels
+Movies;Series: 1 channels
 Shop: 1 channels
+Documentary;Education;Science: 1 channels
 Weather: 1 channels
 Hit TV: 1 channels
-Anime & Gaming: 1 channels
 News, En Español: 1 channels
+Anime & Gaming: 1 channels
 Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
 Movies, Chills & Thrills: 1 channels
