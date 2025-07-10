@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-10 18:30:08
+Generated: 2025-07-10 20:35:57
 ============================================================
 
 PROCESSING STATISTICS
@@ -11,9 +11,9 @@ Parsing Errors: 0
 Urls Validated: 874
 Active Urls: 810
 Geo Blocked Urls: 140
-Validation Time: 346.6293182373047
+Validation Time: 347.2728805541992
 Inactive By Error: {'inactive': 21, 'http_404': 32, 'http_502': 2, 'http_400': 4, 'http_500': 1, 'http_504': 4}
-Total Processing Time: 354.10391569137573
+Total Processing Time: 355.8995852470398
 Final Channel Count: 810
 Source Urls Processed: 7
 
@@ -69,35 +69,35 @@ Drama TV: 4 channels
 Communautaire: 3 channels
 Outdoor: 3 channels
 Télé réalité: 3 channels
-Chills & Thrills: 3 channels
 Music, En Español: 3 channels
+Chills & Thrills: 3 channels
 Affaires Publiques: 2 channels
 Series: 2 channels
 Fight: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
 Hit TV, True Crime: 2 channels
-Reality: 2 channels
 True Crime: 2 channels
+Reality: 2 channels
 Educatif: 1 channels
-Culturelle: 1 channels
-Comedie: 1 channels
-Film: 1 channels
 Réréalité: 1 channels
+Comedie: 1 channels
+Culturelle: 1 channels
+Film: 1 channels
 Multiculturel: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
+Movies;Series: 1 channels
 Shop: 1 channels
 Culture;Music: 1 channels
-Movies;Series: 1 channels
 Documentary;Education;Science: 1 channels
 Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 News, En Español: 1 channels
-Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
 Movies, Chills & Thrills: 1 channels
 
 CONFIGURATION
