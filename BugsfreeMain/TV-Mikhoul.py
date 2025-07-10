@@ -314,6 +314,33 @@ class M3UCollector:
         
         domain = urlparse(url).netloc.lower()
         return any(redirect_domain in domain for redirect_domain in redirect_domains)
+    
+    def normalize_utf8_text(self, text):
+        """
+        Fix UTF-8 encoding issues in channel names and descriptions.
+        
+        Args:
+            text (str): Text that may have encoding issues
+            
+        Returns:
+            str: Properly decoded UTF-8 text
+        """
+        if not text or not isinstance(text, str):
+            return text
+        
+        try:
+            # Try to fix double-encoded UTF-8 (mojibake)
+            if 'Ã©' in text or 'Ã¨' in text or 'Ã§' in text:
+                # First encode as Latin-1, then decode as UTF-8
+                fixed_text = text.encode('latin-1').decode('utf-8')
+                return fixed_text
+            
+            # If no mojibake detected, return original
+            return text
+            
+        except (UnicodeDecodeError, UnicodeEncodeError):
+            # If fixing fails, return original text
+            return text
 
     def get_request_headers(self, url=None, custom_headers=None):
         """
@@ -448,11 +475,10 @@ class M3UCollector:
             for script in script_tags:
                 if script.string:
                     # Look for stream URLs in JavaScript
-                    js_urls = re.findall(r'["\']https?://[^"\']*\.m3u8?[^"\']*["\']', script.string)
+                    js_urls = re.findall(r'["\'](https?://[^"\']*\.m3u8?[^"\']*)["\']', script.string)
                     for js_url in js_urls:
-                        clean_url = js_url.strip('\'"')
-                        if self.is_valid_stream_url(clean_url):
-                            stream_urls.add(clean_url)
+                        if self.is_valid_stream_url(js_url):
+                            stream_urls.add(js_url)
         
         except Exception as e:
             logging.warning(f"Error parsing HTML content: {e}")
@@ -948,32 +974,28 @@ class M3UCollector:
                 logging.info(f"Parsing progress: {progress:.1f}% ({line_num}/{total_lines} lines)")
             
             # Process EXTINF lines with comprehensive attribute extraction
-            # FIXED: Handle both '#EXTINF:' and 'EXTINF:' patterns (Cuisine fix)
             if line.startswith('#EXTINF:') or line.startswith('EXTINF:'):
                 total_extinf_lines += 1
                 
                 try:
-                    # Extract all attributes using comprehensive regex patterns
                     attributes = self.extract_extinf_attributes(line)
                     
-                    # Extract and validate logo URL
                     logo = attributes.get('tvg-logo', self.default_logo)
                     if logo and not logo.startswith(('http://', 'https://')):
                         logo = self.default_logo
                     
-                    # Extract group with robust handling
+                    # === UTF-8 FIX FOR GROUPS ===
                     group = "Uncategorized"
                     extracted_group = attributes.get('group-title', '').strip()
                     if extracted_group and not extracted_group.isspace():
-                        group = extracted_group
-                    
-                    # Normalize specific group names (Cuisine fix)
-                    if group.lower() == 'cuisine':
-                        group = 'Cuisine'
+                        # Apply UTF-8 normalization
+                        group = self.normalize_utf8_text(extracted_group)
+                        
+                        if group.lower() == 'cuisine':
+                            group = 'Cuisine'
                     
                     group_occurrences[group] += 1
                     
-                    # Check exclusion rules
                     excluded = any(
                         group.lower() == excl.lower() or
                         re.search(r'\b' + re.escape(excl.lower()) + r'\b', group.lower())
@@ -984,17 +1006,16 @@ class M3UCollector:
                         current_channel = {}
                         continue
                     
-                    # Extract channel name with fallback
+                    # === UTF-8 FIX FOR CHANNEL NAMES ===
                     name = "Unnamed Channel"
                     comma_match = re.search(r',(.+)$', line)
                     if comma_match:
-                        name = comma_match.group(1).strip()
+                        # Apply UTF-8 normalization
+                        name = self.normalize_utf8_text(comma_match.group(1).strip())
                     
-                    # Extract additional metadata
                     quality, resolution = self.extract_quality_info(name)
                     language = self.detect_content_language(name)
                     
-                    # Create comprehensive channel object
                     current_channel = {
                         'name': name,
                         'logo': logo,
@@ -1017,19 +1038,15 @@ class M3UCollector:
                     current_channel = {}
             
             elif line and not line.startswith('#') and current_channel:
-                # Process stream URLs with validation
                 if line.startswith(('http://', 'https://')):
-                    # Validate and clean URL
                     clean_url = self.clean_and_validate_url(line)
                     if clean_url and clean_url not in self.seen_urls:
                         self.seen_urls.add(clean_url)
                         current_channel['url'] = clean_url
                         
-                        # Add URL metadata
                         current_channel['url_domain'] = urlparse(clean_url).netloc
                         current_channel['is_hls'] = clean_url.endswith('.m3u8') or 'hls' in clean_url.lower()
                         
-                        # Store channel
                         self.channels[current_channel['group']].append(current_channel)
                         channel_count += 1
                         self.channels_processed += 1
@@ -1038,22 +1055,19 @@ class M3UCollector:
                     
                     current_channel = {}
         
-        # Log parsing results
         logging.info(f"Parsing complete: {channel_count} channels added from {source_url}")
         logging.info(f"Total EXTINF lines processed: {total_extinf_lines}")
         logging.info(f"Skipped non-HTTP URLs: {self.skipped_non_http_count}")
         
         if parsing_errors:
             logging.info(f"Encountered {len(parsing_errors)} parsing errors")
-            for error in parsing_errors[:5]:  # Log first 5 errors
+            for error in parsing_errors[:5]:
                 logging.info(f"Line {error['line_num']}: {error['error']}")
         
-        # Log group statistics
         logging.info("Group distribution:")
         for group, count in sorted(group_occurrences.items(), key=lambda x: x[1], reverse=True):
             logging.info(f"  - {group}: {count} channels")
         
-        # Update global statistics
         self.statistics['total_lines_processed'] += total_lines
         self.statistics['total_channels_found'] += channel_count
         self.statistics['parsing_errors'] += len(parsing_errors)
@@ -1070,7 +1084,6 @@ class M3UCollector:
         """
         attributes = {}
         
-        # Define attribute patterns
         patterns = {
             'tvg-id': r'tvg-id="([^"]*)"',
             'tvg-name': r'tvg-name="([^"]*)"',
@@ -1083,7 +1096,6 @@ class M3UCollector:
             'audio-track': r'audio-track="([^"]*)"'
         }
         
-        # Extract each attribute
         for attr_name, pattern in patterns.items():
             match = re.search(pattern, line, re.IGNORECASE)
             if match:
@@ -1104,21 +1116,17 @@ class M3UCollector:
         if not url or not isinstance(url, str):
             return None
         
-        # Clean whitespace and common encoding issues
         url = url.strip()
-        url = re.sub(r'\s+', '', url)  # Remove all whitespace
+        url = re.sub(r'\s+', '', url)
         
-        # Validate URL format
         if not url.startswith(('http://', 'https://')):
             return None
         
         try:
-            # Parse and validate URL components
             parsed = urlparse(url)
             if not parsed.netloc:
                 return None
             
-            # Reconstruct clean URL
             clean_url = f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
             if parsed.query:
                 clean_url += f"?{parsed.query}"
@@ -1143,7 +1151,7 @@ class M3UCollector:
                 try:
                     return self.quality_preferences.index(resolution)
                 except ValueError:
-                    return len(self.quality_preferences)  # Unknown quality goes last
+                    return len(self.quality_preferences)
             
             self.channels[group_name] = sorted(channels, key=quality_sort_key)
     
@@ -1159,7 +1167,6 @@ class M3UCollector:
         logging.info("Starting comprehensive link validation process")
         start_time = time.time()
         
-        # Collect all unique URLs to check
         url_to_channels = defaultdict(list)
         for group, channels in self.channels.items():
             for channel in channels:
@@ -1172,25 +1179,20 @@ class M3UCollector:
         active_channels = defaultdict(list)
         validation_results = {}
         geo_blocked_count = 0
-        inactive_by_error = defaultdict(int)  # Count inactive channels by error type
+        inactive_by_error = defaultdict(int)
         
-        # Process URLs concurrently
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            # Submit all validation tasks
             future_to_url = {}
             for url, channels in url_to_channels.items():
-                # Use the first channel's name for logging
                 channel_name = channels[0][1]['name']
                 future = executor.submit(self.check_link_active, url, channel_name)
                 future_to_url[future] = url
             
-            # Process results as they complete
             completed = 0
             for future in concurrent.futures.as_completed(future_to_url):
                 url = future_to_url[future]
                 completed += 1
                 
-                # Progress reporting
                 if completed % 10 == 0 or completed == total_urls:
                     progress = (completed / total_urls) * 100
                     elapsed = time.time() - start_time
@@ -1200,10 +1202,8 @@ class M3UCollector:
                     is_active, final_url, status = future.result()
                     validation_results[url] = (is_active, final_url, status)
                     
-                    # Add channels with active URLs
                     if is_active:
                         for group, channel in url_to_channels[url]:
-                            # Update channel with final URL if it changed
                             if final_url != url:
                                 channel['url'] = final_url
                                 channel['original_url'] = url
@@ -1211,7 +1211,6 @@ class M3UCollector:
                             channel['validation_status'] = status
                             channel['validation_timestamp'] = datetime.now().isoformat()
                             
-                            # Tag geo-blocked channels
                             if status == 'geo_blocked':
                                 if not channel['name'].endswith('[Geo-blocked]'):
                                     channel['name'] = f"{channel['name']} [Geo-blocked]"
@@ -1220,32 +1219,28 @@ class M3UCollector:
                             active_channels[group].append(channel)
                     
                     else:
-                        # FIXED: REMOVED DUPLICATE SUMMARY LOGGING - Individual validation methods already log properly
                         inactive_by_error[status] += len(url_to_channels[url])
                 
                 except Exception as e:
                     logging.error(f"Validation error for {url}: {e}")
                     validation_results[url] = (False, url, f'error: {e}')
-                    
-                    # Count validation errors
                     inactive_by_error['validation_error'] += len(url_to_channels[url])
         
-        # Update channels with filtered results
         original_count = sum(len(ch) for ch in self.channels.values())
         self.channels = active_channels
         final_count = sum(len(ch) for ch in self.channels.values())
         
-        # Log detailed validation statistics with error breakdown
         elapsed_time = time.time() - start_time
         active_count = sum(1 for is_active, _, _ in validation_results.values() if is_active)
         
         logging.info(f"Link validation complete in {format_duration(int(elapsed_time))}")
-        logging.info(f"Results: {active_count}/{total_urls} URLs active ({(active_count/total_urls*100):.1f}%)")
-        logging.info(f"Channels: {final_count}/{original_count} remaining ({(final_count/original_count*100):.1f}%)")
+        if total_urls > 0:
+            logging.info(f"Results: {active_count}/{total_urls} URLs active ({(active_count/total_urls*100):.1f}%)")
+        if original_count > 0:
+            logging.info(f"Channels: {final_count}/{original_count} remaining ({(final_count/original_count*100):.1f}%)")
         logging.info(f"Active channels after filtering: {final_count}")
         logging.info(f"Geo-blocked channels detected: {geo_blocked_count}")
         
-        # Log detailed breakdown of inactive channels by error type
         if inactive_by_error:
             logging.info("INACTIVE channels breakdown by error type:")
             for error_type, count in sorted(inactive_by_error.items()):
@@ -1255,7 +1250,6 @@ class M3UCollector:
                 else:
                     logging.info(f"  - {error_type}: {count} channels")
         
-        # Update statistics
         self.statistics['urls_validated'] = total_urls
         self.statistics['active_urls'] = active_count
         self.statistics['geo_blocked_urls'] = geo_blocked_count
@@ -1272,7 +1266,6 @@ class M3UCollector:
         logging.info(f"Starting processing of {len(source_urls)} source URLs")
         self.start_time = time.time()
         
-        # Clear existing data
         self.channels.clear()
         self.seen_urls.clear()
         self.url_status_cache.clear()
@@ -1281,7 +1274,6 @@ class M3UCollector:
         
         all_m3u_urls = set()
         
-        # Process each source
         for i, url in enumerate(source_urls, 1):
             logging.info(f"Processing source {i}/{len(source_urls)}: {url}")
             
@@ -1291,18 +1283,14 @@ class M3UCollector:
                 logging.info(f"No content retrieved from {url}")
                 continue
             
-            # Handle different content types
-            if url.endswith('.html') or metadata.get('content_type', '').startswith('text/html'):
-                # Extract M3U URLs from HTML
+            if url.endswith('.html') or (metadata and metadata.get('content_type', '').startswith('text/html')):
                 extracted_urls = self.extract_stream_urls_from_html(content, url)
                 all_m3u_urls.update(extracted_urls)
                 logging.info(f"Extracted {len(extracted_urls)} potential M3U URLs from HTML")
             else:
-                # Process as M3U content
                 self.test_cuisine_detection(lines)
                 self.parse_and_store(lines, url, metadata)
         
-        # Process extracted M3U URLs
         if all_m3u_urls:
             logging.info(f"Processing {len(all_m3u_urls)} extracted M3U URLs")
             for m3u_url in all_m3u_urls:
@@ -1311,39 +1299,30 @@ class M3UCollector:
                     self.test_cuisine_detection(lines)
                     self.parse_and_store(lines, m3u_url, metadata)
         
-        # Post-processing pipeline
         total_parsed = sum(len(ch) for ch in self.channels.values())
         logging.info(f"PHASE 1 COMPLETE: {total_parsed} channels parsed across {len(self.channels)} groups")
         
-        # Special reporting for important channel types
         important_groups = ['Cuisine', 'Actualités', 'Sports', 'Généraliste']
         for group in important_groups:
             if group in self.channels:
                 count = len(self.channels[group])
                 logging.info(f"{group} channels found: {count}")
         
-        # Apply post-processing filters and optimizations
         if total_parsed > 0:
             logging.info("Starting post-processing pipeline")
             
-            # Remove duplicates
             self.deduplicate_channels()
-            
-            # Sort by quality
             self.sort_channels_by_quality()
             
-            # Validate links if enabled
             if self.check_links:
                 self.filter_active_channels()
             
-            # Final statistics
             final_count = sum(len(ch) for ch in self.channels.values())
             processing_time = time.time() - self.start_time
             
             logging.info(f"Processing complete: {final_count} final channels in {format_duration(int(processing_time))}")
             logging.info(f"Groups: {', '.join(sorted(self.channels.keys()))}")
             
-            # Update global statistics
             self.statistics['total_processing_time'] = processing_time
             self.statistics['final_channel_count'] = final_count
             self.statistics['source_urls_processed'] = len(source_urls)
@@ -1353,7 +1332,6 @@ class M3UCollector:
         filepath = os.path.join(self.output_dir, filename)
         
         with open(filepath, 'w', encoding='utf-8') as f:
-            # Write M3U header with metadata
             f.write('#EXTM3U\n')
             f.write(f'#PLAYLIST:M3U Playlist for {self.country}\n')
             f.write(f'#EXTENC:UTF-8\n')
@@ -1361,33 +1339,27 @@ class M3UCollector:
             f.write(f'#TOTAL-CHANNELS:{sum(len(ch) for ch in self.channels.values())}\n')
             f.write('\n')
             
-            # Write channels grouped by category
             for group, channels in sorted(self.channels.items()):
                 f.write(f'# --- {group} ({len(channels)} channels) ---\n')
                 
                 for channel in channels:
-                    # Build EXTINF line with comprehensive attributes
                     extinf_parts = ['#EXTINF:-1']
                     
-                    # Add standard attributes
                     if channel.get('logo'):
                         extinf_parts.append(f'tvg-logo="{channel["logo"]}"')
                     extinf_parts.append(f'group-title="{group}"')
                     
-                    # Add optional attributes if available
                     if channel.get('attributes'):
                         for attr, value in channel['attributes'].items():
                             if attr not in ['group-title', 'tvg-logo'] and value:
                                 extinf_parts.append(f'{attr}="{value}"')
                     
-                    # Add quality and language info
                     if channel.get('resolution') and channel['resolution'] != 'Unknown':
                         extinf_parts.append(f'tvg-resolution="{channel["resolution"]}"')
                     
                     if channel.get('language') and channel['language'] != 'unknown':
                         extinf_parts.append(f'tvg-language="{channel["language"]}"')
                     
-                    # Write EXTINF line and URL
                     f.write(f'{" ".join(extinf_parts)},{channel["name"]}\n')
                     f.write(f'{channel["url"]}\n')
                 
@@ -1401,14 +1373,12 @@ class M3UCollector:
         filepath = os.path.join(self.output_dir, filename)
         
         with open(filepath, 'w', encoding='utf-8') as f:
-            # Write header
             f.write(f"Live TV Channel List for {self.country}\n")
             f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write(f"Total Channels: {sum(len(ch) for ch in self.channels.values())}\n")
             f.write(f"Total Groups: {len(self.channels)}\n")
             f.write("=" * 80 + "\n\n")
             
-            # Write channels by group
             for group, channels in sorted(self.channels.items()):
                 f.write(f"GROUP: {group} ({len(channels)} channels)\n")
                 f.write("-" * 60 + "\n")
@@ -1419,7 +1389,6 @@ class M3UCollector:
                     f.write(f"     Logo: {channel.get('logo', 'N/A')}\n")
                     f.write(f"     Source: {channel['source']}\n")
                     
-                    # Add additional metadata if available
                     if channel.get('quality') and channel['quality'] != 'Unknown':
                         f.write(f"     Quality: {channel['quality']}\n")
                     
@@ -1440,11 +1409,9 @@ class M3UCollector:
         """Export channels to JSON format with comprehensive metadata."""
         filepath = os.path.join(self.output_dir, filename)
         
-        # Prepare timezone-aware timestamp
         mumbai_tz = pytz.timezone('Asia/Kolkata')
         current_time = datetime.now(mumbai_tz).strftime('%Y-%m-%d %H:%M:%S')
         
-        # Build comprehensive JSON structure
         json_data = {
             "metadata": {
                 "generated_at": current_time,
@@ -1462,7 +1429,7 @@ class M3UCollector:
                 "language_preferences": self.language_preferences
             },
             "channels": dict(self.channels),
-            "failed_urls": self.failed_urls[:10],  # Include first 10 failed URLs
+            "failed_urls": self.failed_urls[:10],
             "duplicate_channels": len(self.duplicate_channels)
         }
         
@@ -1527,21 +1494,18 @@ class M3UCollector:
             f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write("=" * 60 + "\n\n")
             
-            # Processing statistics
             f.write("PROCESSING STATISTICS\n")
             f.write("-" * 25 + "\n")
             for key, value in self.statistics.items():
                 f.write(f"{key.replace('_', ' ').title()}: {value}\n")
             f.write("\n")
             
-            # Channel statistics by group
             f.write("CHANNEL DISTRIBUTION\n")
             f.write("-" * 20 + "\n")
             for group, channels in sorted(self.channels.items(), key=lambda x: len(x[1]), reverse=True):
                 f.write(f"{group}: {len(channels)} channels\n")
             f.write("\n")
             
-            # Failed URLs
             if self.failed_urls:
                 f.write("FAILED URLS\n")
                 f.write("-" * 11 + "\n")
@@ -1549,7 +1513,6 @@ class M3UCollector:
                     f.write(f"URL: {failed['url']}\n")
                     f.write(f"Error: {failed['error']}\n\n")
             
-            # Configuration
             f.write("CONFIGURATION\n")
             f.write("-" * 13 + "\n")
             f.write(f"Link checking: {self.check_links}\n")
@@ -1573,10 +1536,8 @@ def main():
     """
     logging.info("Starting M3U Collector with full functionality")
     
-    # Get server geolocation for analytics
     server_location = get_server_geolocation()
     
-    # Configuration for excluded groups (content filtering)
     excluded_groups = [
         "Argentina", "Austria", "Brazil", "Chile", "Denmark", "Germany",
         "India", "Italy", "Mexico", "Norway", "South Korea", "Spain",
@@ -1584,52 +1545,44 @@ def main():
         "Offline", "Test", "Demo", "Shopping", "Teleshopping"
     ]
     
-    # Source URLs to process
     source_urls = [
         "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
         "https://iptv-org.github.io/iptv/countries/ca.m3u",
-        "https://tinyurl.com/Stream2IPTV?region=fr&service=PlutoTV", # Pas besoin de VPN
-        "https://tinyurl.com/Stream2IPTV?region=fr&service=SamsungTVPlus",  # Avec et sans VPN
-        "https://tinyurl.com/Stream2IPTV?region=fr&service=Plex",  # VPN France
-        "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/fr_rakuten.m3u", # Sans VPN
+        "https://tinyurl.com/Stream2IPTV?region=fr&service=PlutoTV",
+        "https://tinyurl.com/Stream2IPTV?region=fr&service=SamsungTVPlus",
+        "https://tinyurl.com/Stream2IPTV?region=fr&service=Plex",
+        "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/fr_rakuten.m3u",
         "https://list.iptvcat.com/my_list/33b417553a834a782ea5d4d15abbef92.m3u8",
     ]
     
-    # Advanced configuration
     config = {
-        'max_workers': 15,  # Concurrent processing threads
-        'request_timeout': 12,  # Request timeout in seconds
-        'max_retries': 2,  # Maximum retry attempts
-        'enable_deduplication': True,  # Remove duplicate channels
-        'enable_quality_sorting': True,  # Sort by quality preference
+        'max_workers': 15,
+        'request_timeout': 12,
+        'max_retries': 2,
+        'enable_deduplication': True,
+        'enable_quality_sorting': True,
         'quality_preferences': ['4K', '1080p', '720p', '480p', '360p'],
-        'language_preferences': ['fr', 'en']  # French first, then English
+        'language_preferences': ['fr', 'en']
     }
     
-    # Initialize collector with comprehensive configuration
     collector = M3UCollector(
         country="Mikhoul",
-        check_links=True,  # ENABLE VALIDATION WITH FIXED COLORS
+        check_links=True,
         excluded_groups=excluded_groups,
         config=config
     )
     
-    # Log configuration
     excluded_info = collector.get_excluded_groups_info()
     logging.info(f"Excluded groups: {excluded_info['excluded_count']} | {', '.join(excluded_groups[:5])}{'...' if len(excluded_groups) > 5 else ''}")
     
     try:
-        # Process all sources
         collector.process_sources(source_urls)
         
-        # Export to all formats
         logging.info("Exporting to all supported formats")
         exported_files = collector.export_all_formats()
         
-        # Generate processing report
         collector.generate_report()
         
-        # Final statistics and summary
         total_channels = sum(len(ch) for ch in collector.channels.values())
         total_time = time.time() - collector.start_time
         mumbai_time = datetime.now(pytz.timezone('Asia/Kolkata'))
@@ -1642,14 +1595,12 @@ def main():
         logging.info(f"  - Exported formats: {len(exported_files)}")
         logging.info(f"  - Timestamp: {mumbai_time}")
         
-        # Log group summary
         if collector.channels:
             logging.info("Group summary:")
             for group in sorted(collector.channels.keys()):
                 count = len(collector.channels[group])
                 logging.info(f"  - {group}: {count} channels")
         
-        # Server location for analytics
         if server_location:
             logging.info(f"Processing performed from: {server_location['country']} ({server_location['country_code']})")
     
