@@ -1,47 +1,43 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-10 20:35:57
+Generated: 2025-07-11 19:42:39
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 2189
-Total Channels Found: 884
+Total Lines Processed: 1843
+Total Channels Found: 712
 Parsing Errors: 0
-Urls Validated: 874
-Active Urls: 810
-Geo Blocked Urls: 140
-Validation Time: 347.2728805541992
-Inactive By Error: {'inactive': 21, 'http_404': 32, 'http_502': 2, 'http_400': 4, 'http_500': 1, 'http_504': 4}
-Total Processing Time: 355.8995852470398
-Final Channel Count: 810
+Urls Validated: 704
+Active Urls: 663
+Geo Blocked Urls: 107
+Validation Time: 52.79026532173157
+Inactive By Error: {'inactive': 12, 'http_502': 1, 'http_404': 22, 'http_400': 2, 'http_504': 4}
+Total Processing Time: 64.2638144493103
+Final Channel Count: 663
 Source Urls Processed: 7
 
 CHANNEL DISTRIBUTION
 --------------------
 Uncategorized: 113 channels
-Sports: 54 channels
-Music: 47 channels
-General: 39 channels
-Cinéma: 38 channels
+Sports: 46 channels
+Cinéma: 39 channels
 Généraliste: 33 channels
 Divertissement: 28 channels
-Undefined: 25 channels
-News: 23 channels
+Music: 23 channels
 FRANCE: 21 channels
 Actualités: 20 channels
 Séries TV: 20 channels
 Documentaires: 17 channels
 100% Français: 16 channels
 Jeunesse: 15 channels
+News: 14 channels
 Musique: 13 channels
-Kids: 12 channels
 Lifestyle: 12 channels
 Kids & Family: 12 channels
 Emissions cultes: 11 channels
 Séries: 11 channels
-Movies: 10 channels
-Religious: 10 channels
+Kids: 11 channels
 TV Réalité: 10 channels
 Crime & Mystère: 10 channels
 Animation: 9 channels
@@ -50,59 +46,55 @@ Food & Home: 9 channels
 Voyages et Gastronomie: 8 channels
 Crime: 8 channels
 Nature & Travel: 8 channels
-Entertainment: 7 channels
-Culture: 7 channels
 Séries Policières: 7 channels
 En Español: 7 channels
 Daytime TV: 7 channels
 Nouveau sur Pluto TV: 6 channels
 Sports & Auto: 6 channels
 Comedy: 6 channels
+Movies: 6 channels
 Documentaire: 5 channels
 Sci-Fi & Action: 5 channels
 History & Science: 5 channels
-Legislative: 4 channels
 Comédie: 4 channels
 Anime: 4 channels
 Black Entertainment: 4 channels
 Drama TV: 4 channels
 Communautaire: 3 channels
-Outdoor: 3 channels
 Télé réalité: 3 channels
-Music, En Español: 3 channels
 Chills & Thrills: 3 channels
+Music, En Español: 3 channels
 Affaires Publiques: 2 channels
-Series: 2 channels
 Fight: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
 Hit TV, True Crime: 2 channels
-True Crime: 2 channels
 Reality: 2 channels
+True Crime: 2 channels
 Educatif: 1 channels
-Réréalité: 1 channels
-Comedie: 1 channels
 Culturelle: 1 channels
 Film: 1 channels
+Comedie: 1 channels
+Réréalité: 1 channels
 Multiculturel: 1 channels
-Thématique: 1 channels
 Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
-Movies;Series: 1 channels
-Shop: 1 channels
-Culture;Music: 1 channels
-Documentary;Education;Science: 1 channels
-Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 News, En Español: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 Movies, Chills & Thrills: 1 channels
+
+FAILED URLS
+-----------
+URL: https://github.com/ipstreet312/freeiptv/raw/b16363ffa03752900de3fadb1d7fede7b7173901/ressources/allgr.m3uhttps://iptv-org.github.io/iptv/countries/ca.m3u
+Error: 404 Client Error: Not Found for url: https://github.com/ipstreet312/freeiptv/raw/b16363ffa03752900de3fadb1d7fede7b7173901/ressources/allgr.m3uhttps://iptv-org.github.io/iptv/countries/ca.m3u
 
 CONFIGURATION
 -------------
 Link checking: True
 Deduplication: True
 Quality sorting: True
-Excluded groups: 21
+Excluded groups: 27
