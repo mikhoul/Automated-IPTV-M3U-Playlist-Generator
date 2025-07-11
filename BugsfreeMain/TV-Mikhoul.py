@@ -832,58 +832,70 @@ class M3UCollector:
         """
         Remove duplicate channels based on URL and name similarity.
         Keeps the highest quality version when duplicates are found.
+        ENHANCED: Now works globally across all groups.
         """
         if not self.enable_deduplication:
             return
-        
-        logging.info("Starting channel deduplication process")
-        original_count = sum(len(channels) for channels in self.channels.values())
-        
-        for group_name in list(self.channels.keys()):
-            channels = self.channels[group_name]
-            if len(channels) <= 1:
-                continue
-            
-            # Group channels by similarity
-            unique_channels = []
-            duplicates = []
-            
+
+        logging.info("Starting GLOBAL channel deduplication process")
+
+        # PATCH: Collect all channels from all groups
+        all_channels = []
+        for group_name, channels in self.channels.items():
             for channel in channels:
-                is_duplicate = False
-                for existing in unique_channels:
-                    # Check for URL duplicates
-                    if channel['url'] == existing['url']:
-                        is_duplicate = True
-                        duplicates.append(channel)
-                        break
-                    
-                    # Check for name similarity (fuzzy matching)
-                    if self.calculate_name_similarity(channel['name'], existing['name']) > 0.8:
-                        # Keep the one with better quality
-                        channel_quality = self.extract_quality_info(channel['name'])[1]
-                        existing_quality = self.extract_quality_info(existing['name'])[1]
-                        
-                        if self.compare_quality(channel_quality, existing_quality) > 0:
-                            # Replace existing with current (better quality)
-                            duplicates.append(existing)
-                            unique_channels.remove(existing)
-                            unique_channels.append(channel)
-                        else:
-                            duplicates.append(channel)
-                        is_duplicate = True
-                        break
+                channel['original_group'] = group_name  # Track original group
+                all_channels.append(channel)
+
+        original_count = len(all_channels)
+        
+        if original_count <= 1:
+            return
+
+        # PATCH: Perform global deduplication
+        unique_channels = []
+        duplicates = []
+
+        for channel in all_channels:
+            is_duplicate = False
+            for existing in unique_channels:
+                # Check for URL duplicates
+                if channel['url'] == existing['url']:
+                    is_duplicate = True
+                    duplicates.append(channel)
+                    break
                 
-                if not is_duplicate:
-                    unique_channels.append(channel)
-            
-            self.channels[group_name] = unique_channels
-            self.duplicate_channels.extend(duplicates)
-        
-        final_count = sum(len(channels) for channels in self.channels.values())
+                # Check for name similarity (fuzzy matching)
+                if self.calculate_name_similarity(channel['name'], existing['name']) > 0.8:
+                    # Keep the one with better quality
+                    channel_quality = self.extract_quality_info(channel['name'])[1]
+                    existing_quality = self.extract_quality_info(existing['name'])[1]
+                    
+                    if self.compare_quality(channel_quality, existing_quality) > 0:
+                        # Replace existing with current (better quality)
+                        duplicates.append(existing)
+                        unique_channels.remove(existing)
+                        unique_channels.append(channel)
+                    else:
+                        duplicates.append(channel)
+                    is_duplicate = True
+                    break
+
+            if not is_duplicate:
+                unique_channels.append(channel)
+
+        # PATCH: Redistribute channels back to their groups
+        self.channels.clear()
+        for channel in unique_channels:
+            group = channel['original_group']
+            del channel['original_group']  # Clean up temporary field
+            self.channels[group].append(channel)
+
+        self.duplicate_channels.extend(duplicates)
+        final_count = len(unique_channels)
         removed_count = original_count - final_count
-        
+
         if removed_count > 0:
-            logging.info(f"Deduplication complete: Removed {removed_count} duplicate channels")
+            logging.info(f"GLOBAL deduplication complete: Removed {removed_count} duplicate channels across all groups")
     
     def calculate_name_similarity(self, name1, name2):
         """
