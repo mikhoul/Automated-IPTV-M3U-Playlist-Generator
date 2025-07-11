@@ -1558,11 +1558,47 @@ def main():
     server_location = get_server_geolocation()
     
     excluded_groups = [
+        # Original excluded groups
         "Argentina", "Austria", "Brazil", "Chile", "Denmark", "Germany",
         "India", "Italy", "Mexico", "Norway", "South Korea", "Spain",
         "Sweden", "Switzerland", "United Kingdom", "United States",
         "Offline", "Test", "Demo", "Shopping", "Teleshopping", "Business",
-        "Culture", "Entertainmer", "Undefined", "Culture", "Religious"
+        "Culture", "Entertainmer", "Undefined", "Culture", "Religious",
+        
+        # Turkish groups from allgr.m3u
+        "|TR|🇹🇷 AVRUPA; DİNÎ; DİĞER",
+        "|TR|🇹🇷 BELGESEL & YAŞAM",
+        "|TR|🇹🇷 ÇOCUK / SPOR",
+        "|TR|🇹🇷 HABER",
+        "|TR|🇹🇷 MÜZİK",
+        "|TR|🇹🇷 ULUSAL GENEL",
+        "|TR|🇹🇷 YEREL - BÖLGESEL",
+        
+        # Arabic groups from allgr.m3u
+        "|AR|🇸🇦 MIDDLE EAST-1 عربي",
+        "|AR|🇸🇦 MIDDLE EAST-2 عربي",
+        "|AR|🇸🇦 THEMATICS-1 عربي",
+        "|AR|🇸🇦 THEMATICS-2 عربي",
+        
+        # European groups from allgr.m3u
+        "|DE|🇩🇪 DEUTSCHLAND - LOKALE",
+        "|ES|🇪🇸 ESPAÑA",
+        "|EU|🇪🇺 EUROPEAN COCKTAILTOUR🍸",
+        "|GR|🇬🇷 GREECE Ελλά",
+        "|HR-BA-RS++|🇭🇷🇧🇦🇷🇸 BALKANIC",
+        "|IT|🇮🇹 ITALIA - LOCALE",
+        "|PT|🇵🇹 PORTUGAL",
+        
+        # Middle Eastern & Regional groups from allgr.m3u
+        "|GE-AM-AZ|🇬🇪🇦🇲🇦🇿 CAUCASIAN",
+        "|IL|🇮🇱 ISRAEL ישראל",
+        "|IR|🇮🇷 IRAN",
+        "|LB|🇱🇧 LIBAN-LÜBNAN-LEBANON-لبنان",
+        "|MA-DZ-TN|🇲🇦🇩🇿🇹🇳 MAGHREB المغرب",
+        
+        # International & Special groups from allgr.m3u
+        "|EN-UK-US|🇬🇧🇺🇸 WORLDWIDE-INTL ℹ️🌐",
+        "|📡|👨‍💻👉GITHUB.COM/IPSTREET312"
     ]
     
     source_urls = [
