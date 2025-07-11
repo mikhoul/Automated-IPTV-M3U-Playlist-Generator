@@ -1555,7 +1555,7 @@ def main():
     
     source_urls = [
         "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
-        "https://github.com/ipstreet312/freeiptv/raw/b16363ffa03752900de3fadb1d7fede7b7173901/ressources/allgr.m3u"
+        "https://github.com/ipstreet312/freeiptv/raw/b16363ffa03752900de3fadb1d7fede7b7173901/ressources/allgr.m3u",
         "https://iptv-org.github.io/iptv/countries/ca.m3u",
         "https://tinyurl.com/Stream2IPTV?region=fr&service=PlutoTV",
         "https://tinyurl.com/Stream2IPTV?region=fr&service=SamsungTVPlus",
