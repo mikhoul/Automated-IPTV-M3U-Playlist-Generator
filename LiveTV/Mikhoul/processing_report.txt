@@ -1,61 +1,93 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-11 20:49:31
+Generated: 2025-07-11 21:06:08
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 1843
-Total Channels Found: 712
+Total Lines Processed: 7599
+Total Channels Found: 3417
 Parsing Errors: 0
-Urls Validated: 704
-Active Urls: 662
-Geo Blocked Urls: 107
-Validation Time: 52.44447374343872
-Inactive By Error: {'inactive': 12, 'http_502': 1, 'http_404': 23, 'http_400': 2, 'http_504': 4}
-Total Processing Time: 65.08867502212524
-Final Channel Count: 662
-Source Urls Processed: 7
+Urls Validated: 2593
+Active Urls: 2132
+Geo Blocked Urls: 276
+Validation Time: 482.9885582923889
+Inactive By Error: {'inactive': 168, 'http_404': 162, 'http_502': 3, 'http_400': 11, 'invalid_content': 47, 'http_504': 15, 'http_503': 11, 'http_500': 25, 'http_401': 4, 'http_204': 3, 'http_451': 3, 'http_410': 2, 'http_492': 6, 'http_406': 1}
+Total Processing Time: 491.62619805336
+Final Channel Count: 2132
+Source Urls Processed: 8
 
 CHANNEL DISTRIBUTION
 --------------------
-Uncategorized: 113 channels
-Sports: 46 channels
-Cinéma: 39 channels
+11. |TR|🇹🇷 YEREL - BÖLGESEL: 123 channels
+4. |FR|🇫🇷 RÉGIONS & LOCALES: 113 channels
+Uncategorized: 101 channels
+27. |IR|🇮🇷 IRAN: 97 channels
+14. |ES|🇪🇸 ESPAÑA: 81 channels
+21. |AR|🇸🇦 THEMATICS-2 عربي: 72 channels
+3. |FR|🇫🇷 SOCIÉTÉ: 68 channels
+18. |AR|🇸🇦 MIDDLE EAST-1 عربي: 68 channels
+20. |AR|🇸🇦 THEMATICS-1 عربي: 68 channels
+12. |GR|🇬🇷 GREECE Ελλά: 63 channels
+Sports: 54 channels
+16. |IL|🇮🇱 ISRAEL ישראל: 53 channels
+Music: 47 channels
+19. |AR|🇸🇦 MIDDLE EAST-2 عربي: 46 channels
+13. |PT|🇵🇹 PORTUGAL: 44 channels
+25. |HR-BA-RS++|🇭🇷🇧🇦🇷🇸 BALKANIC: 43 channels
+28. |EN-UK-US|🇬🇧🇺🇸 WORLDWIDE-INTL ℹ️🌐: 43 channels
+1. |FR|🇫🇷 INFORMATION: 42 channels
+15. |MA-DZ-TN|🇲🇦🇩🇿🇹🇳 MAGHREB المغرب: 40 channels
+2. |FR|🇫🇷 GÉNÉRALISTE: 39 channels
+5. |TR|🇹🇷 HABER: 39 channels
+22. |IT|🇮🇹 ITALIA - LOCALE: 38 channels
+Cinéma: 38 channels
+General: 37 channels
 Généraliste: 33 channels
+10. |TR|🇹🇷 AVRUPA; DİNÎ; DİĞER: 31 channels
+26. |GE-AM-AZ|🇬🇪🇦🇲🇦🇿 CAUCASIAN: 31 channels
+8. |TR|🇹🇷 ÇOCUK / SPOR: 29 channels
+7. |TR|🇹🇷 BELGESEL & YAŞAM: 28 channels
 Divertissement: 28 channels
-Music: 23 channels
+News: 21 channels
 FRANCE: 21 channels
-Actualités: 20 channels
 Séries TV: 20 channels
+Actualités: 19 channels
+17. |LB|🇱🇧 LIBAN-LÜBNAN-LEBANON-لبنان: 19 channels
+24. |EU|🇪🇺 EUROPEAN COCKTAILTOUR🍸: 18 channels
+6. |TR|🇹🇷 ULUSAL GENEL: 17 channels
+9. |TR|🇹🇷 MÜZİK: 17 channels
 Documentaires: 17 channels
 100% Français: 16 channels
-Jeunesse: 15 channels
-News: 14 channels
 Musique: 13 channels
+Jeunesse: 13 channels
+Kids: 12 channels
 Lifestyle: 12 channels
 Kids & Family: 12 channels
+23. |DE|🇩🇪 DEUTSCHLAND - LOKALE: 11 channels
 Emissions cultes: 11 channels
 Séries: 11 channels
-Kids: 11 channels
 TV Réalité: 10 channels
 Crime & Mystère: 10 channels
+29. |📡|👨‍💻👉GITHUB.COM/IPSTREET312: 9 channels
+Movies: 9 channels
 Classic TV: 9 channels
 Food & Home: 9 channels
 Animation: 8 channels
-Voyages et Gastronomie: 8 channels
-Crime: 8 channels
 Nature & Travel: 8 channels
 Séries Policières: 7 channels
+Voyages et Gastronomie: 7 channels
+Crime: 7 channels
 En Español: 7 channels
 Daytime TV: 7 channels
+Entertainment: 6 channels
 Nouveau sur Pluto TV: 6 channels
 Sports & Auto: 6 channels
 Comedy: 6 channels
-Movies: 6 channels
 Documentaire: 5 channels
 Sci-Fi & Action: 5 channels
 History & Science: 5 channels
+Legislative: 4 channels
 Comédie: 4 channels
 Anime: 4 channels
 Black Entertainment: 4 channels
@@ -65,32 +97,33 @@ Télé réalité: 3 channels
 Music, En Español: 3 channels
 Chills & Thrills: 3 channels
 Affaires Publiques: 2 channels
+Series: 2 channels
+Outdoor: 2 channels
 Fight: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
 Hit TV, True Crime: 2 channels
-True Crime: 2 channels
 Reality: 2 channels
+True Crime: 2 channels
 Educatif: 1 channels
+Multiculturel: 1 channels
 Réréalité: 1 channels
+Comedie: 1 channels
 Culturelle: 1 channels
 Film: 1 channels
-Comedie: 1 channels
-Multiculturel: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
+Movies;Series: 1 channels
+Shop: 1 channels
+Documentary;Education;Science: 1 channels
+Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 News, En Español: 1 channels
 Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
 Movies, Chills & Thrills: 1 channels
-
-FAILED URLS
------------
-URL: https://github.com/ipstreet312/freeiptv/raw/b16363ffa03752900de3fadb1d7fede7b7173901/ressources/allgr.m3uhttps://iptv-org.github.io/iptv/countries/ca.m3u
-Error: 404 Client Error: Not Found for url: https://github.com/ipstreet312/freeiptv/raw/b16363ffa03752900de3fadb1d7fede7b7173901/ressources/allgr.m3uhttps://iptv-org.github.io/iptv/countries/ca.m3u
 
 CONFIGURATION
 -------------
