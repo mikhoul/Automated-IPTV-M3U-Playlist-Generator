@@ -1,26 +1,26 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-11 22:07:32
+Generated: 2025-07-11 22:31:53
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 7599
-Total Channels Found: 3417
+Total Lines Processed: 7597
+Total Channels Found: 3416
 Parsing Errors: 0
-Urls Validated: 2487
-Active Urls: 2028
-Geo Blocked Urls: 256
-Validation Time: 490.69358015060425
-Inactive By Error: {'inactive': 164, 'http_404': 159, 'http_502': 3, 'http_400': 11, 'invalid_content': 47, 'http_504': 14, 'http_503': 11, 'http_500': 29, 'http_401': 4, 'http_204': 5, 'http_451': 3, 'http_410': 2, 'http_492': 6, 'http_406': 1}
-Total Processing Time: 512.1243650913239
-Final Channel Count: 2028
+Urls Validated: 2486
+Active Urls: 2024
+Geo Blocked Urls: 259
+Validation Time: 470.0089499950409
+Inactive By Error: {'inactive': 164, 'http_404': 159, 'http_502': 4, 'http_400': 11, 'invalid_content': 47, 'http_504': 14, 'http_503': 11, 'http_500': 27, 'http_401': 4, 'http_204': 9, 'http_451': 3, 'http_410': 2, 'http_492': 6, 'http_406': 1}
+Total Processing Time: 490.9202470779419
+Final Channel Count: 2024
 Source Urls Processed: 8
 
 CHANNEL DISTRIBUTION
 --------------------
 11. |TR|🇹🇷 YEREL - BÖLGESEL: 123 channels
-4. |FR|🇫🇷 RÉGIONS & LOCALES: 110 channels
+4. |FR|🇫🇷 RÉGIONS & LOCALES: 112 channels
 27. |IR|🇮🇷 IRAN: 96 channels
 14. |ES|🇪🇸 ESPAÑA: 80 channels
 Uncategorized: 74 channels
@@ -33,36 +33,36 @@ Sports: 54 channels
 16. |IL|🇮🇱 ISRAEL ישראל: 53 channels
 19. |AR|🇸🇦 MIDDLE EAST-2 عربي: 46 channels
 Music: 46 channels
-25. |HR-BA-RS++|🇭🇷🇧🇦🇷🇸 BALKANIC: 43 channels
 28. |EN-UK-US|🇬🇧🇺🇸 WORLDWIDE-INTL ℹ️🌐: 43 channels
-13. |PT|🇵🇹 PORTUGAL: 42 channels
+25. |HR-BA-RS++|🇭🇷🇧🇦🇷🇸 BALKANIC: 42 channels
+15. |MA-DZ-TN|🇲🇦🇩🇿🇹🇳 MAGHREB المغرب: 40 channels
 5. |TR|🇹🇷 HABER: 39 channels
-15. |MA-DZ-TN|🇲🇦🇩🇿🇹🇳 MAGHREB المغرب: 39 channels
 1. |FR|🇫🇷 INFORMATION: 38 channels
 2. |FR|🇫🇷 GÉNÉRALISTE: 38 channels
+13. |PT|🇵🇹 PORTUGAL: 38 channels
 22. |IT|🇮🇹 ITALIA - LOCALE: 38 channels
 General: 37 channels
 Généraliste: 33 channels
 10. |TR|🇹🇷 AVRUPA; DİNÎ; DİĞER: 31 channels
 Cinéma: 31 channels
-26. |GE-AM-AZ|🇬🇪🇦🇲🇦🇿 CAUCASIAN: 30 channels
 8. |TR|🇹🇷 ÇOCUK / SPOR: 29 channels
+26. |GE-AM-AZ|🇬🇪🇦🇲🇦🇿 CAUCASIAN: 29 channels
 7. |TR|🇹🇷 BELGESEL & YAŞAM: 28 channels
 9. |TR|🇹🇷 MÜZİK: 24 channels
 Divertissement: 20 channels
 Actualités: 19 channels
-17. |LB|🇱🇧 LIBAN-LÜBNAN-LEBANON-لبنان: 19 channels
 24. |EU|🇪🇺 EUROPEAN COCKTAILTOUR🍸: 19 channels
+17. |LB|🇱🇧 LIBAN-LÜBNAN-LEBANON-لبنان: 18 channels
 6. |TR|🇹🇷 ULUSAL GENEL: 17 channels
 News: 17 channels
 100% Français: 16 channels
 Documentaires: 15 channels
+23. |DE|🇩🇪 DEUTSCHLAND - LOKALE: 12 channels
 Kids: 12 channels
 Musique: 12 channels
 Lifestyle: 12 channels
 Jeunesse: 12 channels
 Kids & Family: 12 channels
-23. |DE|🇩🇪 DEUTSCHLAND - LOKALE: 11 channels
 Séries TV: 11 channels
 Emissions cultes: 10 channels
 Séries: 10 channels
@@ -90,12 +90,12 @@ Documentaire: 4 channels
 Sports & Auto: 4 channels
 Black Entertainment: 4 channels
 Communautaire: 3 channels
-Outdoor: 3 channels
 Comédie: 3 channels
 Music, En Español: 3 channels
 Chills & Thrills: 3 channels
 Affaires Publiques: 2 channels
 Series: 2 channels
+Outdoor: 2 channels
 Anime: 2 channels
 Télé réalité: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
@@ -106,12 +106,12 @@ Reality: 2 channels
 True Crime: 2 channels
 Educatif: 1 channels
 Culturelle: 1 channels
+Réréalité: 1 channels
 Comedie: 1 channels
 Film: 1 channels
-Réréalité: 1 channels
 Multiculturel: 1 channels
-Thématique: 1 channels
 Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
 Shop: 1 channels
 Movies;Series: 1 channels
@@ -121,8 +121,8 @@ Fight: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 News, En Español: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 Movies, Chills & Thrills: 1 channels
 
 CONFIGURATION
@@ -130,4 +130,4 @@ CONFIGURATION
 Link checking: True
 Deduplication: True
 Quality sorting: True
-Excluded groups: 27
+Excluded groups: 52
