@@ -329,8 +329,15 @@ class M3UCollector:
             return text
         
         try:
-            # Try to fix double-encoded UTF-8 (mojibake)
-            if 'Ã©' in text or 'Ã¨' in text or 'Ã§' in text:
+            # Extended mojibake detection for French characters
+            mojibake_patterns = [
+                'Ã©', 'Ã¨', 'Ã§', 'Ã®', 'Ã´', 'Ã¹', 'Ã¢', 'Ã ',
+                'Ã‰', 'Ã‡', 'ÃŽ', 'Ã"', 'Ã€', 'Ã‚', 'Ã«', 'Ã¯',
+                'Ã¶', 'Ã¼', 'Ã±', 'Ã¿'
+            ]
+            
+            # Check if any mojibake pattern is present
+            if any(pattern in text for pattern in mojibake_patterns):
                 # First encode as Latin-1, then decode as UTF-8
                 fixed_text = text.encode('latin-1').decode('utf-8')
                 return fixed_text
