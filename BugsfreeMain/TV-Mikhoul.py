@@ -1016,7 +1016,7 @@ class M3UCollector:
                     group_occurrences[group] += 1
                     
                     excluded = any(
-                        group.lower() == excl.lower()
+                        group.strip().lower() == excl.strip().lower()
                         for excl in self.excluded_groups
                     )
                     
