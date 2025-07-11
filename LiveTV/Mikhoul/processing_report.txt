@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-11 19:42:39
+Generated: 2025-07-11 20:30:40
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,12 +9,12 @@ Total Lines Processed: 1843
 Total Channels Found: 712
 Parsing Errors: 0
 Urls Validated: 704
-Active Urls: 663
+Active Urls: 662
 Geo Blocked Urls: 107
-Validation Time: 52.79026532173157
-Inactive By Error: {'inactive': 12, 'http_502': 1, 'http_404': 22, 'http_400': 2, 'http_504': 4}
-Total Processing Time: 64.2638144493103
-Final Channel Count: 663
+Validation Time: 53.26209831237793
+Inactive By Error: {'inactive': 12, 'http_502': 1, 'http_404': 23, 'http_400': 2, 'http_504': 4}
+Total Processing Time: 64.4206018447876
+Final Channel Count: 662
 Source Urls Processed: 7
 
 CHANNEL DISTRIBUTION
@@ -40,9 +40,9 @@ Séries: 11 channels
 Kids: 11 channels
 TV Réalité: 10 channels
 Crime & Mystère: 10 channels
-Animation: 9 channels
 Classic TV: 9 channels
 Food & Home: 9 channels
+Animation: 8 channels
 Voyages et Gastronomie: 8 channels
 Crime: 8 channels
 Nature & Travel: 8 channels
@@ -62,30 +62,30 @@ Black Entertainment: 4 channels
 Drama TV: 4 channels
 Communautaire: 3 channels
 Télé réalité: 3 channels
-Chills & Thrills: 3 channels
 Music, En Español: 3 channels
+Chills & Thrills: 3 channels
 Affaires Publiques: 2 channels
 Fight: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
 Hit TV, True Crime: 2 channels
-Reality: 2 channels
 True Crime: 2 channels
+Reality: 2 channels
 Educatif: 1 channels
-Culturelle: 1 channels
+Réréalité: 1 channels
 Film: 1 channels
 Comedie: 1 channels
-Réréalité: 1 channels
 Multiculturel: 1 channels
+Culturelle: 1 channels
 Cuisine: 1 channels
 Thématique: 1 channels
 Quebec TV: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 News, En Español: 1 channels
-Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
 Movies, Chills & Thrills: 1 channels
+Drama TV, Movies: 1 channels
 
 FAILED URLS
 -----------
