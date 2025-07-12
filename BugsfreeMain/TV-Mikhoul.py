@@ -297,6 +297,16 @@ class M3UCollector:
         self.channels_processed = 0
         self.urls_validated = 0
 
+    def normalize_text(self, text):
+        """
+        Normalize text for exclusion matching by removing accents and handling Unicode.
+        """
+        if not text:
+            return text
+        import unicodedata
+        normalized = unicodedata.normalize('NFKD', text)
+        return ''.join(c for c in normalized if not unicodedata.combining(c))
+
     def is_redirect_service(self, url):
         """
         Detect if URL is from a known redirect service.
@@ -1016,10 +1026,9 @@ class M3UCollector:
                     group_occurrences[group] += 1
                     
                     excluded = any(
-                        group.strip().lower() == excl.strip().lower()
+                        self.normalize_text(group.strip().lower()) == self.normalize_text(excl.strip().lower())
                         for excl in self.excluded_groups
                     )
-                    
                     if excluded:
                         current_channel = {}
                         continue
