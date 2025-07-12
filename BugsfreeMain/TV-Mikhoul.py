@@ -254,13 +254,9 @@ class M3UCollector:
         self.country = country
         self.base_dir = base_dir
         self.check_links = check_links
-        self.excluded_groups = excluded_groups or []
         
-        # Pre-process the exclusion list for exact, case-sensitive matching,
-        # and unescape HTML entities to ensure robust comparison.
-        self.processed_excluded_set = {
-            html.unescape(g.strip()) for g in self.excluded_groups
-        }
+        # Keep it simple - just store the original list
+        self.excluded_groups = excluded_groups or []
 
         self.config = config or {}
         
@@ -304,6 +300,35 @@ class M3UCollector:
         self.start_time = time.time()
         self.channels_processed = 0
         self.urls_validated = 0
+
+    def should_exclude_group(self, group_name):
+        """
+        Simple and efficient group exclusion check with logging.
+        
+        Args:
+            group_name (str): Group name to check
+            
+        Returns:
+            bool: True if group should be excluded
+        """
+        if not group_name or not self.excluded_groups:
+            return False
+        
+        # Clean and normalize the group name
+        clean_group = html.unescape(group_name.strip())
+        
+        # Check against each excluded group pattern
+        for excluded in self.excluded_groups:
+            clean_excluded = html.unescape(excluded.strip())
+            
+            # Simple containment check - if excluded pattern is found in group name
+            if clean_excluded.lower() in clean_group.lower():
+                # Log the exclusion immediately
+                with self.logging_lock:
+                    logging.info(f"EXCLUDED GROUP DETECTED: '{clean_group}' (matched pattern: '{clean_excluded}')")
+                return True
+        
+        return False
 
     def is_redirect_service(self, url):
         """
@@ -986,8 +1011,8 @@ class M3UCollector:
                     
                     group_occurrences[group] += 1
                     
-                    # Perform an exact, case-sensitive check against the processed exclusion set.
-                    if group.strip() in self.processed_excluded_set:
+                    # NEW: Simple and efficient exclusion check with logging
+                    if self.should_exclude_group(group):
                         current_channel = {}
                         continue
                     
