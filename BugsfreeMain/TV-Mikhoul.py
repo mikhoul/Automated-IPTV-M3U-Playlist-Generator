@@ -254,6 +254,13 @@ class M3UCollector:
         self.base_dir = base_dir
         self.check_links = check_links
         self.excluded_groups = excluded_groups or []
+        
+        # --- START OF FIX ---
+        # Pre-process the exclusion list into a lowercase set for fast and reliable lookups.
+        # This avoids complex normalization and ensures symbols/emojis are preserved for matching.
+        self.processed_excluded_set = {g.strip().lower() for g in self.excluded_groups}
+        # --- END OF FIX ---
+
         self.config = config or {}
         
         # Data storage
@@ -296,32 +303,6 @@ class M3UCollector:
         self.start_time = time.time()
         self.channels_processed = 0
         self.urls_validated = 0
-
-    def normalize_text(self, text):
-        """
-        Normalize text for exclusion matching by handling Unicode and whitespace.
-        """
-        if not text:
-            return text
-        
-        import unicodedata
-        
-        # Strip whitespace first
-        text = text.strip()
-        
-        # Handle HTML entities
-        text = text.replace('&', '&')
-        
-        # Normalize Unicode (handles accents, special chars)
-        text = unicodedata.normalize('NFKD', text)
-        
-        # Remove combining characters (accents)
-        text = ''.join(c for c in text if not unicodedata.combining(c))
-        
-        # Convert to lowercase
-        text = text.lower()
-        
-        return text
 
     def is_redirect_service(self, url):
         """
@@ -1041,13 +1022,13 @@ class M3UCollector:
                     
                     group_occurrences[group] += 1
                     
-                    excluded = any(
-                        self.normalize_text(group) == self.normalize_text(excl)
-                        for excl in self.excluded_groups
-                    )
-                    if excluded:
+                    # --- START OF FIX ---
+                    # Use the pre-processed set for a simple, robust, and case-insensitive check.
+                    # This correctly handles groups with special characters, symbols, and emojis.
+                    if group.strip().lower() in self.processed_excluded_set:
                         current_channel = {}
                         continue
+                    # --- END OF FIX ---
                     
                     # === UTF-8 FIX FOR CHANNEL NAMES ===
                     name = "Unnamed Channel"
