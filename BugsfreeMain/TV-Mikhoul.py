@@ -256,9 +256,12 @@ class M3UCollector:
         self.excluded_groups = excluded_groups or []
         
         # --- START OF FIX ---
-        # Pre-process the exclusion list into a lowercase set for fast and reliable lookups.
-        # This avoids complex normalization and ensures symbols/emojis are preserved for matching.
-        self.processed_excluded_set = {g.strip().lower() for g in self.excluded_groups}
+        # Pre-process the exclusion list. The transformation applied here MUST BE IDENTICAL
+        # to the transformation applied to the group name in parse_and_store() before comparison.
+        # This creates a symmetrical, robust, and efficient check.
+        self.processed_excluded_set = {
+            self.normalize_utf8_text(g).strip().lower() for g in self.excluded_groups
+        }
         # --- END OF FIX ---
 
         self.config = config or {}
@@ -1023,8 +1026,9 @@ class M3UCollector:
                     group_occurrences[group] += 1
                     
                     # --- START OF FIX ---
-                    # Use the pre-processed set for a simple, robust, and case-insensitive check.
-                    # This correctly handles groups with special characters, symbols, and emojis.
+                    # Perform the symmetrical check against the pre-processed set.
+                    # Both the group name from the file and the items in the exclusion list have
+                    # undergone the exact same transformation (normalize_utf8_text -> strip -> lower).
                     if group.strip().lower() in self.processed_excluded_set:
                         current_channel = {}
                         continue
