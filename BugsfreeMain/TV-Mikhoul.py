@@ -299,13 +299,29 @@ class M3UCollector:
 
     def normalize_text(self, text):
         """
-        Normalize text for exclusion matching by removing accents and handling Unicode.
+        Normalize text for exclusion matching by handling Unicode and whitespace.
         """
         if not text:
             return text
+        
         import unicodedata
-        normalized = unicodedata.normalize('NFKD', text)
-        return ''.join(c for c in normalized if not unicodedata.combining(c))
+        
+        # Strip whitespace first
+        text = text.strip()
+        
+        # Handle HTML entities
+        text = text.replace('&', '&')
+        
+        # Normalize Unicode (handles accents, special chars)
+        text = unicodedata.normalize('NFKD', text)
+        
+        # Remove combining characters (accents)
+        text = ''.join(c for c in text if not unicodedata.combining(c))
+        
+        # Convert to lowercase
+        text = text.lower()
+        
+        return text
 
     def is_redirect_service(self, url):
         """
@@ -1026,7 +1042,7 @@ class M3UCollector:
                     group_occurrences[group] += 1
                     
                     excluded = any(
-                        self.normalize_text(group.strip().lower()) == self.normalize_text(excl.strip().lower())
+                        self.normalize_text(group) == self.normalize_text(excl)
                         for excl in self.excluded_groups
                     )
                     if excluded:
