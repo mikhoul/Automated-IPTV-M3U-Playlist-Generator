@@ -255,14 +255,8 @@ class M3UCollector:
         self.check_links = check_links
         self.excluded_groups = excluded_groups or []
         
-        # --- START OF FIX ---
-        # Pre-process the exclusion list. The transformation applied here MUST BE IDENTICAL
-        # to the transformation applied to the group name in parse_and_store() before comparison.
-        # This creates a symmetrical, robust, and efficient check.
-        self.processed_excluded_set = {
-            self.normalize_utf8_text(g).strip().lower() for g in self.excluded_groups
-        }
-        # --- END OF FIX ---
+        # Pre-process the exclusion list for exact, case-sensitive matching.
+        self.processed_excluded_set = {g.strip() for g in self.excluded_groups}
 
         self.config = config or {}
         
@@ -325,39 +319,6 @@ class M3UCollector:
         domain = urlparse(url).netloc.lower()
         return any(redirect_domain in domain for redirect_domain in redirect_domains)
     
-    def normalize_utf8_text(self, text):
-        """
-        Fix UTF-8 encoding issues in channel names and descriptions.
-        
-        Args:
-            text (str): Text that may have encoding issues
-            
-        Returns:
-            str: Properly decoded UTF-8 text
-        """
-        if not text or not isinstance(text, str):
-            return text
-        
-        try:
-            # Extended mojibake detection for French characters
-            mojibake_patterns = [
-                'Ã©', 'Ã¨', 'Ã§', 'Ã®', 'Ã´', 'Ã¹', 'Ã¢', 'Ã ',
-                'Ã‰', 'Ã‡', 'ÃŽ', 'Ã"', 'Ã€', 'Ã‚', 'Ã«', 'Ã¯',
-                'Ã¶', 'Ã¼', 'Ã±', 'Ã¿'
-            ]
-            
-            # Check if any mojibake pattern is present
-            if any(pattern in text for pattern in mojibake_patterns):
-                # First encode as Latin-1, then decode as UTF-8
-                fixed_text = text.encode('latin-1').decode('utf-8')
-                return fixed_text
-            
-            # If no mojibake detected, return original
-            return text
-            
-        except (UnicodeDecodeError, UnicodeEncodeError):
-            # If fixing fails, return original text
-            return text
 
     def get_request_headers(self, url=None, custom_headers=None):
         """
@@ -1013,33 +974,24 @@ class M3UCollector:
                     if logo and not logo.startswith(('http://', 'https://')):
                         logo = self.default_logo
                     
-                    # === UTF-8 FIX FOR GROUPS ===
+                    # === GROUP EXTRACTION ===
                     group = "Uncategorized"
                     extracted_group = attributes.get('group-title', '').strip()
                     if extracted_group and not extracted_group.isspace():
-                        # Apply UTF-8 normalization
-                        group = self.normalize_utf8_text(extracted_group)
-                        
-                        if group.lower() == 'cuisine':
-                            group = 'Cuisine'
+                        group = extracted_group
                     
                     group_occurrences[group] += 1
                     
-                    # --- START OF FIX ---
-                    # Perform the symmetrical check against the pre-processed set.
-                    # Both the group name from the file and the items in the exclusion list have
-                    # undergone the exact same transformation (normalize_utf8_text -> strip -> lower).
-                    if group.strip().lower() in self.processed_excluded_set:
+                    # Perform an exact, case-sensitive check against the processed exclusion set.
+                    if group.strip() in self.processed_excluded_set:
                         current_channel = {}
                         continue
-                    # --- END OF FIX ---
                     
-                    # === UTF-8 FIX FOR CHANNEL NAMES ===
+                    # === CHANNEL NAME EXTRACTION ===
                     name = "Unnamed Channel"
                     comma_match = re.search(r',(.+)$', line)
                     if comma_match:
-                        # Apply UTF-8 normalization
-                        name = self.normalize_utf8_text(comma_match.group(1).strip())
+                        name = comma_match.group(1).strip()
                     
                     quality, resolution = self.extract_quality_info(name)
                     language = self.detect_content_language(name)
