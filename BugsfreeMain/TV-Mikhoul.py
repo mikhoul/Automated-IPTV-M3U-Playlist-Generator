@@ -11,6 +11,7 @@ import threading
 import logging
 import time
 import hashlib
+import html
 from bs4 import BeautifulSoup
 
 class ValidationColorFormatter(logging.Formatter):
@@ -255,8 +256,11 @@ class M3UCollector:
         self.check_links = check_links
         self.excluded_groups = excluded_groups or []
         
-        # Pre-process the exclusion list for exact, case-sensitive matching.
-        self.processed_excluded_set = {g.strip() for g in self.excluded_groups}
+        # Pre-process the exclusion list for exact, case-sensitive matching,
+        # and unescape HTML entities to ensure robust comparison.
+        self.processed_excluded_set = {
+            html.unescape(g.strip()) for g in self.excluded_groups
+        }
 
         self.config = config or {}
         
@@ -1079,7 +1083,12 @@ class M3UCollector:
         for attr_name, pattern in patterns.items():
             match = re.search(pattern, line, re.IGNORECASE)
             if match:
-                attributes[attr_name] = match.group(1).strip()
+                raw_value = match.group(1).strip()
+                # PATCH: Decode HTML entities specifically for group-title to ensure correct exclusion matching.
+                if attr_name == 'group-title':
+                    attributes[attr_name] = html.unescape(raw_value)
+                else:
+                    attributes[attr_name] = raw_value
         
         return attributes
     
