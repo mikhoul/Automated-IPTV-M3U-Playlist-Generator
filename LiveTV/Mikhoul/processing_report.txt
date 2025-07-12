@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-12 02:26:37
+Generated: 2025-07-12 03:12:03
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,22 +9,22 @@ Total Lines Processed: 7597
 Total Channels Found: 3417
 Parsing Errors: 0
 Urls Validated: 2487
-Active Urls: 2039
-Geo Blocked Urls: 253
-Validation Time: 473.81587314605713
-Inactive By Error: {'inactive': 164, 'http_404': 159, 'http_502': 3, 'http_400': 11, 'invalid_content': 47, 'http_504': 14, 'http_503': 11, 'http_500': 21, 'http_401': 4, 'http_204': 2, 'http_451': 3, 'http_410': 2, 'http_492': 6, 'http_406': 1}
-Total Processing Time: 496.421688079834
-Final Channel Count: 2039
+Active Urls: 2038
+Geo Blocked Urls: 251
+Validation Time: 478.04132199287415
+Inactive By Error: {'inactive': 163, 'http_502': 2, 'http_404': 162, 'http_400': 11, 'invalid_content': 47, 'http_504': 13, 'http_503': 11, 'http_500': 23, 'http_401': 4, 'http_204': 1, 'http_451': 3, 'http_410': 2, 'http_492': 6, 'http_406': 1}
+Total Processing Time: 498.62115716934204
+Final Channel Count: 2038
 Source Urls Processed: 8
 
 CHANNEL DISTRIBUTION
 --------------------
 11. |TR|🇹🇷 YEREL - BÖLGESEL: 123 channels
-4. |FR|🇫🇷 RÉGIONS & LOCALES: 114 channels
-27. |IR|🇮🇷 IRAN: 96 channels
+4. |FR|🇫🇷 RÉGIONS & LOCALES: 113 channels
+27. |IR|🇮🇷 IRAN: 95 channels
 14. |ES|🇪🇸 ESPAÑA: 81 channels
 Uncategorized: 74 channels
-21. |AR|🇸🇦 THEMATICS-2 عربي: 72 channels
+21. |AR|🇸🇦 THEMATICS-2 عربي: 71 channels
 18. |AR|🇸🇦 MIDDLE EAST-1 عربي: 69 channels
 20. |AR|🇸🇦 THEMATICS-1 عربي: 68 channels
 3. |FR|🇫🇷 SOCIÉTÉ: 66 channels
@@ -33,17 +33,17 @@ Sports: 54 channels
 16. |IL|🇮🇱 ISRAEL ישראל: 54 channels
 Music: 46 channels
 19. |AR|🇸🇦 MIDDLE EAST-2 عربي: 45 channels
-13. |PT|🇵🇹 PORTUGAL: 43 channels
+13. |PT|🇵🇹 PORTUGAL: 44 channels
 25. |HR-BA-RS++|🇭🇷🇧🇦🇷🇸 BALKANIC: 43 channels
 28. |EN-UK-US|🇬🇧🇺🇸 WORLDWIDE-INTL ℹ️🌐: 43 channels
 5. |TR|🇹🇷 HABER: 40 channels
-15. |MA-DZ-TN|🇲🇦🇩🇿🇹🇳 MAGHREB المغرب: 39 channels
-1. |FR|🇫🇷 INFORMATION: 38 channels
+1. |FR|🇫🇷 INFORMATION: 39 channels
 2. |FR|🇫🇷 GÉNÉRALISTE: 38 channels
+15. |MA-DZ-TN|🇲🇦🇩🇿🇹🇳 MAGHREB المغرب: 38 channels
 22. |IT|🇮🇹 ITALIA - LOCALE: 38 channels
 General: 37 channels
 Généraliste: 33 channels
-10. |TR|🇹🇷 AVRUPA; DİNÎ; DİĞER: 32 channels
+10. |TR|🇹🇷 AVRUPA; DİNÎ; DİĞER: 31 channels
 26. |GE-AM-AZ|🇬🇪🇦🇲🇦🇿 CAUCASIAN: 31 channels
 Cinéma: 31 channels
 8. |TR|🇹🇷 ÇOCUK / SPOR: 29 channels
@@ -51,9 +51,9 @@ Cinéma: 31 channels
 9. |TR|🇹🇷 MÜZİK: 24 channels
 Divertissement: 20 channels
 Actualités: 19 channels
+24. |EU|🇪🇺 EUROPEAN COCKTAILTOUR🍸: 19 channels
 17. |LB|🇱🇧 LIBAN-LÜBNAN-LEBANON-لبنان: 18 channels
 6. |TR|🇹🇷 ULUSAL GENEL: 17 channels
-24. |EU|🇪🇺 EUROPEAN COCKTAILTOUR🍸: 17 channels
 News: 17 channels
 100% Français: 16 channels
 Documentaires: 15 channels
@@ -105,13 +105,13 @@ Hit TV, True Crime: 2 channels
 True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
+Réréalité: 1 channels
 Culturelle: 1 channels
 Comedie: 1 channels
 Film: 1 channels
-Réréalité: 1 channels
 Multiculturel: 1 channels
-Thématique: 1 channels
 Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
 Movies;Series: 1 channels
 Culture;Music: 1 channels
@@ -122,8 +122,8 @@ Fight: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 News, En Español: 1 channels
-Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
 Movies, Chills & Thrills: 1 channels
 
 CONFIGURATION
