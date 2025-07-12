@@ -309,7 +309,7 @@ class M3UCollector:
 
     def is_redirect_service(self, url):
         """
-        Detect if URL is from a known redirect service.
+        Detect if URL is from a known redirect service .
         
         Args:
             url (str): URL to check
