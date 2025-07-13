@@ -637,13 +637,14 @@ class M3UCollector:
         
         return not any(pattern in url_lower for pattern in exclude_patterns)
 
-    def check_link_active(self, url, channel_name="Unknown Channel", timeout=None):
+    def check_link_active(self, url, channel_name="Unknown Channel", source_url="Unknown Source", timeout=None):
         """
         Comprehensive link validation with detailed logging and caching.
         
         Args:
             url (str): URL to check
             channel_name (str): Channel name for detailed logging
+            source_url (str): Source URL for troubleshooting
             timeout (int): Request timeout
             
         Returns:
@@ -663,9 +664,9 @@ class M3UCollector:
         
         # Use specialized validation based on URL type
         if url.endswith('.m3u8') or 'hls' in url.lower():
-            result = self.validate_hls_stream(url, headers, timeout, channel_name)
+            result = self.validate_hls_stream(url, headers, timeout, channel_name, source_url)
         else:
-            result = self.validate_regular_url(url, headers, timeout, channel_name)
+            result = self.validate_regular_url(url, headers, timeout, channel_name, source_url)
         
         # Cache the result with timestamp
         with self.lock:
@@ -678,7 +679,7 @@ class M3UCollector:
         
         return result
 
-    def validate_hls_stream(self, url, headers, timeout, channel_name="Unknown Channel"):
+    def validate_hls_stream(self, url, headers, timeout, channel_name="Unknown Channel", source_url="Unknown Source"):
         """
         Validate HLS/M3U8 streams with ENHANCED redirect handling.
         
@@ -687,6 +688,7 @@ class M3UCollector:
             headers (dict): Request headers
             timeout (int): Request timeout
             channel_name (str): Channel name for detailed logging
+            source_url (str): Source URL for troubleshooting
             
         Returns:
             tuple: (is_active, final_url, status_info)
@@ -718,18 +720,21 @@ class M3UCollector:
                     with self.logging_lock:
                         logging.info(f"Channel '{channel_name}': ACTIVE HLS stream")
                         logging.info(f"URL: {url}")
+                        logging.info(f"SOURCE: {source_url}")
                         logging.info("")
                     return True, response.url, 'active'  # Return final URL after redirects
                 else:
                     with self.logging_lock:
                         logging.info(f"Channel '{channel_name}': URL returned 200 but invalid M3U8 content")
                         logging.info(f"URL: {url}")
+                        logging.info(f"SOURCE: {source_url}")
                         logging.info("")
                     return False, url, 'invalid_content'
             elif response.status_code == 403:
                 with self.logging_lock:
                     logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked HLS stream")
                     logging.info(f"URL: {url}")
+                    logging.info(f"SOURCE: {source_url}")
                     logging.info("")
                 return True, url, 'geo_blocked'
             else:
@@ -738,6 +743,7 @@ class M3UCollector:
                     with self.logging_lock:
                         logging.info(f"Channel '{channel_name}': ACTIVE – 404 Forbidden Geo-blocked HLS stream")
                         logging.info(f"URL: {url}")
+                        logging.info(f"SOURCE: {source_url}")
                         logging.info("")
                     return True, url, 'geo_blocked'
                 
@@ -746,21 +752,23 @@ class M3UCollector:
                     with self.logging_lock:
                         logging.info(f"Channel '{channel_name}': Redirect service temporary error - marking as potentially active")
                         logging.info(f"URL: {url}")
+                        logging.info(f"SOURCE: {source_url}")
                         logging.info("")
                     return True, url, 'redirect_service_error'
                 
                 with self.logging_lock:
                     logging.info(f"Channel '{channel_name}': HLS stream INACTIVE [ERROR_{response.status_code}]")
                     logging.info(f"URL: {url}")
+                    logging.info(f"SOURCE: {source_url}")
                     logging.info("")
                 return False, url, f'http_{response.status_code}'
                 
         except requests.RequestException as e:
-            logging.debug(f"Channel '{channel_name}': HLS validation failed - URL: {url} - Error: {e}")
+            logging.debug(f"Channel '{channel_name}': HLS validation failed - URL: {url} - Source: {source_url} - Error: {e}")
             # Fallback to regular URL validation
-            return self.validate_regular_url(url, headers, timeout, channel_name)
+            return self.validate_regular_url(url, headers, timeout, channel_name, source_url)
 
-    def validate_regular_url(self, url, headers, timeout, channel_name="Unknown Channel"):
+    def validate_regular_url(self, url, headers, timeout, channel_name="Unknown Channel", source_url="Unknown Source"):
         """
         Validate regular URLs with ENHANCED redirect handling.
         
@@ -769,6 +777,7 @@ class M3UCollector:
             headers (dict): Request headers
             timeout (int): Request timeout
             channel_name (str): Channel name for detailed logging
+            source_url (str): Source URL for troubleshooting
             
         Returns:
             tuple: (is_active, final_url, status_info)
@@ -783,12 +792,14 @@ class M3UCollector:
                         with self.logging_lock:
                             logging.info(f"Channel '{channel_name}': ACTIVE (GET via redirect)")
                             logging.info(f"URL: {response.url}")  # Log final URL
+                            logging.info(f"SOURCE: {source_url}")
                             logging.info("")
                         return True, response.url, 'active'
                     elif response.status_code == 403:
                         with self.logging_lock:
                             logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (GET via redirect)")
                             logging.info(f"URL: {response.url}")
+                            logging.info(f"SOURCE: {source_url}")
                             logging.info("")
                         return True, response.url, 'geo_blocked'
                     # For redirect service errors, try with basic headers
@@ -801,6 +812,7 @@ class M3UCollector:
                                     with self.logging_lock:
                                         logging.info(f"Channel '{channel_name}': ACTIVE (GET via redirect, retry)")
                                         logging.info(f"URL: {retry_response.url}")
+                                        logging.info(f"SOURCE: {source_url}")
                                         logging.info("")
                                     return True, retry_response.url, 'active'
                         except:
@@ -815,12 +827,14 @@ class M3UCollector:
                 with self.logging_lock:
                     logging.info(f"Channel '{channel_name}': ACTIVE (HEAD)")
                     logging.info(f"URL: {url}")
+                    logging.info(f"SOURCE: {source_url}")
                     logging.info("")
                 return True, response.url, 'active'
             elif response.status_code == 403:
                 with self.logging_lock:
                     logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (HEAD)")
                     logging.info(f"URL: {url}")
+                    logging.info(f"SOURCE: {source_url}")
                     logging.info("")
                 return True, url, 'geo_blocked'
         except requests.RequestException:
@@ -833,22 +847,25 @@ class M3UCollector:
                     with self.logging_lock:
                         logging.info(f"Channel '{channel_name}': ACTIVE (GET)")
                         logging.info(f"URL: {url}")
+                        logging.info(f"SOURCE: {source_url}")
                         logging.info("")
                     return True, response.url, 'active'
                 elif response.status_code == 403:
                     with self.logging_lock:
                         logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (GET)")
                         logging.info(f"URL: {url}")
+                        logging.info(f"SOURCE: {source_url}")
                         logging.info("")
                     return True, url, 'geo_blocked'
                 else:
                     with self.logging_lock:
                         logging.info(f"Channel '{channel_name}': (GET) INACTIVE [ERROR_{response.status_code}]")
                         logging.info(f"URL: {url}")
+                        logging.info(f"SOURCE: {source_url}")
                         logging.info("")
                     return False, url, f'http_{response.status_code}'
         except requests.RequestException as e:
-            logging.debug(f"Channel '{channel_name}': Regular validation failed - URL: {url} - Error: {e}")
+            logging.debug(f"Channel '{channel_name}': Regular validation failed - URL: {url} - Source: {source_url} - Error: {e}")
 
         # Try protocol switching as last resort
         try:
@@ -859,18 +876,21 @@ class M3UCollector:
                     with self.logging_lock:
                         logging.info(f"Channel '{channel_name}': ACTIVE (HEAD, switched protocol)")
                         logging.info(f"URL: {alt_url}")
+                        logging.info(f"SOURCE: {source_url}")
                         logging.info("")
                     return True, alt_url, 'active'
                 elif response.status_code == 403:
                     with self.logging_lock:
                         logging.info(f"Channel '{channel_name}': ACTIVE - 403 Forbidden Geo-blocked (HEAD, switched protocol)")
                         logging.info(f"URL: {alt_url}")
+                        logging.info(f"SOURCE: {source_url}")
                         logging.info("")
                     return True, alt_url, 'geo_blocked'
                 else:
                     with self.logging_lock:
                         logging.info(f"Channel '{channel_name}': (HEAD, switched protocol) INACTIVE [ERROR_{response.status_code}]")
                         logging.info(f"URL: {alt_url}")
+                        logging.info(f"SOURCE: {source_url}")
                         logging.info("")
                     return False, alt_url, f'http_{response.status_code}'
         except requests.RequestException:
@@ -880,6 +900,7 @@ class M3UCollector:
         with self.logging_lock:
             logging.info(f"Channel '{channel_name}': All validation methods failed - INACTIVE [CONNECTION_FAILED]")
             logging.info(f"URL: {url}")
+            logging.info(f"SOURCE: {source_url}")
             logging.info("")
         return False, url, 'inactive'
 
@@ -1332,7 +1353,8 @@ class M3UCollector:
             future_to_url = {}
             for url, channels in url_to_channels.items():
                 channel_name = channels[0][1]['name']
-                future = executor.submit(self.check_link_active, url, channel_name)
+                source_url = channels[0][1]['source']
+                future = executor.submit(self.check_link_active, url, channel_name, source_url)
                 future_to_url[future] = url
             
             completed = 0
