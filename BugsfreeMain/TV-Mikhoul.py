@@ -337,7 +337,9 @@ class M3UCollector:
                 # Log only the FIRST occurrence of this pattern
                 if clean_excluded not in self.logged_exclusions:
                     with self.logging_lock:
-                        logging.info(f"\033[93mEXCLUDED GROUP DETECTED: '{clean_group}' (matched pattern: '{clean_excluded}')\033[0m")
+                        # NEW: Enhanced logging to show match type
+                        match_type = "EXACT" if clean_group.lower() == clean_excluded.lower() else "PARTIAL"
+                        logging.info(f"\033[93mEXCLUDED GROUP DETECTED ({match_type}): '{clean_group}' (matched pattern: '{clean_excluded}')\033[0m")
                     self.logged_exclusions.add(clean_excluded)
                 
                 # Update summary data for final report
@@ -350,11 +352,11 @@ class M3UCollector:
                 return True
         
         return False
-        return False
 
     def log_exclusion_summary(self):
         """
         Log a comprehensive summary of all excluded groups with enhanced formatting.
+        Highlights non-exact matches to identify potential unintended exclusions.
         """
         if not self.excluded_groups_summary:
             return
@@ -363,6 +365,16 @@ class M3UCollector:
         unique_patterns = len(self.logged_exclusions)
         unique_groups = len(self.excluded_groups_summary)
         
+        # NEW: Identify non-exact matches
+        non_exact_matches = []
+        exact_matches = []
+        
+        for group_name, info in self.excluded_groups_summary.items():
+            if group_name.lower().strip() != info['pattern'].lower().strip():
+                non_exact_matches.append((group_name, info))
+            else:
+                exact_matches.append((group_name, info))
+        
         with self.logging_lock:
             logging.info(f"\033[96m{'='*80}\033[0m")
             logging.info(f"\033[1m\033[96mEXCLUSION SUMMARY REPORT\033[0m")
@@ -370,27 +382,58 @@ class M3UCollector:
             logging.info(f"\033[93mTotal excluded channels: {total_excluded}\033[0m")
             logging.info(f"\033[93mUnique excluded patterns: {unique_patterns}\033[0m")
             logging.info(f"\033[93mUnique excluded groups: {unique_groups}\033[0m")
+            logging.info(f"\033[93mExact matches: {len(exact_matches)}\033[0m")
+            logging.info(f"\033[91mNon-exact matches: {len(non_exact_matches)}\033[0m")
             logging.info(f"\033[96m{'-'*80}\033[0m")
             
-            # Sort by count (most excluded first)
-            sorted_groups = sorted(
-                self.excluded_groups_summary.items(), 
-                key=lambda x: x[1]['count'], 
-                reverse=True
-            )
-            
-            for group_name, info in sorted_groups:
-                sources_list = list(info['sources'])
-                sources_display = sources_list[0] if len(sources_list) == 1 else f"{sources_list[0]} (+{len(sources_list)-1} more)"
+            # NEW: Show non-exact matches first (potential unintended exclusions)
+            if non_exact_matches:
+                logging.info(f"\033[1m\033[91m⚠️  NON-EXACT MATCHES (Potential Unintended Exclusions)\033[0m")
+                logging.info(f"\033[96m{'-'*80}\033[0m")
                 
-                logging.info(f"\033[91m• Group:\033[0m '{group_name}'")
-                logging.info(f"  \033[95mPattern:\033[0m '{info['pattern']}'")
-                logging.info(f"  \033[92mExcluded:\033[0m {info['count']} channels")
-                logging.info(f"  \033[94mSources:\033[0m {sources_display}")
-                logging.info(f"  \033[90mFirst seen:\033[0m {info['first_seen']}")
-                logging.info("")
+                # Sort non-exact matches by count (most excluded first)
+                sorted_non_exact = sorted(non_exact_matches, key=lambda x: x[1]['count'], reverse=True)
+                
+                for group_name, info in sorted_non_exact:
+                    sources_list = list(info['sources'])
+                    sources_display = sources_list[0] if len(sources_list) == 1 else f"{sources_list[0]} (+{len(sources_list)-1} more)"
+                    
+                    logging.info(f"\033[91m• Group:\033[0m '{group_name}'")
+                    logging.info(f"  \033[93m⚠️  Matched Pattern:\033[0m '{info['pattern']}'")
+                    logging.info(f"  \033[95mMatch Type:\033[0m Partial/Substring match")
+                    logging.info(f"  \033[92mExcluded:\033[0m {info['count']} channels")
+                    logging.info(f"  \033[94mSources:\033[0m {sources_display}")
+                    logging.info(f"  \033[90mFirst seen:\033[0m {info['first_seen']}")
+                    logging.info("")
+            
+            # Show exact matches
+            if exact_matches:
+                logging.info(f"\033[1m\033[92m✓ EXACT MATCHES (Intended Exclusions)\033[0m")
+                logging.info(f"\033[96m{'-'*80}\033[0m")
+                
+                # Sort exact matches by count (most excluded first)
+                sorted_exact = sorted(exact_matches, key=lambda x: x[1]['count'], reverse=True)
+                
+                for group_name, info in sorted_exact:
+                    sources_list = list(info['sources'])
+                    sources_display = sources_list[0] if len(sources_list) == 1 else f"{sources_list[0]} (+{len(sources_list)-1} more)"
+                    
+                    logging.info(f"\033[91m• Group:\033[0m '{group_name}'")
+                    logging.info(f"  \033[95mPattern:\033[0m '{info['pattern']}'")
+                    logging.info(f"  \033[92mExcluded:\033[0m {info['count']} channels")
+                    logging.info(f"  \033[94mSources:\033[0m {sources_display}")
+                    logging.info(f"  \033[90mFirst seen:\033[0m {info['first_seen']}")
+                    logging.info("")
             
             logging.info(f"\033[96m{'='*80}\033[0m")
+            
+            # NEW: Summary recommendations
+            if non_exact_matches:
+                logging.info(f"\033[1m\033[93m💡 RECOMMENDATIONS:\033[0m")
+                logging.info(f"\033[93m• Review {len(non_exact_matches)} non-exact matches above\033[0m")
+                logging.info(f"\033[93m• Consider making exclusion patterns more specific\033[0m")
+                logging.info(f"\033[93m• Or add these groups to exclusions if intended\033[0m")
+                logging.info(f"\033[96m{'='*80}\033[0m")
 
     def is_redirect_service(self, url):
         """
