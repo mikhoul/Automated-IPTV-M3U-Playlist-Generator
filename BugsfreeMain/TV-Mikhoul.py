@@ -39,7 +39,7 @@ class ValidationColorFormatter(logging.Formatter):
     INACTIVE_RED = "\x1b[38;5;203m"  # Single consistent red for INACTIVE
     LIGHT_GRAY = "\x1b[38;5;255m"   # Light gray for stream URLs
     LIGHT_ORANGE = "\x1b[38;5;214m"  # Consistent light orange for geo-blocking
-    PALE_YELLOW = "\x1b[38;5;230m"   # NEW: Very pale yellow for source URLs
+    PALE_YELLOW = "\x1b[38;5;226m"   # Brighter yellow for source URLs
     
     # Map log levels to colors (not used anymore since we remove INFO/WARNING prefixes)
     LEVEL_COLORS = {
@@ -104,10 +104,6 @@ class ValidationColorFormatter(logging.Formatter):
         'Bad Gateway': INACTIVE_RED,
         'Service Unavailable': INACTIVE_RED,
         
-        # URL prefixes (colors applied to the prefix, URLs handled separately)
-        'URL:': LIGHT_GRAY,
-        'SOURCE:': PALE_YELLOW,
-        
         # Processing stages
         'PHASE 1 COMPLETE': BOLD + GREEN,
         'Processing complete': BOLD + GREEN,
@@ -129,14 +125,14 @@ class ValidationColorFormatter(logging.Formatter):
         import re
         
         # Color source URLs with pale yellow (must come first to avoid overlap)
-        source_pattern = r'SOURCE:\s*(https?://[^\s]+)'
-        message = re.sub(source_pattern, f'SOURCE: {self.PALE_YELLOW}\\1{self.RESET}', message)
+        source_pattern = r'(SOURCE:)\s*(https?://[^\s]+)'
+        message = re.sub(source_pattern, f'{self.PALE_YELLOW}\\1 \\2{self.RESET}', message)
         
         # Color stream URLs with light gray
-        stream_pattern = r'URL:\s*(https?://[^\s]+)'
-        message = re.sub(stream_pattern, f'URL: {self.LIGHT_GRAY}\\1{self.RESET}', message)
+        stream_pattern = r'(URL:)\s*(https?://[^\s]+)'
+        message = re.sub(stream_pattern, f'{self.LIGHT_GRAY}\\1 \\2{self.RESET}', message)
         
-        # Apply keyword coloring with proper ordering
+        # Apply keyword coloring with proper ordering (REMOVE SOURCE: and URL: from keywords)
         sorted_keywords = []
         
         # First, add all INACTIVE-related keywords
@@ -144,17 +140,17 @@ class ValidationColorFormatter(logging.Formatter):
                            if 'INACTIVE' in k.upper() or 'OFFLINE' in k.upper()]
         sorted_keywords.extend(sorted(inactive_keywords, key=lambda x: len(x[0]), reverse=True))
         
-        # Then add all other keywords except ACTIVE-only ones
+        # Then add all other keywords except ACTIVE-only ones and URL prefixes
         other_keywords = [(k, v) for k, v in self.KEYWORD_COLORS.items()
                          if 'INACTIVE' not in k.upper() and 'OFFLINE' not in k.upper()
-                         and k != 'ACTIVE' and k not in ['URL:', 'SOURCE:']]  # Skip URL prefixes
+                         and k != 'ACTIVE' and k not in ['URL:', 'SOURCE:']]  # REMOVE URL prefixes
         sorted_keywords.extend(sorted(other_keywords, key=lambda x: len(x[0]), reverse=True))
         
         # Finally add ACTIVE to avoid overlap with INACTIVE
         if 'ACTIVE' in self.KEYWORD_COLORS:
             sorted_keywords.append(('ACTIVE', self.KEYWORD_COLORS['ACTIVE']))
         
-        # Apply coloring with word boundary protection (skip URL prefixes as they're handled above)
+        # Apply coloring with word boundary protection (URL prefixes already handled above)
         for keyword, color_code in sorted_keywords:
             if keyword in message:
                 if len(keyword.split()) == 1 and keyword.isalpha():
