@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-13 01:29:25
+Generated: 2025-07-13 01:49:58
 ============================================================
 
 PROCESSING STATISTICS
@@ -8,20 +8,20 @@ PROCESSING STATISTICS
 Total Lines Processed: 7597
 Total Channels Found: 1232
 Parsing Errors: 0
-Urls Validated: 1029
-Active Urls: 915
+Urls Validated: 1025
+Active Urls: 908
 Geo Blocked Urls: 143
-Validation Time: 73.95750260353088
-Inactive By Error: {'inactive': 35, 'http_404': 49, 'http_502': 1, 'http_400': 5, 'invalid_content': 13, 'http_504': 5, 'http_503': 3, 'http_500': 3}
-Total Processing Time: 82.99481344223022
-Final Channel Count: 915
+Validation Time: 72.10244345664978
+Inactive By Error: {'inactive': 35, 'http_404': 49, 'http_502': 1, 'http_400': 5, 'invalid_content': 13, 'http_504': 5, 'http_503': 3, 'http_500': 6}
+Total Processing Time: 81.81563520431519
+Final Channel Count: 908
 Source Urls Processed: 8
 
 CHANNEL DISTRIBUTION
 --------------------
-4. |FR|🇫🇷 RÉGIONS & LOCALES: 112 channels
+4. |FR|🇫🇷 RÉGIONS & LOCALES: 110 channels
 Uncategorized: 77 channels
-3. |FR|🇫🇷 SOCIÉTÉ: 66 channels
+3. |FR|🇫🇷 SOCIÉTÉ: 65 channels
 Sports: 54 channels
 Music: 47 channels
 1. |FR|🇫🇷 INFORMATION: 39 channels
@@ -34,7 +34,6 @@ Divertissement: 20 channels
 Actualités: 19 channels
 100% Français: 16 channels
 Documentaires: 15 channels
-FRANCE: 14 channels
 Kids: 12 channels
 Musique: 12 channels
 Lifestyle: 12 channels
@@ -44,6 +43,7 @@ Séries TV: 11 channels
 Emissions cultes: 10 channels
 Séries: 10 channels
 Crime & Mystère: 10 channels
+FRANCE: 10 channels
 Movies: 9 channels
 TV Réalité: 9 channels
 Food & Home: 9 channels
@@ -75,14 +75,14 @@ Anime: 2 channels
 Télé réalité: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 Drama TV: 2 channels
-International: 2 channels
 Hit TV, True Crime: 2 channels
-True Crime: 2 channels
+International: 2 channels
 Reality: 2 channels
+True Crime: 2 channels
 Educatif: 1 channels
+Réréalité: 1 channels
 Comedie: 1 channels
 Film: 1 channels
-Réréalité: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
@@ -94,8 +94,8 @@ Fight: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 News, En Español: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 Movies, Chills & Thrills: 1 channels
 
 CONFIGURATION
