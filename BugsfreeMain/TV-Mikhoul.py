@@ -197,8 +197,14 @@ def setup_colored_logging():
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(formatter)
     
-    # Add handler to logger
+    # Create file handler to save logs
+    log_file = os.path.join(os.path.dirname(__file__), 'execution.log')
+    file_handler = logging.FileHandler(log_file, mode='w')
+    file_handler.setFormatter(formatter) # Use the same formatter to see color codes
+    
+    # Add handlers to logger
     logger.addHandler(console_handler)
+    logger.addHandler(file_handler)
     logger.setLevel(logging.INFO)
     
     return logger
