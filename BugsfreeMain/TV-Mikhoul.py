@@ -120,34 +120,30 @@ class ValidationColorFormatter(logging.Formatter):
     def format(self, record):
         message = super().format(record)
         import re
-
-        # <<< START OF FIX: Placeholder Method >>>
-
-        # --- Step 1: Protect URLs by replacing them with placeholders ---
-        placeholders = {}
         
-        def protect_url(match):
-            # Create a unique placeholder key
-            key = f"__URL_PLACEHOLDER_{len(placeholders)}__"
-            # Store the original matched text (e.g., "SOURCE: http://...")
-            placeholders[key] = match.group(0)
-            return key
-
-        # This regex finds both "URL: ..." and "SOURCE: ..." lines
-        url_pattern = r'(?:URL:|SOURCE:)\s*https?://[^\s]+'
-        message = re.sub(url_pattern, protect_url, message)
-
-        # --- Step 2: Apply general keyword coloring to the "safe" message ---
-        # The message now contains placeholders, so keywords inside URLs won't be touched.
+        # Step 1: Process SOURCE URLs FIRST (pale yellow)
+        message = re.sub(
+            r'(SOURCE:)\s*(https?://[^\s]+)',
+            lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.PALE_YELLOW}{m.group(2)}{self.RESET}',
+            message
+        )
+        
+        # Step 2: Process regular URLs (light gray)
+        message = re.sub(
+            r'(URL:)\s*(https?://[^\s]+)',
+            lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.LIGHT_GRAY}{m.group(2)}{self.RESET}',
+            message
+        )
+        
+        # Step 3: Process keywords (excluding URL: and SOURCE:)
         sorted_keywords = []
-        
         inactive_keywords = [(k, v) for k, v in self.KEYWORD_COLORS.items()
-                           if 'INACTIVE' in k.upper() or 'OFFLINE' in k.upper()]
+                            if 'INACTIVE' in k.upper() or 'OFFLINE' in k.upper()]
         sorted_keywords.extend(sorted(inactive_keywords, key=lambda x: len(x[0]), reverse=True))
         
         other_keywords = [(k, v) for k, v in self.KEYWORD_COLORS.items()
                          if 'INACTIVE' not in k.upper() and 'OFFLINE' not in k.upper()
-                         and k != 'ACTIVE' and k not in ['URL:', 'SOURCE:']]
+                         and k != 'ACTIVE']
         sorted_keywords.extend(sorted(other_keywords, key=lambda x: len(x[0]), reverse=True))
         
         if 'ACTIVE' in self.KEYWORD_COLORS:
@@ -162,26 +158,6 @@ class ValidationColorFormatter(logging.Formatter):
                 else:
                     colored_keyword = f"{color_code}{keyword}{self.RESET}"
                     message = message.replace(keyword, colored_keyword)
-
-        # --- Step 3: Color the stored URLs and restore them ---
-        for key, original_text in placeholders.items():
-            colored_url_text = original_text
-            if original_text.startswith("SOURCE:"):
-                colored_url_text = re.sub(
-                    r'(SOURCE:)\s*(https?://[^\s]+)',
-                    lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.PALE_YELLOW}{m.group(2)}{self.RESET}',
-                    original_text
-                )
-            elif original_text.startswith("URL:"):
-                colored_url_text = re.sub(
-                    r'(URL:)\s*(https?://[^\s]+)',
-                    lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.LIGHT_GRAY}{m.group(2)}{self.RESET}',
-                    original_text
-                )
-            # Replace the placeholder with the fully colored URL string
-            message = message.replace(key, colored_url_text)
-
-        # <<< END OF FIX >>>
         
         return message
 
