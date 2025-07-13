@@ -1071,6 +1071,32 @@ class M3UCollector:
         if cuisine_lines > 0 or zeste_lines > 0:
             logging.info(f"Content detection - CUISINE: {cuisine_lines} | ZESTE: {zeste_lines}")
     
+    def fix_encoding_issues(self, text):
+        """
+        Fix common UTF-8 encoding issues where text is misinterpreted as Latin-1.
+        
+        Args:
+            text (str): Text that may have encoding issues
+            
+        Returns:
+            str: Text with encoding issues fixed
+        """
+        if not text:
+            return text
+        
+        try:
+            # Check if text contains the classic UTF-8 -> Latin-1 misinterpretation patterns
+            if 'Ã©' in text or 'Ã¨' in text or 'Ã' in text:
+                # Try to fix by encoding as Latin-1 then decoding as UTF-8
+                fixed_text = text.encode('latin-1').decode('utf-8')
+                return fixed_text
+            else:
+                # No encoding issues detected, return as-is
+                return text
+        except (UnicodeDecodeError, UnicodeEncodeError):
+            # If fixing fails, return original text
+            return text
+
     def parse_and_store(self, lines, source_url, metadata=None):
         """
         Parse M3U playlist content and store channel information with comprehensive processing.
@@ -1127,8 +1153,7 @@ class M3UCollector:
                     comma_match = re.search(r',(.+)$', line)
                     if comma_match:
                         raw_name = comma_match.group(1).strip()
-                        # NEW: Apply HTML entity decoding to channel name (same as group-title)
-                        name = html.unescape(raw_name)
+                        name = self.fix_encoding_issues(raw_name)
                     
                     quality, resolution = self.extract_quality_info(name)
                     language = self.detect_content_language(name)
