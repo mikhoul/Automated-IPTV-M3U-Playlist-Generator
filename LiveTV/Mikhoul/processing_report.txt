@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-13 19:49:51
+Generated: 2025-07-13 20:00:41
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,17 +9,17 @@ Total Lines Processed: 7597
 Total Channels Found: 1232
 Parsing Errors: 0
 Urls Validated: 1025
-Active Urls: 909
+Active Urls: 911
 Geo Blocked Urls: 143
-Validation Time: 71.32232642173767
-Inactive By Error: {'inactive': 35, 'http_502': 1, 'http_404': 49, 'http_400': 5, 'invalid_content': 13, 'http_504': 5, 'http_503': 3, 'http_500': 5}
-Total Processing Time: 80.5800268650055
-Final Channel Count: 909
+Validation Time: 76.05102610588074
+Inactive By Error: {'inactive': 35, 'http_502': 1, 'http_404': 50, 'http_400': 5, 'invalid_content': 13, 'http_504': 5, 'http_503': 3, 'http_500': 2}
+Total Processing Time: 86.75838017463684
+Final Channel Count: 911
 Source Urls Processed: 8
 
 CHANNEL DISTRIBUTION
 --------------------
-4. |FR|🇫🇷 RÉGIONS & LOCALES: 110 channels
+4. |FR|🇫🇷 RÉGIONS & LOCALES: 113 channels
 Uncategorized: 77 channels
 3. |FR|🇫🇷 SOCIÉTÉ: 66 channels
 Sports: 54 channels
@@ -80,8 +80,8 @@ Hit TV, True Crime: 2 channels
 Reality: 2 channels
 True Crime: 2 channels
 Educatif: 1 channels
-Film: 1 channels
 Réréalité: 1 channels
+Film: 1 channels
 Comedie: 1 channels
 Cuisine: 1 channels
 Thématique: 1 channels
@@ -89,7 +89,6 @@ Quebec TV: 1 channels
 Movies;Series: 1 channels
 Documentary;Education;Science: 1 channels
 Shop: 1 channels
-Weather: 1 channels
 Fight: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
