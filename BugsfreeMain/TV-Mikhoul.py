@@ -1,3 +1,5 @@
+
+
 import requests
 import json
 import os
@@ -119,23 +121,32 @@ class ValidationColorFormatter(logging.Formatter):
     
     def format(self, record):
         message = super().format(record)
-        import re
+        # Using a dictionary for placeholders is cleaner and more scalable
+        placeholders = {}
+
+        # --- STEP 1: Find and color special lines (URLs), replacing them with placeholders ---
         
-        # Step 1: Process SOURCE URLs FIRST (pale yellow)
-        message = re.sub(
-            r'(SOURCE:)\s*(https?://[^\s]+)',
-            lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.PALE_YELLOW}{m.group(2)}{self.RESET}',
-            message
-        )
+        # Process SOURCE URLs (pale yellow)
+        def source_replacer(m):
+            placeholder = f"__SOURCE_URL_{len(placeholders)}__"
+            colored_string = f'{self.WHITE}{m.group(1)}{self.RESET} {self.PALE_YELLOW}{m.group(2)}{self.RESET}'
+            placeholders[placeholder] = colored_string
+            return placeholder
         
-        # Step 2: Process regular URLs (light gray)
-        message = re.sub(
-            r'(URL:)\s*(https?://[^\s]+)',
-            lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.LIGHT_GRAY}{m.group(2)}{self.RESET}',
-            message
-        )
+        message = re.sub(r'(SOURCE:)\s*(https?://[^\s]+)', source_replacer, message)
+
+        # Process regular URLs (light gray)
+        def url_replacer(m):
+            placeholder = f"__URL_{len(placeholders)}__"
+            colored_string = f'{self.WHITE}{m.group(1)}{self.RESET} {self.LIGHT_GRAY}{m.group(2)}{self.RESET}'
+            placeholders[placeholder] = colored_string
+            return placeholder
+
+        message = re.sub(r'(URL:)\s*(https?://[^\s]+)', url_replacer, message)
+
+        # --- STEP 2: Now, color all the keywords in the remaining message ---
+        # The message is now safe to modify, as the complex colored URLs are protected by placeholders.
         
-        # Step 3: Process keywords (excluding URL: and SOURCE:)
         sorted_keywords = []
         inactive_keywords = [(k, v) for k, v in self.KEYWORD_COLORS.items()
                             if 'INACTIVE' in k.upper() or 'OFFLINE' in k.upper()]
@@ -150,15 +161,20 @@ class ValidationColorFormatter(logging.Formatter):
             sorted_keywords.append(('ACTIVE', self.KEYWORD_COLORS['ACTIVE']))
         
         for keyword, color_code in sorted_keywords:
-            if keyword in message:
-                if len(keyword.split()) == 1 and keyword.isalpha():
-                    pattern = r'\b' + re.escape(keyword) + r'\b'
-                    colored_keyword = f"{color_code}{keyword}{self.RESET}"
-                    message = re.sub(pattern, colored_keyword, message)
-                else:
-                    colored_keyword = f"{color_code}{keyword}{self.RESET}"
-                    message = message.replace(keyword, colored_keyword)
-        
+            # Use word boundaries for single alpha words to avoid partial matches (e.g., 'in' in 'inactive')
+            if keyword.isalpha() and ' ' not in keyword:
+                pattern = r'\b' + re.escape(keyword) + r'\b'
+                colored_keyword = f"{color_code}{keyword}{self.RESET}"
+                message = re.sub(pattern, colored_keyword, message)
+            # Use simple replace for multi-word phrases or those with symbols
+            elif keyword in message:
+                colored_keyword = f"{color_code}{keyword}{self.RESET}"
+                message = message.replace(keyword, colored_keyword)
+
+        # --- STEP 3: Finally, substitute the placeholders back in ---
+        for placeholder, colored_string in placeholders.items():
+            message = message.replace(placeholder, colored_string)
+            
         return message
 
 def setup_colored_logging():
