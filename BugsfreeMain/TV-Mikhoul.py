@@ -121,26 +121,38 @@ class ValidationColorFormatter(logging.Formatter):
         message = super().format(record)
         import re
 
-        # ---- 1. Keyword colouring FIRST ----
-        # Apply keyword coloring with proper ordering
+        # <<< START OF FIX: Placeholder Method >>>
+
+        # --- Step 1: Protect URLs by replacing them with placeholders ---
+        placeholders = {}
+        
+        def protect_url(match):
+            # Create a unique placeholder key
+            key = f"__URL_PLACEHOLDER_{len(placeholders)}__"
+            # Store the original matched text (e.g., "SOURCE: http://...")
+            placeholders[key] = match.group(0)
+            return key
+
+        # This regex finds both "URL: ..." and "SOURCE: ..." lines
+        url_pattern = r'(?:URL:|SOURCE:)\s*https?://[^\s]+'
+        message = re.sub(url_pattern, protect_url, message)
+
+        # --- Step 2: Apply general keyword coloring to the "safe" message ---
+        # The message now contains placeholders, so keywords inside URLs won't be touched.
         sorted_keywords = []
         
-        # First, add all INACTIVE-related keywords
         inactive_keywords = [(k, v) for k, v in self.KEYWORD_COLORS.items()
                            if 'INACTIVE' in k.upper() or 'OFFLINE' in k.upper()]
         sorted_keywords.extend(sorted(inactive_keywords, key=lambda x: len(x[0]), reverse=True))
         
-        # Then add all other keywords except ACTIVE-only ones and URL prefixes
         other_keywords = [(k, v) for k, v in self.KEYWORD_COLORS.items()
                          if 'INACTIVE' not in k.upper() and 'OFFLINE' not in k.upper()
                          and k != 'ACTIVE' and k not in ['URL:', 'SOURCE:']]
         sorted_keywords.extend(sorted(other_keywords, key=lambda x: len(x[0]), reverse=True))
         
-        # Finally add ACTIVE to avoid overlap with INACTIVE
         if 'ACTIVE' in self.KEYWORD_COLORS:
             sorted_keywords.append(('ACTIVE', self.KEYWORD_COLORS['ACTIVE']))
         
-        # Apply coloring with word boundary protection
         for keyword, color_code in sorted_keywords:
             if keyword in message:
                 if len(keyword.split()) == 1 and keyword.isalpha():
@@ -151,24 +163,25 @@ class ValidationColorFormatter(logging.Formatter):
                     colored_keyword = f"{color_code}{keyword}{self.RESET}"
                     message = message.replace(keyword, colored_keyword)
 
-        # ---- 2. URL colouring AFTER ----
-        # This is now safe because the keywords have already been colored.
-        
-        # Stream URL (light gray)
-        message = re.sub(
-            r'(URL:)\s*(https?://[^\s]+)',
-            lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.LIGHT_GRAY}{m.group(2)}{self.RESET}',
-            message,
-            flags=re.MULTILINE,
-        )
+        # --- Step 3: Color the stored URLs and restore them ---
+        for key, original_text in placeholders.items():
+            colored_url_text = original_text
+            if original_text.startswith("SOURCE:"):
+                colored_url_text = re.sub(
+                    r'(SOURCE:)\s*(https?://[^\s]+)',
+                    lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.PALE_YELLOW}{m.group(2)}{self.RESET}',
+                    original_text
+                )
+            elif original_text.startswith("URL:"):
+                colored_url_text = re.sub(
+                    r'(URL:)\s*(https?://[^\s]+)',
+                    lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.LIGHT_GRAY}{m.group(2)}{self.RESET}',
+                    original_text
+                )
+            # Replace the placeholder with the fully colored URL string
+            message = message.replace(key, colored_url_text)
 
-        # Source URL (pale yellow)
-        message = re.sub(
-            r'(SOURCE:)\s*(https?://[^\s]+)',
-            lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.PALE_YELLOW}{m.group(2)}{self.RESET}',
-            message,
-            flags=re.MULTILINE,
-        )
+        # <<< END OF FIX >>>
         
         return message
 
@@ -409,7 +422,6 @@ class M3UCollector:
                     
                     logging.info(f"\033[91m• Group:\033[0m '{group_name}'")
                     logging.info(f"  \033[93m⚠️  Matched Pattern:\033[0m '{info['pattern']}'")
-                    # <<< TYPO FIX: Changed \d to \033 >>>
                     logging.info(f"  \033[95mMatch Type:\033[0m Partial/Substring match")
                     logging.info(f"  \033[92mExcluded:\033[0m {info['count']} channels")
                     logging.info(f"  \033[94mSources:\033[0m {sources_display}")
