@@ -128,11 +128,7 @@ class ValidationColorFormatter(logging.Formatter):
         )
         message = re.sub(
             source_pattern,
-            lambda m: (
-                f"{m.group(1)}"                          # timestamp + " - "
-                f"{self.WHITE}{m.group(2)}{self.RESET} " # white "SOURCE:"
-                f"{self.PALE_YELLOW}{m.group(3)}{self.RESET}"
-            ),
+            lambda m: f"{m.group(1)}{self.WHITE}{m.group(2)}{self.RESET} {self.PALE_YELLOW}{m.group(3)}{self.RESET}",
             message,
             flags=re.MULTILINE
         )
@@ -144,11 +140,7 @@ class ValidationColorFormatter(logging.Formatter):
         )
         message = re.sub(
             stream_pattern,
-            lambda m: (
-                f"{m.group(1)}"
-                f"{self.WHITE}{m.group(2)}{self.RESET} "
-                f"{self.LIGHT_GRAY}{m.group(3)}{self.RESET}"
-            ),
+            lambda m: f"{m.group(1)}{self.WHITE}{m.group(2)}{self.RESET} {self.LIGHT_GRAY}{m.group(3)}{self.RESET}",
             message,
             flags=re.MULTILINE
         )
