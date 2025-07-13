@@ -90,6 +90,7 @@ class ValidationColorFormatter(logging.Formatter):
         '403 Forbidden': LIGHT_ORANGE,
         
         # Channel processing
+        'SOURCE:': PALE_YELLOW,
         'CUISINE': BOLD + MAGENTA,
         'Cuisine': MAGENTA,
         
@@ -122,20 +123,15 @@ class ValidationColorFormatter(logging.Formatter):
         # Using a dictionary for placeholders is cleaner and more scalable
         placeholders = {}
 
-        # --- STEP 1: Find and color all URLs (Source and Stream) in a single pass ---
-        def url_and_source_replacer(m):
-            prefix = m.group(1)
-            url = m.group(2)
+        # --- STEP 1: Find and color only the stream URLs (light gray), replacing them with placeholders ---
+        def url_replacer(m):
             placeholder = f"__URL_{len(placeholders)}__"
-            
-            # Choose color based on the prefix
-            color = self.PALE_YELLOW if prefix == 'SOURCE:' else self.LIGHT_GRAY
-            colored_string = f'{self.WHITE}{prefix}{self.RESET} {color}{url}{self.RESET}'
+            colored_string = f'{self.WHITE}{m.group(1)}{self.RESET} {self.LIGHT_GRAY}{m.group(2)}{self.RESET}'
             placeholders[placeholder] = colored_string
             return placeholder
 
-        # Use a single regex to find both SOURCE and URL prefixes
-        message = re.sub(r'(SOURCE:|URL:)\s*(https?://[^\s]+)', url_and_source_replacer, message)
+        # This regex now ONLY looks for "URL:", leaving "SOURCE:" to be handled by the keyword colorizer.
+        message = re.sub(r'(URL:)\s*(https?://[^\s]+)', url_replacer, message)
 
         # --- STEP 2: Now, color all the keywords in the remaining message ---
         # The message is now safe to modify, as the complex colored URLs are protected by placeholders.
