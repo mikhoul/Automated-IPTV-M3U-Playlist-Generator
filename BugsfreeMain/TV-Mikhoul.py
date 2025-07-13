@@ -152,17 +152,18 @@ class ValidationColorFormatter(logging.Formatter):
                     message = message.replace(keyword, colored_keyword)
 
         # ---- 2. Final URL colouring pass ----
+        ansi = r'(?:\x1b\[[0-9;]*m)*'  # zero or more ANSI escapes
         # Stream URL (light gray)
         message = re.sub(
-            r'(URL:)\s*(https?://[^\s]+)',
-            lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.LIGHT_GRAY}{m.group(2)}{self.RESET}',
+            rf'(URL:){ansi}\s*{ansi}(https?://[^\s]+)',
+            lambda m: f'{self.WHITE}URL:{self.RESET} {self.LIGHT_GRAY}{m.group(2)}{self.RESET}',
             message,
             flags=re.MULTILINE,
         )
         # Source URL (pale yellow)
         message = re.sub(
-            r'(SOURCE:)\s*(https?://[^\s]+)',
-            lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.PALE_YELLOW}{m.group(2)}{self.RESET}',
+            rf'(SOURCE:){ansi}\s*{ansi}(https?://[^\s]+)',
+            lambda m: f'{self.WHITE}SOURCE:{self.RESET} {self.PALE_YELLOW}{m.group(2)}{self.RESET}',
             message,
             flags=re.MULTILINE,
         )
