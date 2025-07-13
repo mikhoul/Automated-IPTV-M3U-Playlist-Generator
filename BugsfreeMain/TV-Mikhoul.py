@@ -121,17 +121,23 @@ class ValidationColorFormatter(logging.Formatter):
         # Get the formatted message without level name coloring
         message = super().format(record)
         
-        # ENHANCED: Color different types of URLs with different colors
+        # ENHANCED: More specific patterns to prevent overlap
         import re
         
-        # Color source URLs - WHITE label, PALE YELLOW URL
-        source_pattern = r'(SOURCE:)\s*(https?://[^\s]+)'
-        message = re.sub(source_pattern, f'{self.WHITE}\\1{self.RESET} {self.PALE_YELLOW}\\2{self.RESET}', message)
+        # Color source URLs - Only match lines that start with SOURCE:
+        source_pattern = r'^(.*SOURCE:)\s*(https?://[^\s]+)(.*)$'
+        message = re.sub(source_pattern, f'\\1 {self.PALE_YELLOW}\\2{self.RESET}\\3', message, flags=re.MULTILINE)
         
-        # Color stream URLs - WHITE label, LIGHT GRAY URL
-        stream_pattern = r'(URL:)\s*(https?://[^\s]+)'
-        message = re.sub(stream_pattern, f'{self.WHITE}\\1{self.RESET} {self.LIGHT_GRAY}\\2{self.RESET}', message)
+        # Color stream URLs - Only match lines that start with URL:
+        stream_pattern = r'^(.*URL:)\s*(https?://[^\s]+)(.*)$'
+        message = re.sub(stream_pattern, f'\\1 {self.LIGHT_GRAY}\\2{self.RESET}\\3', message, flags=re.MULTILINE)
         
+        # Color the labels separately
+        message = re.sub(r'(SOURCE:)', f'{self.WHITE}\\1{self.RESET}', message)
+        message = re.sub(r'(URL:)', f'{self.WHITE}\\1{self.RESET}', message)
+        
+        # Apply keyword coloring (rest of existing logic)
+        # ... existing keyword processing code ...
         # Apply keyword coloring with proper ordering (URL prefixes already handled above)
         sorted_keywords = []
         
