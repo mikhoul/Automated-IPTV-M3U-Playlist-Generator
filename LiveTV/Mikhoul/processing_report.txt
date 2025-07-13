@@ -1,6 +1,10 @@
 M3U Collector Processing Report
 Country: Mikhoul
+<<<<<<< HEAD
 Generated: 2025-07-12 22:07:56
+=======
+Generated: 2025-07-13 01:49:58
+>>>>>>> de25124069177950259ca89f29ea61906c3469c9
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,12 +13,21 @@ Total Lines Processed: 7597
 Total Channels Found: 1232
 Parsing Errors: 0
 Urls Validated: 1025
+<<<<<<< HEAD
 Active Urls: 894
 Geo Blocked Urls: 91
 Validation Time: 78.95411324501038
 Inactive By Error: {'http_502': 1, 'http_400': 18, 'inactive': 35, 'http_404': 50, 'invalid_content': 13, 'http_504': 5, 'http_503': 3, 'http_500': 6}
 Total Processing Time: 96.48883080482483
 Final Channel Count: 894
+=======
+Active Urls: 908
+Geo Blocked Urls: 143
+Validation Time: 72.10244345664978
+Inactive By Error: {'inactive': 35, 'http_404': 49, 'http_502': 1, 'http_400': 5, 'invalid_content': 13, 'http_504': 5, 'http_503': 3, 'http_500': 6}
+Total Processing Time: 81.81563520431519
+Final Channel Count: 908
+>>>>>>> de25124069177950259ca89f29ea61906c3469c9
 Source Urls Processed: 8
 
 CHANNEL DISTRIBUTION
@@ -80,9 +93,15 @@ International: 2 channels
 Reality: 2 channels
 True Crime: 2 channels
 Educatif: 1 channels
+<<<<<<< HEAD
 Film: 1 channels
 Réréalité: 1 channels
 Comedie: 1 channels
+=======
+Réréalité: 1 channels
+Comedie: 1 channels
+Film: 1 channels
+>>>>>>> de25124069177950259ca89f29ea61906c3469c9
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
@@ -94,6 +113,10 @@ Fight: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 News, En Español: 1 channels
+<<<<<<< HEAD
+=======
+Drama TV, Movies: 1 channels
+>>>>>>> de25124069177950259ca89f29ea61906c3469c9
 Hit TV, Game Shows: 1 channels
 Movies, Chills & Thrills: 1 channels
 Drama TV, Movies: 1 channels

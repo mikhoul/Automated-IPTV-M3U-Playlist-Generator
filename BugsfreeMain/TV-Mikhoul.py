@@ -1636,7 +1636,7 @@ class M3UCollector:
         return filepath
     
     def export_all_formats(self):
-        """Export channels to all supported formats."""
+        """Export channels to all supported formats"""
         exported_files = []
         
         export_methods = [
