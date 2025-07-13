@@ -118,26 +118,41 @@ class ValidationColorFormatter(logging.Formatter):
         super().__init__(fmt, datefmt)
     
     def format(self, record):
-        # Get the formatted message without level name coloring
         message = super().format(record)
-        
-        # ENHANCED: More specific patterns to prevent overlap
         import re
-        
-        # Color source URLs - Only match lines that start with SOURCE:
-        source_pattern = r'^(.*SOURCE:)\s*(https?://[^\s]+)(.*)$'
-        message = re.sub(source_pattern, f'\\1 {self.PALE_YELLOW}\\2{self.RESET}\\3', message, flags=re.MULTILINE)
-        
-        # Color stream URLs - Only match lines that start with URL:
-        stream_pattern = r'^(.*URL:)\s*(https?://[^\s]+)(.*)$'
-        message = re.sub(stream_pattern, f'\\1 {self.LIGHT_GRAY}\\2{self.RESET}\\3', message, flags=re.MULTILINE)
-        
-        # Color the labels separately
-        message = re.sub(r'(SOURCE:)', f'{self.WHITE}\\1{self.RESET}', message)
-        message = re.sub(r'(URL:)', f'{self.WHITE}\\1{self.RESET}', message)
-        
-        # Apply keyword coloring (rest of existing logic)
-        # ... existing keyword processing code ...
+
+        # 1. Color SOURCE URLs: match timestamp, separator, and "SOURCE:"
+        source_pattern = (
+            r'^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3} - )'
+            r'(SOURCE:)\s*(https?://[^\s]+)'
+        )
+        message = re.sub(
+            source_pattern,
+            lambda m: (
+                f"{m.group(1)}"                          # timestamp + " - "
+                f"{self.WHITE}{m.group(2)}{self.RESET} " # white "SOURCE:"
+                f"{self.PALE_YELLOW}{m.group(3)}{self.RESET}"
+            ),
+            message,
+            flags=re.MULTILINE
+        )
+
+        # 2. Color stream URLs: match timestamp, separator, and "URL:"
+        stream_pattern = (
+            r'^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3} - )'
+            r'(URL:)\s*(https?://[^\s]+)'
+        )
+        message = re.sub(
+            stream_pattern,
+            lambda m: (
+                f"{m.group(1)}"
+                f"{self.WHITE}{m.group(2)}{self.RESET} "
+                f"{self.LIGHT_GRAY}{m.group(3)}{self.RESET}"
+            ),
+            message,
+            flags=re.MULTILINE
+        )
+
         # Apply keyword coloring with proper ordering (URL prefixes already handled above)
         sorted_keywords = []
         
