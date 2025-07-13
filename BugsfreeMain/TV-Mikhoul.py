@@ -516,6 +516,7 @@ class M3UCollector:
                     response.raise_for_status()
                     
                     # Get content with proper encoding detection
+                    response.encoding = response.encoding or 'utf-8'
                     content = response.text
                     lines = content.splitlines()
                     
@@ -1125,7 +1126,9 @@ class M3UCollector:
                     name = "Unnamed Channel"
                     comma_match = re.search(r',(.+)$', line)
                     if comma_match:
-                        name = comma_match.group(1).strip()
+                        raw_name = comma_match.group(1).strip()
+                        # NEW: Apply HTML entity decoding to channel name (same as group-title)
+                        name = html.unescape(raw_name)
                     
                     quality, resolution = self.extract_quality_info(name)
                     language = self.detect_content_language(name)
