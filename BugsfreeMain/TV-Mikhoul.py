@@ -257,7 +257,16 @@ class M3UCollector:
         
         # Keep it simple - just store the original list
         self.excluded_groups = excluded_groups or []
-
+    
+        # NEW: Track exclusion logging and collect summary data
+        self.logged_exclusions = set()  # Track which patterns have been logged
+        self.excluded_groups_summary = defaultdict(lambda: {
+            'count': 0, 
+            'pattern': '', 
+            'sources': set(),
+            'first_seen': None
+        })
+        
         self.config = config or {}
         
         # Data storage
@@ -301,12 +310,14 @@ class M3UCollector:
         self.channels_processed = 0
         self.urls_validated = 0
 
-    def should_exclude_group(self, group_name):
+    def should_exclude_group(self, group_name, source_url="Unknown"):
         """
-        Simple and efficient group exclusion check with logging.
+        Simple and efficient group exclusion check with optimized logging.
+        Logs only the first occurrence of each pattern and collects summary data.
         
         Args:
             group_name (str): Group name to check
+            source_url (str): Source URL for tracking
             
         Returns:
             bool: True if group should be excluded
@@ -323,12 +334,63 @@ class M3UCollector:
             
             # Simple containment check - if excluded pattern is found in group name
             if clean_excluded.lower() in clean_group.lower():
-                # Log the exclusion immediately
-                with self.logging_lock:
-                    logging.info(f"EXCLUDED GROUP DETECTED: '{clean_group}' (matched pattern: '{clean_excluded}')")
+                # Log only the FIRST occurrence of this pattern
+                if clean_excluded not in self.logged_exclusions:
+                    with self.logging_lock:
+                        logging.info(f"\033[93mEXCLUDED GROUP DETECTED: '{clean_group}' (matched pattern: '{clean_excluded}')\033[0m")
+                    self.logged_exclusions.add(clean_excluded)
+                
+                # Update summary data for final report
+                self.excluded_groups_summary[clean_group]['count'] += 1
+                self.excluded_groups_summary[clean_group]['pattern'] = clean_excluded
+                self.excluded_groups_summary[clean_group]['sources'].add(source_url)
+                if self.excluded_groups_summary[clean_group]['first_seen'] is None:
+                    self.excluded_groups_summary[clean_group]['first_seen'] = datetime.now().strftime('%H:%M:%S')
+                
                 return True
         
         return False
+        return False
+
+    def log_exclusion_summary(self):
+        """
+        Log a comprehensive summary of all excluded groups with enhanced formatting.
+        """
+        if not self.excluded_groups_summary:
+            return
+        
+        total_excluded = sum(info['count'] for info in self.excluded_groups_summary.values())
+        unique_patterns = len(self.logged_exclusions)
+        unique_groups = len(self.excluded_groups_summary)
+        
+        with self.logging_lock:
+            logging.info(f"\033[96m{'='*80}\033[0m")
+            logging.info(f"\033[1m\033[96mEXCLUSION SUMMARY REPORT\033[0m")
+            logging.info(f"\033[96m{'='*80}\033[0m")
+            logging.info(f"\033[93mTotal excluded channels: {total_excluded}\033[0m")
+            logging.info(f"\033[93mUnique excluded patterns: {unique_patterns}\033[0m")
+            logging.info(f"\033[93mUnique excluded groups: {unique_groups}\033[0m")
+            logging.info(f"\033[96m{'-'*80}\033[0m")
+            
+            # Sort by count (most excluded first)
+            sorted_groups = sorted(
+                self.excluded_groups_summary.items(), 
+                key=lambda x: x[1]['count'], 
+                reverse=True
+            )
+            
+            for group_name, info in sorted_groups:
+                sources_list = list(info['sources'])
+                sources_display = sources_list[0] if len(sources_list) == 1 else f"{sources_list[0]} (+{len(sources_list)-1} more)"
+                
+                logging.info(f"\033[91m• Group:\033[0m '{group_name}'")
+                logging.info(f"  \033[95mPattern:\033[0m '{info['pattern']}'")
+                logging.info(f"  \033[92mExcluded:\033[0m {info['count']} channels")
+                logging.info(f"  \033[94mSources:\033[0m {sources_display}")
+                logging.info(f"  \033[90mFirst seen:\033[0m {info['first_seen']}")
+                logging.info("")
+            
+            logging.info(f"\033[96m{'='*80}\033[0m")
 
     def is_redirect_service(self, url):
         """
@@ -1012,7 +1074,7 @@ class M3UCollector:
                     group_occurrences[group] += 1
                     
                     # NEW: Simple and efficient exclusion check with logging
-                    if self.should_exclude_group(group):
+                    if self.should_exclude_group(group, source_url):
                         current_channel = {}
                         continue
                     
@@ -1336,6 +1398,9 @@ class M3UCollector:
             
             logging.info(f"Processing complete: {final_count} final channels in {format_duration(int(processing_time))}")
             logging.info(f"Groups: {', '.join(sorted(self.channels.keys()))}")
+            
+            # NEW: Log exclusion summary
+            self.log_exclusion_summary()
             
             self.statistics['total_processing_time'] = processing_time
             self.statistics['final_channel_count'] = final_count
