@@ -1,6 +1,10 @@
 M3U Collector Processing Report
 Country: Mikhoul
+<<<<<<< HEAD
 Generated: 2025-07-12 20:09:46
+=======
+Generated: 2025-07-13 00:14:10
+>>>>>>> b999e6420bb694ac0733e6d68883a1aee58a5edf
 ============================================================
 
 PROCESSING STATISTICS
@@ -8,6 +12,7 @@ PROCESSING STATISTICS
 Total Lines Processed: 7013
 Total Channels Found: 946
 Parsing Errors: 0
+<<<<<<< HEAD
 Urls Validated: 828
 Active Urls: 700
 Geo Blocked Urls: 87
@@ -15,13 +20,29 @@ Validation Time: 70.45197248458862
 Inactive By Error: {'http_400': 18, 'http_502': 1, 'http_404': 50, 'inactive': 34, 'invalid_content': 13, 'http_504': 5, 'http_503': 3, 'http_500': 4}
 Total Processing Time: 82.43681335449219
 Final Channel Count: 700
+=======
+Urls Validated: 1029
+Active Urls: 913
+Geo Blocked Urls: 143
+Validation Time: 73.63334202766418
+Inactive By Error: {'inactive': 34, 'http_404': 49, 'http_502': 1, 'http_400': 5, 'invalid_content': 13, 'http_504': 5, 'http_503': 3, 'http_500': 6}
+Total Processing Time: 83.49477887153625
+Final Channel Count: 913
+>>>>>>> b999e6420bb694ac0733e6d68883a1aee58a5edf
 Source Urls Processed: 8
 
 CHANNEL DISTRIBUTION
 --------------------
+<<<<<<< HEAD
 4. |FR|🇫🇷 RÉGIONS & LOCALES: 112 channels
 Uncategorized: 99 channels
 3. |FR|🇫🇷 SOCIÉTÉ: 67 channels
+=======
+4. |FR|🇫🇷 RÉGIONS & LOCALES: 110 channels
+Uncategorized: 77 channels
+3. |FR|🇫🇷 SOCIÉTÉ: 65 channels
+Sports: 54 channels
+>>>>>>> b999e6420bb694ac0733e6d68883a1aee58a5edf
 Music: 47 channels
 Sports: 44 channels
 1. |FR|🇫🇷 INFORMATION: 43 channels
@@ -55,19 +76,30 @@ Series: 2 channels
 Kids: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
+<<<<<<< HEAD
+=======
+Drama TV: 2 channels
+>>>>>>> b999e6420bb694ac0733e6d68883a1aee58a5edf
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 True Crime: 2 channels
 Educatif: 1 channels
+<<<<<<< HEAD
 Réréalité: 1 channels
 Film: 1 channels
 Comedie: 1 channels
 Thématique: 1 channels
+=======
+Film: 1 channels
+Réréalité: 1 channels
+Comedie: 1 channels
+>>>>>>> b999e6420bb694ac0733e6d68883a1aee58a5edf
 Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
-Movies;Series: 1 channels
-Shop: 1 channels
 Documentary;Education;Science: 1 channels
+Shop: 1 channels
+Movies;Series: 1 channels
 Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels

@@ -1399,7 +1399,7 @@ class M3UCollector:
             logging.info(f"Processing complete: {final_count} final channels in {format_duration(int(processing_time))}")
             logging.info(f"Groups: {', '.join(sorted(self.channels.keys()))}")
             
-            # NEW: Log exclusion summary.
+            # NEW: Log exclusion summary
             self.log_exclusion_summary()
             
             self.statistics['total_processing_time'] = processing_time
