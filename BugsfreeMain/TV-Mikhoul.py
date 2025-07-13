@@ -1,5 +1,3 @@
---- START OF FILE TV-Mikhoul.py ---
-
 import requests
 import json
 import os
@@ -123,9 +121,6 @@ class ValidationColorFormatter(logging.Formatter):
         message = super().format(record)
         import re
 
-        # <<< FIX: THE ORDER OF OPERATIONS HAS BEEN REVERSED TO FIX THE BUG. >>>
-        # <<< KEYWORD COLORING NOW HAPPENS *BEFORE* URL COLORING. >>>
-
         # ---- 1. Keyword colouring FIRST ----
         # Apply keyword coloring with proper ordering
         sorted_keywords = []
@@ -156,9 +151,8 @@ class ValidationColorFormatter(logging.Formatter):
                     colored_keyword = f"{color_code}{keyword}{self.RESET}"
                     message = message.replace(keyword, colored_keyword)
 
-        # ---- 0. URL colouring AFTER ----
+        # ---- 2. URL colouring AFTER ----
         # This is now safe because the keywords have already been colored.
-        # The regex will not match on a simple keyword and will only color the URL itself.
         
         # Stream URL (light gray)
         message = re.sub(
@@ -415,7 +409,8 @@ class M3UCollector:
                     
                     logging.info(f"\033[91m• Group:\033[0m '{group_name}'")
                     logging.info(f"  \033[93m⚠️  Matched Pattern:\033[0m '{info['pattern']}'")
-                    logging.info(f"  \d[95mMatch Type:\033[0m Partial/Substring match")
+                    # <<< TYPO FIX: Changed \d to \033 >>>
+                    logging.info(f"  \033[95mMatch Type:\033[0m Partial/Substring match")
                     logging.info(f"  \033[92mExcluded:\033[0m {info['count']} channels")
                     logging.info(f"  \033[94mSources:\033[0m {sources_display}")
                     logging.info(f"  \033[90mFirst seen:\033[0m {info['first_seen']}")
