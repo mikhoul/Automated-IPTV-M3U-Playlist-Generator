@@ -1330,7 +1330,7 @@ class M3UCollector:
     def filter_active_channels(self):
         """
         Filter channels by checking URL availability with detailed validation logging and error breakdown.
-        Uses concurrent processing for performance optimization.
+        Uses concurrent processing for performance optimization
         """
         if not self.check_links:
             logging.info("Link validation disabled - skipping active channel filtering")

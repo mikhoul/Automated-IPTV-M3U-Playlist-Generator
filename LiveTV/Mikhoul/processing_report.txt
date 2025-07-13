@@ -1,6 +1,10 @@
 M3U Collector Processing Report
 Country: Mikhoul
+<<<<<<< HEAD
 Generated: 2025-07-12 22:24:06
+=======
+Generated: 2025-07-13 02:13:53
+>>>>>>> 3e26c0fec2f96691bb01591969522561ef345242
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,17 +13,26 @@ Total Lines Processed: 7597
 Total Channels Found: 1232
 Parsing Errors: 0
 Urls Validated: 1025
+<<<<<<< HEAD
 Active Urls: 894
 Geo Blocked Urls: 91
 Validation Time: 79.65370798110962
 Inactive By Error: {'http_502': 1, 'http_400': 18, 'inactive': 34, 'http_404': 50, 'invalid_content': 13, 'http_504': 6, 'http_503': 3, 'http_500': 6}
 Total Processing Time: 98.7796151638031
 Final Channel Count: 894
+=======
+Active Urls: 909
+Geo Blocked Urls: 143
+Validation Time: 76.10288548469543
+Inactive By Error: {'inactive': 35, 'http_404': 49, 'http_502': 1, 'http_400': 5, 'invalid_content': 13, 'http_504': 5, 'http_503': 3, 'http_500': 5}
+Total Processing Time: 85.17572093009949
+Final Channel Count: 909
+>>>>>>> 3e26c0fec2f96691bb01591969522561ef345242
 Source Urls Processed: 8
 
 CHANNEL DISTRIBUTION
 --------------------
-4. |FR|🇫🇷 RÉGIONS & LOCALES: 110 channels
+4. |FR|🇫🇷 RÉGIONS & LOCALES: 111 channels
 Uncategorized: 77 channels
 3. |FR|🇫🇷 SOCIÉTÉ: 65 channels
 Sports: 54 channels
@@ -27,11 +40,11 @@ Music: 47 channels
 1. |FR|🇫🇷 INFORMATION: 39 channels
 2. |FR|🇫🇷 GÉNÉRALISTE: 38 channels
 General: 38 channels
+Généraliste: 33 channels
 Cinéma: 31 channels
 News: 20 channels
 Divertissement: 20 channels
 Actualités: 19 channels
-Généraliste: 19 channels
 100% Français: 16 channels
 Documentaires: 15 channels
 Kids: 12 channels
@@ -75,8 +88,13 @@ Anime: 2 channels
 Télé réalité: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
+<<<<<<< HEAD
 Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
+=======
+Hit TV, True Crime: 2 channels
+Drama TV: 2 channels
+>>>>>>> 3e26c0fec2f96691bb01591969522561ef345242
 Reality: 2 channels
 True Crime: 2 channels
 Educatif: 1 channels
@@ -86,14 +104,23 @@ Film: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
+<<<<<<< HEAD
 Movies;Series: 1 channels
 Shop: 1 channels
 Documentary;Education;Science: 1 channels
+=======
+Documentary;Education;Science: 1 channels
+Shop: 1 channels
+Movies;Series: 1 channels
+>>>>>>> 3e26c0fec2f96691bb01591969522561ef345242
 Weather: 1 channels
 Fight: 1 channels
 Hit TV: 1 channels
 News, En Español: 1 channels
+<<<<<<< HEAD
 Anime & Gaming: 1 channels
+=======
+>>>>>>> 3e26c0fec2f96691bb01591969522561ef345242
 Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
 Movies, Chills & Thrills: 1 channels
