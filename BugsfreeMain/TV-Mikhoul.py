@@ -121,7 +121,24 @@ class ValidationColorFormatter(logging.Formatter):
         message = super().format(record)
         import re
 
-        # ---- 1. Keyword colouring first ----
+        # ---- 0. URL colouring FIRST ----
+        # Stream URL (light gray)
+        message = re.sub(
+            r'(URL:)\s*(https?://[^\s]+)',
+            lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.LIGHT_GRAY}{m.group(2)}{self.RESET}',
+            message,
+            flags=re.MULTILINE,
+        )
+
+        # Source URL (pale yellow)
+        message = re.sub(
+            r'(SOURCE:)\s*(https?://[^\s]+)',
+            lambda m: f'{self.WHITE}{m.group(1)}{self.RESET} {self.PALE_YELLOW}{m.group(2)}{self.RESET}',
+            message,
+            flags=re.MULTILINE,
+        )
+
+        # ---- 1. Keyword colouring AFTER ----
         # Apply keyword coloring with proper ordering
         sorted_keywords = []
         
@@ -133,7 +150,7 @@ class ValidationColorFormatter(logging.Formatter):
         # Then add all other keywords except ACTIVE-only ones and URL prefixes
         other_keywords = [(k, v) for k, v in self.KEYWORD_COLORS.items()
                          if 'INACTIVE' not in k.upper() and 'OFFLINE' not in k.upper()
-                         and k != 'ACTIVE' and k not in ['URL:', 'SOURCE:']]  # REMOVE URL prefixes
+                         and k != 'ACTIVE' and k not in ['URL:', 'SOURCE:']]
         sorted_keywords.extend(sorted(other_keywords, key=lambda x: len(x[0]), reverse=True))
         
         # Finally add ACTIVE to avoid overlap with INACTIVE
@@ -150,23 +167,7 @@ class ValidationColorFormatter(logging.Formatter):
                 else:
                     colored_keyword = f"{color_code}{keyword}{self.RESET}"
                     message = message.replace(keyword, colored_keyword)
-
-        # ---- 2. Final URL colouring pass ----
-        ansi = r'(?:\x1b\[[0-9;]*m)*'  # zero or more ANSI escapes
-        # Stream URL (light gray)
-        message = re.sub(
-            rf'(URL:){ansi}\s*{ansi}(https?://[^\s]+)',
-            lambda m: f'{self.WHITE}URL:{self.RESET} {self.LIGHT_GRAY}{m.group(2)}{self.RESET}',
-            message,
-            flags=re.MULTILINE,
-        )
-        # Source URL (pale yellow)
-        message = re.sub(
-            rf'(SOURCE:){ansi}\s*{ansi}(https?://[^\s]+)',
-            lambda m: f'{self.WHITE}SOURCE:{self.RESET} {self.PALE_YELLOW}{m.group(2)}{self.RESET}',
-            message,
-            flags=re.MULTILINE,
-        )
+        
         return message
 
 def setup_colored_logging():
