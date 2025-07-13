@@ -124,15 +124,15 @@ class ValidationColorFormatter(logging.Formatter):
         # ENHANCED: Color different types of URLs with different colors
         import re
         
-        # Color source URLs with pale yellow (must come first to avoid overlap)
+        # Color source URLs - WHITE label, PALE YELLOW URL
         source_pattern = r'(SOURCE:)\s*(https?://[^\s]+)'
-        message = re.sub(source_pattern, f'{self.PALE_YELLOW}\\1 \\2{self.RESET}', message)
+        message = re.sub(source_pattern, f'{self.WHITE}\\1{self.RESET} {self.PALE_YELLOW}\\2{self.RESET}', message)
         
-        # Color stream URLs with light gray
+        # Color stream URLs - WHITE label, LIGHT GRAY URL
         stream_pattern = r'(URL:)\s*(https?://[^\s]+)'
-        message = re.sub(stream_pattern, f'{self.LIGHT_GRAY}\\1 \\2{self.RESET}', message)
+        message = re.sub(stream_pattern, f'{self.WHITE}\\1{self.RESET} {self.LIGHT_GRAY}\\2{self.RESET}', message)
         
-        # Apply keyword coloring with proper ordering (REMOVE SOURCE: and URL: from keywords)
+        # Apply keyword coloring with proper ordering (URL prefixes already handled above)
         sorted_keywords = []
         
         # First, add all INACTIVE-related keywords
