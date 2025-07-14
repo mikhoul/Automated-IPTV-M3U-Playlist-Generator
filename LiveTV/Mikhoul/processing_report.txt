@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-13 23:51:02
+Generated: 2025-07-14 00:40:48
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,17 +9,17 @@ Total Lines Processed: 7597
 Total Channels Found: 1232
 Parsing Errors: 0
 Urls Validated: 1025
-Active Urls: 911
+Active Urls: 912
 Geo Blocked Urls: 143
-Validation Time: 71.8670744895935
-Inactive By Error: {'inactive': 35, 'http_404': 48, 'http_502': 1, 'http_400': 5, 'invalid_content': 13, 'http_504': 5, 'http_503': 3, 'http_500': 4}
-Total Processing Time: 80.24080538749695
-Final Channel Count: 911
+Validation Time: 71.8259027004242
+Inactive By Error: {'inactive': 35, 'http_502': 1, 'http_404': 48, 'http_400': 5, 'invalid_content': 13, 'http_504': 5, 'http_503': 3, 'http_500': 3}
+Total Processing Time: 80.71466755867004
+Final Channel Count: 912
 Source Urls Processed: 8
 
 CHANNEL DISTRIBUTION
 --------------------
-4. |FR|🇫🇷 RÉGIONS & LOCALES: 111 channels
+4. |FR|🇫🇷 RÉGIONS & LOCALES: 112 channels
 Uncategorized: 77 channels
 3. |FR|🇫🇷 SOCIÉTÉ: 66 channels
 Sports: 54 channels
@@ -67,8 +67,8 @@ Black Entertainment: 4 channels
 Communautaire: 3 channels
 Outdoor: 3 channels
 Comédie: 3 channels
-Music, En Español: 3 channels
 Chills & Thrills: 3 channels
+Music, En Español: 3 channels
 Affaires Publiques: 2 channels
 Series: 2 channels
 Anime: 2 channels
@@ -77,8 +77,8 @@ Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
 Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
-Reality: 2 channels
 True Crime: 2 channels
+Reality: 2 channels
 Educatif: 1 channels
 Comedie: 1 channels
 Réréalité: 1 channels
@@ -87,9 +87,9 @@ Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
 Movies;Series: 1 channels
-Shop: 1 channels
 Documentary;Education;Science: 1 channels
 Weather: 1 channels
+Shop: 1 channels
 Fight: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
