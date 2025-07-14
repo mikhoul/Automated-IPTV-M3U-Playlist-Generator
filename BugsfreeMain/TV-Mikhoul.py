@@ -119,7 +119,7 @@ class ValidationColorFormatter(logging.Formatter):
         'Final Results:': BOLD + BRIGHT_CYAN,
         'Group summary:': BOLD + MAGENTA,
         'Processing performed from:': BOLD + BLUE,
-        'Total skipped URLs:': BOLD + SKIPPED_PINK,
+        'Total Skipped Invalid/Duplicate URLs:': BOLD + SKIPPED_PINK,
     }
     
     def __init__(self, fmt=None, datefmt=None):
@@ -1852,7 +1852,7 @@ def main():
         logging.info(f"Final Results:")
         logging.info(f"  - Total channels: {total_channels}")
         logging.info(f"  - Total groups: {len(collector.channels)}")
-        logging.info(f"  - Total skipped URLs: {collector.total_skipped_urls}")
+        logging.info(f"  - Total Skipped Invalid/Duplicate URLs: {collector.total_skipped_urls}")
         logging.info(f"  - Processing time: {format_duration(int(total_time))}")
         logging.info(f"  - Exported formats: {len(exported_files)}")
         logging.info(f"  - Timestamp: {mumbai_time}")
