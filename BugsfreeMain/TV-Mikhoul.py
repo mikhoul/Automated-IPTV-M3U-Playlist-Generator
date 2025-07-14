@@ -95,9 +95,11 @@ class ValidationColorFormatter(logging.Formatter):
         'Cuisine': MAGENTA,
         
         # Validation progress
+        'Processing source': BOLD + BRIGHT_BLUE,
         'Validation progress': BLUE,
         'Starting comprehensive link validation': BOLD + BLUE,
         'Link validation complete': BOLD + GREEN,
+        'Active channels after filtering:': BRIGHT_BLUE,
         
         # HTTP status codes - SINGLE RED SHADE
         'Bad Request': INACTIVE_RED,
@@ -110,6 +112,12 @@ class ValidationColorFormatter(logging.Formatter):
         'Processing complete': BOLD + GREEN,
         'Deduplication complete': GREEN,
         'Starting post-processing': BLUE,
+        'Skipped non-HTTP URLs:': BRIGHT_YELLOW,
+
+        # Final Summary
+        'Final Results:': BOLD + BRIGHT_CYAN,
+        'Group summary:': BOLD + BRIGHT_CYAN,
+        'Processing performed from:': BOLD + BRIGHT_CYAN,
     }
     
     def __init__(self, fmt=None, datefmt=None):
