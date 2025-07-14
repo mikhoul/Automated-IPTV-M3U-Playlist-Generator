@@ -1660,37 +1660,6 @@ class M3UCollector:
         logging.info(f"Exported custom format to {filepath}")
         return filepath
     
-    def export_skipped_urls(self, filename="skipped_urls.txt"):
-        """Export a list of all skipped URLs for debugging."""
-        if not self.skipped_urls_log:
-            logging.info("No URLs were skipped, so skipped_urls.txt will not be generated.")
-            return None
-
-        filepath = os.path.join(self.output_dir, filename)
-        try:
-            with open(filepath, 'w', encoding='utf-8') as f:
-                f.write(f"Skipped URLs Report\n")
-                f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-                f.write(f"Total Skipped: {len(self.skipped_urls_log)}\n")
-                f.write("=" * 80 + "\n\n")
-
-                grouped_skipped = defaultdict(list)
-                for item in self.skipped_urls_log:
-                    grouped_skipped[item['source']].append(item)
-
-                for source, items in grouped_skipped.items():
-                    f.write(f"--- Source: {source} ({len(items)} skipped) ---\n")
-                    for item in items:
-                        f.write(f"URL: {item['url']}\n")
-                        f.write(f"Reason: {item['reason']}\n\n")
-                    f.write("\n")
-
-            logging.info(f"Exported skipped URLs report to {filepath}")
-            return filepath
-        except IOError as e:
-            logging.error(f"Could not write skipped URLs file to {filepath}. Error: {e}")
-            return None
-    
     def export_all_formats(self):
         """Export channels to all supported formats"""
         exported_files = []
@@ -1700,7 +1669,6 @@ class M3UCollector:
             ('TXT', self.export_txt),
             ('JSON', self.export_json),
             ('Custom', self.export_custom),
-            ('Skipped URLs', self.export_skipped_urls),
         ]
         
         for format_name, export_method in export_methods:
@@ -1741,6 +1709,22 @@ class M3UCollector:
                 for failed in self.failed_urls[:10]:
                     f.write(f"URL: {failed['url']}\n")
                     f.write(f"Error: {failed['error']}\n\n")
+            
+            if self.skipped_urls_log:
+                f.write("SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)\n")
+                f.write("-" * 45 + "\n")
+                
+                grouped_skipped = defaultdict(list)
+                for item in self.skipped_urls_log:
+                    grouped_skipped[item['source']].append(item)
+
+                for source, items in grouped_skipped.items():
+                    f.write(f"--- From Source: {source} ({len(items)} skipped) ---\n")
+                    for item in items:
+                        f.write(f"URL: {item['url']}\n")
+                        f.write(f"Reason: {item['reason']}\n\n")
+                    f.write("\n")
+                f.write("\n")
             
             f.write("CONFIGURATION\n")
             f.write("-" * 13 + "\n")
