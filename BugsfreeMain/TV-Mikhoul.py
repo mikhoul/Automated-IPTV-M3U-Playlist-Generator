@@ -1768,6 +1768,7 @@ def main():
         "Sweden", "Switzerland", "United Kingdom", "United States",
         "Offline", "Test", "Demo", "Shopping", "Teleshopping", "Business",
         "Culture", "Entertainmer", "Undefined", "Culture", "Religious",
+        "Thrills", "Black Entertainement", "Español", "Entertainment", "Food & Home",
         
         # Turkish groups from allgr.m3u
         "|TR|🇹🇷 AVRUPA; DİNÎ; DİĞER",
