@@ -39,6 +39,7 @@ class ValidationColorFormatter(logging.Formatter):
     INACTIVE_RED = "\x1b[38;5;203m"  # Single consistent red for INACTIVE
     LIGHT_GRAY = "\x1b[38;5;255m"   # Light gray for stream URLs
     LIGHT_ORANGE = "\x1b[38;5;214m"  # Consistent light orange for geo-blocking
+    SKIPPED_PINK = "\x1b[38;5;217m"  # Custom pink for skipped URLs, from #ff87af
     PALE_YELLOW = "\x1b[38;5;226m"   # Brighter yellow for source URLs
     
     # Map log levels to colors (not used anymore since we remove INFO/WARNING prefixes)
@@ -112,12 +113,13 @@ class ValidationColorFormatter(logging.Formatter):
         'Processing complete': BOLD + GREEN,
         'Deduplication complete': GREEN,
         'Starting post-processing': BLUE,
-        'Skipped non-HTTP URLs:': BOLD + BRIGHT_YELLOW,
+        'Skipped Invalid/Duplicate URLs:': BOLD + SKIPPED_PINK,
 
         # Final Summary
         'Final Results:': BOLD + BRIGHT_CYAN,
         'Group summary:': BOLD + MAGENTA,
         'Processing performed from:': BOLD + BLUE,
+        'Total skipped URLs:': BOLD + SKIPPED_PINK,
     }
     
     def __init__(self, fmt=None, datefmt=None):
@@ -1242,7 +1244,7 @@ class M3UCollector:
         
         logging.info(f"Parsing complete: {channel_count} channels added from {source_url}")
         logging.info(f"Total EXTINF lines processed: {total_extinf_lines}")
-        logging.info(f"Skipped non-HTTP URLs: {skipped_non_http_count}")
+        logging.info(f"Skipped Invalid/Duplicate URLs: {skipped_non_http_count}")
         
         if parsing_errors:
             logging.info(f"Encountered {len(parsing_errors)} parsing errors")
@@ -1710,19 +1712,27 @@ class M3UCollector:
                     f.write(f"URL: {failed['url']}\n")
                     f.write(f"Error: {failed['error']}\n\n")
             
+            if self.statistics.get('inactive_by_error'):
+                f.write("VALIDATION FAILURE BREAKDOWN\n")
+                f.write("-" * 28 + "\n")
+                for error_type, count in sorted(self.statistics['inactive_by_error'].items()):
+                    if error_type.startswith('http_'):
+                        error_code = error_type.split('_')[1]
+                        f.write(f"HTTP {error_code} Errors: {count} channels\n")
+                    else:
+                        f.write(f"{error_type.replace('_', ' ').title()}: {count} channels\n")
+                f.write("\n")
+
             if self.skipped_urls_log:
                 f.write("SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)\n")
                 f.write("-" * 45 + "\n")
-                
                 grouped_skipped = defaultdict(list)
                 for item in self.skipped_urls_log:
                     grouped_skipped[item['source']].append(item)
-
                 for source, items in grouped_skipped.items():
                     f.write(f"--- From Source: {source} ({len(items)} skipped) ---\n")
                     for item in items:
-                        f.write(f"URL: {item['url']}\n")
-                        f.write(f"Reason: {item['reason']}\n\n")
+                        f.write(f"URL: {item['url']} (Reason: {item['reason']})\n")
                     f.write("\n")
                 f.write("\n")
             
