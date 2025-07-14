@@ -285,6 +285,7 @@ class M3UCollector:
         self.seen_urls = set()
         self.url_status_cache = {}
         self.duplicate_channels = []
+        self.total_skipped_urls = 0
         self.failed_urls = []
         self.statistics = defaultdict(int)
         
@@ -1245,7 +1246,7 @@ class M3UCollector:
         self.statistics['total_lines_processed'] += total_lines
         self.statistics['total_channels_found'] += channel_count
         self.statistics['parsing_errors'] += len(parsing_errors)
-        self.statistics['skipped_urls'] += skipped_non_http_count
+        self.total_skipped_urls += skipped_non_http_count
     
     def extract_extinf_attributes(self, line):
         """
@@ -1466,8 +1467,8 @@ class M3UCollector:
             
             if url.endswith('.html') or (metadata and metadata.get('content_type', '').startswith('text/html')):
                 extracted_urls = self.extract_stream_urls_from_html(content, url)
+                logging.info(f"HTML source detected. Extracted {len(extracted_urls)} potential M3U URLs to process later.")
                 all_m3u_urls.update(extracted_urls)
-                logging.info(f"Extracted {len(extracted_urls)} potential M3U URLs from HTML")
             else:
                 self.test_cuisine_detection(lines)
                 self.parse_and_store(lines, url, metadata)
@@ -1510,6 +1511,7 @@ class M3UCollector:
             self.statistics['total_processing_time'] = processing_time
             self.statistics['final_channel_count'] = final_count
             self.statistics['source_urls_processed'] = len(source_urls)
+            self.statistics['total_skipped_urls'] = self.total_skipped_urls
     
     def export_m3u(self, filename="LiveTV.m3u"):
         """Export channels to standard M3U playlist format with enhanced metadata."""
@@ -1813,6 +1815,7 @@ def main():
         logging.info(f"Final Results:")
         logging.info(f"  - Total channels: {total_channels}")
         logging.info(f"  - Total groups: {len(collector.channels)}")
+        logging.info(f"  - Total skipped URLs: {collector.total_skipped_urls}")
         logging.info(f"  - Processing time: {format_duration(int(total_time))}")
         logging.info(f"  - Exported formats: {len(exported_files)}")
         logging.info(f"  - Timestamp: {mumbai_time}")
