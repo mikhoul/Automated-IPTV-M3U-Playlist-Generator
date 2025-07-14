@@ -1213,22 +1213,22 @@ class M3UCollector:
                     current_channel = {}
             
             elif line and not line.startswith('#') and current_channel:
-                if line.startswith(('http://', 'https://')):
-                    clean_url = self.clean_and_validate_url(line)
-                    if clean_url and clean_url not in self.seen_urls:
-                        self.seen_urls.add(clean_url)
-                        current_channel['url'] = clean_url
-                        
-                        current_channel['url_domain'] = urlparse(clean_url).netloc
-                        current_channel['is_hls'] = clean_url.endswith('.m3u8') or 'hls' in clean_url.lower()
-                        
-                        self.channels[current_channel['group']].append(current_channel)
-                        channel_count += 1
-                        self.channels_processed += 1
-                    elif not clean_url:
-                        skipped_non_http_count += 1
+                clean_url = self.clean_and_validate_url(line)
+                
+                if clean_url and clean_url not in self.seen_urls:
+                    self.seen_urls.add(clean_url)
+                    current_channel['url'] = clean_url
                     
-                    current_channel = {}
+                    current_channel['url_domain'] = urlparse(clean_url).netloc
+                    current_channel['is_hls'] = clean_url.endswith('.m3u8') or 'hls' in clean_url.lower()
+                    
+                    self.channels[current_channel['group']].append(current_channel)
+                    channel_count += 1
+                    self.channels_processed += 1
+                else:
+                    skipped_non_http_count += 1
+                
+                current_channel = {}
         
         logging.info(f"Parsing complete: {channel_count} channels added from {source_url}")
         logging.info(f"Total EXTINF lines processed: {total_extinf_lines}")
