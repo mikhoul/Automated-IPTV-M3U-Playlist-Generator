@@ -112,7 +112,7 @@ class ValidationColorFormatter(logging.Formatter):
         'Processing complete': BOLD + GREEN,
         'Deduplication complete': GREEN,
         'Starting post-processing': BLUE,
-        'Skipped non-HTTP URLs:': BRIGHT_YELLOW,
+        'Skipped non-HTTP URLs:': BOLD + BRIGHT_YELLOW,
 
         # Final Summary
         'Final Results:': BOLD + BRIGHT_CYAN,
@@ -1462,6 +1462,7 @@ class M3UCollector:
         self.seen_urls.clear()
         self.url_status_cache.clear()
         self.duplicate_channels.clear()
+        self.skipped_urls_log.clear()
         self.failed_urls.clear()
         
         all_m3u_urls = set()
@@ -1666,26 +1667,29 @@ class M3UCollector:
             return None
 
         filepath = os.path.join(self.output_dir, filename)
-        
-        with open(filepath, 'w', encoding='utf-8') as f:
-            f.write(f"Skipped URLs Report\n")
-            f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-            f.write(f"Total Skipped: {len(self.skipped_urls_log)}\n")
-            f.write("=" * 80 + "\n\n")
+        try:
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.write(f"Skipped URLs Report\n")
+                f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write(f"Total Skipped: {len(self.skipped_urls_log)}\n")
+                f.write("=" * 80 + "\n\n")
 
-            grouped_skipped = defaultdict(list)
-            for item in self.skipped_urls_log:
-                grouped_skipped[item['source']].append(item)
+                grouped_skipped = defaultdict(list)
+                for item in self.skipped_urls_log:
+                    grouped_skipped[item['source']].append(item)
 
-            for source, items in grouped_skipped.items():
-                f.write(f"--- Source: {source} ({len(items)} skipped) ---\n")
-                for item in items:
-                    f.write(f"URL: {item['url']}\n")
-                    f.write(f"Reason: {item['reason']}\n\n")
-                f.write("\n")
+                for source, items in grouped_skipped.items():
+                    f.write(f"--- Source: {source} ({len(items)} skipped) ---\n")
+                    for item in items:
+                        f.write(f"URL: {item['url']}\n")
+                        f.write(f"Reason: {item['reason']}\n\n")
+                    f.write("\n")
 
-        logging.info(f"Exported skipped URLs report to {filepath}")
-        return filepath
+            logging.info(f"Exported skipped URLs report to {filepath}")
+            return filepath
+        except IOError as e:
+            logging.error(f"Could not write skipped URLs file to {filepath}. Error: {e}")
+            return None
     
     def export_all_formats(self):
         """Export channels to all supported formats"""
