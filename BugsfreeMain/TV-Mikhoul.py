@@ -301,7 +301,6 @@ class M3UCollector:
         self.temp_dir = os.path.join(self.output_dir, 'temp')
         self.cache_dir = os.path.join(self.output_dir, 'cache')
         self.lock = threading.Lock()
-        self.skipped_non_http_count = 0
         
         # FIXED: Add logging lock to prevent interleaving
         self.logging_lock = threading.Lock()
@@ -1142,6 +1141,7 @@ class M3UCollector:
         channel_count = 0
         total_extinf_lines = 0
         group_occurrences = defaultdict(int)
+        skipped_non_http_count = 0
         parsing_errors = []
         
         # Progress tracking
@@ -1224,14 +1224,14 @@ class M3UCollector:
                         self.channels[current_channel['group']].append(current_channel)
                         channel_count += 1
                         self.channels_processed += 1
-                    else:
-                        self.skipped_non_http_count += 1
+                    elif not clean_url:
+                        skipped_non_http_count += 1
                     
                     current_channel = {}
         
         logging.info(f"Parsing complete: {channel_count} channels added from {source_url}")
         logging.info(f"Total EXTINF lines processed: {total_extinf_lines}")
-        logging.info(f"Skipped non-HTTP URLs: {self.skipped_non_http_count}")
+        logging.info(f"Skipped non-HTTP URLs: {skipped_non_http_count}")
         
         if parsing_errors:
             logging.info(f"Encountered {len(parsing_errors)} parsing errors")
@@ -1245,6 +1245,7 @@ class M3UCollector:
         self.statistics['total_lines_processed'] += total_lines
         self.statistics['total_channels_found'] += channel_count
         self.statistics['parsing_errors'] += len(parsing_errors)
+        self.statistics['skipped_urls'] += skipped_non_http_count
     
     def extract_extinf_attributes(self, line):
         """
