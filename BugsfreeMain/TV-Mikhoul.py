@@ -112,7 +112,7 @@ class ValidationColorFormatter(logging.Formatter):
         'Processing complete': BOLD + GREEN,
         'Deduplication complete': GREEN,
         'Starting post-processing': BLUE,
-        'Skipped non-HTTP URLs:': YELLOW,
+        'Skipped non-HTTP URLs:': BRIGHT_YELLOW,
 
         # Final Summary
         'Final Results:': BOLD + BRIGHT_CYAN,
@@ -1227,7 +1227,10 @@ class M3UCollector:
                     channel_count += 1
                     self.channels_processed += 1
                 else:
-                    reason = "Duplicate" if clean_url in self.seen_urls else "Invalid/Non-HTTP"
+                    if clean_url is None:
+                        reason = "Invalid/Non-HTTP"
+                    else:
+                        reason = "Duplicate"
                     self.skipped_urls_log.append({
                         'url': line,
                         'reason': reason,
