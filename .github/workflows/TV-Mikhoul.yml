@@ -6,7 +6,7 @@ on:
       - main
       - Test-Starting-Over # Trigger on test branch
   schedule:
-    - cron: '0 20 * * *' # 20:00 UTC = 16:00 EDT
+    - cron: '45 19 * * *' # 19:45 UTC = 15:45 EDT
   workflow_dispatch:
 
 permissions:
