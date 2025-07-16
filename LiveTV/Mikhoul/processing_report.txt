@@ -1,28 +1,28 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-15 19:52:12
+Generated: 2025-07-16 19:51:49
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 7597
-Total Channels Found: 1197
+Total Lines Processed: 7599
+Total Channels Found: 1198
 Parsing Errors: 0
-Urls Validated: 990
-Active Urls: 875
+Urls Validated: 991
+Active Urls: 879
 Geo Blocked Urls: 139
-Validation Time: 75.61486220359802
-Inactive By Error: {'inactive': 34, 'http_404': 49, 'http_502': 1, 'http_400': 5, 'invalid_content': 12, 'http_504': 5, 'http_503': 3, 'http_500': 6}
-Total Processing Time: 85.37035989761353
-Final Channel Count: 875
+Validation Time: 71.79299068450928
+Inactive By Error: {'inactive': 34, 'http_502': 1, 'http_404': 48, 'http_400': 5, 'invalid_content': 12, 'http_504': 5, 'http_503': 3, 'http_500': 4}
+Total Processing Time: 81.82829594612122
+Final Channel Count: 879
 Source Urls Processed: 8
 Total Skipped Urls: 140
 
 CHANNEL DISTRIBUTION
 --------------------
-4. |FR|🇫🇷 RÉGIONS & LOCALES: 110 channels
+4. |FR|🇫🇷 RÉGIONS & LOCALES: 112 channels
 Uncategorized: 77 channels
-3. |FR|🇫🇷 SOCIÉTÉ: 65 channels
+3. |FR|🇫🇷 SOCIÉTÉ: 66 channels
 Sports: 54 channels
 Music: 47 channels
 1. |FR|🇫🇷 INFORMATION: 39 channels
@@ -51,8 +51,8 @@ Animation: 8 channels
 Classic TV: 8 channels
 Séries Policières: 7 channels
 Nature & Travel: 7 channels
+Nouveau sur Pluto TV: 6 channels
 Daytime TV: 6 channels
-Nouveau sur Pluto TV: 5 channels
 Voyages et Gastronomie: 5 channels
 Crime: 5 channels
 Sci-Fi & Action: 5 channels
@@ -72,18 +72,18 @@ Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
 Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
-Reality: 2 channels
 True Crime: 2 channels
+Reality: 2 channels
 Educatif: 1 channels
-Comedie: 1 channels
 Réréalité: 1 channels
+Comedie: 1 channels
 Film: 1 channels
-Thématique: 1 channels
 Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
-Documentary;Education;Science: 1 channels
-Shop: 1 channels
 Movies;Series: 1 channels
+Shop: 1 channels
+Documentary;Education;Science: 1 channels
 Weather: 1 channels
 Fight: 1 channels
 Hit TV: 1 channels
@@ -94,8 +94,8 @@ Drama TV, Movies: 1 channels
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 5 channels
-HTTP 404 Errors: 49 channels
-HTTP 500 Errors: 6 channels
+HTTP 404 Errors: 48 channels
+HTTP 500 Errors: 4 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 3 channels
 HTTP 504 Errors: 5 channels
