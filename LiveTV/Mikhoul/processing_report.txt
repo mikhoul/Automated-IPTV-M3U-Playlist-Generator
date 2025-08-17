@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-08-16 19:51:52
+Generated: 2025-08-17 19:52:06
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,25 +9,25 @@ Total Lines Processed: 7767
 Total Channels Found: 1216
 Parsing Errors: 0
 Urls Validated: 1005
-Active Urls: 754
+Active Urls: 750
 Geo Blocked Urls: 145
-Validation Time: 71.35341691970825
-Inactive By Error: {'http_404': 169, 'inactive': 54, 'http_401': 1, 'http_502': 1, 'http_400': 5, 'invalid_content': 12, 'http_504': 5, 'http_503': 1, 'http_500': 3}
-Total Processing Time: 79.7285463809967
-Final Channel Count: 754
+Validation Time: 73.67797327041626
+Inactive By Error: {'http_404': 170, 'inactive': 53, 'http_401': 1, 'http_502': 1, 'http_400': 5, 'invalid_content': 11, 'http_504': 7, 'http_500': 6, 'http_503': 1}
+Total Processing Time: 83.97034096717834
+Final Channel Count: 750
 Source Urls Processed: 8
 Total Skipped Urls: 143
 
 CHANNEL DISTRIBUTION
 --------------------
-4. |FR|🇫🇷 RÉGIONS & LOCALES: 111 channels
+4. |FR|🇫🇷 RÉGIONS & LOCALES: 109 channels
 Uncategorized: 78 channels
 3. |FR|🇫🇷 SOCIÉTÉ: 60 channels
 Music: 47 channels
 Sports: 41 channels
 2. |FR|🇫🇷 GÉNÉRALISTE: 40 channels
-General: 40 channels
-1. |FR|🇫🇷 INFORMATION: 37 channels
+General: 39 channels
+1. |FR|🇫🇷 INFORMATION: 36 channels
 Généraliste: 33 channels
 News: 20 channels
 Cinéma: 15 channels
@@ -68,16 +68,16 @@ Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Comedie: 1 channels
-Film: 1 channels
 Réréalité: 1 channels
+Film: 1 channels
+Comedie: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
 Movies;Series: 1 channels
-Weather: 1 channels
 Shop: 1 channels
 Documentary;Education;Science: 1 channels
+Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 Drama TV, Movies: 1 channels
@@ -87,13 +87,13 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 5 channels
 HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 169 channels
-HTTP 500 Errors: 3 channels
+HTTP 404 Errors: 170 channels
+HTTP 500 Errors: 6 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 1 channels
-HTTP 504 Errors: 5 channels
-Inactive: 54 channels
-Invalid Content: 12 channels
+HTTP 504 Errors: 7 channels
+Inactive: 53 channels
+Invalid Content: 11 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
