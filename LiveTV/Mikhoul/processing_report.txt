@@ -1,45 +1,45 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-08-21 19:51:38
+Generated: 2025-08-22 19:51:50
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 7797
-Total Channels Found: 1214
+Total Lines Processed: 7827
+Total Channels Found: 1222
 Parsing Errors: 0
-Urls Validated: 1003
-Active Urls: 747
-Geo Blocked Urls: 145
-Validation Time: 72.86435270309448
-Inactive By Error: {'http_404': 171, 'inactive': 53, 'http_401': 1, 'http_502': 1, 'http_400': 5, 'invalid_content': 13, 'http_504': 5, 'http_500': 6, 'http_503': 1}
-Total Processing Time: 83.80474162101746
-Final Channel Count: 747
+Urls Validated: 1010
+Active Urls: 756
+Geo Blocked Urls: 142
+Validation Time: 81.87729525566101
+Inactive By Error: {'http_404': 170, 'inactive': 52, 'http_401': 1, 'http_502': 2, 'http_400': 5, 'invalid_content': 12, 'http_504': 5, 'http_500': 6, 'http_503': 1}
+Total Processing Time: 98.98507714271545
+Final Channel Count: 756
 Source Urls Processed: 8
-Total Skipped Urls: 143
+Total Skipped Urls: 144
 
 CHANNEL DISTRIBUTION
 --------------------
 4. |FR|🇫🇷 RÉGIONS & LOCALES: 110 channels
-Uncategorized: 79 channels
+Uncategorized: 78 channels
 3. |FR|🇫🇷 SOCIÉTÉ: 59 channels
-Music: 47 channels
-Sports: 41 channels
-2. |FR|🇫🇷 GÉNÉRALISTE: 40 channels
-General: 38 channels
+Music: 48 channels
+Sports: 43 channels
+2. |FR|🇫🇷 GÉNÉRALISTE: 41 channels
+General: 39 channels
 1. |FR|🇫🇷 INFORMATION: 37 channels
 Généraliste: 33 channels
-News: 19 channels
+News: 22 channels
 Cinéma: 15 channels
 100% Français: 14 channels
 Kids: 12 channels
 Kids & Family: 12 channels
 FRANCE: 12 channels
+Lifestyle: 10 channels
 À Binge-Watch: 10 channels
 Crime & Mystère: 10 channels
 Movies: 9 channels
 Séries Policières: 9 channels
-Lifestyle: 9 channels
 Actualités: 8 channels
 Divertissement: 8 channels
 Animation: 8 channels
@@ -61,8 +61,8 @@ Comédie: 3 channels
 Affaires Publiques: 2 channels
 Series: 2 channels
 Outdoor: 2 channels
-Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
+Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
 Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
@@ -74,26 +74,27 @@ Film: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
-Weather: 1 channels
+Documentary: 1 channels
 Movies;Series: 1 channels
-Shop: 1 channels
+Weather: 1 channels
 Documentary;Education;Science: 1 channels
+Shop: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 5 channels
 HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 171 channels
+HTTP 404 Errors: 170 channels
 HTTP 500 Errors: 6 channels
-HTTP 502 Errors: 1 channels
+HTTP 502 Errors: 2 channels
 HTTP 503 Errors: 1 channels
 HTTP 504 Errors: 5 channels
-Inactive: 53 channels
-Invalid Content: 13 channels
+Inactive: 52 channels
+Invalid Content: 12 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
@@ -217,9 +218,10 @@ URL: https://hls.savoir.media/live/stream.m3u8 (Reason: Duplicate)
 URL: https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8 (Reason: Duplicate)
 URL: https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8 (Reason: Duplicate)
 
---- From Source: https://iptv-org.github.io/iptv/countries/ca.m3u (10 skipped) ---
+--- From Source: https://iptv-org.github.io/iptv/countries/ca.m3u (11 skipped) ---
 URL: https://hls.savoir.media/live/stream.m3u8 (Reason: Duplicate)
 URL: https://cbcrclinear-tor.akamaized.net/hls/live/2042761/CBCRCLINEAR_TOR_7/master5.m3u8 (Reason: Duplicate)
+URL: https://francais-livews.cgtn.com/hls/LSvev95OuFZtKLc6CeKEFYXj220802LSTeV6PO0Ut9r71Uq3k5goCA220802cd/playlist.m3u8 (Reason: Duplicate)
 URL: https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8 (Reason: Duplicate)
 URL: https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8 (Reason: Duplicate)
 URL: https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master.m3u8 (Reason: Duplicate)
