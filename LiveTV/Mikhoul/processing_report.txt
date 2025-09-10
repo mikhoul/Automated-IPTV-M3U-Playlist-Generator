@@ -1,20 +1,20 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-09-09 19:52:16
+Generated: 2025-09-10 19:52:28
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 7854
-Total Channels Found: 1216
+Total Lines Processed: 7856
+Total Channels Found: 1217
 Parsing Errors: 0
-Urls Validated: 1004
-Active Urls: 748
-Geo Blocked Urls: 149
-Validation Time: 93.65827751159668
-Inactive By Error: {'http_404': 167, 'inactive': 58, 'http_401': 1, 'http_502': 3, 'http_400': 5, 'invalid_content': 12, 'http_504': 6, 'http_500': 3, 'http_503': 1}
-Total Processing Time: 109.44382810592651
-Final Channel Count: 748
+Urls Validated: 1005
+Active Urls: 742
+Geo Blocked Urls: 151
+Validation Time: 109.14240574836731
+Inactive By Error: {'http_404': 166, 'inactive': 63, 'http_502': 3, 'http_401': 1, 'http_400': 5, 'invalid_content': 13, 'http_504': 7, 'http_500': 4, 'http_503': 1}
+Total Processing Time: 119.45204401016235
+Final Channel Count: 742
 Source Urls Processed: 8
 Total Skipped Urls: 143
 
@@ -22,11 +22,11 @@ CHANNEL DISTRIBUTION
 --------------------
 4. |FR|🇫🇷 RÉGIONS & LOCALES: 112 channels
 Uncategorized: 78 channels
-3. |FR|🇫🇷 SOCIÉTÉ: 61 channels
+3. |FR|🇫🇷 SOCIÉTÉ: 59 channels
 Music: 50 channels
 2. |FR|🇫🇷 GÉNÉRALISTE: 43 channels
-Sports: 40 channels
 General: 38 channels
+Sports: 36 channels
 1. |FR|🇫🇷 INFORMATION: 35 channels
 Généraliste: 33 channels
 News: 18 channels
@@ -55,11 +55,12 @@ Sports & Auto: 4 channels
 Sci-Fi & Action: 4 channels
 History & Science: 4 channels
 Communautaire: 3 channels
-Outdoor: 3 channels
 Emissions cultes: 3 channels
 Comédie: 3 channels
 Affaires Publiques: 2 channels
 Series: 2 channels
+Outdoor: 2 channels
+Nouveau sur Pluto TV: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
 International: 2 channels
@@ -73,9 +74,8 @@ Réréalité: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
-Weather: 1 channels
 Shop: 1 channels
-Nouveau sur Pluto TV: 1 channels
+Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 Hit TV, Game Shows: 1 channels
@@ -85,13 +85,13 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 5 channels
 HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 167 channels
-HTTP 500 Errors: 3 channels
+HTTP 404 Errors: 166 channels
+HTTP 500 Errors: 4 channels
 HTTP 502 Errors: 3 channels
 HTTP 503 Errors: 1 channels
-HTTP 504 Errors: 6 channels
-Inactive: 58 channels
-Invalid Content: 12 channels
+HTTP 504 Errors: 7 channels
+Inactive: 63 channels
+Invalid Content: 13 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
