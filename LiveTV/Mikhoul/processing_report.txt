@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-09-17 19:51:44
+Generated: 2025-09-18 19:51:28
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,24 +9,24 @@ Total Lines Processed: 7894
 Total Channels Found: 1230
 Parsing Errors: 0
 Urls Validated: 1020
-Active Urls: 753
+Active Urls: 755
 Geo Blocked Urls: 151
-Validation Time: 61.353487491607666
-Inactive By Error: {'http_404': 167, 'inactive': 64, 'http_401': 1, 'http_502': 3, 'http_400': 5, 'invalid_content': 13, 'http_504': 7, 'http_500': 6, 'http_503': 1}
-Total Processing Time: 74.90989327430725
-Final Channel Count: 753
+Validation Time: 59.01374316215515
+Inactive By Error: {'http_404': 167, 'inactive': 64, 'http_401': 1, 'http_502': 3, 'http_400': 5, 'invalid_content': 13, 'http_504': 7, 'http_500': 4, 'http_503': 1}
+Total Processing Time: 70.09280467033386
+Final Channel Count: 755
 Source Urls Processed: 8
 Total Skipped Urls: 143
 
 CHANNEL DISTRIBUTION
 --------------------
-4. |FR|🇫🇷 RÉGIONS & LOCALES: 110 channels
+4. |FR|🇫🇷 RÉGIONS & LOCALES: 112 channels
 Uncategorized: 78 channels
-3. |FR|🇫🇷 SOCIÉTÉ: 62 channels
+3. |FR|🇫🇷 SOCIÉTÉ: 63 channels
 Music: 49 channels
 2. |FR|🇫🇷 GÉNÉRALISTE: 46 channels
 General: 38 channels
-Sports: 36 channels
+Sports: 35 channels
 1. |FR|🇫🇷 INFORMATION: 35 channels
 Généraliste: 33 channels
 Kids: 19 channels
@@ -74,19 +74,19 @@ Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
 Series: 1 channels
-Shop: 1 channels
 Weather: 1 channels
+Shop: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 5 channels
 HTTP 401 Errors: 1 channels
 HTTP 404 Errors: 167 channels
-HTTP 500 Errors: 6 channels
+HTTP 500 Errors: 4 channels
 HTTP 502 Errors: 3 channels
 HTTP 503 Errors: 1 channels
 HTTP 504 Errors: 7 channels
