@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-09-20 19:51:31
+Generated: 2025-09-21 19:51:44
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,12 +9,12 @@ Total Lines Processed: 7906
 Total Channels Found: 1230
 Parsing Errors: 0
 Urls Validated: 1020
-Active Urls: 748
-Geo Blocked Urls: 151
-Validation Time: 63.949806928634644
-Inactive By Error: {'http_404': 172, 'inactive': 62, 'http_401': 1, 'http_502': 3, 'http_400': 5, 'invalid_content': 14, 'http_504': 7, 'http_500': 7, 'http_503': 1}
-Total Processing Time: 74.26145553588867
-Final Channel Count: 748
+Active Urls: 750
+Geo Blocked Urls: 149
+Validation Time: 60.288264751434326
+Inactive By Error: {'http_404': 171, 'inactive': 62, 'http_502': 3, 'http_401': 1, 'http_400': 5, 'http_504': 7, 'invalid_content': 14, 'http_500': 6, 'http_503': 1}
+Total Processing Time: 70.27736377716064
+Final Channel Count: 750
 Source Urls Processed: 8
 Total Skipped Urls: 144
 
@@ -22,7 +22,7 @@ CHANNEL DISTRIBUTION
 --------------------
 4. |FR|🇫🇷 RÉGIONS & LOCALES: 110 channels
 Uncategorized: 79 channels
-3. |FR|🇫🇷 SOCIÉTÉ: 64 channels
+3. |FR|🇫🇷 SOCIÉTÉ: 65 channels
 Music: 49 channels
 2. |FR|🇫🇷 GÉNÉRALISTE: 44 channels
 General: 37 channels
@@ -55,10 +55,10 @@ Sci-Fi & Action: 4 channels
 History & Science: 4 channels
 Communautaire: 3 channels
 Legislative: 3 channels
+Outdoor: 3 channels
 Emissions cultes: 3 channels
 Comédie: 3 channels
 Affaires Publiques: 2 channels
-Outdoor: 2 channels
 Nouveau sur Pluto TV: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
@@ -74,19 +74,19 @@ Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
 Series: 1 channels
-Shop: 1 channels
 Weather: 1 channels
+Shop: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 5 channels
 HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 172 channels
-HTTP 500 Errors: 7 channels
+HTTP 404 Errors: 171 channels
+HTTP 500 Errors: 6 channels
 HTTP 502 Errors: 3 channels
 HTTP 503 Errors: 1 channels
 HTTP 504 Errors: 7 channels
