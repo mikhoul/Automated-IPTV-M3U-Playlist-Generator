@@ -1,34 +1,35 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-09-26 19:51:48
+Generated: 2025-09-27 19:51:59
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
 Total Lines Processed: 7935
-Total Channels Found: 1183
+Total Channels Found: 1261
 Parsing Errors: 0
-Urls Validated: 1002
-Active Urls: 743
-Geo Blocked Urls: 145
-Validation Time: 72.65227031707764
-Inactive By Error: {'inactive': 53, 'http_404': 177, 'http_502': 3, 'http_401': 1, 'http_400': 3, 'http_504': 7, 'invalid_content': 10, 'http_503': 2, 'http_500': 3}
-Total Processing Time: 82.51453280448914
-Final Channel Count: 743
+Urls Validated: 1045
+Active Urls: 772
+Geo Blocked Urls: 156
+Validation Time: 84.42571806907654
+Inactive By Error: {'http_404': 176, 'inactive': 63, 'http_401': 2, 'http_502': 3, 'http_400': 3, 'invalid_content': 10, 'http_504': 7, 'http_503': 2, 'http_500': 7}
+Total Processing Time: 97.98383474349976
+Final Channel Count: 772
 Source Urls Processed: 8
-Total Skipped Urls: 141
+Total Skipped Urls: 144
 
 CHANNEL DISTRIBUTION
 --------------------
-6. |FR|🇫🇷 RÉGIONS & LOCALES: 111 channels
+6. |FR|🇫🇷 LOCALES - RÉGIONALES: 110 channels
 Uncategorized: 84 channels
 Music: 47 channels
 2. |FR|🇫🇷 GÉNÉRALISTES: 45 channels
-5. |FR|🇫🇷 SPORT - CINÉMA: 40 channels
-General: 37 channels
+5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 40 channels
+General: 36 channels
 Sports: 35 channels
 1. |FR|🇫🇷 INFORMATION: 35 channels
 Généraliste: 33 channels
+10. |TR|🇹🇷 ÇOCUK - SPOR: 28 channels
 Kids: 19 channels
 News: 19 channels
 Cinéma: 14 channels
@@ -36,9 +37,9 @@ Cinéma: 14 channels
 3. |FR|🇫🇷 MUSIQUE - JEUNESSE: 12 channels
 À Binge-Watch: 12 channels
 Kids & Family: 12 channels
+FRANCE: 12 channels
 Séries Policières: 10 channels
 Crime & Mystère: 10 channels
-FRANCE: 10 channels
 Divertissement: 9 channels
 Classic TV: 9 channels
 Lifestyle: 9 channels
@@ -50,33 +51,33 @@ Nature & Travel: 7 channels
 Musique: 6 channels
 Daytime TV: 6 channels
 Movies: 5 channels
+Legislative: 5 channels
 Comedy: 5 channels
 Sports & Auto: 4 channels
 Sci-Fi & Action: 4 channels
 History & Science: 4 channels
 Communautaire: 3 channels
-Legislative: 3 channels
-Outdoor: 3 channels
 Emissions cultes: 3 channels
 Nouveau sur Pluto TV: 3 channels
 Comédie: 3 channels
 Affaires Publiques: 2 channels
+Outdoor: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
-International: 2 channels
 True Crime: 2 channels
+International: 2 channels
 Hit TV, True Crime: 2 channels
 Drama TV: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Réréalité: 1 channels
 Film: 1 channels
+Réréalité: 1 channels
 Comedie: 1 channels
-Cuisine: 1 channels
 Thématique: 1 channels
+Cuisine: 1 channels
 Quebec TV: 1 channels
 Series: 1 channels
-Weather: 1 channels
 Shop: 1 channels
+Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 Hit TV, Game Shows: 1 channels
@@ -85,13 +86,13 @@ Drama TV, Movies: 1 channels
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 3 channels
-HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 177 channels
-HTTP 500 Errors: 3 channels
+HTTP 401 Errors: 2 channels
+HTTP 404 Errors: 176 channels
+HTTP 500 Errors: 7 channels
 HTTP 502 Errors: 3 channels
 HTTP 503 Errors: 2 channels
 HTTP 504 Errors: 7 channels
-Inactive: 53 channels
+Inactive: 63 channels
 Invalid Content: 10 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
@@ -199,7 +200,7 @@ URL: plugin://plugin.infologique.TVAgo/?url=ref%3Atva_6309386882112&sourceUrl=re
 URL: plugin://plugin.video.youtube/play/?video_id=biCCb0EB3g4 (Reason: Invalid/Non-HTTP)
 URL: plugin://plugin.video.youtube/play/?video_id=WHhzK7k22q0 (Reason: Invalid/Non-HTTP)
 
---- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (15 skipped) ---
+--- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (18 skipped) ---
 URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8 (Reason: Duplicate)
 URL: https://new.cache-stream.workers.dev/channel/UCCCPCZNChQdGa9EkATeye4g/live.m3u8 (Reason: Duplicate)
 URL: error: No playable streams found on this URL: https://www.tf1.fr/tf1/direct (Reason: Invalid/Non-HTTP)
@@ -215,6 +216,9 @@ URL: https://section (Reason: Duplicate)
 URL: https://hls.savoir.media/live/stream.m3u8 (Reason: Duplicate)
 URL: https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8 (Reason: Duplicate)
 URL: https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8 (Reason: Duplicate)
+URL: https://trkvz-live.daioncdn.net/minikago/minikago.m3u8 (Reason: Duplicate)
+URL: https://trkvz-live.daioncdn.net/minikago_cocuk/minikago_cocuk.m3u8 (Reason: Duplicate)
+URL: https://trkvz-live.daioncdn.net/aspor/aspor.m3u8 (Reason: Duplicate)
 
 --- From Source: https://iptv-org.github.io/iptv/countries/ca.m3u (10 skipped) ---
 URL: https://hls.savoir.media/live/stream.m3u8 (Reason: Duplicate)
