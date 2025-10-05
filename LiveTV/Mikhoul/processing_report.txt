@@ -1,99 +1,77 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-10-04 19:52:53
+Generated: 2025-10-05 19:52:39
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 7965
-Total Channels Found: 1267
+Total Lines Processed: 6906
+Total Channels Found: 770
 Parsing Errors: 0
-Urls Validated: 1050
-Active Urls: 778
-Geo Blocked Urls: 159
-Validation Time: 112.90039944648743
-Inactive By Error: {'inactive': 65, 'http_404': 173, 'http_401': 2, 'http_502': 4, 'http_400': 3, 'invalid_content': 10, 'http_504': 8, 'http_503': 2, 'http_500': 5}
-Total Processing Time: 129.40173077583313
-Final Channel Count: 778
+Urls Validated: 644
+Active Urls: 488
+Geo Blocked Urls: 111
+Validation Time: 100.35581421852112
+Inactive By Error: {'inactive': 65, 'http_401': 2, 'http_404': 57, 'http_502': 4, 'http_400': 3, 'invalid_content': 9, 'http_504': 8, 'http_503': 2, 'http_500': 6}
+Total Processing Time: 148.62344646453857
+Final Channel Count: 488
 Source Urls Processed: 8
-Total Skipped Urls: 144
+Total Skipped Urls: 139
 
 CHANNEL DISTRIBUTION
 --------------------
-6. |FR|🇫🇷 LOCALES - RÉGIONALES: 111 channels
-Uncategorized: 85 channels
-Music: 49 channels
-2. |FR|🇫🇷 GÉNÉRALISTES: 43 channels
+6. |FR|🇫🇷 LOCALES - RÉGIONALES: 110 channels
+Uncategorized: 57 channels
+2. |FR|🇫🇷 GÉNÉRALISTES: 44 channels
 5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 42 channels
+1. |FR|🇫🇷 INFORMATION: 39 channels
 General: 37 channels
-Sports: 35 channels
-1. |FR|🇫🇷 INFORMATION: 34 channels
 Généraliste: 33 channels
-10. |TR|🇹🇷 ÇOCUK - SPOR: 28 channels
-Kids: 20 channels
-News: 19 channels
-100% Français: 14 channels
+10. |TR|🇹🇷 ÇOCUK - SPOR: 27 channels
+Music: 27 channels
+FRANCE: 15 channels
 3. |FR|🇫🇷 MUSIQUE - JEUNESSE: 13 channels
-À Binge-Watch: 12 channels
-Kids & Family: 12 channels
-FRANCE: 12 channels
-Séries Policières: 10 channels
-Cinéma: 10 channels
-Divertissement: 9 channels
-Classic TV: 9 channels
-Lifestyle: 9 channels
 Actualités: 8 channels
-Animation: 8 channels
-Crime & Mystère: 8 channels
-TV Réalité: 7 channels
-House of Horror: 7 channels
-Documentaire: 7 channels
-Nature & Travel: 7 channels
-Musique: 6 channels
-Daytime TV: 6 channels
-Movies: 5 channels
+News: 8 channels
 Legislative: 5 channels
-Comedy: 5 channels
-Sports & Auto: 4 channels
-Sci-Fi & Action: 4 channels
-History & Science: 4 channels
 Communautaire: 3 channels
-Nouveau sur Pluto TV: 3 channels
-Emissions cultes: 3 channels
-Comédie: 3 channels
+Sports: 3 channels
 Affaires Publiques: 2 channels
+Movies: 2 channels
+Kids: 2 channels
 Outdoor: 2 channels
-Anime & Gaming, Kids & Family: 2 channels
-True Crime: 2 channels
-International: 2 channels
-Drama TV: 2 channels
-Hit TV, True Crime: 2 channels
-Reality: 2 channels
 Réréalité: 1 channels
 Comedie: 1 channels
 Film: 1 channels
+Quebec TV: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
-Quebec TV: 1 channels
 Series: 1 channels
 Weather: 1 channels
 Shop: 1 channels
-Hit TV: 1 channels
-Anime & Gaming: 1 channels
-Drama TV, Movies: 1 channels
-Hit TV, Game Shows: 1 channels
+
+FAILED URLS
+-----------
+URL: https://tinyurl.com/Stream2IPTV?region=fr&service=PlutoTV
+Error: 503 Server Error: Service Unavailable for url: https://tinyurl.com/Stream2IPTV?region=fr&service=PlutoTV
+
+URL: https://tinyurl.com/Stream2IPTV?region=fr&service=SamsungTVPlus
+Error: 503 Server Error: Service Unavailable for url: https://tinyurl.com/Stream2IPTV?region=fr&service=SamsungTVPlus
+
+URL: https://tinyurl.com/Stream2IPTV?region=fr&service=Plex
+Error: HTTPSConnectionPool(host='tinyurl.com', port=443): Read timed out. (read timeout=12)
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 3 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 173 channels
-HTTP 500 Errors: 5 channels
+HTTP 404 Errors: 57 channels
+HTTP 500 Errors: 6 channels
 HTTP 502 Errors: 4 channels
 HTTP 503 Errors: 2 channels
 HTTP 504 Errors: 8 channels
 Inactive: 65 channels
-Invalid Content: 10 channels
+Invalid Content: 9 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
@@ -231,13 +209,6 @@ URL: https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8 (Reason: 
 URL: https://rt-fra.rttv.com/dvr/rtfrance/playlist.m3u8 (Reason: Duplicate)
 URL: https://bcovlive-a.akamaihd.net/4b1c462c86094bae93b65adc84e43afc/us-west-2/6101674910001/playlist.m3u8 (Reason: Duplicate)
 URL: https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8 (Reason: Duplicate)
-
---- From Source: https://tinyurl.com/Stream2IPTV?region=fr&service=SamsungTVPlus (5 skipped) ---
-URL: https://jmp2.uk/sam-FR2600004SS.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRAJ3800002W5.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRAJ38000089S.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRAJ38000035M.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRBD5100002NL.m3u8 (Reason: Duplicate)
 
 --- From Source: https://raw.githubusercontent.com/iptv-org/iptv/master/streams/fr_rakuten.m3u (10 skipped) ---
 URL: https://amg01314-cgtn-amg01314c2-rakuten-us-1319.playouts.now.amagi.tv/cgtn-fr-rakuten/playlist.m3u8 (Reason: Duplicate)
