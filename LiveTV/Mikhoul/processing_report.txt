@@ -1,27 +1,27 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-10-06 19:52:47
+Generated: 2025-10-07 19:52:48
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 7967
-Total Channels Found: 1268
+Total Lines Processed: 7989
+Total Channels Found: 1267
 Parsing Errors: 0
-Urls Validated: 1051
+Urls Validated: 1050
 Active Urls: 779
-Geo Blocked Urls: 158
-Validation Time: 120.57662057876587
-Inactive By Error: {'http_404': 174, 'inactive': 65, 'http_401': 2, 'http_502': 4, 'http_400': 3, 'invalid_content': 10, 'http_504': 8, 'http_503': 2, 'http_500': 4}
-Total Processing Time: 133.55307340621948
+Geo Blocked Urls: 157
+Validation Time: 118.26814126968384
+Inactive By Error: {'http_404': 173, 'inactive': 64, 'http_401': 1, 'http_502': 4, 'http_400': 3, 'invalid_content': 10, 'http_504': 8, 'http_503': 2, 'http_500': 6}
+Total Processing Time: 133.30572485923767
 Final Channel Count: 779
 Source Urls Processed: 8
-Total Skipped Urls: 144
+Total Skipped Urls: 145
 
 CHANNEL DISTRIBUTION
 --------------------
-6. |FR|🇫🇷 LOCALES - RÉGIONALES: 112 channels
-Uncategorized: 85 channels
+6. |FR|🇫🇷 LOCALES - RÉGIONALES: 109 channels
+Uncategorized: 84 channels
 Music: 49 channels
 2. |FR|🇫🇷 GÉNÉRALISTES: 44 channels
 5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 40 channels
@@ -29,11 +29,11 @@ General: 37 channels
 Sports: 35 channels
 1. |FR|🇫🇷 INFORMATION: 35 channels
 Généraliste: 33 channels
-10. |TR|🇹🇷 ÇOCUK - SPOR: 28 channels
+10. |TR|🇹🇷 ÇOCUK - SPOR: 29 channels
 Kids: 20 channels
-News: 18 channels
+News: 19 channels
+3. |FR|🇫🇷 MUSIQUE - JEUNESSE: 14 channels
 100% Français: 14 channels
-3. |FR|🇫🇷 MUSIQUE - JEUNESSE: 13 channels
 À Binge-Watch: 12 channels
 Kids & Family: 12 channels
 FRANCE: 12 channels
@@ -69,11 +69,12 @@ International: 2 channels
 Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
+Educatif: 1 channels
 Réréalité: 1 channels
 Film: 1 channels
 Comedie: 1 channels
-Thématique: 1 channels
 Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
 Series: 1 channels
 Weather: 1 channels
@@ -86,13 +87,13 @@ Drama TV, Movies: 1 channels
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 3 channels
-HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 174 channels
-HTTP 500 Errors: 4 channels
+HTTP 401 Errors: 1 channels
+HTTP 404 Errors: 173 channels
+HTTP 500 Errors: 6 channels
 HTTP 502 Errors: 4 channels
 HTTP 503 Errors: 2 channels
 HTTP 504 Errors: 8 channels
-Inactive: 65 channels
+Inactive: 64 channels
 Invalid Content: 10 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
@@ -200,11 +201,12 @@ URL: plugin://plugin.infologique.TVAgo/?url=ref%3Atva_6309386882112&sourceUrl=re
 URL: plugin://plugin.video.youtube/play/?video_id=biCCb0EB3g4 (Reason: Invalid/Non-HTTP)
 URL: plugin://plugin.video.youtube/play/?video_id=WHhzK7k22q0 (Reason: Invalid/Non-HTTP)
 
---- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (18 skipped) ---
+--- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (19 skipped) ---
 URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8 (Reason: Duplicate)
 URL: https://new.cache-stream.workers.dev/channel/UCCCPCZNChQdGa9EkATeye4g/live.m3u8 (Reason: Duplicate)
 URL: error: No playable streams found on this URL: https://www.tf1.fr/tf1/direct (Reason: Invalid/Non-HTTP)
 URL: https://01ac9352fbfa4204998783d41f9b1a2e.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6068/master.m3u8 (Reason: Duplicate)
+URL: https://c3776ebb1c7742cb9c0191b41b8b2432.mediatailor.us-east-1.amazonaws.com/v1/master/04fd913bb278d8775298c26fdca9d9841f37601f/Samsung-fr_Brefcinema/playlist.m3u8 (Reason: Duplicate)
 URL: https://versatile-wildsidetv-1-fr.samsung.wurl.tv/playlist.m3u8 (Reason: Duplicate)
 URL: https://indisponible (Reason: Duplicate)
 URL: https://section (Reason: Duplicate)
