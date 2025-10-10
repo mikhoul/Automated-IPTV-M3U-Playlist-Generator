@@ -1,33 +1,33 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-10-09 19:51:50
+Generated: 2025-10-10 19:52:03
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 7989
-Total Channels Found: 1267
+Total Lines Processed: 7995
+Total Channels Found: 1268
 Parsing Errors: 0
-Urls Validated: 1050
-Active Urls: 790
-Geo Blocked Urls: 157
-Validation Time: 77.97940969467163
-Inactive By Error: {'http_404': 173, 'inactive': 52, 'http_502': 4, 'http_401': 2, 'http_400': 3, 'http_504': 9, 'invalid_content': 8, 'http_500': 7, 'http_503': 2}
-Total Processing Time: 89.49672532081604
-Final Channel Count: 790
+Urls Validated: 1051
+Active Urls: 795
+Geo Blocked Urls: 169
+Validation Time: 81.23860883712769
+Inactive By Error: {'http_404': 171, 'inactive': 53, 'http_401': 2, 'http_502': 4, 'http_400': 3, 'invalid_content': 8, 'http_504': 8, 'http_503': 2, 'http_500': 5}
+Total Processing Time: 92.77858877182007
+Final Channel Count: 795
 Source Urls Processed: 8
 Total Skipped Urls: 145
 
 CHANNEL DISTRIBUTION
 --------------------
-6. |FR|🇫🇷 LOCALES - RÉGIONALES: 108 channels
-Uncategorized: 84 channels
+6. |FR|🇫🇷 LOCALES - RÉGIONALES: 111 channels
+Uncategorized: 85 channels
 Music: 50 channels
 2. |FR|🇫🇷 GÉNÉRALISTES: 44 channels
 5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 42 channels
 Sports: 41 channels
-General: 37 channels
-1. |FR|🇫🇷 INFORMATION: 34 channels
+General: 38 channels
+1. |FR|🇫🇷 INFORMATION: 35 channels
 Généraliste: 33 channels
 10. |TR|🇹🇷 ÇOCUK - SPOR: 28 channels
 Kids: 20 channels
@@ -64,15 +64,14 @@ Comédie: 3 channels
 Affaires Publiques: 2 channels
 Outdoor: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
-True Crime: 2 channels
 International: 2 channels
-Hit TV, True Crime: 2 channels
+True Crime: 2 channels
 Drama TV: 2 channels
+Hit TV, True Crime: 2 channels
 Reality: 2 channels
-Educatif: 1 channels
-Comedie: 1 channels
-Réréalité: 1 channels
 Film: 1 channels
+Réréalité: 1 channels
+Comedie: 1 channels
 Cuisine: 1 channels
 Thématique: 1 channels
 Quebec TV: 1 channels
@@ -89,12 +88,12 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 3 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 173 channels
-HTTP 500 Errors: 7 channels
+HTTP 404 Errors: 171 channels
+HTTP 500 Errors: 5 channels
 HTTP 502 Errors: 4 channels
 HTTP 503 Errors: 2 channels
-HTTP 504 Errors: 9 channels
-Inactive: 52 channels
+HTTP 504 Errors: 8 channels
+Inactive: 53 channels
 Invalid Content: 8 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
