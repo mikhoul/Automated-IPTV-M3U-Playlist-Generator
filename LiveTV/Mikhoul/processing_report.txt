@@ -1,68 +1,53 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-10-14 19:52:14
+Generated: 2025-10-15 19:52:07
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 8023
-Total Channels Found: 1278
+Total Lines Processed: 7725
+Total Channels Found: 1129
 Parsing Errors: 0
-Urls Validated: 1056
-Active Urls: 798
-Geo Blocked Urls: 172
-Validation Time: 83.34919476509094
-Inactive By Error: {'http_404': 173, 'inactive': 53, 'http_502': 4, 'http_401': 2, 'http_400': 3, 'http_504': 7, 'invalid_content': 7, 'http_503': 2, 'http_500': 7}
-Total Processing Time: 95.54261112213135
-Final Channel Count: 798
+Urls Validated: 947
+Active Urls: 671
+Geo Blocked Urls: 175
+Validation Time: 75.18388676643372
+Inactive By Error: {'http_404': 193, 'inactive': 51, 'http_401': 2, 'http_502': 4, 'http_400': 3, 'invalid_content': 9, 'http_504': 7, 'http_503': 2, 'http_500': 5}
+Total Processing Time: 86.76558637619019
+Final Channel Count: 671
 Source Urls Processed: 8
 Total Skipped Urls: 145
 
 CHANNEL DISTRIBUTION
 --------------------
-6. |FR|🇫🇷 LOCALES - RÉGIONALES: 108 channels
-Uncategorized: 85 channels
+6. |FR|🇫🇷 LOCALES - RÉGIONALES: 111 channels
+Uncategorized: 86 channels
 Music: 50 channels
 2. |FR|🇫🇷 GÉNÉRALISTES: 44 channels
-5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 43 channels
 Sports: 41 channels
+5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 41 channels
 General: 38 channels
 1. |FR|🇫🇷 INFORMATION: 36 channels
 Généraliste: 33 channels
 10. |TR|🇹🇷 ÇOCUK - SPOR: 29 channels
-Kids: 20 channels
-News: 19 channels
+News: 18 channels
+FRANCE: 15 channels
 3. |FR|🇫🇷 MUSIQUE - JEUNESSE: 14 channels
-100% Français: 14 channels
-FRANCE: 13 channels
-À Binge-Watch: 12 channels
 Kids & Family: 12 channels
-Divertissement: 10 channels
-Cinéma: 10 channels
 Movies: 9 channels
-Séries Policières: 9 channels
 Classic TV: 9 channels
 Lifestyle: 9 channels
 Actualités: 8 channels
-Animation: 8 channels
-Crime & Mystère: 8 channels
-TV Réalité: 7 channels
-House of Horror: 7 channels
-Documentaire: 7 channels
 Nature & Travel: 7 channels
-Musique: 6 channels
 Daytime TV: 6 channels
 Legislative: 5 channels
 Comedy: 5 channels
-Nouveau sur Pluto TV: 4 channels
-Sports & Auto: 4 channels
 Sci-Fi & Action: 4 channels
 History & Science: 4 channels
 Communautaire: 3 channels
-Emissions cultes: 3 channels
-Comédie: 3 channels
 Affaires Publiques: 2 channels
 Series: 2 channels
+Kids: 2 channels
 Outdoor: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
@@ -72,30 +57,30 @@ Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
 Réréalité: 1 channels
-Comedie: 1 channels
 Film: 1 channels
+Comedie: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
 Movies;Series: 1 channels
-Weather: 1 channels
 Shop: 1 channels
+Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 3 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 173 channels
-HTTP 500 Errors: 7 channels
+HTTP 404 Errors: 193 channels
+HTTP 500 Errors: 5 channels
 HTTP 502 Errors: 4 channels
 HTTP 503 Errors: 2 channels
 HTTP 504 Errors: 7 channels
-Inactive: 53 channels
-Invalid Content: 7 channels
+Inactive: 51 channels
+Invalid Content: 9 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
