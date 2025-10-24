@@ -1,22 +1,22 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-10-23 19:52:11
+Generated: 2025-10-24 19:52:05
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 8089
+Total Lines Processed: 8103
 Total Channels Found: 1286
 Parsing Errors: 0
-Urls Validated: 1063
+Urls Validated: 1064
 Active Urls: 799
-Geo Blocked Urls: 176
-Validation Time: 85.7748875617981
-Inactive By Error: {'inactive': 52, 'http_404': 182, 'http_502': 3, 'http_401': 2, 'http_400': 3, 'http_504': 7, 'invalid_content': 10, 'http_503': 1, 'http_500': 4}
-Total Processing Time: 97.91764736175537
+Geo Blocked Urls: 175
+Validation Time: 87.52019786834717
+Inactive By Error: {'inactive': 52, 'http_404': 183, 'http_502': 3, 'http_401': 2, 'http_400': 3, 'http_504': 7, 'invalid_content': 10, 'http_500': 4, 'http_503': 1}
+Total Processing Time: 105.74536943435669
 Final Channel Count: 799
 Source Urls Processed: 8
-Total Skipped Urls: 145
+Total Skipped Urls: 146
 
 CHANNEL DISTRIBUTION
 --------------------
@@ -26,8 +26,8 @@ Music: 49 channels
 2. |FR|🇫🇷 GÉNÉRALISTES: 45 channels
 5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 40 channels
 General: 38 channels
-Sports: 36 channels
-1. |FR|🇫🇷 INFORMATION: 36 channels
+1. |FR|🇫🇷 INFORMATION: 37 channels
+Sports: 35 channels
 Généraliste: 33 channels
 10. |TR|🇹🇷 ÇOCUK - SPOR: 29 channels
 Kids: 23 channels
@@ -66,8 +66,8 @@ Series: 2 channels
 Outdoor: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
-Drama TV: 2 channels
 International: 2 channels
+Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
@@ -77,18 +77,18 @@ Film: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
-Weather: 1 channels
 Shop: 1 channels
+Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 3 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 182 channels
+HTTP 404 Errors: 183 channels
 HTTP 500 Errors: 4 channels
 HTTP 502 Errors: 3 channels
 HTTP 503 Errors: 1 channels
@@ -201,8 +201,9 @@ URL: plugin://plugin.infologique.TVAgo/?url=ref%3Atva_6309386882112&sourceUrl=re
 URL: plugin://plugin.video.youtube/play/?video_id=biCCb0EB3g4 (Reason: Invalid/Non-HTTP)
 URL: plugin://plugin.video.youtube/play/?video_id=WHhzK7k22q0 (Reason: Invalid/Non-HTTP)
 
---- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (18 skipped) ---
+--- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (19 skipped) ---
 URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8 (Reason: Duplicate)
+URL: https://rt-fra.rttv.com/live/rtfrance/playlist.m3u8 (Reason: Duplicate)
 URL: https://new.cache-stream.workers.dev/channel/UCCCPCZNChQdGa9EkATeye4g/live.m3u8 (Reason: Duplicate)
 URL: error: No playable streams found on this URL: https://www.tf1.fr/tf1/direct (Reason: Invalid/Non-HTTP)
 URL: https://c3776ebb1c7742cb9c0191b41b8b2432.mediatailor.us-east-1.amazonaws.com/v1/master/04fd913bb278d8775298c26fdca9d9841f37601f/Samsung-fr_Brefcinema/playlist.m3u8 (Reason: Duplicate)
