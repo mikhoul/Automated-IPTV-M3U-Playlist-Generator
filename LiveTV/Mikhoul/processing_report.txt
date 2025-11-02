@@ -1,19 +1,19 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-11-01 19:52:02
+Generated: 2025-11-02 19:52:07
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 8141
-Total Channels Found: 1297
+Total Lines Processed: 8121
+Total Channels Found: 1287
 Parsing Errors: 0
-Urls Validated: 1072
+Urls Validated: 1064
 Active Urls: 817
 Geo Blocked Urls: 177
-Validation Time: 82.03477549552917
-Inactive By Error: {'http_404': 172, 'inactive': 54, 'http_401': 2, 'http_502': 2, 'http_400': 3, 'http_504': 6, 'invalid_content': 10, 'http_500': 5, 'http_503': 1}
-Total Processing Time: 94.58907675743103
+Validation Time: 82.40556573867798
+Inactive By Error: {'http_404': 171, 'inactive': 48, 'http_401': 2, 'http_502': 2, 'http_400': 3, 'http_504': 7, 'invalid_content': 9, 'http_503': 1, 'http_500': 4}
+Total Processing Time: 99.06808352470398
 Final Channel Count: 817
 Source Urls Processed: 8
 Total Skipped Urls: 146
@@ -21,11 +21,11 @@ Total Skipped Urls: 146
 CHANNEL DISTRIBUTION
 --------------------
 6. |FR|🇫🇷 LOCALES - RÉGIONALES: 118 channels
-Uncategorized: 87 channels
+Uncategorized: 86 channels
 Music: 50 channels
-2. |FR|🇫🇷 GÉNÉRALISTES: 44 channels
+2. |FR|🇫🇷 GÉNÉRALISTES: 45 channels
+5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 42 channels
 Sports: 41 channels
-5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 41 channels
 General: 38 channels
 1. |FR|🇫🇷 INFORMATION: 37 channels
 Généraliste: 33 channels
@@ -52,9 +52,9 @@ Documentaire: 7 channels
 Nature & Travel: 7 channels
 Musique: 6 channels
 Daytime TV: 6 channels
-Legislative: 5 channels
 Nouveau sur Pluto TV: 5 channels
 Comedy: 5 channels
+Legislative: 4 channels
 Sports & Auto: 4 channels
 Sci-Fi & Action: 4 channels
 History & Science: 4 channels
@@ -71,31 +71,31 @@ Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Comedie: 1 channels
 Réréalité: 1 channels
+Comedie: 1 channels
 Film: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
-Weather: 1 channels
 Shop: 1 channels
 Movies;Series: 1 channels
+Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 3 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 172 channels
-HTTP 500 Errors: 5 channels
+HTTP 404 Errors: 171 channels
+HTTP 500 Errors: 4 channels
 HTTP 502 Errors: 2 channels
 HTTP 503 Errors: 1 channels
-HTTP 504 Errors: 6 channels
-Inactive: 54 channels
-Invalid Content: 10 channels
+HTTP 504 Errors: 7 channels
+Inactive: 48 channels
+Invalid Content: 9 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
