@@ -1,38 +1,38 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-11-07 19:51:33
+Generated: 2025-11-08 19:51:58
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 8193
-Total Channels Found: 1299
+Total Lines Processed: 8241
+Total Channels Found: 1306
 Parsing Errors: 0
-Urls Validated: 1074
-Active Urls: 824
-Geo Blocked Urls: 174
-Validation Time: 71.2709276676178
-Inactive By Error: {'http_404': 172, 'inactive': 47, 'http_401': 2, 'http_502': 2, 'http_400': 3, 'http_504': 7, 'invalid_content': 11, 'http_521': 1, 'http_500': 4, 'http_503': 1}
-Total Processing Time: 81.32810664176941
-Final Channel Count: 824
+Urls Validated: 1079
+Active Urls: 830
+Geo Blocked Urls: 176
+Validation Time: 76.79660129547119
+Inactive By Error: {'http_404': 170, 'inactive': 47, 'http_502': 2, 'http_401': 2, 'http_400': 3, 'http_504': 7, 'invalid_content': 11, 'http_500': 5, 'http_521': 1, 'http_503': 1}
+Total Processing Time: 87.76599931716919
+Final Channel Count: 830
 Source Urls Processed: 8
-Total Skipped Urls: 146
+Total Skipped Urls: 147
 
 CHANNEL DISTRIBUTION
 --------------------
-6. |FR|🇫🇷 LOCALES - RÉGIONALES: 118 channels
+6. |FR|🇫🇷 LOCALES - RÉGIONALES: 117 channels
 Uncategorized: 90 channels
 Music: 50 channels
 Sports: 46 channels
 2. |FR|🇫🇷 GÉNÉRALISTES: 44 channels
-5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 41 channels
+5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 42 channels
 General: 40 channels
 1. |FR|🇫🇷 INFORMATION: 38 channels
 Généraliste: 33 channels
 10. |TR|🇹🇷 ÇOCUK - SPOR: 30 channels
 Kids: 25 channels
+3. |FR|🇫🇷 MUSIQUE - JEUNESSE: 21 channels
 News: 19 channels
-3. |FR|🇫🇷 MUSIQUE - JEUNESSE: 15 channels
 100% Français: 14 channels
 Cinéma: 13 channels
 FRANCE: 13 channels
@@ -76,11 +76,11 @@ Film: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
-Weather: 1 channels
 Shop: 1 channels
+Weather: 1 channels
 Movies;Series: 1 channels
-Anime & Gaming: 1 channels
 Hit TV: 1 channels
+Anime & Gaming: 1 channels
 Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
 
@@ -88,8 +88,8 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 3 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 172 channels
-HTTP 500 Errors: 4 channels
+HTTP 404 Errors: 170 channels
+HTTP 500 Errors: 5 channels
 HTTP 502 Errors: 2 channels
 HTTP 503 Errors: 1 channels
 HTTP 504 Errors: 7 channels
@@ -202,11 +202,12 @@ URL: plugin://plugin.infologique.TVAgo/?url=ref%3Atva_6309386882112&sourceUrl=re
 URL: plugin://plugin.video.youtube/play/?video_id=biCCb0EB3g4 (Reason: Invalid/Non-HTTP)
 URL: plugin://plugin.video.youtube/play/?video_id=WHhzK7k22q0 (Reason: Invalid/Non-HTTP)
 
---- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (19 skipped) ---
+--- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (20 skipped) ---
 URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8 (Reason: Duplicate)
 URL: https://rt-fra.rttv.com/live/rtfrance/playlist.m3u8 (Reason: Duplicate)
 URL: https://new.cache-stream.workers.dev/channel/UCCCPCZNChQdGa9EkATeye4g/live.m3u8 (Reason: Duplicate)
 URL: error: No playable streams found on this URL: https://www.tf1.fr/tf1/direct (Reason: Invalid/Non-HTTP)
+URL: https://qwestjazz-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-qwestjazz-rakuten/CDN/master.m3u8 (Reason: Duplicate)
 URL: https://c3776ebb1c7742cb9c0191b41b8b2432.mediatailor.us-east-1.amazonaws.com/v1/master/04fd913bb278d8775298c26fdca9d9841f37601f/Samsung-fr_Brefcinema/playlist.m3u8 (Reason: Duplicate)
 URL: https://versatile-wildsidetv-1-fr.samsung.wurl.tv/playlist.m3u8 (Reason: Duplicate)
 URL: https://indisponible (Reason: Duplicate)
