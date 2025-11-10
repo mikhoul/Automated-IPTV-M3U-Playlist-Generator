@@ -1,32 +1,32 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-11-09 19:51:48
+Generated: 2025-11-10 19:52:38
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
 Total Lines Processed: 8253
-Total Channels Found: 1312
+Total Channels Found: 1313
 Parsing Errors: 0
-Urls Validated: 1087
-Active Urls: 836
+Urls Validated: 1088
+Active Urls: 840
 Geo Blocked Urls: 176
-Validation Time: 79.31814336776733
-Inactive By Error: {'http_404': 171, 'inactive': 49, 'http_401': 2, 'http_502': 2, 'http_400': 3, 'invalid_content': 10, 'http_504': 7, 'http_500': 5, 'http_503': 1, 'http_521': 1}
-Total Processing Time: 90.19200921058655
-Final Channel Count: 836
+Validation Time: 74.49871397018433
+Inactive By Error: {'http_404': 171, 'inactive': 47, 'http_401': 2, 'http_502': 2, 'http_400': 3, 'invalid_content': 11, 'http_504': 7, 'http_521': 1, 'http_500': 4}
+Total Processing Time: 113.37440013885498
+Final Channel Count: 840
 Source Urls Processed: 8
-Total Skipped Urls: 147
+Total Skipped Urls: 146
 
 CHANNEL DISTRIBUTION
 --------------------
-6. |FR|🇫🇷 LOCALES - RÉGIONALES: 117 channels
+6. |FR|🇫🇷 LOCALES - RÉGIONALES: 118 channels
 Uncategorized: 90 channels
 Music: 53 channels
 Sports: 49 channels
-2. |FR|🇫🇷 GÉNÉRALISTES: 45 channels
+2. |FR|🇫🇷 GÉNÉRALISTES: 44 channels
 5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 42 channels
-General: 39 channels
+General: 40 channels
 1. |FR|🇫🇷 INFORMATION: 38 channels
 Généraliste: 33 channels
 10. |TR|🇹🇷 ÇOCUK - SPOR: 30 channels
@@ -40,21 +40,21 @@ FRANCE: 13 channels
 Kids & Family: 12 channels
 Crime & Mystère: 11 channels
 Divertissement: 10 channels
+Movies: 9 channels
 Séries Policières: 9 channels
 Classic TV: 9 channels
 Lifestyle: 9 channels
 Actualités: 8 channels
-Movies: 8 channels
 Animation: 8 channels
 TV Réalité: 7 channels
 Documentaire: 7 channels
 Nature & Travel: 7 channels
 Musique: 6 channels
 Daytime TV: 6 channels
+Legislative: 5 channels
+Nouveau sur Pluto TV: 5 channels
 Comedy: 5 channels
-Legislative: 4 channels
 Sports & Auto: 4 channels
-Nouveau sur Pluto TV: 4 channels
 History & Science: 4 channels
 Communautaire: 3 channels
 Emissions cultes: 3 channels
@@ -64,38 +64,37 @@ Affaires Publiques: 2 channels
 Series: 2 channels
 Outdoor: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
-International: 2 channels
 True Crime: 2 channels
+International: 2 channels
 Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
+Comedie: 1 channels
 Réréalité: 1 channels
 Film: 1 channels
-Comedie: 1 channels
-Thématique: 1 channels
 Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
 Weather: 1 channels
 Shop: 1 channels
 Movies;Series: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 3 channels
 HTTP 401 Errors: 2 channels
 HTTP 404 Errors: 171 channels
-HTTP 500 Errors: 5 channels
+HTTP 500 Errors: 4 channels
 HTTP 502 Errors: 2 channels
-HTTP 503 Errors: 1 channels
 HTTP 504 Errors: 7 channels
 HTTP 521 Errors: 1 channels
-Inactive: 49 channels
-Invalid Content: 10 channels
+Inactive: 47 channels
+Invalid Content: 11 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
@@ -243,9 +242,8 @@ URL: https://jmp2.uk/sam-FRAJ38000089S.m3u8 (Reason: Duplicate)
 URL: https://jmp2.uk/sam-FRAJ38000035M.m3u8 (Reason: Duplicate)
 URL: https://jmp2.uk/sam-FRBD5100002NL.m3u8 (Reason: Duplicate)
 
---- From Source: https://raw.githubusercontent.com/iptv-org/iptv/master/streams/fr_rakuten.m3u (11 skipped) ---
+--- From Source: https://raw.githubusercontent.com/iptv-org/iptv/master/streams/fr_rakuten.m3u (10 skipped) ---
 URL: https://amg01314-cgtn-amg01314c2-rakuten-us-1319.playouts.now.amagi.tv/cgtn-fr-rakuten/playlist.m3u8 (Reason: Duplicate)
-URL: https://37b4c228.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWZyX0ZJRkFQbHVzRnJlbmNoX0hMUw/playlist.m3u8 (Reason: Duplicate)
 URL: https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads.xumo_channelId=88883047 (Reason: Duplicate)
 URL: https://qwestjazz-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-qwestjazz-rakuten/CDN/master.m3u8 (Reason: Duplicate)
 URL: https://01ac9352fbfa4204998783d41f9b1a2e.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6068/master.m3u8 (Reason: Duplicate)
