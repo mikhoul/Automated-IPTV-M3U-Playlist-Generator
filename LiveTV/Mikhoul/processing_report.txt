@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-11-28 19:51:42
+Generated: 2025-11-29 19:52:34
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,12 +9,12 @@ Total Lines Processed: 8282
 Total Channels Found: 1330
 Parsing Errors: 0
 Urls Validated: 1101
-Active Urls: 846
-Geo Blocked Urls: 176
-Validation Time: 77.66765475273132
-Inactive By Error: {'http_404': 179, 'inactive': 47, 'http_401': 2, 'http_502': 2, 'http_400': 3, 'http_504': 7, 'invalid_content': 10, 'http_500': 5}
-Total Processing Time: 88.20164775848389
-Final Channel Count: 846
+Active Urls: 845
+Geo Blocked Urls: 181
+Validation Time: 124.33523344993591
+Inactive By Error: {'http_404': 180, 'inactive': 47, 'http_502': 2, 'http_401': 2, 'http_400': 3, 'invalid_content': 10, 'http_504': 7, 'http_500': 5}
+Total Processing Time: 134.55043482780457
+Final Channel Count: 845
 Source Urls Processed: 8
 Total Skipped Urls: 146
 
@@ -60,35 +60,35 @@ Communautaire: 3 channels
 Emissions cultes: 3 channels
 Comédie: 3 channels
 Sci-Fi & Action: 3 channels
-Affaires Publiques: 2 channels
 Series: 2 channels
 Outdoor: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
-International: 2 channels
 Drama TV: 2 channels
+International: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Film: 1 channels
-Réréalité: 1 channels
 Comedie: 1 channels
-Cuisine: 1 channels
+Réréalité: 1 channels
+Film: 1 channels
+Affaires Publiques: 1 channels
 Thématique: 1 channels
+Cuisine: 1 channels
 Quebec TV: 1 channels
 Weather: 1 channels
 Shop: 1 channels
 Movies;Series: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 3 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 179 channels
+HTTP 404 Errors: 180 channels
 HTTP 500 Errors: 5 channels
 HTTP 502 Errors: 2 channels
 HTTP 504 Errors: 7 channels
