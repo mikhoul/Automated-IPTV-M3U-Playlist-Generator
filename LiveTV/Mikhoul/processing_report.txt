@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-11-29 19:52:34
+Generated: 2025-11-30 19:52:37
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,12 +9,12 @@ Total Lines Processed: 8282
 Total Channels Found: 1330
 Parsing Errors: 0
 Urls Validated: 1101
-Active Urls: 845
-Geo Blocked Urls: 181
-Validation Time: 124.33523344993591
-Inactive By Error: {'http_404': 180, 'inactive': 47, 'http_502': 2, 'http_401': 2, 'http_400': 3, 'invalid_content': 10, 'http_504': 7, 'http_500': 5}
-Total Processing Time: 134.55043482780457
-Final Channel Count: 845
+Active Urls: 846
+Geo Blocked Urls: 180
+Validation Time: 123.49547338485718
+Inactive By Error: {'http_404': 180, 'inactive': 47, 'http_401': 2, 'http_502': 2, 'http_400': 3, 'http_504': 7, 'invalid_content': 9, 'http_500': 5}
+Total Processing Time: 133.62231183052063
+Final Channel Count: 846
 Source Urls Processed: 8
 Total Skipped Urls: 146
 
@@ -23,7 +23,7 @@ CHANNEL DISTRIBUTION
 6. |FR|🇫🇷 LOCALES - RÉGIONALES: 117 channels
 Uncategorized: 94 channels
 Music: 52 channels
-2. |FR|🇫🇷 GÉNÉRALISTES: 48 channels
+2. |FR|🇫🇷 GÉNÉRALISTES: 49 channels
 1. |FR|🇫🇷 INFORMATION: 44 channels
 Sports: 42 channels
 5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 42 channels
@@ -64,20 +64,20 @@ Series: 2 channels
 Outdoor: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
-Drama TV: 2 channels
 International: 2 channels
 Hit TV, True Crime: 2 channels
+Drama TV: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
 Comedie: 1 channels
-Réréalité: 1 channels
 Film: 1 channels
+Réréalité: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
-Weather: 1 channels
 Shop: 1 channels
+Weather: 1 channels
 Movies;Series: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
@@ -93,7 +93,7 @@ HTTP 500 Errors: 5 channels
 HTTP 502 Errors: 2 channels
 HTTP 504 Errors: 7 channels
 Inactive: 47 channels
-Invalid Content: 10 channels
+Invalid Content: 9 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
