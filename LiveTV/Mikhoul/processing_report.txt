@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-12-13 19:52:41
+Generated: 2025-12-14 19:52:26
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,27 +9,27 @@ Total Lines Processed: 8350
 Total Channels Found: 1344
 Parsing Errors: 0
 Urls Validated: 1112
-Active Urls: 849
-Geo Blocked Urls: 180
-Validation Time: 120.6478362083435
-Inactive By Error: {'http_404': 185, 'inactive': 45, 'http_401': 2, 'http_502': 2, 'http_400': 3, 'http_504': 7, 'invalid_content': 12, 'http_500': 5, 'http_421': 2}
-Total Processing Time: 133.03104329109192
-Final Channel Count: 849
+Active Urls: 847
+Geo Blocked Urls: 178
+Validation Time: 121.9638831615448
+Inactive By Error: {'http_404': 188, 'http_502': 2, 'inactive': 45, 'http_401': 2, 'http_400': 4, 'http_504': 7, 'invalid_content': 10, 'http_500': 5, 'http_421': 2}
+Total Processing Time: 133.69681000709534
+Final Channel Count: 847
 Source Urls Processed: 8
 Total Skipped Urls: 147
 
 CHANNEL DISTRIBUTION
 --------------------
 6. |FR|🇫🇷 LOCALES - RÉGIONALES: 116 channels
-Uncategorized: 97 channels
-2. |FR|🇫🇷 GÉNÉRALISTES: 51 channels
+Uncategorized: 96 channels
+2. |FR|🇫🇷 GÉNÉRALISTES: 52 channels
 Music: 51 channels
-Sports: 45 channels
 1. |FR|🇫🇷 INFORMATION: 45 channels
-5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 40 channels
-General: 37 channels
+Sports: 41 channels
+5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 41 channels
+General: 38 channels
 Généraliste: 33 channels
-10. |TR|🇹🇷 ÇOCUK - SPOR: 30 channels
+10. |TR|🇹🇷 ÇOCUK - SPOR: 31 channels
 Kids: 27 channels
 3. |FR|🇫🇷 MUSIQUE - JEUNESSE: 21 channels
 News: 19 channels
@@ -56,11 +56,11 @@ Comedy: 5 channels
 Sports & Auto: 4 channels
 History & Science: 4 channels
 Communautaire: 3 channels
-Legislative: 3 channels
 Emissions cultes: 3 channels
 Comédie: 3 channels
 Sci-Fi & Action: 3 channels
 Series: 2 channels
+Legislative: 2 channels
 Outdoor: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
@@ -77,24 +77,24 @@ Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
 Weather: 1 channels
-Movies;Series: 1 channels
 Shop: 1 channels
+Movies;Series: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
-HTTP 400 Errors: 3 channels
+HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 185 channels
+HTTP 404 Errors: 188 channels
 HTTP 421 Errors: 2 channels
 HTTP 500 Errors: 5 channels
 HTTP 502 Errors: 2 channels
 HTTP 504 Errors: 7 channels
 Inactive: 45 channels
-Invalid Content: 12 channels
+Invalid Content: 10 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
