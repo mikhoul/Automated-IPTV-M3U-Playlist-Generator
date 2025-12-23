@@ -1,42 +1,42 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-12-22 19:52:43
+Generated: 2025-12-23 19:52:50
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 8358
-Total Channels Found: 1332
+Total Lines Processed: 8024
+Total Channels Found: 1174
 Parsing Errors: 0
-Urls Validated: 1097
-Active Urls: 840
-Geo Blocked Urls: 182
-Validation Time: 124.69362568855286
-Inactive By Error: {'http_404': 188, 'inactive': 40, 'http_502': 1, 'http_401': 2, 'http_400': 3, 'invalid_content': 11, 'http_504': 7, 'http_500': 5}
-Total Processing Time: 137.7601089477539
-Final Channel Count: 840
+Urls Validated: 1004
+Active Urls: 871
+Geo Blocked Urls: 194
+Validation Time: 125.37106776237488
+Inactive By Error: {'inactive': 40, 'http_404': 64, 'http_401': 2, 'http_502': 1, 'http_400': 3, 'invalid_content': 10, 'http_504': 8, 'http_500': 5}
+Total Processing Time: 135.83507418632507
+Final Channel Count: 871
 Source Urls Processed: 8
-Total Skipped Urls: 152
+Total Skipped Urls: 147
 
 CHANNEL DISTRIBUTION
 --------------------
 6. |FR|🇫🇷 LOCALES - RÉGIONALES: 119 channels
-Uncategorized: 93 channels
+Uncategorized: 106 channels
 2. |FR|🇫🇷 GÉNÉRALISTES: 51 channels
 Music: 51 channels
-1. |FR|🇫🇷 INFORMATION: 45 channels
-5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 42 channels
-Sports: 41 channels
-General: 38 channels
+1. |FR|🇫🇷 INFORMATION: 49 channels
+5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 43 channels
+Sports: 42 channels
+General: 37 channels
 Généraliste: 33 channels
 10. |TR|🇹🇷 ÇOCUK - SPOR: 31 channels
 3. |FR|🇫🇷 MUSIQUE - JEUNESSE: 24 channels
-News: 19 channels
+News: 22 channels
 À Binge-Watch: 16 channels
 Kids: 14 channels
 Cinéma: 14 channels
 100% Français: 14 channels
-FRANCE: 13 channels
+FRANCE: 14 channels
 Kids & Family: 12 channels
 Crime & Mystère: 11 channels
 Divertissement: 10 channels
@@ -45,55 +45,55 @@ Classic TV: 9 channels
 Lifestyle: 9 channels
 Actualités: 8 channels
 Séries Policières: 8 channels
+TV Réalité: 8 channels
+Nature & Travel: 8 channels
 Movies: 7 channels
-TV Réalité: 7 channels
+Emissions cultes: 7 channels
 Documentaire: 7 channels
-Nature & Travel: 7 channels
 Musique: 6 channels
 Daytime TV: 6 channels
 Legislative: 5 channels
 Comedy: 5 channels
 Sports & Auto: 4 channels
+Comédie: 4 channels
 Nouveau sur Pluto TV: 4 channels
+Drama TV: 4 channels
 History & Science: 4 channels
 Communautaire: 3 channels
-Emissions cultes: 3 channels
-Comédie: 3 channels
 Sci-Fi & Action: 3 channels
 Series: 2 channels
 Outdoor: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
-International: 2 channels
 True Crime: 2 channels
-Drama TV: 2 channels
+International: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Comedie: 1 channels
 Réréalité: 1 channels
+Comedie: 1 channels
 Film: 1 channels
 Affaires Publiques: 1 channels
-Cuisine: 1 channels
 Thématique: 1 channels
+Cuisine: 1 channels
 Quebec TV: 1 channels
 Weather: 1 channels
 Shop: 1 channels
 Movies;Series: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 3 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 188 channels
+HTTP 404 Errors: 64 channels
 HTTP 500 Errors: 5 channels
 HTTP 502 Errors: 1 channels
-HTTP 504 Errors: 7 channels
+HTTP 504 Errors: 8 channels
 Inactive: 40 channels
-Invalid Content: 11 channels
+Invalid Content: 10 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
@@ -235,13 +235,6 @@ URL: https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8 (Reason: 
 URL: https://rt-fra.rttv.com/dvr/rtfrance/playlist.m3u8 (Reason: Duplicate)
 URL: https://bcovlive-a.akamaihd.net/4b1c462c86094bae93b65adc84e43afc/us-west-2/6101674910001/playlist.m3u8 (Reason: Duplicate)
 URL: https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8 (Reason: Duplicate)
-
---- From Source: https://tinyurl.com/Stream2IPTV?region=fr&service=SamsungTVPlus (5 skipped) ---
-URL: https://jmp2.uk/sam-FR2600004SS.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRAJ3800002W5.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRAJ38000089S.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRAJ38000035M.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRBD5100002NL.m3u8 (Reason: Duplicate)
 
 --- From Source: https://raw.githubusercontent.com/iptv-org/iptv/master/streams/fr_rakuten.m3u (14 skipped) ---
 URL: https://amg01314-cgtn-amg01314c2-rakuten-us-1319.playouts.now.amagi.tv/cgtn-fr-rakuten/playlist.m3u8 (Reason: Duplicate)
