@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-12-27 19:52:43
+Generated: 2025-12-28 19:52:22
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,12 +9,12 @@ Total Lines Processed: 8353
 Total Channels Found: 1333
 Parsing Errors: 0
 Urls Validated: 1097
-Active Urls: 839
+Active Urls: 842
 Geo Blocked Urls: 181
-Validation Time: 123.85488700866699
-Inactive By Error: {'http_404': 190, 'inactive': 39, 'http_502': 1, 'http_401': 2, 'http_400': 3, 'invalid_content': 11, 'http_504': 7, 'http_500': 5}
-Total Processing Time: 140.49495244026184
-Final Channel Count: 839
+Validation Time: 121.69315481185913
+Inactive By Error: {'http_404': 189, 'inactive': 39, 'http_401': 2, 'http_502': 1, 'http_400': 3, 'http_504': 7, 'invalid_content': 9, 'http_500': 5}
+Total Processing Time: 135.44547581672668
+Final Channel Count: 842
 Source Urls Processed: 8
 Total Skipped Urls: 152
 
@@ -22,12 +22,12 @@ CHANNEL DISTRIBUTION
 --------------------
 6. |FR|🇫🇷 LOCALES - RÉGIONALES: 119 channels
 Uncategorized: 93 channels
-2. |FR|🇫🇷 GÉNÉRALISTES: 51 channels
+2. |FR|🇫🇷 GÉNÉRALISTES: 52 channels
 Music: 51 channels
 1. |FR|🇫🇷 INFORMATION: 45 channels
-5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 43 channels
+5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 44 channels
 Sports: 41 channels
-General: 37 channels
+General: 38 channels
 Généraliste: 33 channels
 10. |TR|🇹🇷 ÇOCUK - SPOR: 30 channels
 3. |FR|🇫🇷 MUSIQUE - JEUNESSE: 24 channels
@@ -69,31 +69,31 @@ Hit TV, True Crime: 2 channels
 Drama TV: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Réréalité: 1 channels
 Film: 1 channels
+Réréalité: 1 channels
 Comedie: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
 Shop: 1 channels
-Weather: 1 channels
 Movies;Series: 1 channels
+Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 3 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 190 channels
+HTTP 404 Errors: 189 channels
 HTTP 500 Errors: 5 channels
 HTTP 502 Errors: 1 channels
 HTTP 504 Errors: 7 channels
 Inactive: 39 channels
-Invalid Content: 11 channels
+Invalid Content: 9 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
