@@ -1810,7 +1810,7 @@ def main():
         "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
         "https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u",
         "https://iptv-org.github.io/iptv/countries/ca.m3u",
-        #"https://tinyurl.com/Stream2IPTV?region=fr&service=PlutoTV",
+        # "https://tinyurl.com/Stream2IPTV?region=fr&service=PlutoTV",
         "https://rawcdn.githack.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_fr.m3u",
         "https://tinyurl.com/Stream2IPTV?region=fr&service=SamsungTVPlus",
         "https://tinyurl.com/Stream2IPTV?region=fr&service=Plex",
