@@ -1,32 +1,32 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-01-16 19:52:27
+Generated: 2026-01-17 19:51:54
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 8433
-Total Channels Found: 1328
+Total Lines Processed: 8435
+Total Channels Found: 1329
 Parsing Errors: 0
-Urls Validated: 1094
-Active Urls: 836
-Geo Blocked Urls: 182
-Validation Time: 125.19202828407288
-Inactive By Error: {'http_404': 176, 'inactive': 37, 'http_401': 2, 'http_502': 1, 'http_503': 10, 'http_400': 4, 'http_504': 9, 'invalid_content': 15, 'http_429': 2, 'http_500': 2}
-Total Processing Time: 134.80377197265625
-Final Channel Count: 836
+Urls Validated: 1095
+Active Urls: 838
+Geo Blocked Urls: 185
+Validation Time: 77.54310393333435
+Inactive By Error: {'http_404': 176, 'inactive': 37, 'http_401': 2, 'http_502': 1, 'http_503': 10, 'http_400': 4, 'http_504': 8, 'invalid_content': 15, 'http_429': 2, 'http_500': 2}
+Total Processing Time: 86.06081819534302
+Final Channel Count: 838
 Source Urls Processed: 8
 Total Skipped Urls: 151
 
 CHANNEL DISTRIBUTION
 --------------------
-France: 122 channels
+France: 123 channels
 6. |FR|🇫🇷 LOCALES - RÉGIONALES: 119 channels
 Uncategorized: 93 channels
 Music: 51 channels
 2. |FR|🇫🇷 GÉNÉRALISTES: 49 channels
 5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 48 channels
-1. |FR|🇫🇷 INFORMATION: 42 channels
+1. |FR|🇫🇷 INFORMATION: 43 channels
 General: 38 channels
 Sports: 37 channels
 Généraliste: 33 channels
@@ -49,16 +49,16 @@ Kids: 3 channels
 Sci-Fi & Action: 3 channels
 Series: 2 channels
 Outdoor: 2 channels
-Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
+Anime & Gaming, Kids & Family: 2 channels
 International: 2 channels
-Hit TV, True Crime: 2 channels
 Drama TV: 2 channels
+Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Réréalité: 1 channels
 Film: 1 channels
 Comedie: 1 channels
+Réréalité: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
@@ -82,7 +82,7 @@ HTTP 429 Errors: 2 channels
 HTTP 500 Errors: 2 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 10 channels
-HTTP 504 Errors: 9 channels
+HTTP 504 Errors: 8 channels
 Inactive: 37 channels
 Invalid Content: 15 channels
 
