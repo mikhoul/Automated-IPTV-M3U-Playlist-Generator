@@ -1,36 +1,36 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-01-19 19:52:49
+Generated: 2026-01-20 20:36:26
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 8437
-Total Channels Found: 1329
+Total Lines Processed: 8564
+Total Channels Found: 1382
 Parsing Errors: 0
-Urls Validated: 1095
-Active Urls: 832
-Geo Blocked Urls: 185
-Validation Time: 122.6438570022583
-Inactive By Error: {'http_404': 179, 'inactive': 39, 'http_401': 2, 'http_503': 10, 'http_400': 4, 'http_502': 1, 'http_504': 8, 'invalid_content': 16, 'http_429': 2, 'http_500': 2}
-Total Processing Time: 130.92321491241455
-Final Channel Count: 832
+Urls Validated: 1147
+Active Urls: 874
+Geo Blocked Urls: 190
+Validation Time: 130.21414279937744
+Inactive By Error: {'http_404': 187, 'inactive': 43, 'http_401': 2, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_504': 8, 'invalid_content': 16, 'http_429': 2, 'http_500': 2}
+Total Processing Time: 139.9034538269043
+Final Channel Count: 874
 Source Urls Processed: 8
-Total Skipped Urls: 151
+Total Skipped Urls: 155
 
 CHANNEL DISTRIBUTION
 --------------------
-6. |FR|🇫🇷 LOCALES - RÉGIONALES: 119 channels
+6. |FR|🇫🇷 LOCALES - RÉGIONALES 🏞️🏢: 165 channels
 Uncategorized: 93 channels
+2. |FR|🇫🇷 GÉNÉRALISTES 📺📀: 51 channels
 Music: 51 channels
-2. |FR|🇫🇷 GÉNÉRALISTES: 49 channels
-5. |FR|🇫🇷 SPORT - SÉRIES / FILMS: 47 channels
-1. |FR|🇫🇷 INFORMATION: 43 channels
+5. |FR|🇫🇷 SPORT - SÉRIES / FILMS 🎞️🤾‍♀️: 47 channels
+1. |FR|🇫🇷 INFORMATION ℹ️📰: 43 channels
 General: 38 channels
-Sports: 37 channels
+Sports: 34 channels
 Généraliste: 33 channels
-10. |TR|🇹🇷 ÇOCUK - SPOR: 31 channels
-3. |FR|🇫🇷 MUSIQUE - JEUNESSE: 27 channels
+10. |TR|🇹🇷 ÇOCUK - SPOR 🤾‍♀️🧒: 29 channels
+3. |FR|🇫🇷 MUSIQUE - JEUNESSE 🎵🧒: 27 channels
 News: 19 channels
 À Binge-Watch: 16 channels
 Kids: 15 channels
@@ -77,9 +77,8 @@ Thématique: 1 channels
 Quebec TV: 1 channels
 Documentary: 1 channels
 Education;Kids: 1 channels
-Weather: 1 channels
 Shop: 1 channels
-Movies;Series: 1 channels
+Weather: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 Hit TV, Game Shows: 1 channels
@@ -89,13 +88,13 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 179 channels
+HTTP 404 Errors: 187 channels
 HTTP 429 Errors: 2 channels
 HTTP 500 Errors: 2 channels
 HTTP 502 Errors: 1 channels
-HTTP 503 Errors: 10 channels
+HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 8 channels
-Inactive: 39 channels
+Inactive: 43 channels
 Invalid Content: 16 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
@@ -203,16 +202,19 @@ URL: plugin://plugin.infologique.TVAgo/?url=ref%3Atva_6309386882112&sourceUrl=re
 URL: plugin://plugin.video.youtube/play/?video_id=biCCb0EB3g4 (Reason: Invalid/Non-HTTP)
 URL: plugin://plugin.video.youtube/play/?video_id=WHhzK7k22q0 (Reason: Invalid/Non-HTTP)
 
---- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (21 skipped) ---
+--- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (25 skipped) ---
 URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8 (Reason: Duplicate)
 URL: https://rt-fra.rttv.com/live/rtfrance/playlist.m3u8 (Reason: Duplicate)
 URL: https://new.cache-stream.workers.dev/channel/UCCCPCZNChQdGa9EkATeye4g/live.m3u8 (Reason: Duplicate)
 URL: error: No playable streams found on this URL: https://www.tf1.fr/tf1/direct (Reason: Invalid/Non-HTTP)
 URL: https://qwestjazz-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-qwestjazz-rakuten/CDN/master.m3u8 (Reason: Duplicate)
+URL: https://github.com/ipstreet312/freeiptv/raw/master/ressources/infos/barkers/ftvsport.ts (Reason: Duplicate)
+URL: https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/ftv/py/frserv2.m3u8 (Reason: Duplicate)
 URL: https://amg00711-zylo-amg00711c8-rakuten-uk-2686.playouts.now.amagi.tv/playlist/amg00711-zylofast-cinewestern-rakutenuk/playlist.m3u8 (Reason: Duplicate)
 URL: https://c3776ebb1c7742cb9c0191b41b8b2432.mediatailor.us-east-1.amazonaws.com/v1/master/04fd913bb278d8775298c26fdca9d9841f37601f/Samsung-fr_Brefcinema/playlist.m3u8 (Reason: Duplicate)
 URL: https://indisponible (Reason: Duplicate)
 URL: https://section (Reason: Duplicate)
+URL: https://raw.githubusercontent.com/ipstreet312/freeiptv/refs/heads/master/ressources/ftv/py/fr1.m3u8 (Reason: Duplicate)
 URL: https://section (Reason: Duplicate)
 URL: https://section (Reason: Duplicate)
 URL: https://c9851ec-rbm-hilv-fsly.cdn.redbee.live/L22/6d35e26e/1bffdaaf.isml/.m3u8 (Reason: Duplicate)
@@ -222,6 +224,7 @@ URL: https://section (Reason: Duplicate)
 URL: https://hls.savoir.media/live/stream.m3u8 (Reason: Duplicate)
 URL: https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8 (Reason: Duplicate)
 URL: https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8 (Reason: Duplicate)
+URL: https://section (Reason: Duplicate)
 URL: https://trkvz-live.daioncdn.net/minikago/minikago.m3u8 (Reason: Duplicate)
 URL: https://trkvz-live.daioncdn.net/minikago_cocuk/minikago_cocuk.m3u8 (Reason: Duplicate)
 URL: https://trkvz-live.daioncdn.net/aspor/aspor.m3u8 (Reason: Duplicate)
