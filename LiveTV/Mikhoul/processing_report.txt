@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-01-22 19:55:35
+Generated: 2026-01-23 19:53:17
 ============================================================
 
 PROCESSING STATISTICS
@@ -10,26 +10,26 @@ Total Channels Found: 1382
 Parsing Errors: 0
 Urls Validated: 1147
 Active Urls: 876
-Geo Blocked Urls: 191
-Validation Time: 127.27694797515869
-Inactive By Error: {'http_404': 187, 'inactive': 39, 'http_401': 2, 'http_503': 10, 'http_502': 1, 'http_400': 4, 'http_504': 8, 'invalid_content': 16, 'http_429': 2, 'http_500': 2}
-Total Processing Time: 136.53958749771118
+Geo Blocked Urls: 189
+Validation Time: 127.72818517684937
+Inactive By Error: {'http_404': 186, 'inactive': 39, 'http_401': 2, 'http_502': 1, 'http_503': 10, 'http_400': 4, 'http_504': 8, 'invalid_content': 17, 'http_500': 4}
+Total Processing Time: 137.22642469406128
 Final Channel Count: 876
 Source Urls Processed: 8
 Total Skipped Urls: 155
 
 CHANNEL DISTRIBUTION
 --------------------
-6. |FR|🇫🇷 LOCALES - RÉGIONALES 🏞️🏢: 163 channels
+6. |FR|🇫🇷 LOCALES - RÉGIONALES 🏞️🏢: 162 channels
 Uncategorized: 92 channels
-2. |FR|🇫🇷 GÉNÉRALISTES 📺📀: 51 channels
 Music: 51 channels
+2. |FR|🇫🇷 GÉNÉRALISTES 📺📀: 50 channels
 5. |FR|🇫🇷 SPORT - SÉRIES / FILMS 🎞️🤾‍♀️: 47 channels
 1. |FR|🇫🇷 INFORMATION ℹ️📰: 43 channels
+General: 39 channels
 Sports: 38 channels
-General: 38 channels
 Généraliste: 33 channels
-10. |TR|🇹🇷 ÇOCUK - SPOR 🤾‍♀️🧒: 29 channels
+10. |TR|🇹🇷 ÇOCUK - SPOR 🤾‍♀️🧒: 30 channels
 3. |FR|🇫🇷 MUSIQUE - JEUNESSE 🎵🧒: 27 channels
 News: 19 channels
 À Binge-Watch: 16 channels
@@ -89,14 +89,13 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 187 channels
-HTTP 429 Errors: 2 channels
-HTTP 500 Errors: 2 channels
+HTTP 404 Errors: 186 channels
+HTTP 500 Errors: 4 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 10 channels
 HTTP 504 Errors: 8 channels
 Inactive: 39 channels
-Invalid Content: 16 channels
+Invalid Content: 17 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
