@@ -1,26 +1,26 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-01-28 19:59:25
+Generated: 2026-01-29 20:02:15
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 8586
+Total Lines Processed: 8587
 Total Channels Found: 1387
 Parsing Errors: 0
 Urls Validated: 1146
-Active Urls: 878
-Geo Blocked Urls: 189
-Validation Time: 128.9545874595642
-Inactive By Error: {'http_404': 184, 'inactive': 40, 'http_401': 2, 'http_503': 10, 'http_502': 1, 'http_400': 4, 'http_504': 8, 'invalid_content': 15, 'http_500': 4}
-Total Processing Time: 138.2033224105835
-Final Channel Count: 878
+Active Urls: 880
+Geo Blocked Urls: 191
+Validation Time: 128.308260679245
+Inactive By Error: {'http_404': 185, 'http_502': 1, 'inactive': 38, 'http_401': 2, 'http_503': 10, 'http_400': 4, 'http_504': 8, 'invalid_content': 15, 'http_500': 3}
+Total Processing Time: 138.2975742816925
+Final Channel Count: 880
 Source Urls Processed: 8
 Total Skipped Urls: 155
 
 CHANNEL DISTRIBUTION
 --------------------
-6. |FR|🇫🇷 LOCALES - RÉGIONALES 🏞️🏢: 162 channels
+6. |FR|🇫🇷 LOCALES - RÉGIONALES 🏞️🏢: 165 channels
 Uncategorized: 92 channels
 2. |FR|🇫🇷 GÉNÉRALISTES 📺📀: 51 channels
 Music: 51 channels
@@ -50,8 +50,8 @@ TV Réalité: 7 channels
 Documentaire: 7 channels
 Nature & Travel: 7 channels
 Daytime TV: 6 channels
-Legislative: 5 channels
 Comedy: 5 channels
+Legislative: 4 channels
 History & Science: 4 channels
 Communautaire: 3 channels
 Emissions cultes: 3 channels
@@ -64,13 +64,13 @@ Nouveau sur Pluto TV: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
 International: 2 channels
-Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
+Drama TV: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
+Comedie: 1 channels
 Réréalité: 1 channels
 Film: 1 channels
-Comedie: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
@@ -89,12 +89,12 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 184 channels
-HTTP 500 Errors: 4 channels
+HTTP 404 Errors: 185 channels
+HTTP 500 Errors: 3 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 10 channels
 HTTP 504 Errors: 8 channels
-Inactive: 40 channels
+Inactive: 38 channels
 Invalid Content: 15 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
