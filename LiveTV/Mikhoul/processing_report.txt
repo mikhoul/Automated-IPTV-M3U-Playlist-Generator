@@ -1,40 +1,40 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-02-01 19:56:41
+Generated: 2026-02-03 20:07:14
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 8591
-Total Channels Found: 1389
+Total Lines Processed: 8561
+Total Channels Found: 1376
 Parsing Errors: 0
-Urls Validated: 1148
-Active Urls: 877
-Geo Blocked Urls: 190
-Validation Time: 128.77441310882568
-Inactive By Error: {'http_404': 182, 'inactive': 43, 'http_401': 2, 'http_503': 11, 'http_400': 4, 'http_504': 8, 'invalid_content': 16, 'http_502': 1, 'http_429': 2, 'http_500': 2}
-Total Processing Time: 137.478111743927
-Final Channel Count: 877
+Urls Validated: 1135
+Active Urls: 872
+Geo Blocked Urls: 188
+Validation Time: 125.5572669506073
+Inactive By Error: {'http_404': 176, 'inactive': 45, 'http_401': 2, 'http_502': 1, 'http_503': 9, 'http_400': 4, 'http_504': 9, 'invalid_content': 14, 'http_500': 3}
+Total Processing Time: 135.8564121723175
+Final Channel Count: 872
 Source Urls Processed: 8
-Total Skipped Urls: 155
+Total Skipped Urls: 154
 
 CHANNEL DISTRIBUTION
 --------------------
 6. |FR|🇫🇷 LOCALES - RÉGIONALES 🏞️🏢: 166 channels
-Uncategorized: 94 channels
-Music: 51 channels
-2. |FR|🇫🇷 GÉNÉRALISTES 📺📀: 49 channels
+Uncategorized: 93 channels
+2. |FR|🇫🇷 GÉNÉRALISTES 📺📀: 50 channels
 5. |FR|🇫🇷 SPORT - SÉRIES / FILMS 🎞️🤾‍♀️: 47 channels
+Music: 45 channels
 1. |FR|🇫🇷 INFORMATION ℹ️📰: 43 channels
+Sports: 39 channels
 General: 39 channels
-Sports: 38 channels
 Généraliste: 33 channels
-10. |TR|🇹🇷 ÇOCUK - SPOR 🤾‍♀️🧒: 28 channels
+10. |TR|🇹🇷 ÇOCUK - SPOR 🤾‍♀️🧒: 30 channels
 3. |FR|🇫🇷 MUSIQUE - JEUNESSE 🎵🧒: 27 channels
 News: 19 channels
 À Binge-Watch: 16 channels
 Kids: 15 channels
-Cinéma: 14 channels
+Cinéma: 13 channels
 100% Français: 13 channels
 FRANCE: 13 channels
 Kids & Family: 12 channels
@@ -50,8 +50,8 @@ Documentaire: 7 channels
 Nature & Travel: 7 channels
 Movies: 6 channels
 Daytime TV: 6 channels
-Legislative: 5 channels
 Comedy: 5 channels
+Legislative: 4 channels
 History & Science: 4 channels
 Communautaire: 3 channels
 Emissions cultes: 3 channels
@@ -61,42 +61,41 @@ Sci-Fi & Action: 3 channels
 Series: 2 channels
 Outdoor: 2 channels
 Nouveau sur Pluto TV: 2 channels
-True Crime: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
+True Crime: 2 channels
 International: 2 channels
 Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Comedie: 1 channels
-Réréalité: 1 channels
 Film: 1 channels
+Réréalité: 1 channels
+Comedie: 1 channels
 Affaires Publiques: 1 channels
-Cuisine: 1 channels
 Thématique: 1 channels
+Cuisine: 1 channels
 Quebec TV: 1 channels
 Documentary: 1 channels
 Education;Kids: 1 channels
 Shop: 1 channels
-Movies;Series: 1 channels
 Weather: 1 channels
+Movies;Series: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 182 channels
-HTTP 429 Errors: 2 channels
-HTTP 500 Errors: 2 channels
+HTTP 404 Errors: 176 channels
+HTTP 500 Errors: 3 channels
 HTTP 502 Errors: 1 channels
-HTTP 503 Errors: 11 channels
-HTTP 504 Errors: 8 channels
-Inactive: 43 channels
-Invalid Content: 16 channels
+HTTP 503 Errors: 9 channels
+HTTP 504 Errors: 9 channels
+Inactive: 45 channels
+Invalid Content: 14 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
@@ -203,13 +202,13 @@ URL: plugin://plugin.infologique.TVAgo/?url=ref%3Atva_6309386882112&sourceUrl=re
 URL: plugin://plugin.video.youtube/play/?video_id=biCCb0EB3g4 (Reason: Invalid/Non-HTTP)
 URL: plugin://plugin.video.youtube/play/?video_id=WHhzK7k22q0 (Reason: Invalid/Non-HTTP)
 
---- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (25 skipped) ---
+--- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (24 skipped) ---
 URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8 (Reason: Duplicate)
 URL: https://rt-fra.rttv.com/live/rtfrance/playlist.m3u8 (Reason: Duplicate)
 URL: https://new.cache-stream.workers.dev/channel/UCCCPCZNChQdGa9EkATeye4g/live.m3u8 (Reason: Duplicate)
 URL: error: No playable streams found on this URL: https://www.tf1.fr/tf1/direct (Reason: Invalid/Non-HTTP)
 URL: https://qwestjazz-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-qwestjazz-rakuten/CDN/master.m3u8 (Reason: Duplicate)
-URL: https://github.com/ipstreet312/freeiptv/raw/master/ressources/infos/barkers/ftvsport.ts (Reason: Duplicate)
+URL: https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/ftv/py2/frspt.m3u8 (Reason: Duplicate)
 URL: https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/ftv/py/frserv2.m3u8 (Reason: Duplicate)
 URL: https://amg00711-zylo-amg00711c8-rakuten-uk-2686.playouts.now.amagi.tv/playlist/amg00711-zylofast-cinewestern-rakutenuk/playlist.m3u8 (Reason: Duplicate)
 URL: https://c3776ebb1c7742cb9c0191b41b8b2432.mediatailor.us-east-1.amazonaws.com/v1/master/04fd913bb278d8775298c26fdca9d9841f37601f/Samsung-fr_Brefcinema/playlist.m3u8 (Reason: Duplicate)
@@ -218,7 +217,6 @@ URL: https://section (Reason: Duplicate)
 URL: https://raw.githubusercontent.com/ipstreet312/freeiptv/refs/heads/master/ressources/ftv/py/fr1.m3u8 (Reason: Duplicate)
 URL: https://section (Reason: Duplicate)
 URL: https://section (Reason: Duplicate)
-URL: https://c9851ec-rbm-hilv-fsly.cdn.redbee.live/L22/6d35e26e/1bffdaaf.isml/.m3u8 (Reason: Duplicate)
 URL: https://tvlocales-live.freecaster.com/95d2f6eb-6f01-4d1d-8543-d14966de7b04/95d2f6eb-6f01-4d1d-8543-d14966de7b04.isml/master.m3u8 (Reason: Duplicate)
 URL: https://section (Reason: Duplicate)
 URL: https://section (Reason: Duplicate)
