@@ -1,45 +1,45 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-02-05 20:05:01
+Generated: 2026-02-06 20:03:09
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
 Total Lines Processed: 8563
-Total Channels Found: 1376
+Total Channels Found: 1375
 Parsing Errors: 0
 Urls Validated: 1134
 Active Urls: 866
-Geo Blocked Urls: 191
-Validation Time: 125.44033002853394
-Inactive By Error: {'http_404': 180, 'inactive': 45, 'http_401': 2, 'http_503': 8, 'http_502': 3, 'http_400': 4, 'http_504': 9, 'invalid_content': 14, 'http_500': 3}
-Total Processing Time: 134.22198867797852
+Geo Blocked Urls: 189
+Validation Time: 81.86790370941162
+Inactive By Error: {'http_404': 177, 'inactive': 46, 'http_401': 2, 'http_503': 10, 'http_502': 1, 'http_400': 4, 'http_504': 9, 'invalid_content': 16, 'http_500': 3}
+Total Processing Time: 93.68583917617798
 Final Channel Count: 866
 Source Urls Processed: 8
-Total Skipped Urls: 154
+Total Skipped Urls: 153
 
 CHANNEL DISTRIBUTION
 --------------------
-6. |FR|🇫🇷 LOCALES - RÉGIONALES 🏞️🏢: 164 channels
+6. |FR|🇫🇷 LOCALES - RÉGIONALES 🏞️🏢: 166 channels
 Uncategorized: 93 channels
-2. |FR|🇫🇷 GÉNÉRALISTES 📺📀: 50 channels
-5. |FR|🇫🇷 SPORT - SÉRIES / FILMS 🎞️🤾‍♀️: 47 channels
+5. |FR|🇫🇷 SPORT - SÉRIES / FILMS 🎞️🤾‍♀️: 49 channels
+2. |FR|🇫🇷 GÉNÉRALISTES 📺📀: 47 channels
 Music: 45 channels
 1. |FR|🇫🇷 INFORMATION ℹ️📰: 43 channels
-General: 39 channels
+General: 38 channels
 Sports: 37 channels
 Généraliste: 33 channels
-10. |TR|🇹🇷 ÇOCUK - SPOR 🤾‍♀️🧒: 30 channels
+10. |TR|🇹🇷 ÇOCUK - SPOR 🤾‍♀️🧒: 29 channels
 3. |FR|🇫🇷 MUSIQUE - JEUNESSE 🎵🧒: 27 channels
 News: 19 channels
 À Binge-Watch: 16 channels
 Kids: 15 channels
 Cinéma: 13 channels
 100% Français: 13 channels
+FRANCE: 13 channels
 Kids & Family: 12 channels
-FRANCE: 12 channels
-Crime & Mystère: 11 channels
 Animation: 10 channels
+Crime & Mystère: 10 channels
 Lifestyle: 9 channels
 Divertissement: 9 channels
 Classic TV: 9 channels
@@ -65,6 +65,7 @@ Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
 International: 2 channels
 Hit TV, True Crime: 2 channels
+Drama TV: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
 Réréalité: 1 channels
@@ -80,7 +81,6 @@ Weather: 1 channels
 Shop: 1 channels
 Movies;Series: 1 channels
 Hit TV: 1 channels
-Drama TV: 1 channels
 Anime & Gaming: 1 channels
 Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
@@ -89,13 +89,13 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 180 channels
+HTTP 404 Errors: 177 channels
 HTTP 500 Errors: 3 channels
-HTTP 502 Errors: 3 channels
-HTTP 503 Errors: 8 channels
+HTTP 502 Errors: 1 channels
+HTTP 503 Errors: 10 channels
 HTTP 504 Errors: 9 channels
-Inactive: 45 channels
-Invalid Content: 14 channels
+Inactive: 46 channels
+Invalid Content: 16 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
@@ -202,14 +202,13 @@ URL: plugin://plugin.infologique.TVAgo/?url=ref%3Atva_6309386882112&sourceUrl=re
 URL: plugin://plugin.video.youtube/play/?video_id=biCCb0EB3g4 (Reason: Invalid/Non-HTTP)
 URL: plugin://plugin.video.youtube/play/?video_id=WHhzK7k22q0 (Reason: Invalid/Non-HTTP)
 
---- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (24 skipped) ---
+--- From Source: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u (23 skipped) ---
 URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8 (Reason: Duplicate)
 URL: https://rt-fra.rttv.com/live/rtfrance/playlist.m3u8 (Reason: Duplicate)
 URL: https://new.cache-stream.workers.dev/channel/UCCCPCZNChQdGa9EkATeye4g/live.m3u8 (Reason: Duplicate)
+URL: No redirect found. (Reason: Invalid/Non-HTTP)
 URL: error: No playable streams found on this URL: https://www.tf1.fr/tf1/direct (Reason: Invalid/Non-HTTP)
 URL: https://qwestjazz-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-qwestjazz-rakuten/CDN/master.m3u8 (Reason: Duplicate)
-URL: https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/ftv/py2/frspt.m3u8 (Reason: Duplicate)
-URL: https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/ftv/py/frserv2.m3u8 (Reason: Duplicate)
 URL: https://amg00711-zylo-amg00711c8-rakuten-uk-2686.playouts.now.amagi.tv/playlist/amg00711-zylofast-cinewestern-rakutenuk/playlist.m3u8 (Reason: Duplicate)
 URL: https://c3776ebb1c7742cb9c0191b41b8b2432.mediatailor.us-east-1.amazonaws.com/v1/master/04fd913bb278d8775298c26fdca9d9841f37601f/Samsung-fr_Brefcinema/playlist.m3u8 (Reason: Duplicate)
 URL: https://indisponible (Reason: Duplicate)
