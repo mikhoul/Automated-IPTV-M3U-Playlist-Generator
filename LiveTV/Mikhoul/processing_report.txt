@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-02-08 19:56:50
+Generated: 2026-02-09 20:23:48
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,31 +9,31 @@ Total Lines Processed: 8561
 Total Channels Found: 1374
 Parsing Errors: 0
 Urls Validated: 1133
-Active Urls: 871
-Geo Blocked Urls: 186
-Validation Time: 122.30798625946045
-Inactive By Error: {'http_404': 170, 'inactive': 46, 'http_502': 1, 'http_401': 2, 'http_503': 9, 'http_400': 6, 'http_504': 9, 'invalid_content': 16, 'http_500': 3}
-Total Processing Time: 131.90682220458984
-Final Channel Count: 871
+Active Urls: 867
+Geo Blocked Urls: 190
+Validation Time: 125.93334174156189
+Inactive By Error: {'http_404': 173, 'inactive': 46, 'http_401': 2, 'http_502': 1, 'http_503': 10, 'http_400': 5, 'http_504': 9, 'invalid_content': 16, 'http_500': 4}
+Total Processing Time: 135.6073784828186
+Final Channel Count: 867
 Source Urls Processed: 8
 Total Skipped Urls: 153
 
 CHANNEL DISTRIBUTION
 --------------------
-6. |FR|🇫🇷 LOCALES - RÉGIONALES 🏞️🏢: 164 channels
+6. |FR|🇫🇷 LOCALES - RÉGIONALES 🏞️🏢: 162 channels
 Uncategorized: 93 channels
 Music: 51 channels
 5. |FR|🇫🇷 SPORT - SÉRIES / FILMS 🎞️🤾‍♀️: 48 channels
 2. |FR|🇫🇷 GÉNÉRALISTES 📺📀: 47 channels
 1. |FR|🇫🇷 INFORMATION ℹ️📰: 43 channels
-Sports: 38 channels
 General: 38 channels
+Sports: 37 channels
 Généraliste: 33 channels
 10. |TR|🇹🇷 ÇOCUK - SPOR 🤾‍♀️🧒: 29 channels
 3. |FR|🇫🇷 MUSIQUE - JEUNESSE 🎵🧒: 27 channels
 News: 19 channels
-À Binge-Watch: 16 channels
 Kids: 15 channels
+À Binge-Watch: 15 channels
 Cinéma: 13 channels
 100% Français: 13 channels
 FRANCE: 13 channels
@@ -64,8 +64,8 @@ Nouveau sur Pluto TV: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
 International: 2 channels
-Hit TV, True Crime: 2 channels
 Drama TV: 2 channels
+Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
 Réréalité: 1 channels
@@ -77,22 +77,22 @@ Cuisine: 1 channels
 Quebec TV: 1 channels
 Documentary: 1 channels
 Education;Kids: 1 channels
-Weather: 1 channels
 Shop: 1 channels
+Weather: 1 channels
 Movies;Series: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
-HTTP 400 Errors: 6 channels
+HTTP 400 Errors: 5 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 170 channels
-HTTP 500 Errors: 3 channels
+HTTP 404 Errors: 173 channels
+HTTP 500 Errors: 4 channels
 HTTP 502 Errors: 1 channels
-HTTP 503 Errors: 9 channels
+HTTP 503 Errors: 10 channels
 HTTP 504 Errors: 9 channels
 Inactive: 46 channels
 Invalid Content: 16 channels
