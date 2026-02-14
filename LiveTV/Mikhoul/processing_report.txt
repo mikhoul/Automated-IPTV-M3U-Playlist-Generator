@@ -1,106 +1,96 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2025-07-21 19:51:54
+Generated: 2026-02-13 20:05:42
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 7611
-Total Channels Found: 1204
+Total Lines Processed: 2194
+Total Channels Found: 803
 Parsing Errors: 0
-Urls Validated: 997
-Active Urls: 884
-Geo Blocked Urls: 142
-Validation Time: 71.53588652610779
-Inactive By Error: {'inactive': 34, 'http_404': 47, 'http_502': 1, 'http_400': 5, 'invalid_content': 12, 'http_504': 5, 'http_503': 3, 'http_500': 6}
-Total Processing Time: 84.6679699420929
-Final Channel Count: 884
+Urls Validated: 710
+Active Urls: 519
+Geo Blocked Urls: 134
+Validation Time: 55.47271227836609
+Inactive By Error: {'http_404': 151, 'inactive': 16, 'http_401': 2, 'http_503': 13, 'http_400': 2, 'http_502': 1, 'http_504': 6}
+Total Processing Time: 65.29436779022217
+Final Channel Count: 519
 Source Urls Processed: 8
-Total Skipped Urls: 140
+Total Skipped Urls: 109
 
 CHANNEL DISTRIBUTION
 --------------------
-4. |FR|🇫🇷 RÉGIONS & LOCALES: 111 channels
-Uncategorized: 80 channels
-3. |FR|🇫🇷 SOCIÉTÉ: 66 channels
-Sports: 54 channels
-Music: 47 channels
-1. |FR|🇫🇷 INFORMATION: 39 channels
-2. |FR|🇫🇷 GÉNÉRALISTE: 39 channels
-General: 38 channels
+Uncategorized: 106 channels
+Music: 52 channels
+General: 39 channels
+Sports: 34 channels
 Généraliste: 33 channels
-Cinéma: 31 channels
-News: 20 channels
-Divertissement: 20 channels
-Actualités: 19 channels
-100% Français: 16 channels
-Documentaires: 15 channels
-Kids: 12 channels
-Musique: 12 channels
-Lifestyle: 12 channels
-Jeunesse: 12 channels
+News: 21 channels
+Kids: 15 channels
+À Binge-Watch: 15 channels
+Cinéma: 15 channels
+100% Français: 13 channels
 Kids & Family: 12 channels
-Séries: 11 channels
-Séries TV: 11 channels
-Movies: 10 channels
-Emissions cultes: 10 channels
+Animation: 10 channels
 Crime & Mystère: 10 channels
-FRANCE: 10 channels
-TV Réalité: 9 channels
-Animation: 8 channels
-Classic TV: 8 channels
-Séries Policières: 7 channels
-Nouveau sur Pluto TV: 7 channels
+Lifestyle: 9 channels
+Divertissement: 9 channels
+Classic TV: 9 channels
+FRANCE: 9 channels
+Actualités: 8 channels
+Séries Policières: 8 channels
+TV Réalité: 7 channels
+Documentaire: 7 channels
+Daytime TV: 7 channels
 Nature & Travel: 7 channels
-Daytime TV: 6 channels
-Voyages et Gastronomie: 5 channels
-Crime: 5 channels
-Sci-Fi & Action: 5 channels
-Comedy: 5 channels
-History & Science: 5 channels
-Legislative: 4 channels
-Documentaire: 4 channels
-Sports & Auto: 4 channels
+Movies: 5 channels
+Legislative: 5 channels
+Comedy: 4 channels
+History & Science: 4 channels
 Communautaire: 3 channels
+Emissions cultes: 3 channels
+Sports & Auto: 3 channels
 Comédie: 3 channels
-True Crime: 3 channels
-Affaires Publiques: 2 channels
-Series: 2 channels
+Sci-Fi & Action: 3 channels
 Outdoor: 2 channels
-Anime: 2 channels
-Télé réalité: 2 channels
+Nouveau sur Pluto TV: 2 channels
+True Crime: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
-International: 2 channels
-Hit TV, True Crime: 2 channels
 Drama TV: 2 channels
+Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
 Comedie: 1 channels
 Film: 1 channels
 Réréalité: 1 channels
+Affaires Publiques: 1 channels
 Cuisine: 1 channels
 Thématique: 1 channels
 Quebec TV: 1 channels
-Movies;Series: 1 channels
+Documentary: 1 channels
+Education;Kids: 1 channels
 Shop: 1 channels
-Documentary;Education;Science: 1 channels
-Weather: 1 channels
-Fight: 1 channels
+Movies;Series: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 Hit TV, Game Shows: 1 channels
+International: 1 channels
 Drama TV, Movies: 1 channels
+
+FAILED URLS
+-----------
+URL: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u
+Error: 404 Client Error: Not Found for url: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
-HTTP 400 Errors: 5 channels
-HTTP 404 Errors: 47 channels
-HTTP 500 Errors: 6 channels
+HTTP 400 Errors: 2 channels
+HTTP 401 Errors: 2 channels
+HTTP 404 Errors: 151 channels
 HTTP 502 Errors: 1 channels
-HTTP 503 Errors: 3 channels
-HTTP 504 Errors: 5 channels
-Inactive: 34 channels
-Invalid Content: 12 channels
+HTTP 503 Errors: 13 channels
+HTTP 504 Errors: 6 channels
+Inactive: 16 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
@@ -207,52 +197,15 @@ URL: plugin://plugin.infologique.TVAgo/?url=ref%3Atva_6309386882112&sourceUrl=re
 URL: plugin://plugin.video.youtube/play/?video_id=biCCb0EB3g4 (Reason: Invalid/Non-HTTP)
 URL: plugin://plugin.video.youtube/play/?video_id=WHhzK7k22q0 (Reason: Invalid/Non-HTTP)
 
---- From Source: https://github.com/ipstreet312/freeiptv/raw/b16363ffa03752900de3fadb1d7fede7b7173901/ressources/allgr.m3u (14 skipped) ---
-URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8 (Reason: Duplicate)
-URL: https://new.cache-stream.workers.dev/channel/UCCCPCZNChQdGa9EkATeye4g/live.m3u8 (Reason: Duplicate)
-URL: error: No playable streams found on this URL: https://www.tf1.fr/tf1/direct (Reason: Invalid/Non-HTTP)
-URL: https://versatile-wildsidetv-1-fr.samsung.wurl.tv/playlist.m3u8 (Reason: Duplicate)
-URL: https://indisponible (Reason: Duplicate)
-URL: https://section (Reason: Duplicate)
-URL: https://section (Reason: Duplicate)
-URL: https://section (Reason: Duplicate)
-URL: https://tvlocales-live.freecaster.com/95d2f6eb-6f01-4d1d-8543-d14966de7b04/95d2f6eb-6f01-4d1d-8543-d14966de7b04.isml/master.m3u8 (Reason: Duplicate)
-URL: https://section (Reason: Duplicate)
-URL: https://section (Reason: Duplicate)
-URL: https://hls.savoir.media/live/stream.m3u8 (Reason: Duplicate)
-URL: https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8 (Reason: Duplicate)
-URL: https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8 (Reason: Duplicate)
-
---- From Source: https://iptv-org.github.io/iptv/countries/ca.m3u (10 skipped) ---
+--- From Source: https://iptv-org.github.io/iptv/countries/ca.m3u (8 skipped) ---
 URL: https://hls.savoir.media/live/stream.m3u8 (Reason: Duplicate)
 URL: https://cbcrclinear-tor.akamaized.net/hls/live/2042761/CBCRCLINEAR_TOR_7/master5.m3u8 (Reason: Duplicate)
 URL: https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8 (Reason: Duplicate)
 URL: https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8 (Reason: Duplicate)
-URL: https://rcavlive.akamaized.net/hls/live/664045/cancbvt/master.m3u8 (Reason: Duplicate)
 URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8 (Reason: Duplicate)
 URL: https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8 (Reason: Duplicate)
-URL: https://rt-fra.rttv.com/dvr/rtfrance/playlist.m3u8 (Reason: Duplicate)
 URL: https://bcovlive-a.akamaihd.net/4b1c462c86094bae93b65adc84e43afc/us-west-2/6101674910001/playlist.m3u8 (Reason: Duplicate)
 URL: https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8 (Reason: Duplicate)
-
---- From Source: https://tinyurl.com/Stream2IPTV?region=fr&service=SamsungTVPlus (6 skipped) ---
-URL: https://jmp2.uk/sam-FR2600004SS.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRAJ3800002W5.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRBA3300044VR.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRAJ38000089S.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRAJ38000035M.m3u8 (Reason: Duplicate)
-URL: https://jmp2.uk/sam-FRBD5100002NL.m3u8 (Reason: Duplicate)
-
---- From Source: https://raw.githubusercontent.com/iptv-org/iptv/master/streams/fr_rakuten.m3u (9 skipped) ---
-URL: https://amg01314-cgtn-amg01314c2-rakuten-us-1319.playouts.now.amagi.tv/cgtn-fr-rakuten/playlist.m3u8 (Reason: Duplicate)
-URL: https://68f1accef2154d2195cae87dec183843.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/RakutenTV-eu_FashionTV/playlist.m3u8 (Reason: Duplicate)
-URL: https://37b4c228.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWZyX0ZJRkFQbHVzRnJlbmNoX0hMUw/playlist.m3u8 (Reason: Duplicate)
-URL: https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads.xumo_channelId=88883047 (Reason: Duplicate)
-URL: https://amg01492-secomsasmediart-myzen-fr-rakuten-spvgz.amagi.tv/hls/amagi_hls_data_rakutenAA-myzen-fr-rakuten/CDN/master.m3u8 (Reason: Duplicate)
-URL: https://bamusa-naturetime-emea-fra-rakuten.amagi.tv/playlist.m3u8 (Reason: Duplicate)
-URL: https://qwestjazz-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-qwestjazz-rakuten/CDN/master.m3u8 (Reason: Duplicate)
-URL: https://01ac9352fbfa4204998783d41f9b1a2e.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6068/master.m3u8 (Reason: Duplicate)
-URL: https://amg01131-tracetv-amg01131c1-rakuten-us-1081.playouts.now.amagi.tv/playlist/amg01131-tracetvfast-traceurban-rakutenus/playlist.m3u8 (Reason: Duplicate)
 
 
 CONFIGURATION
