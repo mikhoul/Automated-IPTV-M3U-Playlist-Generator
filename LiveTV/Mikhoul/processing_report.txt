@@ -1,50 +1,47 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-02-13 20:05:42
+Generated: 2026-02-14 04:52:46
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 2194
-Total Channels Found: 803
+Total Lines Processed: 1851
+Total Channels Found: 690
 Parsing Errors: 0
-Urls Validated: 710
-Active Urls: 519
-Geo Blocked Urls: 134
-Validation Time: 55.47271227836609
-Inactive By Error: {'http_404': 151, 'inactive': 16, 'http_401': 2, 'http_503': 13, 'http_400': 2, 'http_502': 1, 'http_504': 6}
-Total Processing Time: 65.29436779022217
-Final Channel Count: 519
-Source Urls Processed: 8
-Total Skipped Urls: 109
+Urls Validated: 598
+Active Urls: 417
+Geo Blocked Urls: 103
+Validation Time: 51.89883351325989
+Inactive By Error: {'http_404': 151, 'inactive': 12, 'http_503': 8, 'http_400': 2, 'http_401': 1, 'http_502': 1, 'http_504': 6}
+Total Processing Time: 65.97077012062073
+Final Channel Count: 417
+Source Urls Processed: 7
+Total Skipped Urls: 101
 
 CHANNEL DISTRIBUTION
 --------------------
 Uncategorized: 106 channels
-Music: 52 channels
-General: 39 channels
-Sports: 34 channels
 Généraliste: 33 channels
-News: 21 channels
-Kids: 15 channels
+Sports: 29 channels
+Music: 21 channels
 À Binge-Watch: 15 channels
 Cinéma: 15 channels
+Kids: 13 channels
 100% Français: 13 channels
 Kids & Family: 12 channels
+News: 11 channels
 Animation: 10 channels
 Crime & Mystère: 10 channels
-Lifestyle: 9 channels
 Divertissement: 9 channels
 Classic TV: 9 channels
 FRANCE: 9 channels
 Actualités: 8 channels
 Séries Policières: 8 channels
+Lifestyle: 8 channels
 TV Réalité: 7 channels
 Documentaire: 7 channels
 Daytime TV: 7 channels
 Nature & Travel: 7 channels
-Movies: 5 channels
-Legislative: 5 channels
 Comedy: 4 channels
 History & Science: 4 channels
 Communautaire: 3 channels
@@ -52,45 +49,41 @@ Emissions cultes: 3 channels
 Sports & Auto: 3 channels
 Comédie: 3 channels
 Sci-Fi & Action: 3 channels
-Outdoor: 2 channels
 Nouveau sur Pluto TV: 2 channels
-True Crime: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
-Drama TV: 2 channels
+Movies: 2 channels
+True Crime: 2 channels
 Hit TV, True Crime: 2 channels
+Drama TV: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
+Réréalité: 1 channels
 Comedie: 1 channels
 Film: 1 channels
-Réréalité: 1 channels
 Affaires Publiques: 1 channels
-Cuisine: 1 channels
 Thématique: 1 channels
+Cuisine: 1 channels
 Quebec TV: 1 channels
-Documentary: 1 channels
-Education;Kids: 1 channels
-Shop: 1 channels
-Movies;Series: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 Hit TV, Game Shows: 1 channels
-International: 1 channels
 Drama TV, Movies: 1 channels
+International: 1 channels
 
 FAILED URLS
 -----------
-URL: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u
-Error: 404 Client Error: Not Found for url: https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u
+URL: https://raw.githubusercontent.com/absol12/reptv/refs/heads/main/01.m3uhttps://iptv-org.github.io/iptv/countries/ca.m3u
+Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/absol12/reptv/refs/heads/main/01.m3uhttps:/iptv-org.github.io/iptv/countries/ca.m3u
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 2 channels
-HTTP 401 Errors: 2 channels
+HTTP 401 Errors: 1 channels
 HTTP 404 Errors: 151 channels
 HTTP 502 Errors: 1 channels
-HTTP 503 Errors: 13 channels
+HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 6 channels
-Inactive: 16 channels
+Inactive: 12 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
@@ -196,16 +189,6 @@ URL: plugin://plugin.infologique.TVAgo/?url=ref%3Atva_6309384716112&sourceUrl=re
 URL: plugin://plugin.infologique.TVAgo/?url=ref%3Atva_6309386882112&sourceUrl=ref%3Atva_6309386882112 (Reason: Invalid/Non-HTTP)
 URL: plugin://plugin.video.youtube/play/?video_id=biCCb0EB3g4 (Reason: Invalid/Non-HTTP)
 URL: plugin://plugin.video.youtube/play/?video_id=WHhzK7k22q0 (Reason: Invalid/Non-HTTP)
-
---- From Source: https://iptv-org.github.io/iptv/countries/ca.m3u (8 skipped) ---
-URL: https://hls.savoir.media/live/stream.m3u8 (Reason: Duplicate)
-URL: https://cbcrclinear-tor.akamaized.net/hls/live/2042761/CBCRCLINEAR_TOR_7/master5.m3u8 (Reason: Duplicate)
-URL: https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8 (Reason: Duplicate)
-URL: https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8 (Reason: Duplicate)
-URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8 (Reason: Duplicate)
-URL: https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8 (Reason: Duplicate)
-URL: https://bcovlive-a.akamaihd.net/4b1c462c86094bae93b65adc84e43afc/us-west-2/6101674910001/playlist.m3u8 (Reason: Duplicate)
-URL: https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8 (Reason: Duplicate)
 
 
 CONFIGURATION
