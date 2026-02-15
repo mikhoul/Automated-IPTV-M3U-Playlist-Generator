@@ -1,89 +1,101 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-02-14 04:52:46
+Generated: 2026-02-14 19:57:31
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 1851
-Total Channels Found: 690
+Total Lines Processed: 5639
+Total Channels Found: 2384
 Parsing Errors: 0
-Urls Validated: 598
-Active Urls: 417
-Geo Blocked Urls: 103
-Validation Time: 51.89883351325989
-Inactive By Error: {'http_404': 151, 'inactive': 12, 'http_503': 8, 'http_400': 2, 'http_401': 1, 'http_502': 1, 'http_504': 6}
-Total Processing Time: 65.97077012062073
-Final Channel Count: 417
-Source Urls Processed: 7
-Total Skipped Urls: 101
+Urls Validated: 2033
+Active Urls: 1745
+Geo Blocked Urls: 224
+Validation Time: 188.45799851417542
+Inactive By Error: {'inactive': 134, 'http_401': 5, 'http_404': 83, 'http_503': 13, 'http_400': 8, 'http_451': 3, 'http_502': 1, 'invalid_content': 18, 'http_504': 10, 'http_410': 9, 'http_204': 3, 'http_500': 1}
+Total Processing Time: 200.97720575332642
+Final Channel Count: 1745
+Source Urls Processed: 8
+Total Skipped Urls: 176
 
 CHANNEL DISTRIBUTION
 --------------------
-Uncategorized: 106 channels
+Uncategorized: 1328 channels
+Music: 51 channels
+General: 37 channels
+Sports: 34 channels
 Généraliste: 33 channels
-Sports: 29 channels
-Music: 21 channels
+News: 21 channels
+Kids: 15 channels
 À Binge-Watch: 15 channels
-Cinéma: 15 channels
-Kids: 13 channels
-100% Français: 13 channels
+Cinéma: 14 channels
+FRANCE: 14 channels
+100% Français: 12 channels
 Kids & Family: 12 channels
-News: 11 channels
-Animation: 10 channels
 Crime & Mystère: 10 channels
-Divertissement: 9 channels
+Lifestyle: 9 channels
+Animation: 9 channels
 Classic TV: 9 channels
-FRANCE: 9 channels
 Actualités: 8 channels
+Divertissement: 8 channels
 Séries Policières: 8 channels
-Lifestyle: 8 channels
+Nature & Travel: 8 channels
 TV Réalité: 7 channels
-Documentaire: 7 channels
-Daytime TV: 7 channels
-Nature & Travel: 7 channels
+Daytime TV: 6 channels
+Legislative: 5 channels
+Emissions cultes: 5 channels
+Documentaire: 5 channels
+Movies: 4 channels
+Comédie: 4 channels
 Comedy: 4 channels
+Drama TV: 4 channels
 History & Science: 4 channels
 Communautaire: 3 channels
-Emissions cultes: 3 channels
 Sports & Auto: 3 channels
-Comédie: 3 channels
 Sci-Fi & Action: 3 channels
-Nouveau sur Pluto TV: 2 channels
+Outdoor: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
-Movies: 2 channels
 True Crime: 2 channels
 Hit TV, True Crime: 2 channels
-Drama TV: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
+Film: 1 channels
 Réréalité: 1 channels
 Comedie: 1 channels
-Film: 1 channels
 Affaires Publiques: 1 channels
-Thématique: 1 channels
 Cuisine: 1 channels
+1. |FR|🇫🇷 INFORMATION ℹ️📰: 1 channels
 Quebec TV: 1 channels
+Thématique: 1 channels
+5. |FR|🇫🇷 SPORT - SÉRIES / FILMS 🎞️🤾‍♀️: 1 channels
+10. |TR|🇹🇷 ÇOCUK - SPOR 🤾‍♀️🧒: 1 channels
+31. |🎵|🎧MUSIC INT/MISC. 🎸🎷: 1 channels
+2. |FR|🇫🇷 GÉNÉRALISTES 📺📀: 1 channels
+3. |FR|🇫🇷 MUSIQUE - JEUNESSE 🎵🧒: 1 channels
+Documentary: 1 channels
+Education;Kids: 1 channels
+Shop: 1 channels
+Nouveau sur Pluto TV: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
 International: 1 channels
 
-FAILED URLS
------------
-URL: https://raw.githubusercontent.com/absol12/reptv/refs/heads/main/01.m3uhttps://iptv-org.github.io/iptv/countries/ca.m3u
-Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/absol12/reptv/refs/heads/main/01.m3uhttps:/iptv-org.github.io/iptv/countries/ca.m3u
-
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
-HTTP 400 Errors: 2 channels
-HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 151 channels
+HTTP 204 Errors: 3 channels
+HTTP 400 Errors: 8 channels
+HTTP 401 Errors: 5 channels
+HTTP 404 Errors: 83 channels
+HTTP 410 Errors: 9 channels
+HTTP 451 Errors: 3 channels
+HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
-HTTP 503 Errors: 8 channels
-HTTP 504 Errors: 6 channels
-Inactive: 12 channels
+HTTP 503 Errors: 13 channels
+HTTP 504 Errors: 10 channels
+Inactive: 134 channels
+Invalid Content: 18 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
@@ -189,6 +201,87 @@ URL: plugin://plugin.infologique.TVAgo/?url=ref%3Atva_6309384716112&sourceUrl=re
 URL: plugin://plugin.infologique.TVAgo/?url=ref%3Atva_6309386882112&sourceUrl=ref%3Atva_6309386882112 (Reason: Invalid/Non-HTTP)
 URL: plugin://plugin.video.youtube/play/?video_id=biCCb0EB3g4 (Reason: Invalid/Non-HTTP)
 URL: plugin://plugin.video.youtube/play/?video_id=WHhzK7k22q0 (Reason: Invalid/Non-HTTP)
+
+--- From Source: https://raw.githubusercontent.com/absol12/reptv/refs/heads/main/01.m3u (47 skipped) ---
+URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8 (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://amg00711-zylo-amg00711c8-rakuten-uk-2686.playouts.now.amagi.tv/playlist/amg00711-zylofast-cinewestern-rakutenuk/playlist.m3u8 (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://section (Reason: Duplicate)
+URL: https://section (Reason: Duplicate)
+URL: https://section (Reason: Duplicate)
+URL: https://section (Reason: Duplicate)
+URL: https://section (Reason: Duplicate)
+URL: https://hls.savoir.media/live/stream.m3u8 (Reason: Duplicate)
+URL: https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8 (Reason: Duplicate)
+URL: https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8 (Reason: Duplicate)
+URL: https://section (Reason: Duplicate)
+URL: https://live-24-canalsur.interactvty.pro/9bb0f4edcb8946e79f5017ddca6c02b0/26af5488cda642ed2eddd27a6328c93b9c03e9181b9d0a825147a7d978e69202.m3u8 (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://fastly.live.brightcove.com/6386790513112/eu-central-1/5377161796001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiZXJmajYzLmVncmVzcy53YzQ3bTEiLCJhY2NvdW50X2lkIjoiNTM3NzE2MTc5NjAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyI1Mzc3MTYxNzk2MDAxIl0sImp0aSI6IjYzODY3OTA1MTMxMTIifQ.Szahkl5VVsEWGdM4mgrmlDPVkWPTRgBMwwGg4D5hGFU/playlist-hls.m3u8 (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/makan/live.livx/playlist.m3u8 (Reason: Duplicate)
+URL: https://indisponible (Reason: Duplicate)
+URL: https://fastly.live.brightcove.com/6386792572112/eu-central-1/5377161796001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiZXJmajYzLmVncmVzcy53YzQ3bTEiLCJhY2NvdW50X2lkIjoiNTM3NzE2MTc5NjAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyI1Mzc3MTYxNzk2MDAxIl0sImp0aSI6IjYzODY3OTI1NzIxMTIifQ.vsA8IfCHFqoqo2BHxx4w0PqBgTESPMYgFGL771vzKoA/playlist-hls.m3u8 (Reason: Duplicate)
+URL: https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-4/24f134f1cd63db9346439e96b86ca6ed/index.m3u8 (Reason: Duplicate)
+URL: https://royatv-live.daioncdn.net/royatv/royatv.m3u8 (Reason: Duplicate)
+URL: https://roya.daioncdn.net/royatv/royatv.m3u8?app=8c1e143a-39cf-40b4-acb2-e78faa1f322d (Reason: Duplicate)
+URL: https://fastly.live.brightcove.com/6386790908112/eu-central-1/5377161796001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiZXJmajYzLmVncmVzcy53YzQ3bTEiLCJhY2NvdW50X2lkIjoiNTM3NzE2MTc5NjAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyI1Mzc3MTYxNzk2MDAxIl0sImp0aSI6IjYzODY3OTA5MDgxMTIifQ._w5c3EwfnEecDCEpDaKuVz07uuEyUb3vXvQN3svv-oU/playlist-hls.m3u8 (Reason: Duplicate)
+URL: https://shls-live-enc.edgenextcdn.net/out/v1/07a6ab2d57b2453a91bbdd2d46b5865a/index.m3u8 (Reason: Duplicate)
+
+--- From Source: https://iptv-org.github.io/iptv/countries/ca.m3u (11 skipped) ---
+URL: http://live.azstartv.com/azstar/smil:azstar.smil/playlist.m3u8 (Reason: Duplicate)
+URL: https://hls.savoir.media/live/stream.m3u8 (Reason: Duplicate)
+URL: https://cbcrclinear-tor.akamaized.net/hls/live/2042761/CBCRCLINEAR_TOR_7/master5.m3u8 (Reason: Duplicate)
+URL: https://d7z3qjdsxbwoq.cloudfront.net/groupa/live/f9809cea-1e07-47cd-a94d-2ddd3e1351db/live.isml/.m3u8 (Reason: Duplicate)
+URL: https://amdici.akamaized.net/hls/live/873426/ICI-Live-Stream/master.m3u8 (Reason: Duplicate)
+URL: https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8 (Reason: Duplicate)
+URL: https://tvalive.akamaized.net/hls/live/2014213/tvan01/tvan01.m3u8 (Reason: Duplicate)
+URL: https://eu1.vectromdigital.com:1936/netvtoronto/netvtoronto/playlist.m3u8 (Reason: Duplicate)
+URL: https://iptv.tapesh.tv/tapesh/playlist.m3u8 (Reason: Duplicate)
+URL: https://bcovlive-a.akamaihd.net/4b1c462c86094bae93b65adc84e43afc/us-west-2/6101674910001/playlist.m3u8 (Reason: Duplicate)
+URL: https://tvalive-dai01.akamaized.net/Content/HLS/Live/channel(575b93c5-be31-ee34-6285-14620fd14048)/index.m3u8 (Reason: Duplicate)
+
+--- From Source: https://raw.githubusercontent.com/iptv-org/iptv/master/streams/fr_rakuten.m3u (17 skipped) ---
+URL: https://amg01314-cgtn-amg01314c2-rakuten-us-1319.playouts.now.amagi.tv/cgtn-fr-rakuten/playlist.m3u8 (Reason: Duplicate)
+URL: https://amg00106-amg00106c1-rakuten-uk-4654.playouts.now.amagi.tv/playlist/amg00106-france24fast-france24-rakutenuk/playlist.m3u8 (Reason: Duplicate)
+URL: https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads.xumo_channelId=88883047 (Reason: Duplicate)
+URL: https://bamusa-naturetime-emea-fra-rakuten.amagi.tv/playlist.m3u8 (Reason: Duplicate)
+URL: https://amg01076-lightning-amg01076c5-rakuten-us-1788.playouts.now.amagi.tv/playlist/amg01076-lightning-newsworld-rakutenus/playlist.m3u8 (Reason: Duplicate)
+URL: https://qwestjazz-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-qwestjazz-rakuten/CDN/master.m3u8 (Reason: Duplicate)
+URL: https://01ac9352fbfa4204998783d41f9b1a2e.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6068/master.m3u8 (Reason: Duplicate)
+URL: https://cc9f70371e7144e7acae4de8b5832d7a.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6183/master.m3u8 (Reason: Duplicate)
+URL: https://f396f4db84a54f7bb496b2541477b626.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6095/master.m3u8 (Reason: Duplicate)
+URL: https://93ed06eba1ef4cf783b66dc6ea7c4f28.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-5986/master.m3u8 (Reason: Duplicate)
+URL: https://amg01131-tracetv-amg01131c1-rakuten-us-1081.playouts.now.amagi.tv/playlist/amg01131-tracetvfast-traceurban-rakutenus/playlist.m3u8 (Reason: Duplicate)
+URL: https://amg00056-amg00056c9-rakuten-fr-3243.playouts.now.amagi.tv/playlist/amg00056-vevotvfast-vevopopfr-rakutenfr/playlist.m3u8 (Reason: Duplicate)
+URL: https://zylo-cinenanar-rakuten.amagi.tv/playlist.m3u8 (Reason: Duplicate)
+URL: https://amg00711-zylo-amg00711c8-rakuten-uk-2686.playouts.now.amagi.tv/playlist/amg00711-zylofast-cinewestern-rakutenuk/playlist.m3u8 (Reason: Duplicate)
+URL: https://d20oth1416y9a1.cloudfront.net/playlist/amg00711-zylofast-frequencenovelas-rakutenus/playlist.m3u8 (Reason: Duplicate)
+URL: https://amg00711-zylo-amg00711c10-rakuten-fr-6731.playouts.now.amagi.tv/playlist.m3u8 (Reason: Duplicate)
+URL: https://rakutenaa-zylo-screamin-rakuten-p11ej.amagi.tv/playlist/rakutenAA-zylo-screamin-rakuten/playlist.m3u8 (Reason: Duplicate)
 
 
 CONFIGURATION
