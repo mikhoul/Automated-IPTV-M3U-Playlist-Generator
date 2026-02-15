@@ -1809,7 +1809,8 @@ def main():
     source_urls = [
         "https://github.com/Sphinxroot/QC-TV/raw/16afc34391cf7a1dbc0b6a8273476a7d3f9ca33b/Quebec.m3u",
         #"https://github.com/ipstreet312/freeiptv/raw/refs/heads/master/ressources/allgr.m3u",
-        "https://raw.githubusercontent.com/absol12/reptv/refs/heads/main/01.m3u",
+        # Bonne Liste FR Melé "https://raw.githubusercontent.com/absol12/reptv/refs/heads/main/01.m3u",
+        "https://rawcdn.githack.com/schumijo/iptv/d3c690aadfc94c4c4fc780bcbce05faa12971f0d/fr.m3u8",
         "https://iptv-org.github.io/iptv/countries/ca.m3u",
         # "https://tinyurl.com/Stream2IPTV?region=fr&service=PlutoTV",
         "https://rawcdn.githack.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_fr.m3u",
