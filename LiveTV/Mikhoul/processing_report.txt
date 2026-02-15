@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-02-15 18:03:30
+Generated: 2026-02-15 18:09:45
 ============================================================
 
 PROCESSING STATISTICS
@@ -11,9 +11,9 @@ Parsing Errors: 0
 Urls Validated: 865
 Active Urls: 742
 Geo Blocked Urls: 154
-Validation Time: 119.77912640571594
-Inactive By Error: {'inactive': 21, 'invalid_content': 15, 'http_401': 2, 'http_404': 61, 'http_503': 12, 'http_502': 1, 'http_400': 4, 'http_500': 1, 'http_504': 6}
-Total Processing Time: 127.28000807762146
+Validation Time: 120.1442539691925
+Inactive By Error: {'inactive': 21, 'invalid_content': 15, 'http_401': 2, 'http_404': 61, 'http_502': 1, 'http_503': 12, 'http_400': 4, 'http_500': 1, 'http_504': 6}
+Total Processing Time: 127.87414908409119
 Final Channel Count: 742
 Source Urls Processed: 8
 Total Skipped Urls: 113
@@ -77,9 +77,9 @@ Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
+Film: 1 channels
 Réréalité: 1 channels
 Comedie: 1 channels
-Film: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
