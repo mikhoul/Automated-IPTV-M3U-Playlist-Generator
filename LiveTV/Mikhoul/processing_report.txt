@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-02-15 19:57:07
+Generated: 2026-02-16 20:02:06
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,33 +9,33 @@ Total Lines Processed: 2862
 Total Channels Found: 1126
 Parsing Errors: 0
 Urls Validated: 865
-Active Urls: 744
+Active Urls: 726
 Geo Blocked Urls: 154
-Validation Time: 119.62523555755615
-Inactive By Error: {'inactive': 20, 'invalid_content': 15, 'http_404': 61, 'http_401': 2, 'http_503': 12, 'http_502': 1, 'http_400': 4, 'http_504': 6}
-Total Processing Time: 127.13542318344116
-Final Channel Count: 744
+Validation Time: 168.83310198783875
+Inactive By Error: {'inactive': 36, 'invalid_content': 15, 'http_401': 2, 'http_404': 62, 'http_503': 12, 'http_400': 4, 'http_502': 1, 'http_500': 1, 'http_504': 6}
+Total Processing Time: 177.1449489593506
+Final Channel Count: 726
 Source Urls Processed: 8
 Total Skipped Urls: 113
 
 CHANNEL DISTRIBUTION
 --------------------
 Uncategorized: 103 channels
-Cinéma: 53 channels
+Cinéma: 52 channels
 Music: 52 channels
 Sports: 42 channels
-General: 39 channels
+General: 38 channels
 Généraliste: 33 channels
 Divertissement: 29 channels
-TNT: 23 channels
 Actualités: 21 channels
 News: 21 channels
 Séries TV: 20 channels
 Sport Multiplex: 18 channels
 Musique: 16 channels
-Jeunesse: 14 channels
+TNT: 14 channels
 Documentaires: 13 channels
 Kids: 13 channels
+Jeunesse: 12 channels
 À Binge-Watch: 12 channels
 Kids & Family: 12 channels
 Régionale: 10 channels
@@ -51,10 +51,10 @@ Voyages et Gastronomie: 7 channels
 Crime & Mystère: 7 channels
 Daytime TV: 7 channels
 Nature & Travel: 7 channels
-Style de vie/Pratique: 6 channels
 Séries Policières: 6 channels
 TV Réalité: 6 channels
 Sport Thématique: 5 channels
+Style de vie/Pratique: 5 channels
 Legislative: 5 channels
 Documentaire: 5 channels
 Anime: 4 channels
@@ -67,25 +67,22 @@ Emissions cultes: 3 channels
 Sports & Auto: 3 channels
 Comédie: 3 channels
 Sci-Fi & Action: 3 channels
-Premium: 2 channels
 Découverte: 2 channels
 Movies: 2 channels
 Outdoor: 2 channels
-True Crime: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
+True Crime: 2 channels
 Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
 Film: 1 channels
 Réréalité: 1 channels
+Comedie: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
-Mini généralistes: 1 channels
-Comedie: 1 channels
-Sport: 1 channels
 Etrangère: 1 channels
 Documentary: 1 channels
 Education;Kids: 1 channels
@@ -101,11 +98,12 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 61 channels
+HTTP 404 Errors: 62 channels
+HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 12 channels
 HTTP 504 Errors: 6 channels
-Inactive: 20 channels
+Inactive: 36 channels
 Invalid Content: 15 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
