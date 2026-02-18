@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-02-17 20:21:36
+Generated: 2026-02-18 20:23:29
 ============================================================
 
 PROCESSING STATISTICS
@@ -10,10 +10,10 @@ Total Channels Found: 1122
 Parsing Errors: 0
 Urls Validated: 861
 Active Urls: 730
-Geo Blocked Urls: 153
-Validation Time: 171.43297481536865
-Inactive By Error: {'inactive': 36, 'invalid_content': 15, 'http_401': 2, 'http_503': 9, 'http_502': 4, 'http_404': 56, 'http_400': 4, 'http_504': 5}
-Total Processing Time: 180.79873943328857
+Geo Blocked Urls: 154
+Validation Time: 167.35567784309387
+Inactive By Error: {'inactive': 36, 'invalid_content': 15, 'http_502': 1, 'http_401': 2, 'http_404': 55, 'http_503': 12, 'http_400': 4, 'http_500': 1, 'http_504': 5}
+Total Processing Time: 175.18385314941406
 Final Channel Count: 730
 Source Urls Processed: 8
 Total Skipped Urls: 113
@@ -50,11 +50,11 @@ Informations Françaises: 7 channels
 Voyages et Gastronomie: 7 channels
 Crime & Mystère: 7 channels
 Daytime TV: 7 channels
-Style de vie/Pratique: 6 channels
+Nature & Travel: 7 channels
 Séries Policières: 6 channels
 TV Réalité: 6 channels
-Nature & Travel: 6 channels
 Sport Thématique: 5 channels
+Style de vie/Pratique: 5 channels
 Legislative: 5 channels
 Documentaire: 5 channels
 Anime: 4 channels
@@ -99,9 +99,10 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 56 channels
-HTTP 502 Errors: 4 channels
-HTTP 503 Errors: 9 channels
+HTTP 404 Errors: 55 channels
+HTTP 500 Errors: 1 channels
+HTTP 502 Errors: 1 channels
+HTTP 503 Errors: 12 channels
 HTTP 504 Errors: 5 channels
 Inactive: 36 channels
 Invalid Content: 15 channels
