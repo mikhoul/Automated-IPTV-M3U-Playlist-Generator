@@ -1,26 +1,26 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-02-18 20:23:29
+Generated: 2026-02-19 20:06:16
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 2852
-Total Channels Found: 1122
+Total Lines Processed: 2854
+Total Channels Found: 1123
 Parsing Errors: 0
-Urls Validated: 861
-Active Urls: 730
-Geo Blocked Urls: 154
-Validation Time: 167.35567784309387
-Inactive By Error: {'inactive': 36, 'invalid_content': 15, 'http_502': 1, 'http_401': 2, 'http_404': 55, 'http_503': 12, 'http_400': 4, 'http_500': 1, 'http_504': 5}
-Total Processing Time: 175.18385314941406
-Final Channel Count: 730
+Urls Validated: 862
+Active Urls: 729
+Geo Blocked Urls: 155
+Validation Time: 168.54988360404968
+Inactive By Error: {'inactive': 36, 'invalid_content': 15, 'http_502': 1, 'http_401': 2, 'http_503': 11, 'http_404': 56, 'http_400': 4, 'http_500': 1, 'http_421': 2, 'http_504': 5}
+Total Processing Time: 178.87947988510132
+Final Channel Count: 729
 Source Urls Processed: 8
 Total Skipped Urls: 113
 
 CHANNEL DISTRIBUTION
 --------------------
-Uncategorized: 103 channels
+Uncategorized: 104 channels
 Cinéma: 52 channels
 Music: 52 channels
 Sports: 43 channels
@@ -55,7 +55,6 @@ Séries Policières: 6 channels
 TV Réalité: 6 channels
 Sport Thématique: 5 channels
 Style de vie/Pratique: 5 channels
-Legislative: 5 channels
 Documentaire: 5 channels
 Anime: 4 channels
 Comedy: 4 channels
@@ -63,6 +62,7 @@ History & Science: 4 channels
 Communautaire: 3 channels
 Locale: 3 channels
 Télé réalité: 3 channels
+Legislative: 3 channels
 Emissions cultes: 3 channels
 Sports & Auto: 3 channels
 Comédie: 3 channels
@@ -76,12 +76,12 @@ Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
+Comedie: 1 channels
 Réréalité: 1 channels
 Film: 1 channels
-Comedie: 1 channels
-Affaires Publiques: 1 channels
-Thématique: 1 channels
 Cuisine: 1 channels
+Thématique: 1 channels
+Affaires Publiques: 1 channels
 Quebec TV: 1 channels
 Sport: 1 channels
 Etrangère: 1 channels
@@ -91,18 +91,19 @@ Shop: 1 channels
 Nouveau sur Pluto TV: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
 International: 1 channels
+Hit TV, Game Shows: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 2 channels
-HTTP 404 Errors: 55 channels
+HTTP 404 Errors: 56 channels
+HTTP 421 Errors: 2 channels
 HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
-HTTP 503 Errors: 12 channels
+HTTP 503 Errors: 11 channels
 HTTP 504 Errors: 5 channels
 Inactive: 36 channels
 Invalid Content: 15 channels
