@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-02-20 20:01:35
+Generated: 2026-02-21 19:57:29
 ============================================================
 
 PROCESSING STATISTICS
@@ -8,13 +8,13 @@ PROCESSING STATISTICS
 Total Lines Processed: 2854
 Total Channels Found: 1123
 Parsing Errors: 0
-Urls Validated: 862
-Active Urls: 722
+Urls Validated: 861
+Active Urls: 723
 Geo Blocked Urls: 155
-Validation Time: 164.5209662914276
-Inactive By Error: {'inactive': 36, 'invalid_content': 15, 'http_502': 1, 'http_401': 2, 'http_503': 12, 'http_404': 62, 'http_400': 4, 'http_500': 1, 'http_421': 2, 'http_504': 5}
-Total Processing Time: 171.99035620689392
-Final Channel Count: 722
+Validation Time: 168.69850969314575
+Inactive By Error: {'inactive': 37, 'invalid_content': 15, 'http_502': 1, 'http_503': 10, 'http_404': 62, 'http_400': 4, 'http_500': 1, 'http_421': 2, 'http_401': 1, 'http_504': 5}
+Total Processing Time: 175.76386976242065
+Final Channel Count: 723
 Source Urls Processed: 8
 Total Skipped Urls: 113
 
@@ -22,9 +22,9 @@ CHANNEL DISTRIBUTION
 --------------------
 Uncategorized: 104 channels
 Cinéma: 52 channels
+Sports: 46 channels
 Music: 46 channels
-Sports: 43 channels
-General: 39 channels
+General: 38 channels
 Généraliste: 33 channels
 Divertissement: 29 channels
 Actualités: 21 channels
@@ -36,8 +36,8 @@ TNT: 14 channels
 Documentaires: 13 channels
 Kids: 13 channels
 Jeunesse: 12 channels
-À Binge-Watch: 12 channels
 Kids & Family: 12 channels
+À Binge-Watch: 11 channels
 Régionale: 10 channels
 Lifestyle: 10 channels
 Séries et Divertissements: 9 channels
@@ -76,8 +76,8 @@ Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Comedie: 1 channels
 Réréalité: 1 channels
+Comedie: 1 channels
 Film: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
@@ -98,14 +98,14 @@ International: 1 channels
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
-HTTP 401 Errors: 2 channels
+HTTP 401 Errors: 1 channels
 HTTP 404 Errors: 62 channels
 HTTP 421 Errors: 2 channels
 HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
-HTTP 503 Errors: 12 channels
+HTTP 503 Errors: 10 channels
 HTTP 504 Errors: 5 channels
-Inactive: 36 channels
+Inactive: 37 channels
 Invalid Content: 15 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
