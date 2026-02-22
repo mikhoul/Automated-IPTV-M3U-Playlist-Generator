@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-02-21 19:57:29
+Generated: 2026-02-22 19:58:05
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,12 +9,12 @@ Total Lines Processed: 2854
 Total Channels Found: 1123
 Parsing Errors: 0
 Urls Validated: 861
-Active Urls: 723
+Active Urls: 725
 Geo Blocked Urls: 155
-Validation Time: 168.69850969314575
-Inactive By Error: {'inactive': 37, 'invalid_content': 15, 'http_502': 1, 'http_503': 10, 'http_404': 62, 'http_400': 4, 'http_500': 1, 'http_421': 2, 'http_401': 1, 'http_504': 5}
-Total Processing Time: 175.76386976242065
-Final Channel Count: 723
+Validation Time: 167.77812385559082
+Inactive By Error: {'inactive': 36, 'invalid_content': 15, 'http_502': 1, 'http_401': 2, 'http_503': 10, 'http_404': 61, 'http_400': 4, 'http_421': 2, 'http_504': 5}
+Total Processing Time: 178.2811348438263
+Final Channel Count: 725
 Source Urls Processed: 8
 Total Skipped Urls: 113
 
@@ -28,8 +28,8 @@ General: 38 channels
 Généraliste: 33 channels
 Divertissement: 29 channels
 Actualités: 21 channels
+News: 21 channels
 Séries TV: 20 channels
-News: 20 channels
 Sport Multiplex: 18 channels
 Musique: 16 channels
 TNT: 14 channels
@@ -51,10 +51,10 @@ Voyages et Gastronomie: 7 channels
 Crime & Mystère: 7 channels
 Daytime TV: 7 channels
 Nature & Travel: 7 channels
+Style de vie/Pratique: 6 channels
 Séries Policières: 6 channels
 TV Réalité: 6 channels
 Sport Thématique: 5 channels
-Style de vie/Pratique: 5 channels
 Documentaire: 5 channels
 Anime: 4 channels
 Comedy: 4 channels
@@ -77,35 +77,34 @@ Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
 Réréalité: 1 channels
-Comedie: 1 channels
 Film: 1 channels
+Comedie: 1 channels
 Affaires Publiques: 1 channels
-Thématique: 1 channels
 Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
 Sport: 1 channels
 Etrangère: 1 channels
 Documentary: 1 channels
 Education;Kids: 1 channels
-Shop: 1 channels
 Nouveau sur Pluto TV: 1 channels
+Shop: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
 International: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
-HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 62 channels
+HTTP 401 Errors: 2 channels
+HTTP 404 Errors: 61 channels
 HTTP 421 Errors: 2 channels
-HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 10 channels
 HTTP 504 Errors: 5 channels
-Inactive: 37 channels
+Inactive: 36 channels
 Invalid Content: 15 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
