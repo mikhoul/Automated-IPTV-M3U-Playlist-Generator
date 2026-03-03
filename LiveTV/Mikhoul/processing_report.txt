@@ -1,20 +1,20 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-03-02 20:05:03
+Generated: 2026-03-03 20:03:59
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 2854
-Total Channels Found: 1124
+Total Lines Processed: 2852
+Total Channels Found: 1123
 Parsing Errors: 0
-Urls Validated: 864
-Active Urls: 744
+Urls Validated: 863
+Active Urls: 743
 Geo Blocked Urls: 155
-Validation Time: 120.16021203994751
-Inactive By Error: {'invalid_content': 16, 'inactive': 20, 'http_401': 1, 'http_502': 1, 'http_404': 63, 'http_503': 10, 'http_400': 4, 'http_504': 5}
-Total Processing Time: 132.6846525669098
-Final Channel Count: 744
+Validation Time: 119.49383354187012
+Inactive By Error: {'invalid_content': 16, 'inactive': 20, 'http_502': 1, 'http_401': 1, 'http_404': 63, 'http_503': 10, 'http_400': 4, 'http_504': 5}
+Total Processing Time: 131.47351336479187
+Final Channel Count: 743
 Source Urls Processed: 8
 Total Skipped Urls: 112
 
@@ -73,12 +73,12 @@ Movies: 2 channels
 Outdoor: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
-Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
+Drama TV: 2 channels
 Reality: 2 channels
-Réréalité: 1 channels
 Film: 1 channels
 Comedie: 1 channels
+Réréalité: 1 channels
 Affaires Publiques: 1 channels
 Cuisine: 1 channels
 Thématique: 1 channels
@@ -90,7 +90,6 @@ Documentary: 1 channels
 Education;Kids: 1 channels
 Animation;Kids: 1 channels
 Shop: 1 channels
-Nouveau sur Pluto TV: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 Drama TV, Movies: 1 channels
