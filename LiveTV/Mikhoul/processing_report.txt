@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-03-28 20:01:17
+Generated: 2026-03-29 20:02:07
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,12 +9,12 @@ Total Lines Processed: 2883
 Total Channels Found: 1135
 Parsing Errors: 0
 Urls Validated: 887
-Active Urls: 758
+Active Urls: 760
 Geo Blocked Urls: 151
-Validation Time: 120.58378529548645
-Inactive By Error: {'http_404': 70, 'inactive': 22, 'invalid_content': 15, 'http_502': 1, 'http_401': 1, 'http_503': 11, 'http_400': 4, 'http_504': 5}
-Total Processing Time: 128.89594316482544
-Final Channel Count: 758
+Validation Time: 120.49290251731873
+Inactive By Error: {'http_404': 70, 'inactive': 23, 'invalid_content': 15, 'http_502': 1, 'http_401': 1, 'http_503': 8, 'http_400': 4, 'http_504': 5}
+Total Processing Time: 128.67728638648987
+Final Channel Count: 760
 Source Urls Processed: 8
 Total Skipped Urls: 112
 
@@ -23,8 +23,8 @@ CHANNEL DISTRIBUTION
 Uncategorized: 111 channels
 Cinéma: 52 channels
 Music: 50 channels
-Sports: 46 channels
-General: 38 channels
+Sports: 49 channels
+General: 37 channels
 Généraliste: 33 channels
 Divertissement: 29 channels
 TNT: 23 channels
@@ -78,9 +78,9 @@ Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Film: 1 channels
 Réréalité: 1 channels
 Comedie: 1 channels
+Film: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
@@ -91,8 +91,8 @@ Etrangère: 1 channels
 Series: 1 channels
 Education;Kids: 1 channels
 Animation;Kids: 1 channels
-Outdoor;Sports: 1 channels
 Shop: 1 channels
+Outdoor;Sports: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
 Drama TV, Movies: 1 channels
@@ -105,9 +105,9 @@ HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 1 channels
 HTTP 404 Errors: 70 channels
 HTTP 502 Errors: 1 channels
-HTTP 503 Errors: 11 channels
+HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 5 channels
-Inactive: 22 channels
+Inactive: 23 channels
 Invalid Content: 15 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
