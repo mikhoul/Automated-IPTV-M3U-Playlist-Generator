@@ -1,19 +1,19 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-03-29 20:02:07
+Generated: 2026-03-30 20:28:02
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 2883
-Total Channels Found: 1135
+Total Lines Processed: 2889
+Total Channels Found: 1138
 Parsing Errors: 0
-Urls Validated: 887
+Urls Validated: 890
 Active Urls: 760
 Geo Blocked Urls: 151
-Validation Time: 120.49290251731873
-Inactive By Error: {'http_404': 70, 'inactive': 23, 'invalid_content': 15, 'http_502': 1, 'http_401': 1, 'http_503': 8, 'http_400': 4, 'http_504': 5}
-Total Processing Time: 128.67728638648987
+Validation Time: 114.61619687080383
+Inactive By Error: {'inactive': 22, 'http_404': 70, 'invalid_content': 15, 'http_401': 1, 'http_502': 1, 'http_503': 12, 'http_400': 4, 'http_504': 5}
+Total Processing Time: 124.11148929595947
 Final Channel Count: 760
 Source Urls Processed: 8
 Total Skipped Urls: 112
@@ -23,7 +23,7 @@ CHANNEL DISTRIBUTION
 Uncategorized: 111 channels
 Cinéma: 52 channels
 Music: 50 channels
-Sports: 49 channels
+Sports: 46 channels
 General: 37 channels
 Généraliste: 33 channels
 Divertissement: 29 channels
@@ -57,6 +57,7 @@ Daytime TV: 6 channels
 Sport Thématique: 5 channels
 Documentaire: 5 channels
 Anime: 4 channels
+Documentary: 4 channels
 Sports & Auto: 4 channels
 Comedy: 4 channels
 History & Science: 4 channels
@@ -71,16 +72,16 @@ Comédie: 3 channels
 Sci-Fi & Action: 3 channels
 Premium: 2 channels
 Découverte: 2 channels
-Documentary: 2 channels
+Series: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
 Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Réréalité: 1 channels
 Comedie: 1 channels
 Film: 1 channels
+Réréalité: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
@@ -88,7 +89,6 @@ Quebec TV: 1 channels
 Mini généralistes: 1 channels
 Sport: 1 channels
 Etrangère: 1 channels
-Series: 1 channels
 Education;Kids: 1 channels
 Animation;Kids: 1 channels
 Shop: 1 channels
@@ -105,9 +105,9 @@ HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 1 channels
 HTTP 404 Errors: 70 channels
 HTTP 502 Errors: 1 channels
-HTTP 503 Errors: 8 channels
+HTTP 503 Errors: 12 channels
 HTTP 504 Errors: 5 channels
-Inactive: 23 channels
+Inactive: 22 channels
 Invalid Content: 15 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
