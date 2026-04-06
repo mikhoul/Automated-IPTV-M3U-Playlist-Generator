@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-04-05 20:02:17
+Generated: 2026-04-06 20:24:47
 ============================================================
 
 PROCESSING STATISTICS
@@ -11,9 +11,9 @@ Parsing Errors: 0
 Urls Validated: 890
 Active Urls: 759
 Geo Blocked Urls: 149
-Validation Time: 122.79461407661438
+Validation Time: 129.95037150382996
 Inactive By Error: {'http_404': 71, 'inactive': 22, 'invalid_content': 16, 'http_502': 1, 'http_401': 1, 'http_503': 11, 'http_400': 4, 'http_504': 5}
-Total Processing Time: 131.07047629356384
+Total Processing Time: 140.3679563999176
 Final Channel Count: 759
 Source Urls Processed: 8
 Total Skipped Urls: 112
@@ -73,14 +73,14 @@ Sci-Fi & Action: 3 channels
 Premium: 2 channels
 Découverte: 2 channels
 Series: 2 channels
-True Crime: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
-Drama TV: 2 channels
+True Crime: 2 channels
 Hit TV, True Crime: 2 channels
+Drama TV: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Comedie: 1 channels
 Réréalité: 1 channels
+Comedie: 1 channels
 Film: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
@@ -91,8 +91,8 @@ Sport: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
 Animation;Kids: 1 channels
-Shop: 1 channels
 Outdoor;Sports: 1 channels
+Shop: 1 channels
 Nouveau sur Pluto TV: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
