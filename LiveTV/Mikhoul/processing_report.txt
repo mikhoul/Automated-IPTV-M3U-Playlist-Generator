@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-04-15 20:31:28
+Generated: 2026-04-16 20:33:56
 ============================================================
 
 PROCESSING STATISTICS
@@ -11,9 +11,9 @@ Parsing Errors: 0
 Urls Validated: 899
 Active Urls: 754
 Geo Blocked Urls: 149
-Validation Time: 164.8663318157196
-Inactive By Error: {'http_404': 72, 'inactive': 38, 'invalid_content': 16, 'http_502': 1, 'http_401': 1, 'http_503': 8, 'http_400': 4, 'http_504': 5}
-Total Processing Time: 175.8366241455078
+Validation Time: 170.3552577495575
+Inactive By Error: {'http_404': 72, 'inactive': 38, 'http_502': 1, 'invalid_content': 16, 'http_401': 1, 'http_503': 8, 'http_400': 4, 'http_504': 5}
+Total Processing Time: 185.56164979934692
 Final Channel Count: 754
 Source Urls Processed: 8
 Total Skipped Urls: 112
@@ -78,9 +78,9 @@ Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Réréalité: 1 channels
-Comedie: 1 channels
 Film: 1 channels
+Comedie: 1 channels
+Réréalité: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
@@ -89,14 +89,14 @@ Sport: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
 Animation;Kids: 1 channels
-Shop: 1 channels
 Comedy;Series: 1 channels
+Shop: 1 channels
 Outdoor;Sports: 1 channels
 Nouveau sur Pluto TV: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 International: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
