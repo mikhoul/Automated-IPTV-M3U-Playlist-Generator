@@ -1,20 +1,20 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-04-21 20:35:13
+Generated: 2026-04-22 20:38:12
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 2905
-Total Channels Found: 1146
+Total Lines Processed: 2907
+Total Channels Found: 1147
 Parsing Errors: 0
-Urls Validated: 899
-Active Urls: 750
-Geo Blocked Urls: 149
-Validation Time: 164.50369596481323
-Inactive By Error: {'http_404': 76, 'inactive': 38, 'invalid_content': 16, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_504': 5}
-Total Processing Time: 172.99141478538513
-Final Channel Count: 750
+Urls Validated: 901
+Active Urls: 721
+Geo Blocked Urls: 145
+Validation Time: 170.06847620010376
+Inactive By Error: {'http_404': 78, 'inactive': 38, 'http_502': 1, 'invalid_content': 16, 'http_401': 1, 'http_429': 29, 'http_503': 8, 'http_400': 4, 'http_504': 5}
+Total Processing Time: 185.4758701324463
+Final Channel Count: 721
 Source Urls Processed: 8
 Total Skipped Urls: 112
 
@@ -23,12 +23,12 @@ CHANNEL DISTRIBUTION
 Uncategorized: 111 channels
 Music: 53 channels
 Cinéma: 51 channels
-Sports: 48 channels
 General: 38 channels
 Généraliste: 33 channels
 Divertissement: 27 channels
 News: 22 channels
 Actualités: 20 channels
+Sports: 20 channels
 Séries TV: 19 channels
 Sport Multiplex: 18 channels
 Musique: 16 channels
@@ -46,9 +46,9 @@ Animation: 9 channels
 100% Français: 9 channels
 Classic TV: 9 channels
 Crime: 8 channels
-Voyages et Gastronomie: 7 channels
 Crime & Mystère: 7 channels
 Nature & Travel: 7 channels
+Voyages et Gastronomie: 6 channels
 Séries Policières: 6 channels
 TV Réalité: 6 channels
 Daytime TV: 6 channels
@@ -74,13 +74,13 @@ Sci-Fi & Action: 3 channels
 Découverte: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
-Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
+Drama TV: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
+Film: 1 channels
 Réréalité: 1 channels
 Comedie: 1 channels
-Film: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
@@ -90,20 +90,21 @@ Etrangère: 1 channels
 Education;Kids: 1 channels
 Animation;Kids: 1 channels
 Comedy;Series: 1 channels
-Outdoor;Sports: 1 channels
 Shop: 1 channels
+Outdoor;Sports: 1 channels
 Nouveau sur Pluto TV: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
+Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
 International: 1 channels
-Drama TV, Movies: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 76 channels
+HTTP 404 Errors: 78 channels
+HTTP 429 Errors: 29 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 5 channels
