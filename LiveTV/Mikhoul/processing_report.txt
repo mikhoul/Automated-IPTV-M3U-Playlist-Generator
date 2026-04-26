@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-04-25 20:24:11
+Generated: 2026-04-26 20:24:21
 ============================================================
 
 PROCESSING STATISTICS
@@ -11,9 +11,9 @@ Parsing Errors: 0
 Urls Validated: 900
 Active Urls: 748
 Geo Blocked Urls: 150
-Validation Time: 168.0392234325409
-Inactive By Error: {'http_404': 78, 'http_502': 1, 'inactive': 38, 'invalid_content': 16, 'http_401': 1, 'http_503': 8, 'http_400': 4, 'http_504': 6}
-Total Processing Time: 176.75692915916443
+Validation Time: 167.71582007408142
+Inactive By Error: {'http_404': 78, 'inactive': 38, 'invalid_content': 16, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_504': 6}
+Total Processing Time: 177.38339185714722
 Final Channel Count: 748
 Source Urls Processed: 8
 Total Skipped Urls: 112
@@ -78,13 +78,13 @@ Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Reality: 2 channels
 Educatif: 1 channels
-Film: 1 channels
 Réréalité: 1 channels
+Film: 1 channels
 Comedie: 1 channels
+Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
-Affaires Publiques: 1 channels
 Sport: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
@@ -95,8 +95,8 @@ Outdoor;Sports: 1 channels
 Nouveau sur Pluto TV: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
 International: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
