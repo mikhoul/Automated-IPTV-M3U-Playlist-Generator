@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-05-02 20:26:00
+Generated: 2026-05-03 20:27:25
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,18 +9,18 @@ Total Lines Processed: 2909
 Total Channels Found: 1148
 Parsing Errors: 0
 Urls Validated: 902
-Active Urls: 747
-Geo Blocked Urls: 150
-Validation Time: 132.14194750785828
-Inactive By Error: {'http_404': 79, 'inactive': 38, 'invalid_content': 17, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_500': 1, 'http_504': 6}
-Total Processing Time: 141.10977053642273
-Final Channel Count: 747
+Active Urls: 681
+Geo Blocked Urls: 126
+Validation Time: 167.19227814674377
+Inactive By Error: {'http_404': 79, 'inactive': 38, 'invalid_content': 17, 'http_502': 1, 'http_401': 1, 'http_503': 8, 'http_400': 4, 'http_429': 67, 'http_504': 6}
+Total Processing Time: 175.91582036018372
+Final Channel Count: 681
 Source Urls Processed: 8
 Total Skipped Urls: 112
 
 CHANNEL DISTRIBUTION
 --------------------
-Uncategorized: 112 channels
+Uncategorized: 82 channels
 Music: 54 channels
 Cinéma: 51 channels
 Sports: 48 channels
@@ -47,11 +47,9 @@ Animation: 9 channels
 Classic TV: 9 channels
 Crime: 8 channels
 Crime & Mystère: 7 channels
-Nature & Travel: 7 channels
 Voyages et Gastronomie: 6 channels
 Séries Policières: 6 channels
 TV Réalité: 6 channels
-Daytime TV: 6 channels
 Informations Françaises: 5 channels
 Sport Thématique: 5 channels
 Documentaire: 5 channels
@@ -60,8 +58,6 @@ Anime: 4 channels
 Movies: 4 channels
 Documentary: 4 channels
 Sports & Auto: 4 channels
-Comedy: 4 channels
-History & Science: 4 channels
 Communautaire: 3 channels
 Locale: 3 channels
 Télé réalité: 3 channels
@@ -73,11 +69,6 @@ Sci-Fi & Action: 3 channels
 Découverte: 2 channels
 Emissions cultes: 2 channels
 Nouveau sur Pluto TV: 2 channels
-Anime & Gaming, Kids & Family: 2 channels
-True Crime: 2 channels
-Hit TV, True Crime: 2 channels
-Drama TV: 2 channels
-Reality: 2 channels
 Educatif: 1 channels
 Réréalité: 1 channels
 Comedie: 1 channels
@@ -89,22 +80,17 @@ Quebec TV: 1 channels
 Sport: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
-Animation;Kids: 1 channels
 Comedy;Series: 1 channels
+Animation;Kids: 1 channels
 Outdoor;Sports: 1 channels
 Shop: 1 channels
-Hit TV: 1 channels
-Anime & Gaming: 1 channels
-Drama TV, Movies: 1 channels
-Hit TV, Game Shows: 1 channels
-International: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 1 channels
 HTTP 404 Errors: 79 channels
-HTTP 500 Errors: 1 channels
+HTTP 429 Errors: 67 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 6 channels
