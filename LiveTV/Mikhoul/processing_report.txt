@@ -1,19 +1,19 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-05-06 21:00:03
+Generated: 2026-05-07 20:52:34
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 2917
-Total Channels Found: 1152
+Total Lines Processed: 2919
+Total Channels Found: 1153
 Parsing Errors: 0
-Urls Validated: 905
+Urls Validated: 906
 Active Urls: 749
-Geo Blocked Urls: 150
-Validation Time: 170.0401110649109
-Inactive By Error: {'http_404': 81, 'inactive': 38, 'invalid_content': 17, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_504': 6}
-Total Processing Time: 180.07937002182007
+Geo Blocked Urls: 151
+Validation Time: 168.77668046951294
+Inactive By Error: {'http_404': 82, 'inactive': 38, 'http_502': 1, 'invalid_content': 17, 'http_401': 1, 'http_503': 8, 'http_400': 4, 'http_504': 6}
+Total Processing Time: 177.5496666431427
 Final Channel Count: 749
 Source Urls Processed: 8
 Total Skipped Urls: 112
@@ -23,15 +23,15 @@ CHANNEL DISTRIBUTION
 Uncategorized: 113 channels
 Music: 54 channels
 Cinéma: 51 channels
-Sports: 48 channels
+Sports: 49 channels
 General: 37 channels
 Généraliste: 33 channels
 Divertissement: 27 channels
 Actualités: 20 channels
-News: 20 channels
 Séries TV: 19 channels
+News: 19 channels
 Sport Multiplex: 18 channels
-Musique: 15 channels
+Musique: 16 channels
 TNT: 14 channels
 Documentaires: 13 channels
 Kids: 13 channels
@@ -74,24 +74,23 @@ Reality: 3 channels
 Découverte: 2 channels
 Emissions cultes: 2 channels
 Nouveau sur Pluto TV: 2 channels
-True Crime: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
+True Crime: 2 channels
 Hit TV, True Crime: 2 channels
 Drama TV: 2 channels
 Educatif: 1 channels
-Film: 1 channels
-Comedie: 1 channels
 Réréalité: 1 channels
+Comedie: 1 channels
+Film: 1 channels
 Affaires Publiques: 1 channels
 Cuisine: 1 channels
 Thématique: 1 channels
 Quebec TV: 1 channels
-Sport: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
 Animation;Kids: 1 channels
-Comedy;Series: 1 channels
 Outdoor;Sports: 1 channels
+Comedy;Series: 1 channels
 Shop: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
@@ -103,7 +102,7 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 81 channels
+HTTP 404 Errors: 82 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 6 channels
