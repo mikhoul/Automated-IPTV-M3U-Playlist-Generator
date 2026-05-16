@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-05-15 20:46:31
+Generated: 2026-05-16 20:31:02
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,22 +9,22 @@ Total Lines Processed: 2927
 Total Channels Found: 1156
 Parsing Errors: 0
 Urls Validated: 908
-Active Urls: 716
-Geo Blocked Urls: 140
-Validation Time: 168.85770297050476
-Inactive By Error: {'http_404': 82, 'inactive': 37, 'invalid_content': 19, 'http_502': 1, 'http_401': 1, 'http_503': 8, 'http_400': 4, 'http_504': 6, 'http_429': 34}
-Total Processing Time: 177.98637914657593
-Final Channel Count: 716
+Active Urls: 752
+Geo Blocked Urls: 150
+Validation Time: 169.3144953250885
+Inactive By Error: {'http_404': 81, 'inactive': 37, 'invalid_content': 18, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_504': 6}
+Total Processing Time: 177.11999344825745
+Final Channel Count: 752
 Source Urls Processed: 8
 Total Skipped Urls: 112
 
 CHANNEL DISTRIBUTION
 --------------------
-Uncategorized: 79 channels
+Uncategorized: 113 channels
 Music: 53 channels
 Cinéma: 51 channels
 Sports: 49 channels
-General: 36 channels
+General: 37 channels
 Généraliste: 33 channels
 Divertissement: 27 channels
 News: 21 channels
@@ -76,12 +76,12 @@ Legislative: 2 channels
 Emissions cultes: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
-Hit TV, True Crime: 2 channels
 Drama TV: 2 channels
+Hit TV, True Crime: 2 channels
 Educatif: 1 channels
-Film: 1 channels
-Comedie: 1 channels
 Réréalité: 1 channels
+Comedie: 1 channels
+Film: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
@@ -91,24 +91,24 @@ Etrangère: 1 channels
 Education;Kids: 1 channels
 Animation;Kids: 1 channels
 Shop: 1 channels
+Comedy;Series: 1 channels
 Outdoor;Sports: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
 International: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 82 channels
-HTTP 429 Errors: 34 channels
+HTTP 404 Errors: 81 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 6 channels
 Inactive: 37 channels
-Invalid Content: 19 channels
+Invalid Content: 18 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
