@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-05-22 21:02:25
+Generated: 2026-05-23 20:34:46
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,12 +9,12 @@ Total Lines Processed: 2925
 Total Channels Found: 1156
 Parsing Errors: 0
 Urls Validated: 908
-Active Urls: 752
+Active Urls: 751
 Geo Blocked Urls: 150
-Validation Time: 167.49509930610657
-Inactive By Error: {'http_404': 80, 'inactive': 37, 'invalid_content': 18, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_504': 7}
-Total Processing Time: 176.6458477973938
-Final Channel Count: 752
+Validation Time: 168.15693712234497
+Inactive By Error: {'http_404': 80, 'inactive': 38, 'invalid_content': 18, 'http_502': 1, 'http_401': 1, 'http_503': 8, 'http_400': 4, 'http_504': 7}
+Total Processing Time: 196.24824905395508
+Final Channel Count: 751
 Source Urls Processed: 8
 Total Skipped Urls: 112
 
@@ -79,19 +79,18 @@ True Crime: 2 channels
 Hit TV, True Crime: 2 channels
 Drama TV: 2 channels
 Educatif: 1 channels
-Comedie: 1 channels
 Réréalité: 1 channels
 Film: 1 channels
-Affaires Publiques: 1 channels
+Comedie: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
 Sport: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
+Shop: 1 channels
 Animation;Kids: 1 channels
 Comedy;Series: 1 channels
-Shop: 1 channels
 Outdoor;Sports: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
@@ -107,7 +106,7 @@ HTTP 404 Errors: 80 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 7 channels
-Inactive: 37 channels
+Inactive: 38 channels
 Invalid Content: 18 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
