@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-05-24 20:38:09
+Generated: 2026-05-25 20:53:50
 ============================================================
 
 PROCESSING STATISTICS
@@ -11,9 +11,9 @@ Parsing Errors: 0
 Urls Validated: 908
 Active Urls: 751
 Geo Blocked Urls: 151
-Validation Time: 169.3280086517334
-Inactive By Error: {'http_404': 82, 'inactive': 37, 'invalid_content': 17, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_504': 7}
-Total Processing Time: 177.94440412521362
+Validation Time: 168.39653420448303
+Inactive By Error: {'http_404': 81, 'inactive': 37, 'invalid_content': 18, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_504': 7}
+Total Processing Time: 176.47264623641968
 Final Channel Count: 751
 Source Urls Processed: 8
 Total Skipped Urls: 112
@@ -24,7 +24,7 @@ Uncategorized: 113 channels
 Music: 53 channels
 Cinéma: 51 channels
 Sports: 49 channels
-General: 36 channels
+General: 37 channels
 Généraliste: 33 channels
 Divertissement: 27 channels
 News: 21 channels
@@ -40,8 +40,8 @@ FRANCE: 13 channels
 Kids & Family: 12 channels
 Jeunesse: 11 channels
 Régionale: 10 channels
-Animation: 10 channels
 Séries et Divertissements: 9 channels
+Animation: 9 channels
 Lifestyle: 9 channels
 100% Français: 9 channels
 Classic TV: 9 channels
@@ -79,36 +79,36 @@ True Crime: 2 channels
 Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Educatif: 1 channels
-Réréalité: 1 channels
-Comedie: 1 channels
 Film: 1 channels
+Comedie: 1 channels
+Réréalité: 1 channels
+Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
-Affaires Publiques: 1 channels
 Sport: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
-Comedy;Series: 1 channels
-Outdoor;Sports: 1 channels
 Animation;Kids: 1 channels
+Comedy;Series: 1 channels
 Shop: 1 channels
+Outdoor;Sports: 1 channels
 Hit TV: 1 channels
 Anime & Gaming: 1 channels
-Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
 International: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 82 channels
+HTTP 404 Errors: 81 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 7 channels
 Inactive: 37 channels
-Invalid Content: 17 channels
+Invalid Content: 18 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
