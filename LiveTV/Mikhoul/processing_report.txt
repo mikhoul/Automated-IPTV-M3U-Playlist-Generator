@@ -1,20 +1,20 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-05-28 21:36:48
+Generated: 2026-05-29 21:28:54
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 2437
-Total Channels Found: 935
+Total Lines Processed: 2439
+Total Channels Found: 936
 Parsing Errors: 0
-Urls Validated: 720
-Active Urls: 564
+Urls Validated: 721
+Active Urls: 563
 Geo Blocked Urls: 93
-Validation Time: 165.86703824996948
-Inactive By Error: {'http_404': 80, 'inactive': 39, 'invalid_content': 16, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_500': 1, 'http_504': 6}
-Total Processing Time: 173.276859998703
-Final Channel Count: 564
+Validation Time: 127.1241180896759
+Inactive By Error: {'http_404': 81, 'inactive': 39, 'invalid_content': 17, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_500': 1, 'http_504': 6}
+Total Processing Time: 134.99176239967346
+Final Channel Count: 563
 Source Urls Processed: 8
 Total Skipped Urls: 112
 
@@ -39,8 +39,8 @@ News: 12 channels
 À Binge-Watch: 12 channels
 Jeunesse: 11 channels
 Régionale: 10 channels
-Animation: 10 channels
 Séries et Divertissements: 9 channels
+Animation: 9 channels
 100% Français: 9 channels
 Crime: 8 channels
 Crime & Mystère: 7 channels
@@ -54,6 +54,7 @@ Documentaire: 5 channels
 Style de vie/Pratique: 4 channels
 Anime: 4 channels
 Documentary: 4 channels
+Nouveau sur Pluto TV: 4 channels
 Communautaire: 3 channels
 Locale: 3 channels
 Télé réalité: 3 channels
@@ -61,20 +62,18 @@ Series: 3 channels
 Legislative: 3 channels
 Outdoor: 3 channels
 Comédie: 3 channels
-Nouveau sur Pluto TV: 3 channels
 Découverte: 2 channels
 Movies: 2 channels
 Lifestyle: 2 channels
 Emissions cultes: 2 channels
 Educatif: 1 channels
-Comedie: 1 channels
-Film: 1 channels
 Réréalité: 1 channels
+Film: 1 channels
+Comedie: 1 channels
 Affaires Publiques: 1 channels
-Thématique: 1 channels
 Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
-Sport: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
 Animation;Kids: 1 channels
@@ -86,13 +85,13 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 80 channels
+HTTP 404 Errors: 81 channels
 HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 6 channels
 Inactive: 39 channels
-Invalid Content: 16 channels
+Invalid Content: 17 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
