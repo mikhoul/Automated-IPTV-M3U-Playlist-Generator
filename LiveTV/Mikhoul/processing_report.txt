@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-05-29 21:28:54
+Generated: 2026-05-30 20:40:16
 ============================================================
 
 PROCESSING STATISTICS
@@ -11,9 +11,9 @@ Parsing Errors: 0
 Urls Validated: 721
 Active Urls: 563
 Geo Blocked Urls: 93
-Validation Time: 127.1241180896759
-Inactive By Error: {'http_404': 81, 'inactive': 39, 'invalid_content': 17, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_500': 1, 'http_504': 6}
-Total Processing Time: 134.99176239967346
+Validation Time: 166.34285473823547
+Inactive By Error: {'http_404': 81, 'inactive': 39, 'invalid_content': 17, 'http_502': 1, 'http_401': 1, 'http_503': 8, 'http_400': 4, 'http_500': 1, 'http_504': 6}
+Total Processing Time: 173.06241464614868
 Final Channel Count: 563
 Source Urls Processed: 8
 Total Skipped Urls: 112
@@ -35,9 +35,9 @@ TNT: 14 channels
 Documentaires: 13 channels
 Kids: 13 channels
 FRANCE: 13 channels
-News: 12 channels
 À Binge-Watch: 12 channels
 Jeunesse: 11 channels
+News: 11 channels
 Régionale: 10 channels
 Séries et Divertissements: 9 channels
 Animation: 9 channels
@@ -68,12 +68,13 @@ Lifestyle: 2 channels
 Emissions cultes: 2 channels
 Educatif: 1 channels
 Réréalité: 1 channels
-Film: 1 channels
 Comedie: 1 channels
 Affaires Publiques: 1 channels
-Cuisine: 1 channels
 Thématique: 1 channels
+Cuisine: 1 channels
 Quebec TV: 1 channels
+Film: 1 channels
+Sport: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
 Animation;Kids: 1 channels
