@@ -1,20 +1,20 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-05-31 20:44:02
+Generated: 2026-06-01 22:27:24
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 2921
-Total Channels Found: 1154
+Total Lines Processed: 2909
+Total Channels Found: 1148
 Parsing Errors: 0
-Urls Validated: 907
-Active Urls: 645
+Urls Validated: 902
+Active Urls: 643
 Geo Blocked Urls: 149
-Validation Time: 167.28478837013245
-Inactive By Error: {'http_404': 186, 'inactive': 39, 'invalid_content': 17, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_504': 6}
-Total Processing Time: 175.3084111213684
-Final Channel Count: 645
+Validation Time: 168.2337510585785
+Inactive By Error: {'http_404': 181, 'inactive': 39, 'invalid_content': 17, 'http_401': 1, 'http_502': 1, 'http_504': 7, 'http_503': 8, 'http_400': 4, 'http_500': 1}
+Total Processing Time: 176.35971450805664
+Final Channel Count: 643
 Source Urls Processed: 8
 Total Skipped Urls: 112
 
@@ -22,7 +22,7 @@ CHANNEL DISTRIBUTION
 --------------------
 Uncategorized: 113 channels
 Music: 53 channels
-Sports: 49 channels
+Sports: 48 channels
 Cinéma: 38 channels
 General: 37 channels
 Généraliste: 33 channels
@@ -47,7 +47,7 @@ Voyages et Gastronomie: 6 channels
 Daytime TV: 6 channels
 Informations Françaises: 5 channels
 Sport Thématique: 5 channels
-Style de vie/Pratique: 5 channels
+Style de vie/Pratique: 4 channels
 Anime: 4 channels
 Comedy: 4 channels
 History & Science: 4 channels
@@ -67,20 +67,20 @@ True Crime: 2 channels
 Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Educatif: 1 channels
+Film: 1 channels
 Réréalité: 1 channels
 Comedie: 1 channels
-Film: 1 channels
 Affaires Publiques: 1 channels
 Cuisine: 1 channels
 Thématique: 1 channels
 Quebec TV: 1 channels
 Etrangère: 1 channels
-Series: 1 channels
 Animation: 1 channels
 Education;Kids: 1 channels
 Animation;Kids: 1 channels
-Shop: 1 channels
 Comedy;Series: 1 channels
+Series: 1 channels
+Shop: 1 channels
 Outdoor;Sports: 1 channels
 Hit TV: 1 channels
 Hit TV, Game Shows: 1 channels
@@ -91,10 +91,11 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 186 channels
+HTTP 404 Errors: 181 channels
+HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 8 channels
-HTTP 504 Errors: 6 channels
+HTTP 504 Errors: 7 channels
 Inactive: 39 channels
 Invalid Content: 17 channels
 
