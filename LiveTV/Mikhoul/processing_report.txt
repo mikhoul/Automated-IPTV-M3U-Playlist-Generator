@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-06-04 21:19:56
+Generated: 2026-06-05 21:13:26
 ============================================================
 
 PROCESSING STATISTICS
@@ -11,9 +11,9 @@ Parsing Errors: 0
 Urls Validated: 912
 Active Urls: 739
 Geo Blocked Urls: 147
-Validation Time: 133.21957778930664
-Inactive By Error: {'http_404': 94, 'inactive': 39, 'invalid_content': 17, 'http_401': 1, 'http_502': 1, 'http_503': 11, 'http_400': 4, 'http_504': 6}
-Total Processing Time: 141.8174388408661
+Validation Time: 135.937726020813
+Inactive By Error: {'http_404': 96, 'inactive': 40, 'invalid_content': 17, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 4, 'http_504': 6}
+Total Processing Time: 144.8678708076477
 Final Channel Count: 739
 Source Urls Processed: 8
 Total Skipped Urls: 112
@@ -22,9 +22,9 @@ CHANNEL DISTRIBUTION
 --------------------
 Uncategorized: 111 channels
 Music: 53 channels
+Cinéma: 51 channels
 Sports: 48 channels
-Cinéma: 48 channels
-General: 37 channels
+General: 35 channels
 Généraliste: 33 channels
 Divertissement: 27 channels
 Actualités: 20 channels
@@ -78,10 +78,9 @@ True Crime: 2 channels
 Hit TV, True Crime: 2 channels
 Drama TV: 2 channels
 Educatif: 1 channels
-Film: 1 channels
 Réréalité: 1 channels
+Film: 1 channels
 Comedie: 1 channels
-Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
@@ -91,8 +90,8 @@ Education;Kids: 1 channels
 Animation;Kids: 1 channels
 Series: 1 channels
 Comedy;Series: 1 channels
-Outdoor;Sports: 1 channels
 Shop: 1 channels
+Outdoor;Sports: 1 channels
 Hit TV: 1 channels
 Drama TV, Movies: 1 channels
 Hit TV, Game Shows: 1 channels
@@ -102,11 +101,11 @@ VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 4 channels
 HTTP 401 Errors: 1 channels
-HTTP 404 Errors: 94 channels
+HTTP 404 Errors: 96 channels
 HTTP 502 Errors: 1 channels
-HTTP 503 Errors: 11 channels
+HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 6 channels
-Inactive: 39 channels
+Inactive: 40 channels
 Invalid Content: 17 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
