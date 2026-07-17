@@ -1,27 +1,27 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-07-16 20:36:59
+Generated: 2026-07-17 20:35:11
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 3150
-Total Channels Found: 1253
+Total Lines Processed: 3154
+Total Channels Found: 1255
 Parsing Errors: 0
-Urls Validated: 1004
-Active Urls: 785
-Geo Blocked Urls: 141
-Validation Time: 146.9672510623932
-Inactive By Error: {'http_404': 106, 'inactive': 41, 'invalid_content': 15, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 5, 'http_504': 5, 'http_500': 2, 'http_429': 35}
-Total Processing Time: 154.4823179244995
-Final Channel Count: 785
+Urls Validated: 1005
+Active Urls: 820
+Geo Blocked Urls: 153
+Validation Time: 142.60349345207214
+Inactive By Error: {'http_404': 106, 'inactive': 41, 'invalid_content': 17, 'http_401': 1, 'http_502': 1, 'http_503': 8, 'http_400': 5, 'http_504': 5, 'http_500': 1}
+Total Processing Time: 150.42208743095398
+Final Channel Count: 820
 Source Urls Processed: 8
 Total Skipped Urls: 112
 
 CHANNEL DISTRIBUTION
 --------------------
-Uncategorized: 76 channels
-Music: 58 channels
+Uncategorized: 111 channels
+Music: 59 channels
 Sports: 49 channels
 Cinéma: 49 channels
 General: 42 channels
@@ -31,11 +31,11 @@ Series: 24 channels
 Kids: 22 channels
 News: 22 channels
 Actualités: 20 channels
-Sport Multiplex: 19 channels
 Séries TV: 19 channels
+Sport Multiplex: 18 channels
 Musique: 15 channels
-Animation: 14 channels
 TNT: 13 channels
+Animation: 13 channels
 Documentaires: 12 channels
 Jeunesse: 11 channels
 Lifestyle: 11 channels
@@ -43,11 +43,11 @@ Kids & Family: 11 channels
 FRANCE: 11 channels
 Régionale: 10 channels
 Séries et Divertissements: 9 channels
+100% Français: 9 channels
 Classic TV: 9 channels
 Crime: 8 channels
 Movies: 8 channels
 Comedy: 8 channels
-100% Français: 8 channels
 Classic: 7 channels
 Animation;Comedy: 7 channels
 Séries Policières: 7 channels
@@ -78,10 +78,10 @@ History & Science: 3 channels
 Découverte: 2 channels
 Classic;Comedy: 2 channels
 Emissions cultes: 2 channels
-Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
-Drama TV: 2 channels
+Anime & Gaming, Kids & Family: 2 channels
 Hit TV, True Crime: 2 channels
+Drama TV: 2 channels
 Educatif: 1 channels
 Réréalité: 1 channels
 Comedie: 1 channels
@@ -96,17 +96,17 @@ Lifestyle;Outdoor: 1 channels
 Education;Kids: 1 channels
 Animation;Kids: 1 channels
 Auto: 1 channels
-Classic;Movies: 1 channels
-Outdoor;Sports: 1 channels
 Comedy;Movies: 1 channels
+Classic;Movies: 1 channels
 Documentary;Series: 1 channels
+Outdoor;Sports: 1 channels
 Comedy;Series: 1 channels
 Shop: 1 channels
-Relax: 1 channels
 Weather: 1 channels
+Relax: 1 channels
 Hit TV: 1 channels
-Hit TV, Game Shows: 1 channels
 Drama TV, Movies: 1 channels
+Hit TV, Game Shows: 1 channels
 International: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
@@ -114,13 +114,12 @@ VALIDATION FAILURE BREAKDOWN
 HTTP 400 Errors: 5 channels
 HTTP 401 Errors: 1 channels
 HTTP 404 Errors: 106 channels
-HTTP 429 Errors: 35 channels
-HTTP 500 Errors: 2 channels
+HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 5 channels
 Inactive: 41 channels
-Invalid Content: 15 channels
+Invalid Content: 17 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
 ---------------------------------------------
