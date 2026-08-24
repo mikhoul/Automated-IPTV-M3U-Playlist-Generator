@@ -1,27 +1,27 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-08-23 19:57:39
+Generated: 2026-08-24 20:04:21
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 3078
-Total Channels Found: 1226
+Total Lines Processed: 3076
+Total Channels Found: 1225
 Parsing Errors: 0
 Urls Validated: 976
-Active Urls: 779
-Geo Blocked Urls: 130
-Validation Time: 116.82175898551941
-Inactive By Error: {'http_404': 97, 'inactive': 40, 'invalid_content': 17, 'http_502': 1, 'http_503': 8, 'http_400': 6, 'http_504': 5, 'http_500': 1, 'http_421': 2, 'http_429': 20}
-Total Processing Time: 122.76919198036194
-Final Channel Count: 779
+Active Urls: 777
+Geo Blocked Urls: 144
+Validation Time: 140.88949942588806
+Inactive By Error: {'http_404': 97, 'inactive': 42, 'invalid_content': 17, 'http_502': 1, 'http_503': 8, 'http_400': 6, 'http_504': 5, 'http_500': 1, 'http_429': 22}
+Total Processing Time: 149.02868795394897
+Final Channel Count: 777
 Source Urls Processed: 8
 Total Skipped Urls: 111
 
 CHANNEL DISTRIBUTION
 --------------------
 Uncategorized: 112 channels
-Music: 56 channels
+Music: 53 channels
 Cinéma: 49 channels
 Sports: 43 channels
 General: 40 channels
@@ -29,12 +29,12 @@ Généraliste: 33 channels
 Divertissement: 28 channels
 Series: 22 channels
 Kids: 22 channels
-News: 22 channels
 Actualités: 20 channels
 Séries TV: 19 channels
 Sport Multiplex: 18 channels
 Musique: 15 channels
 TNT: 13 channels
+News: 13 channels
 Documentaires: 12 channels
 Animation: 11 channels
 Kids & Family: 11 channels
@@ -43,17 +43,17 @@ Jeunesse: 10 channels
 Régionale: 10 channels
 100% Français: 10 channels
 Séries et Divertissements: 9 channels
-Lifestyle: 9 channels
-À Binge-Watch: 9 channels
 Classic TV: 9 channels
 Crime: 8 channels
-Movies: 8 channels
+À Binge-Watch: 8 channels
 Animation;Comedy: 7 channels
 Séries Policières: 7 channels
 Crime & Mystère: 7 channels
+Nature & Travel: 7 channels
 Voyages et Gastronomie: 6 channels
-Comedy: 6 channels
+Movies: 6 channels
 Classic: 6 channels
+Daytime TV: 6 channels
 Informations Françaises: 5 channels
 Documentary: 5 channels
 Movies;Series: 5 channels
@@ -62,57 +62,63 @@ Documentaire: 5 channels
 Sport Thématique: 4 channels
 Style de vie/Pratique: 4 channels
 Anime: 4 channels
+Comedy: 4 channels
 Outdoor: 4 channels
 Communautaire: 3 channels
 Locale: 3 channels
 Télé réalité: 3 channels
+Lifestyle: 3 channels
+Nouveau sur Pluto TV: 3 channels
 Sports & Auto: 3 channels
 Comédie: 3 channels
 Sci-Fi & Action: 3 channels
 Reality: 3 channels
-Daytime TV: 3 channels
+History & Science: 3 channels
 Découverte: 2 channels
 Classic;Comedy: 2 channels
 Emissions cultes: 2 channels
-Nouveau sur Pluto TV: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
+Hit TV, True Crime: 2 channels
+Drama TV: 2 channels
 Educatif: 1 channels
 Réréalité: 1 channels
-Film: 1 channels
 Comedie: 1 channels
-Thématique: 1 channels
+Film: 1 channels
 Affaires Publiques: 1 channels
+Thématique: 1 channels
 Cuisine: 1 channels
 Quebec TV: 1 channels
 Sport: 1 channels
 Etrangère: 1 channels
 Lifestyle;Outdoor: 1 channels
 Education;Kids: 1 channels
-Animation;Kids: 1 channels
 Legislative: 1 channels
+Animation;Kids: 1 channels
 Auto: 1 channels
 Comedy;Movies: 1 channels
 Outdoor;Sports: 1 channels
+Classic;Movies: 1 channels
 Documentary;Series: 1 channels
 Relax: 1 channels
 Comedy;Series: 1 channels
 Shop: 1 channels
 Weather: 1 channels
-Classic;Movies: 1 channels
 Hit TV: 1 channels
+Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
+International: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 6 channels
 HTTP 404 Errors: 97 channels
-HTTP 421 Errors: 2 channels
-HTTP 429 Errors: 20 channels
+HTTP 429 Errors: 22 channels
 HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 8 channels
 HTTP 504 Errors: 5 channels
-Inactive: 40 channels
+Inactive: 42 channels
 Invalid Content: 17 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
