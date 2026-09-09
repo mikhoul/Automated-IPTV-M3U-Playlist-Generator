@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-09-08 22:04:06
+Generated: 2026-09-09 22:00:10
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,12 +9,12 @@ Total Lines Processed: 3084
 Total Channels Found: 1202
 Parsing Errors: 0
 Urls Validated: 952
-Active Urls: 763
-Geo Blocked Urls: 123
-Validation Time: 133.80772709846497
-Inactive By Error: {'http_404': 103, 'inactive': 45, 'invalid_content': 17, 'http_502': 1, 'http_503': 8, 'http_400': 6, 'http_504': 5, 'http_500': 1, 'http_429': 3}
-Total Processing Time: 146.5082881450653
-Final Channel Count: 763
+Active Urls: 751
+Geo Blocked Urls: 115
+Validation Time: 139.6569344997406
+Inactive By Error: {'http_404': 103, 'inactive': 45, 'invalid_content': 17, 'http_502': 1, 'http_503': 8, 'http_400': 6, 'http_504': 5, 'http_500': 1, 'http_429': 15}
+Total Processing Time: 167.1460976600647
+Final Channel Count: 751
 Source Urls Processed: 8
 Total Skipped Urls: 107
 
@@ -44,17 +44,16 @@ Jeunesse: 10 channels
 Régionale: 10 channels
 Séries et Divertissements: 9 channels
 À Binge-Watch: 9 channels
+Classic TV: 9 channels
 Crime: 8 channels
 Lifestyle: 8 channels
 Movies: 7 channels
 Animation;Comedy: 7 channels
 Séries Policières: 7 channels
 Crime & Mystère: 7 channels
-Nature & Travel: 7 channels
 Voyages et Gastronomie: 6 channels
 Comedy: 6 channels
 Classic: 6 channels
-Classic TV: 6 channels
 Daytime TV: 6 channels
 Informations Françaises: 5 channels
 Documentary: 5 channels
@@ -73,45 +72,41 @@ Sports & Auto: 3 channels
 Comédie: 3 channels
 Sci-Fi & Action: 3 channels
 Reality: 3 channels
-History & Science: 3 channels
 Découverte: 2 channels
 Classic;Comedy: 2 channels
 Emissions cultes: 2 channels
 Anime & Gaming, Kids & Family: 2 channels
 True Crime: 2 channels
-Drama TV: 2 channels
-Hit TV, True Crime: 2 channels
 Educatif: 1 channels
-Réréalité: 1 channels
 Film: 1 channels
+Réréalité: 1 channels
 Comedie: 1 channels
 Affaires Publiques: 1 channels
-Quebec TV: 1 channels
 Thématique: 1 channels
+Quebec TV: 1 channels
 Cuisine: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
 Legislative: 1 channels
 Animation;Kids: 1 channels
 Auto: 1 channels
-Classic;Movies: 1 channels
-Outdoor;Sports: 1 channels
 Comedy;Movies: 1 channels
-Relax: 1 channels
-Comedy;Series: 1 channels
-Shop: 1 channels
-Weather: 1 channels
+Outdoor;Sports: 1 channels
 Documentary;Series: 1 channels
+Classic;Movies: 1 channels
+Relax: 1 channels
+Shop: 1 channels
+Comedy;Series: 1 channels
+Weather: 1 channels
 Hit TV: 1 channels
-Hit TV, Game Shows: 1 channels
-Drama TV, Movies: 1 channels
-International: 1 channels
+Drama TV: 1 channels
+Nature & Travel: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 6 channels
 HTTP 404 Errors: 103 channels
-HTTP 429 Errors: 3 channels
+HTTP 429 Errors: 15 channels
 HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 8 channels
