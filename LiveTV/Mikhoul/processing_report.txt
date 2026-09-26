@@ -1,6 +1,6 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-09-25 22:53:00
+Generated: 2026-09-26 22:15:02
 ============================================================
 
 PROCESSING STATISTICS
@@ -9,19 +9,19 @@ Total Lines Processed: 3086
 Total Channels Found: 1203
 Parsing Errors: 0
 Urls Validated: 960
-Active Urls: 772
-Geo Blocked Urls: 120
-Validation Time: 171.6114957332611
-Inactive By Error: {'http_404': 102, 'http_503': 10, 'inactive': 47, 'invalid_content': 16, 'http_502': 1, 'http_400': 6, 'http_504': 5, 'http_500': 1}
-Total Processing Time: 217.30154299736023
-Final Channel Count: 772
+Active Urls: 766
+Geo Blocked Urls: 105
+Validation Time: 172.06204962730408
+Inactive By Error: {'http_404': 102, 'http_503': 10, 'inactive': 47, 'invalid_content': 16, 'http_502': 1, 'http_400': 6, 'http_504': 5, 'http_500': 1, 'http_429': 6}
+Total Processing Time: 178.20707654953003
+Final Channel Count: 766
 Source Urls Processed: 8
 Total Skipped Urls: 107
 
 CHANNEL DISTRIBUTION
 --------------------
 Uncategorized: 114 channels
-Music: 56 channels
+Music: 55 channels
 Cinéma: 48 channels
 Sports: 43 channels
 Généraliste: 31 channels
@@ -73,7 +73,6 @@ Télé réalité: 3 channels
 Nouveau sur Pluto TV: 3 channels
 Sci-Fi & Action: 3 channels
 Reality: 3 channels
-History & Science: 3 channels
 Découverte: 2 channels
 Classic;Comedy: 2 channels
 Emissions cultes: 2 channels
@@ -82,9 +81,9 @@ True Crime: 2 channels
 Drama TV: 2 channels
 Hit TV, True Crime: 2 channels
 Educatif: 1 channels
-Réréalité: 1 channels
-Film: 1 channels
 Comedie: 1 channels
+Film: 1 channels
+Réréalité: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
@@ -95,23 +94,22 @@ Education;Kids: 1 channels
 Legislative: 1 channels
 Animation;Kids: 1 channels
 Comedy;Movies: 1 channels
-Classic;Movies: 1 channels
-Outdoor;Sports: 1 channels
 Documentary;Series: 1 channels
 Auto: 1 channels
-Comedy;Series: 1 channels
+Outdoor;Sports: 1 channels
+Classic;Movies: 1 channels
 Weather: 1 channels
 Relax: 1 channels
 Shop: 1 channels
+Comedy;Series: 1 channels
 Hit TV: 1 channels
-Hit TV, Game Shows: 1 channels
-Drama TV, Movies: 1 channels
-International: 1 channels
+History & Science: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 6 channels
 HTTP 404 Errors: 102 channels
+HTTP 429 Errors: 6 channels
 HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 10 channels
