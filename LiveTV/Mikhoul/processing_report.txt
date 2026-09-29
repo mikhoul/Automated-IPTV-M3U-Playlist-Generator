@@ -1,26 +1,26 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-09-27 22:36:32
+Generated: 2026-09-29 00:00:14
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 3092
+Total Lines Processed: 3090
 Total Channels Found: 1205
 Parsing Errors: 0
 Urls Validated: 962
-Active Urls: 743
-Geo Blocked Urls: 106
-Validation Time: 164.0007061958313
-Inactive By Error: {'http_404': 102, 'http_503': 10, 'inactive': 47, 'invalid_content': 16, 'http_502': 1, 'http_400': 6, 'http_504': 5, 'http_500': 1, 'http_429': 31}
-Total Processing Time: 195.0004906654358
-Final Channel Count: 743
+Active Urls: 712
+Geo Blocked Urls: 97
+Validation Time: 170.0559959411621
+Inactive By Error: {'http_404': 104, 'http_503': 10, 'inactive': 46, 'invalid_content': 16, 'http_502': 1, 'http_400': 6, 'http_504': 6, 'http_500': 1, 'http_429': 60}
+Total Processing Time: 209.31817841529846
+Final Channel Count: 712
 Source Urls Processed: 8
 Total Skipped Urls: 107
 
 CHANNEL DISTRIBUTION
 --------------------
-Uncategorized: 114 channels
+Uncategorized: 85 channels
 Music: 56 channels
 Cinéma: 48 channels
 Sports: 43 channels
@@ -31,7 +31,7 @@ Kids: 21 channels
 News: 21 channels
 Actualités: 20 channels
 Séries TV: 19 channels
-Sport Multiplex: 18 channels
+Sport Multiplex: 16 channels
 Musique: 15 channels
 TNT: 14 channels
 Documentaires: 12 channels
@@ -79,34 +79,34 @@ Film: 1 channels
 Réréalité: 1 channels
 Affaires Publiques: 1 channels
 Thématique: 1 channels
-Quebec TV: 1 channels
 Cuisine: 1 channels
+Quebec TV: 1 channels
 Sport: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
 Legislative: 1 channels
 Animation;Kids: 1 channels
 Kids;Music: 1 channels
+Classic;Movies: 1 channels
+Outdoor;Sports: 1 channels
+Documentary;Series: 1 channels
 Auto: 1 channels
 Comedy;Movies: 1 channels
-Classic;Movies: 1 channels
-Documentary;Series: 1 channels
-Outdoor;Sports: 1 channels
 Comedy;Series: 1 channels
 Shop: 1 channels
-Weather: 1 channels
 Relax: 1 channels
+Weather: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 6 channels
-HTTP 404 Errors: 102 channels
-HTTP 429 Errors: 31 channels
+HTTP 404 Errors: 104 channels
+HTTP 429 Errors: 60 channels
 HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 10 channels
-HTTP 504 Errors: 5 channels
-Inactive: 47 channels
+HTTP 504 Errors: 6 channels
+Inactive: 46 channels
 Invalid Content: 16 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
