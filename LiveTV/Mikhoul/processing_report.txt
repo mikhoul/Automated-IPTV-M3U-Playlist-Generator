@@ -1,63 +1,59 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-09-29 23:15:41
+Generated: 2026-09-30 23:15:20
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 3088
+Total Lines Processed: 3090
 Total Channels Found: 1204
 Parsing Errors: 0
-Urls Validated: 961
-Active Urls: 748
-Geo Blocked Urls: 85
-Validation Time: 172.87648367881775
-Inactive By Error: {'http_404': 106, 'http_400': 20, 'inactive': 47, 'http_503': 10, 'invalid_content': 16, 'http_502': 1, 'http_401': 4, 'http_504': 6, 'http_500': 1, 'http_429': 2}
-Total Processing Time: 188.94733333587646
-Final Channel Count: 748
+Urls Validated: 960
+Active Urls: 652
+Geo Blocked Urls: 78
+Validation Time: 171.35212564468384
+Inactive By Error: {'http_404': 107, 'http_503': 10, 'inactive': 47, 'invalid_content': 16, 'http_502': 1, 'http_400': 6, 'http_504': 5, 'http_500': 1, 'http_429': 115}
+Total Processing Time: 178.35720443725586
+Final Channel Count: 652
 Source Urls Processed: 8
 Total Skipped Urls: 107
 
 CHANNEL DISTRIBUTION
 --------------------
-Uncategorized: 114 channels
 Music: 56 channels
+Uncategorized: 51 channels
 Cinéma: 48 channels
-Sports: 41 channels
-Divertissement: 27 channels
+Sports: 43 channels
+Généraliste: 31 channels
+Divertissement: 26 channels
 Series: 21 channels
 Kids: 21 channels
-News: 21 channels
-Actualités: 18 channels
-Séries TV: 18 channels
-Généraliste: 17 channels
+Actualités: 20 channels
+News: 20 channels
+Séries TV: 19 channels
 Sport Multiplex: 17 channels
-Musique: 15 channels
 TNT: 14 channels
+Musique: 14 channels
+Documentaires: 12 channels
 Animation: 12 channels
-Documentaires: 11 channels
 General: 11 channels
 À Binge-Watch: 11 channels
 100% Français: 11 channels
 FRANCE: 11 channels
 Jeunesse: 10 channels
 Régionale: 10 channels
-Kids & Family: 10 channels
 Séries et Divertissements: 9 channels
-Classic TV: 9 channels
 Crime: 8 channels
+Lifestyle: 8 channels
 Séries Policières: 8 channels
 Crime & Mystère: 8 channels
-Lifestyle: 7 channels
+Movies: 7 channels
 Animation;Comedy: 7 channels
-Nature & Travel: 7 channels
+Voyages et Gastronomie: 6 channels
 Comedy: 6 channels
 Classic: 6 channels
 TV Réalité: 6 channels
-Daytime TV: 6 channels
 Informations Françaises: 5 channels
-Voyages et Gastronomie: 5 channels
-Movies: 5 channels
 Documentary: 5 channels
 Movies;Series: 5 channels
 Outdoor: 5 channels
@@ -71,24 +67,16 @@ Sport Thématique: 3 channels
 Locale: 3 channels
 Télé réalité: 3 channels
 Nouveau sur Pluto TV: 3 channels
-Sci-Fi & Action: 3 channels
-Reality: 3 channels
-History & Science: 3 channels
 Découverte: 2 channels
 Classic;Comedy: 2 channels
-Emissions cultes: 2 channels
-Anime & Gaming, Kids & Family: 2 channels
-True Crime: 2 channels
-Drama TV: 2 channels
-Hit TV, True Crime: 2 channels
 Educatif: 1 channels
+Réréalité: 1 channels
 Comedie: 1 channels
 Film: 1 channels
-Réréalité: 1 channels
 Affaires Publiques: 1 channels
-Quebec TV: 1 channels
 Thématique: 1 channels
 Cuisine: 1 channels
+Quebec TV: 1 channels
 Sport: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
@@ -96,29 +84,25 @@ Legislative: 1 channels
 Animation;Kids: 1 channels
 Kids;Music: 1 channels
 Auto: 1 channels
-Classic;Movies: 1 channels
 Comedy;Movies: 1 channels
-Documentary;Series: 1 channels
+Classic;Movies: 1 channels
 Outdoor;Sports: 1 channels
-Comedy;Series: 1 channels
+Documentary;Series: 1 channels
 Weather: 1 channels
 Relax: 1 channels
+Comedy;Series: 1 channels
 Shop: 1 channels
-Hit TV: 1 channels
-Hit TV, Game Shows: 1 channels
-International: 1 channels
-Drama TV, Movies: 1 channels
+Emissions cultes: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
-HTTP 400 Errors: 20 channels
-HTTP 401 Errors: 4 channels
-HTTP 404 Errors: 106 channels
-HTTP 429 Errors: 2 channels
+HTTP 400 Errors: 6 channels
+HTTP 404 Errors: 107 channels
+HTTP 429 Errors: 115 channels
 HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 10 channels
-HTTP 504 Errors: 6 channels
+HTTP 504 Errors: 5 channels
 Inactive: 47 channels
 Invalid Content: 16 channels
 
