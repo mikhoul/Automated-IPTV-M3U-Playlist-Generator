@@ -1,32 +1,32 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-10-13 01:40:19
+Generated: 2026-10-13 23:29:01
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 3098
-Total Channels Found: 1209
+Total Lines Processed: 3100
+Total Channels Found: 1210
 Parsing Errors: 0
 Urls Validated: 965
-Active Urls: 658
-Geo Blocked Urls: 238
-Validation Time: 177.57420587539673
-Inactive By Error: {'http_404': 108, 'http_503': 10, 'inactive': 47, 'invalid_content': 16, 'http_502': 1, 'http_400': 7, 'http_504': 5, 'http_500': 1, 'http_429': 112}
-Total Processing Time: 183.95465564727783
-Final Channel Count: 658
+Active Urls: 654
+Geo Blocked Urls: 77
+Validation Time: 164.6365122795105
+Inactive By Error: {'http_404': 111, 'http_503': 10, 'inactive': 47, 'invalid_content': 16, 'http_502': 1, 'http_400': 7, 'http_504': 5, 'http_500': 2, 'http_429': 112}
+Total Processing Time: 178.3968997001648
+Final Channel Count: 654
 Source Urls Processed: 8
 Total Skipped Urls: 107
 
 CHANNEL DISTRIBUTION
 --------------------
 Music: 56 channels
-Uncategorized: 51 channels
 Cinéma: 50 channels
+Uncategorized: 50 channels
 Sports: 44 channels
 Généraliste: 31 channels
 Divertissement: 26 channels
-News: 23 channels
+News: 22 channels
 Series: 21 channels
 Actualités: 20 channels
 Kids: 20 channels
@@ -35,8 +35,8 @@ Sport Multiplex: 18 channels
 TNT: 14 channels
 Musique: 14 channels
 Documentaires: 12 channels
-Animation: 12 channels
 100% Français: 12 channels
+Animation: 11 channels
 À Binge-Watch: 11 channels
 FRANCE: 11 channels
 Jeunesse: 10 channels
@@ -61,45 +61,45 @@ Documentaire: 5 channels
 Style de vie/Pratique: 4 channels
 Anime: 4 channels
 Sports & Auto: 4 channels
-Comédie: 4 channels
 Communautaire: 3 channels
 Sport Thématique: 3 channels
 Locale: 3 channels
 Télé réalité: 3 channels
 Nouveau sur Pluto TV: 3 channels
+Comédie: 3 channels
 Découverte: 2 channels
 Classic;Comedy: 2 channels
 Educatif: 1 channels
-Film: 1 channels
 Réréalité: 1 channels
+Film: 1 channels
 Comedie: 1 channels
-Affaires Publiques: 1 channels
 Quebec TV: 1 channels
 Thématique: 1 channels
+Affaires Publiques: 1 channels
 Cuisine: 1 channels
 Sport: 1 channels
 Etrangère: 1 channels
 Education;Kids: 1 channels
 Legislative: 1 channels
 Animation;Kids: 1 channels
-Outdoor;Sports: 1 channels
-Auto: 1 channels
 Comedy;Movies: 1 channels
-Documentary;Series: 1 channels
+Auto: 1 channels
+Outdoor;Sports: 1 channels
 Classic;Movies: 1 channels
-Relax: 1 channels
-Shop: 1 channels
-Comedy;Series: 1 channels
+Documentary;Series: 1 channels
 Weather: 1 channels
+Relax: 1 channels
+Comedy;Series: 1 channels
+Shop: 1 channels
 Emissions cultes: 1 channels
 Halloween sur Pluto TV: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 7 channels
-HTTP 404 Errors: 108 channels
+HTTP 404 Errors: 111 channels
 HTTP 429 Errors: 112 channels
-HTTP 500 Errors: 1 channels
+HTTP 500 Errors: 2 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 10 channels
 HTTP 504 Errors: 5 channels
