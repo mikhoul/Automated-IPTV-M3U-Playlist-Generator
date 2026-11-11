@@ -1,26 +1,26 @@
 M3U Collector Processing Report
 Country: Mikhoul
-Generated: 2026-11-10 02:26:15
+Generated: 2026-11-11 00:17:17
 ============================================================
 
 PROCESSING STATISTICS
 -------------------------
-Total Lines Processed: 3120
-Total Channels Found: 1220
+Total Lines Processed: 3112
+Total Channels Found: 1218
 Parsing Errors: 0
-Urls Validated: 977
-Active Urls: 722
-Geo Blocked Urls: 99
-Validation Time: 171.82925653457642
-Inactive By Error: {'http_404': 119, 'http_400': 8, 'invalid_content': 17, 'inactive': 48, 'http_502': 1, 'http_503': 8, 'http_504': 5, 'http_500': 1, 'http_429': 48}
-Total Processing Time: 179.77644777297974
-Final Channel Count: 722
+Urls Validated: 975
+Active Urls: 770
+Geo Blocked Urls: 118
+Validation Time: 173.3204243183136
+Inactive By Error: {'http_404': 117, 'http_400': 8, 'inactive': 49, 'invalid_content': 17, 'http_502': 1, 'http_503': 8, 'http_504': 4, 'http_500': 1}
+Total Processing Time: 180.65829849243164
+Final Channel Count: 770
 Source Urls Processed: 8
 Total Skipped Urls: 107
 
 CHANNEL DISTRIBUTION
 --------------------
-Uncategorized: 93 channels
+Uncategorized: 110 channels
 Music: 55 channels
 Cinéma: 50 channels
 Sports: 44 channels
@@ -51,10 +51,12 @@ Séries Policières: 8 channels
 Crime & Mystère: 8 channels
 Movies: 7 channels
 Animation;Comedy: 7 channels
+Nature & Travel: 7 channels
 Movies;Series: 6 channels
 Comedy: 6 channels
 Classic: 6 channels
 TV Réalité: 6 channels
+Daytime TV: 6 channels
 Informations Françaises: 5 channels
 Voyages et Gastronomie: 5 channels
 Documentary: 5 channels
@@ -69,16 +71,22 @@ Style de vie/Pratique: 3 channels
 Locale: 3 channels
 Télé réalité: 3 channels
 Sci-Fi & Action: 3 channels
+Reality: 3 channels
+History & Science: 3 channels
 Découverte: 2 channels
 Classic;Comedy: 2 channels
 Nouveau sur Pluto TV: 2 channels
+Anime & Gaming, Kids & Family: 2 channels
+True Crime: 2 channels
+Drama TV: 2 channels
+Hit TV, True Crime: 2 channels
 Educatif: 1 channels
 Réréalité: 1 channels
 Comedie: 1 channels
 Film: 1 channels
-Thématique: 1 channels
-Cuisine: 1 channels
 Affaires Publiques: 1 channels
+Cuisine: 1 channels
+Thématique: 1 channels
 Quebec TV: 1 channels
 Sport: 1 channels
 Etrangère: 1 channels
@@ -90,22 +98,25 @@ Comedy;Movies: 1 channels
 Classic;Movies: 1 channels
 Outdoor;Sports: 1 channels
 Documentary;Series: 1 channels
+Comedy;Series: 1 channels
 Shop: 1 channels
 Relax: 1 channels
-Comedy;Series: 1 channels
 Weather: 1 channels
 Emissions cultes: 1 channels
+Hit TV: 1 channels
+Hit TV, Game Shows: 1 channels
+Drama TV, Movies: 1 channels
+International: 1 channels
 
 VALIDATION FAILURE BREAKDOWN
 ----------------------------
 HTTP 400 Errors: 8 channels
-HTTP 404 Errors: 119 channels
-HTTP 429 Errors: 48 channels
+HTTP 404 Errors: 117 channels
 HTTP 500 Errors: 1 channels
 HTTP 502 Errors: 1 channels
 HTTP 503 Errors: 8 channels
-HTTP 504 Errors: 5 channels
-Inactive: 48 channels
+HTTP 504 Errors: 4 channels
+Inactive: 49 channels
 Invalid Content: 17 channels
 
 SKIPPED URLS (Invalid, Non-HTTP, or Duplicate)
